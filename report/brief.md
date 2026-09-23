@@ -3,7 +3,9 @@
 **Author:** Sam Zaheer · **Prepared for:** Verita AI · **Date:** 2026-09-23
 **Subfield:** SEC-filing analysis · **Route:** Construct (with a condensed Review and a Dissect pass on our own transcripts)
 
-Engineering, reproduction, isolation and scaling details are in the [README](../README.md). This document covers the research question, the design, the findings and the recommendation.
+This document covers the research question, the design, the findings and the recommendation. Companion documents:
+- [`docs/architecture.md`](../docs/architecture.md): the evaluation architecture, i.e. how both stages ran, grading and judge calibration, answer-key isolation and reward-hacking controls, Docker, and the path to production scale.
+- [README](../README.md): setup, and reproducing every result.
 
 ## Executive summary
 
@@ -110,6 +112,12 @@ We rejected two routes outright:
 - **Judgment items, iteration 1.** Grades were drafted against the pre-written rubrics, each with a verbatim supporting quote, and approved by the experimenter.
 - **Judgment items, iterations 2–3.** Graded by a cross-family judge (`google/gemini-3.8-flash`). The judge first re-graded all 108 iteration-1 rows blind and agreed on **107/108 (99.1%)**. Its low-confidence verdicts and a random 5% sample (32 rows) were routed to a second review, which confirmed all of them.
 
+**Evaluation infrastructure.** The pipeline behind both stages is documented in [`docs/architecture.md`](../docs/architecture.md):
+- [how the evaluation was run](../docs/architecture.md#how-the-evaluation-was-run): the run lifecycle and the environment's reset/step/reward loop;
+- [grading and verification](../docs/architecture.md#grading-and-verification): the calibration gate and review routing;
+- [isolation and reward hacking](../docs/architecture.md#isolation-and-reward-hacking): the answer-key boundary, the `python_eval` audit, and verifier red-teaming;
+- [scaling to production](../docs/architecture.md#scaling-to-production).
+
 ## Pre-registered predictions
 
 **Primary predictions, locked 2026-09-21 before any model run.** They are condensed here without changing thresholds or meaning. At that time the pre-registered set had 16 items, including a 6-item break bucket (IBM, GE, 3M, Kellanova and a fiscal-year pair). That bucket was later hardened into the 4-item bucket above. The original items scored the same 100% under easier conditions.
@@ -149,7 +157,7 @@ Rule: collapse replicates if Sonnet 5 and GPT-5.1 are graded partial or incorrec
 
 ### Accuracy by bucket
 
-Each cell is the mean over the bucket's items × 3 iterations. The full matrices at both 1 and 3 iterations are shown as heatmaps in the [README](../README.md#headline-results).
+Each cell is the mean over the bucket's items × 3 iterations. The full matrices at both 1 and 3 iterations are shown as heatmaps in [`docs/architecture.md`](../docs/architecture.md#headline-results).
 
 | Bucket | N | Sonnet 5 no-tool | Sonnet 5 + tool | Opus no-tool | Opus + tool | GPT-5.1 no-tool | GPT-5.1 + tool |
 |---|---|---|---|---|---|---|---|
@@ -257,13 +265,13 @@ The residual findings are weaker training targets because they are model-specifi
 | Judgment collapse | No incentive to state the comparison criteria before concluding | Process reward for enumerating dimensions, with a dominance-control penalty so the policy cannot learn "always hedge" | Low; one item, did not generalize |
 | Acquisition not adjusted | Detection not carried through into the computation | Supervised fine-tuning on detect-then-adjust traces | Low; one model |
 
-**What would change the conclusion.** The mechanism should be tested on obscure filers' little-publicized reclassifications. If accuracy drops there, the current result reflects recognition of famous events rather than general comparability reasoning. The README's scaling section describes an ingestion pipeline built for exactly this test.
+**What would change the conclusion.** The mechanism should be tested on obscure filers' little-publicized reclassifications. If accuracy drops there, the current result reflects recognition of famous events rather than general comparability reasoning. The [scaling section](../docs/architecture.md#scaling-to-production) of the architecture doc describes an ingestion pipeline built for exactly this test.
 
 **Recommended follow-up.** A properly powered judgment-collapse study:
 - about 40 matched triples across sectors, each with an open-ended question, a structured twin and a dominance control;
 - a pre-registered threshold of at least 30% collapse for at least two models, with at most 10% hedging on the controls.
 
-The environment, verifier and isolation design are ready for it. Before any training use, the verifier needs strict single-value numeric matching and a separate sandbox for `python_eval` (README, *Isolation and reward hacking*).
+The environment, verifier and isolation design are ready for it. Before any training use, the verifier needs strict single-value numeric matching and a separate sandbox for `python_eval` ([Isolation and reward hacking](../docs/architecture.md#isolation-and-reward-hacking)).
 
 ## Limitations
 
