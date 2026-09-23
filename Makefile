@@ -1,5 +1,6 @@
 IMAGE := finance-headroom
 VOLUMES := -v $(CURDIR)/transcripts:/app/transcripts -v $(CURDIR)/results:/app/results
+GYM_VOLUMES := -v $(CURDIR)/gymnasium_transcripts:/app/gymnasium_transcripts -v $(CURDIR)/results:/app/results
 
 # Full data mount (includes answer_keys.jsonl) -- only for scoring/replay/tests, which
 # read the answer key deterministically and never execute freshly-generated agent code.
@@ -12,7 +13,7 @@ DATA_AGENT := -v $(CURDIR)/data/questions.jsonl:/app/data/questions.jsonl:ro \
               -v $(CURDIR)/data/corpus:/app/data/corpus:ro
 AGENT_VOLUMES := -v $(CURDIR)/transcripts:/app/transcripts -v $(CURDIR)/results/agent_run:/app/results
 
-.PHONY: install test lint format run score analyze replay demo judge collect gym docker-build docker-test docker-replay docker-run docker-verify
+.PHONY: install test lint format run score analyze replay demo judge collect gym docker-build docker-test docker-report docker-replay docker-run docker-score docker-gym docker-verify
 
 install:        ## editable install with dev tools
 	pip install -e ".[dev]"
@@ -56,6 +57,10 @@ docker-build:
 docker-test: docker-build
 	docker run --rm $(DATA_FULL) $(IMAGE)
 
+docker-report: docker-build    ## offline, no API keys: rebuild Stage 1 + Stage 2 tables and figures from committed transcripts
+	docker run --rm $(DATA_FULL) $(VOLUMES) -v $(CURDIR)/gymnasium_transcripts:/app/gymnasium_transcripts \
+		$(IMAGE) sh -c "fh-analyze && fh-gym --report"
+
 docker-replay: docker-build
 	docker run --rm $(DATA_FULL) $(VOLUMES) $(IMAGE) fh-score
 	docker run --rm $(DATA_FULL) $(VOLUMES) $(IMAGE) fh-replay
@@ -63,6 +68,15 @@ docker-replay: docker-build
 docker-run: docker-build       ## the live agent loop -- no answer key or graded output in this container
 	mkdir -p results/agent_run
 	docker run --rm $(DATA_AGENT) $(AGENT_VOLUMES) --env-file .env $(IMAGE) fh-run $(ARGS)
+
+docker-score: docker-build     ## Stage 1 grading after docker-run: numeric scoring, calibrated judge, analysis
+	docker run --rm $(DATA_FULL) $(VOLUMES) --env-file .env $(IMAGE) \
+		sh -c "fh-score && fh-judge && fh-judge --apply && fh-analyze"
+
+# Stage 2 needs the full data mount: the env's verifier scores each answer inside the episode.
+# python_eval therefore shares a container with the answer key (see docs/architecture.md).
+docker-gym: docker-build       ## Stage 2: live Gymnasium episodes -> gymnasium_transcripts/, results/gym_scored.csv
+	docker run --rm $(DATA_FULL) $(GYM_VOLUMES) --env-file .env $(IMAGE) fh-gym $(ARGS)
 
 docker-verify: docker-build    ## proof, not a claim: list what the agent's own container can see
 	mkdir -p results/agent_run
