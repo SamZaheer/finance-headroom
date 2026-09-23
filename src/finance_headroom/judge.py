@@ -298,7 +298,10 @@ def calibrate(scored, judge, keys, workers, baseline=None, workdir=None):
             errors += 1
             out.append({**ident, "human": b["human_flag"], "judge": "", "match": "", "error": err})
             continue
-        match = g["comparability_flag"] == b["human_flag"]
+        if b.get("compare") == "binary":  # synthetic gold: only "correct vs not correct" is known by construction
+            match = (g["comparability_flag"] == "correct") == (b["human_flag"] == "correct")
+        else:
+            match = g["comparability_flag"] == b["human_flag"]
         agree += match
         confusion[(b["human_flag"], g["comparability_flag"])] += 1
         out.append({**ident, "human": b["human_flag"], "judge": g["comparability_flag"], "match": match,
@@ -311,10 +314,11 @@ def calibrate(scored, judge, keys, workers, baseline=None, workdir=None):
                                      "confidence", "judge_note", "error"])
     cal_json.write_text(json.dumps({
         "judge_model": judge.model, "prompt_hash": prompt_hash(), "baseline": source, "rows": len(base), "graded": graded,
-        "errors": errors, "agreement": round(rate, 4), "threshold": AGREEMENT_THRESHOLD, "passed": passed,
+        "errors": errors, "first_error": next((o["error"] for o in out if o.get("error")), "")[:300],
+        "agreement": round(rate, 4), "threshold": AGREEMENT_THRESHOLD, "passed": passed,
         "confusion_human_to_judge": {f"{h}->{j}": n for (h, j), n in sorted(confusion.items())},
     }, indent=2))
-    print(f"calibration: judge {judge.model} agrees with human grades on {agree}/{graded} = {rate:.1%}"
+    print(f"calibration: judge {judge.model} agrees with the baseline on {agree}/{graded} = {rate:.1%}"
           f" ({errors} errors, baseline {source}) -> {'PASS' if passed else 'FAIL'} (threshold {AGREEMENT_THRESHOLD:.0%})")
     for (h, j), n in sorted(confusion.items()):
         if h != j:
@@ -345,6 +349,9 @@ def calibration_ok(model, workdir=None):
     if c["judge_model"] != model or c["prompt_hash"] != prompt_hash():
         return False, "last calibration used a different judge model or prompt -- recalibrate"
     if not c["passed"]:
+        if c.get("errors"):
+            return False, (f"last calibration incomplete: {c['errors']} of {c['rows']} judge calls failed "
+                           f"(first error: {c.get('first_error', '')[:160]})")
         return False, f"last calibration failed ({c['agreement']:.1%} < {c['threshold']:.0%})"
     return True, f"calibration passed at {c['agreement']:.1%}"
 

@@ -10,11 +10,10 @@ Episodes (transcript + per-step trajectory) go to gymnasium_transcripts/; everyt
 (gym_scored.csv, judge cache + calibration, grading_draft.csv, figures/gym_heatmap_*.png). The judge is
 calibrated against Stage 2's own gold set, data/calibration/gym_gold.jsonl, built from Stage 2 episodes:
 
-    fh-gym                  # no gym gold yet -> runs, rewards labelled "judge (uncalibrated)"
-    fh-gym --draft-gold     # judgment episodes + judge verdicts -> results/gym/grading_draft.csv
-    #   ...edit human_flag where you disagree, set approved=yes...
-    fh-gym --freeze-gold    # approved rows -> data/calibration/gym_gold.jsonl
-    fh-gym                  # from now on: auto-calibrates against gym gold, rewards "judge"
+    fh-gym                  # no gym gold yet -> builds a synthetic one from the answer keys (no human),
+                            # calibrates the judge against it (>= 90%), then runs with rewards "judge"
+    fh-gym --rebuild-gold   # regenerate the synthetic gold set
+    # optional human path: --draft-gold (episodes -> grading_draft.csv) and --freeze-gold (approved rows added)
 
     fh-gym                                   # all models x conditions x items, 1 episode each
     fh-gym --repeats 3 --workers 8
@@ -131,6 +130,47 @@ def report():
         print("matplotlib not installed -- skipped figure")
 
 
+GEN_SYSTEM = ("You write realistic financial-analyst answers used as TEST CASES for an automated grader. Write only "
+              "the answer itself, as an analyst would: never mention tests, graders, rubrics or answer keys.")
+GEN_INSTRUCTIONS = {
+    "correct": ("Using the facts in the answer key below, write a complete answer to the question that fully satisfies "
+                "the grading criteria: show the key figures, reach the key's conclusion, and explicitly flag anything the "
+                "key says must be flagged. End with a line 'ANSWER: <final answer>'."),
+    "partial": ("Using real figures from the answer key below, write a confident, plausible answer to the question that "
+                "falls into the trap the key describes, or leaves out what the grading criteria require for full credit "
+                "(e.g. names a single winner without acknowledging the other dimension, or flags an issue but does not "
+                "adjust for it). It must NOT be fully correct. End with a line 'ANSWER: <final answer>'."),
+}
+
+
+def build_synthetic_gold(workers=8, caller=None):
+    """No-human Stage 2 baseline: for every judgment item, a generator model writes one answer that is correct by
+    construction and one that falls into the item's trap, from the answer key alone. Frozen into gym_gold.jsonl;
+    calibration then checks the judge rewards the first and withholds reward from the second (>= 90%)."""
+    from ..judge import load_keys
+    caller = caller or models.call_claude
+    items = [k for k in load_keys().values() if not (k.get("expected_final_answer") or {}).get("value_range")]
+    jobs = [(k, label) for k in items for label in GEN_INSTRUCTIONS]
+
+    def gen(job):
+        key, label = job
+        spec = {f: key.get(f) for f in ("question", "relevant_evidence", "expected_intermediate_steps", "trap",
+                                        "grading_rubric") if key.get(f)}
+        text, _ = caller(GEN_SYSTEM, f"{GEN_INSTRUCTIONS[label]}\n\nANSWER KEY:\n{json.dumps(spec, indent=2)}",
+                         tools=None, tool_executor=None)
+        return {"model": "synthetic", "tool_condition": "no_tool", "item_id": key["id"], "repeat": label,
+                "bucket": key.get("bucket", ""), "human_flag": label, "compare": "binary", "final_answer": text,
+                "tools_used": False, "calls": [], "source": "synthetic from answer key",
+                "generator": models.CLAUDE_MODEL if caller is models.call_claude else "custom"}
+
+    print(f"building Stage 2 gold set: {len(jobs)} synthetic answers ({len(items)} judgment items x correct/trap)")
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        gold = list(pool.map(gen, jobs))
+    GYM_GOLD.parent.mkdir(parents=True, exist_ok=True)
+    GYM_GOLD.write_text("".join(json.dumps(g) + "\n" for g in gold))
+    print(f"wrote {GYM_GOLD}")
+
+
 DRAFT_FIELDS = ["model", "tool_condition", "item_id", "repeat", "bucket", "judge_flag", "judge_confidence",
                 "human_flag", "approved", "answer_excerpt"]
 
@@ -197,6 +237,7 @@ def main(argv=None):
     ap.add_argument("--reward", choices=["judge", "keyword"], default="judge",
                     help="verifier for judgment items (numeric items always use the study's matcher)")
     ap.add_argument("--report", action="store_true", help="only rebuild csv + heatmap from stored episodes")
+    ap.add_argument("--rebuild-gold", action="store_true", help="regenerate the synthetic Stage 2 gold set, then calibrate")
     ap.add_argument("--draft-gold", action="store_true", help="judgment episodes -> results/gym/grading_draft.csv for approval")
     ap.add_argument("--freeze-gold", action="store_true", help="approved draft rows -> data/calibration/gym_gold.jsonl")
     ap.add_argument("--no-report", action="store_true",
@@ -213,19 +254,14 @@ def main(argv=None):
     if args.reward == "judge":
         from ..judge import Judge, ensure_calibrated
         judge = Judge(cache=GYM_CACHE)
+        if args.rebuild_gold or not GYM_GOLD.exists():
+            build_synthetic_gold(args.workers)  # no human, no Stage 1: known-by-construction test answers
         ok, msg = ensure_calibrated(judge, args.workers, gold=GYM_GOLD, workdir=GYM_RESULTS)
-        if ok:
-            verifier = "judge"
-            print(msg)
-        elif not GYM_GOLD.exists():
-            # bootstrap: Stage 2 has no gold set of its own yet. Run, label every reward as uncalibrated, and
-            # build the gold set from these episodes afterwards (--draft-gold / --freeze-gold).
-            verifier = "judge (uncalibrated)"
-            print(f"no Stage 2 gold set yet ({GYM_GOLD}): rewards are labelled 'judge (uncalibrated)'. After this run: "
-                  f"fh-gym --draft-gold, approve rows, fh-gym --freeze-gold")
-        else:
+        if not ok:
             raise SystemExit(f"refusing to reward with a judge that failed Stage 2 calibration: {msg} "
-                             f"(fix {GYM_GOLD} or use --reward keyword)")
+                             f"(see {GYM_RESULTS / 'judge_calibration.csv'}; or use --reward keyword)")
+        verifier = "judge"
+        print(msg)
 
     GYM_TRANSCRIPTS.mkdir(parents=True, exist_ok=True)
     jobs = select(load_items(), args.models, args.conditions, args.items, args.repeats)

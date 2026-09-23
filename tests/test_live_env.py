@@ -82,3 +82,32 @@ def test_stage2_builds_and_uses_its_own_gold_without_touching_stage1(tmp_path, m
     ok, _ = judge.ensure_calibrated(FakeJudge(), gold=live.GYM_GOLD, workdir=gym)
     assert ok and (gym / "judge_calibration.json").exists()
     assert not stage1_cal.exists()
+
+
+def test_synthetic_gold_needs_no_human_and_calibrates_binary(tmp_path, monkeypatch):
+    from finance_headroom import judge
+
+    monkeypatch.setattr(live, "GYM_GOLD", tmp_path / "gym_gold.jsonl")
+    gen_calls = []
+
+    def fake_generator(system, prompt, tools=None, tool_executor=None):
+        gen_calls.append(prompt)
+        good = prompt.startswith(live.GEN_INSTRUCTIONS["correct"])
+        return ("Delta leads, but Alaska grew fastest. ANSWER: Delta" if good else "ANSWER: Delta, clearly."), []
+
+    live.build_synthetic_gold(workers=4, caller=fake_generator)
+    gold = judge.load_gold(live.GYM_GOLD)
+    n_judgment = 18
+    assert len(gold) == len(gen_calls) == 2 * n_judgment
+    assert {g["human_flag"] for g in gold} == {"correct", "partial"} and all(g["compare"] == "binary" for g in gold)
+
+    class StrictJudge:  # withholds reward from the trap answer, sometimes calling it "incorrect" rather than "partial"
+        model = "fake/judge"
+
+        def grade(self, key, answer, tools_used, calls):
+            flag = "correct" if "Alaska grew fastest" in answer else "incorrect"
+            return {"comparability_flag": flag, "confidence": "high", "evidence_quote": "q",
+                    "evidence_grounding": "cites_relevant_note", "tool_use_correctness": "n/a", "failure_category": ""}
+
+    ok, msg = judge.ensure_calibrated(StrictJudge(), gold=live.GYM_GOLD, workdir=tmp_path / "gym")
+    assert ok, msg  # binary compare: "incorrect" vs constructed "partial" both mean no reward -> agreement
