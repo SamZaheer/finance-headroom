@@ -5,15 +5,23 @@ executed BY THE ENV via env.step({"tool": ...}) (step cost applies) -> the model
 submitted via env.step({"answer": ...}) and rewarded by the env's verifier (calibrated LLM judge by
 default for judgment items; the study's numeric matcher for numeric items).
 
-Transcripts + the full per-step trajectory go to gymnasium_transcripts/ (separate from the study's
-transcripts/raw/); per-episode rewards to results/gym_scored.csv; heatmap to
-results/figures/gym_heatmap_1_iteration.png (+ gym_heatmap_<N>_iterations.png with repeats).
+Stage 2 is self-contained: it never reads Stage 1's transcripts, grades, judge cache or gold set.
+Episodes (transcript + per-step trajectory) go to gymnasium_transcripts/; everything else to results/gym/
+(gym_scored.csv, judge cache + calibration, grading_draft.csv, figures/gym_heatmap_*.png). The judge is
+calibrated against Stage 2's own gold set, data/calibration/gym_gold.jsonl, built from Stage 2 episodes:
+
+    fh-gym                  # no gym gold yet -> runs, rewards labelled "judge (uncalibrated)"
+    fh-gym --draft-gold     # judgment episodes + judge verdicts -> results/gym/grading_draft.csv
+    #   ...edit human_flag where you disagree, set approved=yes...
+    fh-gym --freeze-gold    # approved rows -> data/calibration/gym_gold.jsonl
+    fh-gym                  # from now on: auto-calibrates against gym gold, rewards "judge"
 
     fh-gym                                   # all models x conditions x items, 1 episode each
     fh-gym --repeats 3 --workers 8
     fh-gym --models opus --conditions tool --items AIR- --limit 5
     fh-gym --reward keyword                  # old keyword verifier instead of the judge
     fh-gym --report                          # rebuild csv + heatmap from stored episodes, no API calls
+    fh-gym --no-report                       # just run episodes, skip the trailing report() (pair with --report after)
 
 The no-tool condition is a one-step episode (excerpts in the prompt, answer immediately), kept so
 env rewards line up with the study's two conditions.
@@ -29,13 +37,15 @@ from datetime import UTC, datetime
 
 from .. import models
 from ..analysis import iteration_heatmaps
-from ..paths import GYM_TRANSCRIPTS, RESULTS
+from ..paths import GYM_GOLD, GYM_RESULTS, GYM_TRANSCRIPTS
 from ..prompts import SYSTEM_PROMPT
 from ..runner import MODELS, PROVIDER, TOOL_CONDITIONS, load_items, select, user_prompt, write_atomic
 from ..tools import TOOL_SPECS
 from .environment import FinanceHeadroomEnv
 
-GYM_CSV = RESULTS / "gym_scored.csv"
+GYM_CSV = GYM_RESULTS / "gym_scored.csv"
+GYM_DRAFT = GYM_RESULTS / "grading_draft.csv"
+GYM_CACHE = GYM_RESULTS / "judge_cache.jsonl"
 
 
 def episode_path(model_key, tool_condition, item_id, repeat=1):
@@ -43,7 +53,7 @@ def episode_path(model_key, tool_condition, item_id, repeat=1):
     return GYM_TRANSCRIPTS / f"{model_key}_{tool_condition}_{item_id}{suffix}.json"
 
 
-def run_episode(model_key: str, tool_condition: str, item: dict, repeat: int, judge=None, caller=None):
+def run_episode(model_key: str, tool_condition: str, item: dict, repeat: int, judge=None, caller=None, verifier=None):
     """One live episode. The env owns tool execution and reward; the model only chooses actions."""
     env = FinanceHeadroomEnv(judge=judge)
     obs, _ = env.reset(options={"item_id": item["id"]})
@@ -71,7 +81,7 @@ def run_episode(model_key: str, tool_condition: str, item: dict, repeat: int, ju
         "model": model_key, "tool_condition": tool_condition, "item_id": item["id"], "repeat": repeat,
         "bucket": env._item.get("bucket", ""), "final_answer": final_text, "transcript": transcript,
         "episode": {
-            "verifier": "judge" if judge else "keyword/numeric",
+            "verifier": verifier or ("judge" if judge else "keyword/numeric"),
             "judge_model": getattr(judge, "model", None),
             "steps": steps,
             "tool_steps": len(steps) - 1,
@@ -97,7 +107,7 @@ def report():
              "tool_steps": e["episode"]["tool_steps"], "terminal_reward": e["episode"]["terminal_reward"],
              "return": e["episode"]["return"], "solved": e["episode"]["solved"],
              "scoring": e["episode"]["scoring"].get("scoring", "")} for e in eps]
-    RESULTS.mkdir(parents=True, exist_ok=True)
+    GYM_RESULTS.mkdir(parents=True, exist_ok=True)
     with GYM_CSV.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]))
         w.writeheader()
@@ -115,10 +125,65 @@ def report():
     try:
         verifiers = ", ".join(sorted({r["verifier"] for r in rows}))
         for out in iteration_heatmaps(rows, "gym_heatmap", f"Live Gymnasium episodes: share solved (verifier: {verifiers})",
-                                      ok=lambda r: r["solved"]):
+                                      ok=lambda r: r["solved"], fig_dir=GYM_RESULTS / "figures"):
             print(f"wrote {out}")
     except ImportError:
         print("matplotlib not installed -- skipped figure")
+
+
+DRAFT_FIELDS = ["model", "tool_condition", "item_id", "repeat", "bucket", "judge_flag", "judge_confidence",
+                "human_flag", "approved", "answer_excerpt"]
+
+
+def draft_gold():
+    """Judgment episodes + the judge's verdict -> results/gym/grading_draft.csv, for a human to confirm or correct
+    (edit human_flag, set approved=yes). Rows already in the draft keep their human edits."""
+    existing = {(d["model"], d["tool_condition"], d["item_id"], d["repeat"]): d
+                for d in csv.DictReader(GYM_DRAFT.open())} if GYM_DRAFT.exists() else {}
+    rows = []
+    for p in sorted(GYM_TRANSCRIPTS.glob("*.json")):
+        e = json.loads(p.read_text())
+        info = e["episode"]["scoring"]
+        if info.get("scoring") != "judge":
+            continue  # numeric items are scored exactly against the answer key; nothing to calibrate
+        k = (e["model"], e["tool_condition"], e["item_id"], str(e["repeat"]))
+        rows.append(existing.get(k) or {
+            "model": e["model"], "tool_condition": e["tool_condition"], "item_id": e["item_id"], "repeat": e["repeat"],
+            "bucket": e["bucket"], "judge_flag": info.get("flag", ""), "judge_confidence": info.get("confidence", ""),
+            "human_flag": info.get("flag", ""), "approved": "", "answer_excerpt": e["final_answer"][-600:]})
+    GYM_RESULTS.mkdir(parents=True, exist_ok=True)
+    with GYM_DRAFT.open("w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=DRAFT_FIELDS)
+        w.writeheader()
+        w.writerows(rows)
+    print(f"{len(rows)} judgment episodes -> {GYM_DRAFT}: check human_flag (correct/partial/incorrect), set approved=yes")
+
+
+def freeze_gold():
+    """Approved Stage 2 draft rows (+ each episode's full answer and tool log) -> data/calibration/gym_gold.jsonl."""
+    from ..judge import FLAGS, load_gold, tool_log
+    if not GYM_DRAFT.exists():
+        raise SystemExit(f"no {GYM_DRAFT} yet -- run fh-gym --draft-gold first")
+    gold = {(g["model"], g["tool_condition"], g["item_id"], str(g["repeat"])): g for g in load_gold(GYM_GOLD)}
+    added = 0
+    for d in csv.DictReader(GYM_DRAFT.open()):
+        if d["approved"].strip().lower() not in ("yes", "y", "true", "1"):
+            continue
+        if d["human_flag"] not in FLAGS:
+            raise SystemExit(f"bad human_flag {d['human_flag']!r} for {d['model']} {d['tool_condition']} {d['item_id']}")
+        k = (d["model"], d["tool_condition"], d["item_id"], str(d["repeat"]))
+        e = json.loads(episode_path(d["model"], d["tool_condition"], d["item_id"], int(d["repeat"])).read_text())
+        tools_used = d["tool_condition"] == "tool"
+        added += k not in gold
+        gold[k] = {"model": d["model"], "tool_condition": d["tool_condition"], "item_id": d["item_id"],
+                   "repeat": str(d["repeat"]), "bucket": d["bucket"], "human_flag": d["human_flag"],
+                   "final_answer": e["final_answer"], "tools_used": tools_used,
+                   "calls": tool_log(e["transcript"]) if tools_used else []}
+    if not gold:
+        raise SystemExit(f"no rows marked approved=yes in {GYM_DRAFT}")
+    GYM_GOLD.parent.mkdir(parents=True, exist_ok=True)
+    GYM_GOLD.write_text("".join(json.dumps(g) + "\n" for g in gold.values()))
+    print(f"added {added} approved rows to {GYM_GOLD} ({len(gold)} total); the next fh-gym run calibrates against it")
 
 
 def main(argv=None):
@@ -132,32 +197,50 @@ def main(argv=None):
     ap.add_argument("--reward", choices=["judge", "keyword"], default="judge",
                     help="verifier for judgment items (numeric items always use the study's matcher)")
     ap.add_argument("--report", action="store_true", help="only rebuild csv + heatmap from stored episodes")
+    ap.add_argument("--draft-gold", action="store_true", help="judgment episodes -> results/gym/grading_draft.csv for approval")
+    ap.add_argument("--freeze-gold", action="store_true", help="approved draft rows -> data/calibration/gym_gold.jsonl")
+    ap.add_argument("--no-report", action="store_true",
+                    help="skip the trailing report() after a live run -- run it separately with --report")
     args = ap.parse_args(argv)
     if args.report:
         return report()
+    if args.draft_gold:
+        return draft_gold()
+    if args.freeze_gold:
+        return freeze_gold()
 
-    judge = None
+    judge, verifier = None, None
     if args.reward == "judge":
-        from ..judge import Judge, calibration_ok
-        ok, msg = calibration_ok(Judge().model)
-        if not ok:
-            raise SystemExit(f"refusing to reward with an uncalibrated judge: {msg} (or use --reward keyword)")
-        print(msg)
-        judge = Judge()
+        from ..judge import Judge, ensure_calibrated
+        judge = Judge(cache=GYM_CACHE)
+        ok, msg = ensure_calibrated(judge, args.workers, gold=GYM_GOLD, workdir=GYM_RESULTS)
+        if ok:
+            verifier = "judge"
+            print(msg)
+        elif not GYM_GOLD.exists():
+            # bootstrap: Stage 2 has no gold set of its own yet. Run, label every reward as uncalibrated, and
+            # build the gold set from these episodes afterwards (--draft-gold / --freeze-gold).
+            verifier = "judge (uncalibrated)"
+            print(f"no Stage 2 gold set yet ({GYM_GOLD}): rewards are labelled 'judge (uncalibrated)'. After this run: "
+                  f"fh-gym --draft-gold, approve rows, fh-gym --freeze-gold")
+        else:
+            raise SystemExit(f"refusing to reward with a judge that failed Stage 2 calibration: {msg} "
+                             f"(fix {GYM_GOLD} or use --reward keyword)")
 
     GYM_TRANSCRIPTS.mkdir(parents=True, exist_ok=True)
     jobs = select(load_items(), args.models, args.conditions, args.items, args.repeats)
     pending = [j for j in jobs if not episode_path(j[0], j[1], j[2]["id"], j[3]).exists()]
+    n_done = len(jobs) - len(pending)  # counted before --limit, which only defers work
     if args.limit is not None:
         pending = pending[: args.limit]
-    print(f"{len(jobs)} episodes requested: {len(jobs) - len(pending)} already done, {len(pending)} to run")
+    print(f"{len(jobs)} episodes requested: {n_done} already done, {len(pending)} to run now")
 
     gates = {p: threading.Semaphore(args.workers) for p in set(PROVIDER.values())}
     lock, failures, done, started = threading.Lock(), [], 0, time.monotonic()
 
     def job(m, c, item, r):
         with gates[PROVIDER[m]]:
-            return run_episode(m, c, item, r, judge=judge)
+            return run_episode(m, c, item, r, judge=judge, verifier=verifier)
 
     with ThreadPoolExecutor(max_workers=args.workers * len(gates)) as pool:
         futures = {pool.submit(job, *j): j for j in pending}
@@ -175,9 +258,10 @@ def main(argv=None):
                 print(f"[{done + len(failures)}/{len(pending)}] {m} {c} {item['id']} r{r}: {status}"
                       f"  ({time.monotonic() - started:.0f}s)", flush=True)
 
-    write_atomic(RESULTS / "gym_failures.jsonl", "".join(json.dumps(f) + "\n" for f in failures))
+    write_atomic(GYM_RESULTS / "gym_failures.jsonl", "".join(json.dumps(f) + "\n" for f in failures))
     print(f"finished: {done} episodes, {len(failures)} failed" + (" -- see results/gym_failures.jsonl" if failures else ""))
-    report()
+    if not args.no_report:
+        report()
 
 
 if __name__ == "__main__":

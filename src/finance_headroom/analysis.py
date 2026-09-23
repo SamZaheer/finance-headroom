@@ -24,14 +24,15 @@ def summarize(rows, ok=is_correct) -> dict:
     return {k: sum(v) / len(v) for k, v in grouped.items()}
 
 
-def iteration_heatmaps(rows, prefix, title, ok=is_correct):
+def iteration_heatmaps(rows, prefix, title, ok=is_correct, fig_dir=None):
     """Writes <prefix>_1_iteration.png (repeat 1 only) and, when repeats exist,
     <prefix>_<N>_iterations.png (mean over all N). Shared by fh-analyze and fh-gym."""
     first = [r for r in rows if int(r.get("repeat") or 1) == 1]
     n = max(int(r.get("repeat") or 1) for r in rows)
-    outs = [(FIG_DIR / f"{prefix}_1_iteration.png", first, f"single iteration: repeat 1 only, {len(first)} runs")]
+    fig_dir = fig_dir or FIG_DIR
+    outs = [(fig_dir / f"{prefix}_1_iteration.png", first, f"single iteration: repeat 1 only, {len(first)} runs")]
     if n > 1:
-        outs.append((FIG_DIR / f"{prefix}_{n}_iterations.png", rows, f"mean over {n} iterations per question, {len(rows)} runs"))
+        outs.append((fig_dir / f"{prefix}_{n}_iterations.png", rows, f"mean over {n} iterations per question, {len(rows)} runs"))
     for out, rs, subtitle in outs:
         plot_heatmap(summarize(rs, ok), f"{title}\n({subtitle})", out, title_fontsize=12)
     return [o for o, _, _ in outs]

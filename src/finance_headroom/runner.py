@@ -44,6 +44,7 @@ def transcript_path(model_key: str, tool_condition: str, item_id: str, repeat: i
 def write_atomic(path, text: str):
     # write-then-rename: a crash mid-write can never leave a half-written file that
     # the resume check would then treat as done
+    path.parent.mkdir(parents=True, exist_ok=True)  # a missing folder is created, never an error
     tmp = path.with_name(path.name + ".tmp")
     tmp.write_text(text)
     os.replace(tmp, path)

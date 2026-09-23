@@ -25,7 +25,7 @@ import threading
 from concurrent.futures import ThreadPoolExecutor
 
 from . import models  # noqa: F401  (loads .env before the settings below are read)
-from .paths import ANSWER_KEYS, RESULTS, SCORED, TRANSCRIPTS
+from .paths import ANSWER_KEYS, RESULTS, SCORED, STUDY_GOLD, TRANSCRIPTS
 
 JUDGE_MODEL = os.environ.get("FH_JUDGE_MODEL", "google/gemini-3.8-flash")
 JUDGE_BASE_URL = os.environ.get("FH_JUDGE_BASE_URL", os.environ.get("OPENAI_BASE_URL"))
@@ -42,6 +42,8 @@ FAILURES = ["unsupported_conclusion", "over_hedging", "wrong_entity", "wrong_per
             "unit_scale", "cross_document_reconciliation", "definition_accounting_error"]
 
 CALIBRATION_JSON = RESULTS / "judge_calibration.json"
+# frozen human-approved baseline: survives any rerun/reset of transcripts/ and results/
+GOLD = STUDY_GOLD  # Stage 1 baseline; Stage 2 passes its own (paths.GYM_GOLD)
 CALIBRATION_CSV = RESULTS / "judge_calibration.csv"
 JUDGE_CSV = RESULTS / "judge_grades.csv"
 DRAFT_CSV = RESULTS / "grading_draft.csv"
@@ -149,13 +151,15 @@ class Judge:
     """Calls the judge model, with a persistent cache keyed on (model, prompt, answer), so
     calibration, grading and env replay never pay twice for the same answer."""
 
-    def __init__(self, model=JUDGE_MODEL, client=None):
+    def __init__(self, model=JUDGE_MODEL, client=None, cache=None):
+        """cache: verdict cache file; defaults to Stage 1's results/judge_cache.jsonl. Stage 2 passes its own."""
         self.model = model
         self._client = client
         self._lock = threading.Lock()
         self._cache = {}
-        if CACHE.exists():
-            for line in CACHE.read_text().splitlines():
+        self.cache_path = cache or CACHE
+        if self.cache_path.exists():
+            for line in self.cache_path.read_text().splitlines():
                 if line.strip():
                     rec = json.loads(line)
                     self._cache[rec["k"]] = rec["v"]
@@ -190,8 +194,8 @@ class Judge:
                     raise
         with self._lock:
             self._cache[k] = raw
-            RESULTS.mkdir(parents=True, exist_ok=True)
-            with CACHE.open("a") as f:
+            self.cache_path.parent.mkdir(parents=True, exist_ok=True)
+            with self.cache_path.open("a") as f:
                 f.write(json.dumps({"k": k, "v": raw}) + "\n")
         return result
 
@@ -224,48 +228,120 @@ def write_csv(path, rows, fields):
         w.writerows(rows)
 
 
-def calibrate(scored, judge, keys, workers):
-    human = [r for r in scored if r["auto_correct"] == "" and r["comparability_flag"]]
-    if not human:
-        raise SystemExit("no human-graded judgment rows to calibrate against")
-    results = judge_rows(human, judge, keys, workers)
+def freeze_gold(scored) -> int:
+    """Copy every human-approved judgment row (grade + full answer + tool log) into the gold file.
+    Calibration then never depends on which transcripts happen to be on disk."""
+    gold = {row_key(g): g for g in map(json.loads, GOLD.read_text().splitlines())} if GOLD.exists() else {}
+    added = 0
+    for r in scored:
+        if r["auto_correct"] != "" or not r["comparability_flag"] or row_key(r) in gold:
+            continue
+        run = json.loads(transcript_file(r["model"], r["tool_condition"], r["item_id"], r.get("repeat", "1")).read_text())
+        tools_used = r["tool_condition"] == "tool"
+        gold[row_key(r)] = {"model": r["model"], "tool_condition": r["tool_condition"], "item_id": r["item_id"],
+                            "repeat": r.get("repeat") or "1", "bucket": r["bucket"], "human_flag": r["comparability_flag"],
+                            "final_answer": run["final_answer"], "tools_used": tools_used,
+                            "calls": tool_log(run["transcript"]) if tools_used else []}
+        added += 1
+    if gold:
+        GOLD.parent.mkdir(parents=True, exist_ok=True)
+        GOLD.write_text("".join(json.dumps(g) + "\n" for g in gold.values()))
+    return added
+
+
+def _baseline(scored):
+    """Gold file if present, else approved rows in scored.csv (read from their transcripts)."""
+    if GOLD.exists():
+        return load_gold(GOLD), str(GOLD)
+    rows = []
+    for r in scored or []:
+        if r["auto_correct"] == "" and r["comparability_flag"]:
+            run = json.loads(transcript_file(r["model"], r["tool_condition"], r["item_id"], r.get("repeat", "1")).read_text())
+            tools_used = r["tool_condition"] == "tool"
+            rows.append({**{k: r[k] for k in ("model", "tool_condition", "item_id", "bucket")}, "repeat": r.get("repeat") or "1",
+                         "human_flag": r["comparability_flag"], "final_answer": run["final_answer"], "tools_used": tools_used,
+                         "calls": tool_log(run["transcript"]) if tools_used else []})
+    return rows, str(SCORED)
+
+
+def load_gold(path):
+    return [json.loads(line) for line in path.read_text().splitlines() if line.strip()] if path.exists() else []
+
+
+def _cal_files(workdir):
+    return (CALIBRATION_JSON, CALIBRATION_CSV) if workdir is None else (workdir / "judge_calibration.json",
+                                                                        workdir / "judge_calibration.csv")
+
+
+def calibrate(scored, judge, keys, workers, baseline=None, workdir=None):
+    """baseline: (rows, label) to calibrate against; default = Stage 1's gold set or approved scored.csv rows.
+    workdir: where the calibration record goes; default = Stage 1's results/."""
+    base, source = baseline if baseline is not None else _baseline(scored)
+    cal_json, cal_csv = _cal_files(workdir)
+    if not base:
+        raise SystemExit(f"no human-approved judgment grades to calibrate against. One-time setup: grade the judgment "
+                         f"rows, approve them (fh-judge --merge-approved), then fh-judge --freeze-gold -> {GOLD}")
+
+    def one(b):
+        try:
+            return b, judge.grade(keys[b["item_id"]], b["final_answer"], b["tools_used"], b["calls"]), None
+        except Exception as e:
+            return b, None, f"{type(e).__name__}: {e}"
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        results = list(pool.map(one, base))
     out, agree, errors = [], 0, 0
     confusion = collections.Counter()
-    for r, g, err in results:
+    for b, g, err in results:
+        ident = {k: b[k] for k in ("model", "tool_condition", "item_id", "bucket")}
         if err:
             errors += 1
-            out.append({**{k: r[k] for k in ("model", "tool_condition", "item_id", "bucket")}, "human": r["comparability_flag"],
-                        "judge": "", "match": "", "error": err})
+            out.append({**ident, "human": b["human_flag"], "judge": "", "match": "", "error": err})
             continue
-        match = g["comparability_flag"] == r["comparability_flag"]
+        match = g["comparability_flag"] == b["human_flag"]
         agree += match
-        confusion[(r["comparability_flag"], g["comparability_flag"])] += 1
-        out.append({**{k: r[k] for k in ("model", "tool_condition", "item_id", "bucket")}, "human": r["comparability_flag"],
-                    "judge": g["comparability_flag"], "match": match, "confidence": g["confidence"],
-                    "judge_note": g["evidence_quote"], "error": ""})
-    graded = len(human) - errors
+        confusion[(b["human_flag"], g["comparability_flag"])] += 1
+        out.append({**ident, "human": b["human_flag"], "judge": g["comparability_flag"], "match": match,
+                    "confidence": g["confidence"], "judge_note": g["evidence_quote"], "error": ""})
+    graded = len(base) - errors
     rate = agree / graded if graded else 0.0
     passed = rate >= AGREEMENT_THRESHOLD and errors == 0
-    write_csv(CALIBRATION_CSV, out, ["model", "tool_condition", "item_id", "bucket", "human", "judge", "match",
+    cal_json.parent.mkdir(parents=True, exist_ok=True)
+    write_csv(cal_csv, out, ["model", "tool_condition", "item_id", "bucket", "human", "judge", "match",
                                      "confidence", "judge_note", "error"])
-    CALIBRATION_JSON.write_text(json.dumps({
-        "judge_model": judge.model, "prompt_hash": prompt_hash(), "rows": len(human), "graded": graded,
+    cal_json.write_text(json.dumps({
+        "judge_model": judge.model, "prompt_hash": prompt_hash(), "baseline": source, "rows": len(base), "graded": graded,
         "errors": errors, "agreement": round(rate, 4), "threshold": AGREEMENT_THRESHOLD, "passed": passed,
         "confusion_human_to_judge": {f"{h}->{j}": n for (h, j), n in sorted(confusion.items())},
     }, indent=2))
     print(f"calibration: judge {judge.model} agrees with human grades on {agree}/{graded} = {rate:.1%}"
-          f" ({errors} errors) -> {'PASS' if passed else 'FAIL'} (threshold {AGREEMENT_THRESHOLD:.0%})")
+          f" ({errors} errors, baseline {source}) -> {'PASS' if passed else 'FAIL'} (threshold {AGREEMENT_THRESHOLD:.0%})")
     for (h, j), n in sorted(confusion.items()):
         if h != j:
             print(f"  human {h:9} -> judge {j:9}: {n}")
-    print(f"per-row detail: {CALIBRATION_CSV}")
+    print(f"per-row detail: {cal_csv}")
     return passed
 
 
-def calibration_ok(model):
-    if not CALIBRATION_JSON.exists():
-        return False, "no calibration found -- run fh-judge --calibrate first"
-    c = json.loads(CALIBRATION_JSON.read_text())
+def ensure_calibrated(judge, workers=8, gold=None, workdir=None):
+    """Recalibrate automatically from a frozen gold set when the calibration record in `workdir` is missing or
+    stale. Never invents a baseline. Defaults are Stage 1's; Stage 2 passes paths.GYM_GOLD / GYM_RESULTS."""
+    gold = gold or GOLD
+    ok, msg = calibration_ok(judge.model, workdir)
+    if ok:
+        return True, msg
+    if not gold.exists():
+        return False, f"{msg}; and no gold set at {gold} to calibrate from automatically"
+    print(f"{msg} -- calibrating automatically against {gold}")
+    calibrate(None, judge, load_keys(), workers, baseline=(load_gold(gold), str(gold)), workdir=workdir)
+    return calibration_ok(judge.model, workdir)
+
+
+def calibration_ok(model, workdir=None):
+    cal_json, _ = _cal_files(workdir)
+    if not cal_json.exists():
+        return False, f"no calibration found at {cal_json}"
+    c = json.loads(cal_json.read_text())
     if c["judge_model"] != model or c["prompt_hash"] != prompt_hash():
         return False, "last calibration used a different judge model or prompt -- recalibrate"
     if not c["passed"]:
@@ -279,17 +355,32 @@ def main(argv=None):
     mode.add_argument("--calibrate", action="store_true", help="judge human-graded rows and report agreement")
     mode.add_argument("--apply", action="store_true", help="write judge grades into scored.csv (needs a passed calibration)")
     mode.add_argument("--merge-approved", action="store_true", help="merge grading_draft.csv rows with approved=yes")
+    mode.add_argument("--freeze-gold", action="store_true", help=f"copy approved judgment grades + answers into {GOLD}")
     ap.add_argument("--model", default=JUDGE_MODEL)
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--limit", type=int)
     ap.add_argument("--seed", type=int, default=0, help="spot-check sampling seed")
     args = ap.parse_args(argv)
 
+    if not SCORED.exists():
+        raise SystemExit(f"{SCORED} not found -- run a Stage 1 evaluation first (make docker-run, then fh-score)")
     scored = list(csv.DictReader(SCORED.open()))
     fields = list(scored[0].keys())
     keys = load_keys()
 
+    if args.freeze_gold:
+        added = freeze_gold(scored)
+        total = len(GOLD.read_text().splitlines()) if GOLD.exists() else 0
+        if total == 0:
+            raise SystemExit("no approved judgment grades to freeze: results/scored.csv has no graded judgment rows. "
+                             "Draft grades into results/grading_draft.csv, mark rows approved=yes, then run make gold again.")
+        print(f"added {added} approved rows to {GOLD} ({total} total)")
+        return
+
     if args.merge_approved:
+        if not DRAFT_CSV.exists():
+            print(f"no {DRAFT_CSV} yet -- nothing to merge")
+            return
         drafts = {row_key(d): d for d in csv.DictReader(DRAFT_CSV.open())
                   if d.get("approved", "").strip().lower() in ("yes", "y", "true", "1")}
         n = 0
@@ -306,7 +397,7 @@ def main(argv=None):
         raise SystemExit(0 if calibrate(scored, judge, keys, args.workers) else 1)
 
     if args.apply:
-        ok, msg = calibration_ok(args.model)
+        ok, msg = ensure_calibrated(judge, args.workers)  # recalibrates from the frozen gold set if needed
         if not ok:
             raise SystemExit(f"refusing to apply: {msg}")
         print(msg)

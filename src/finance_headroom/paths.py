@@ -13,3 +13,7 @@ GYM_TRANSCRIPTS = ROOT / "gymnasium_transcripts"  # live env episodes (fh-gym), 
 RESULTS = ROOT / "results"
 FIGURES = RESULTS / "figures"
 SCORED = RESULTS / "scored.csv"
+# Stage 2 (live Gymnasium) keeps its own results, judge cache, calibration and gold set: it never reads Stage 1
+GYM_RESULTS = RESULTS / "gym"
+GYM_GOLD = DATA / "calibration" / "gym_gold.jsonl"
+STUDY_GOLD = DATA / "calibration" / "study_gold.jsonl"

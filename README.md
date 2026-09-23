@@ -38,10 +38,27 @@ make docker-score                                # numeric scoring + calibrated 
 **4. Stage 2 — Gymnasium environment**
 
 ```bash
-make docker-gym ARGS="--repeats 1 --workers 8"   # live episodes -> gymnasium_transcripts/, results/gym_scored.csv
+make docker-gym ARGS="--repeats 1 --workers 8"   # no gym gold yet -> runs, rewards labelled "judge (uncalibrated)"
+make gym-draft-gold          # judgment episodes + judge verdicts -> results/gym/grading_draft.csv
+#   open it: fix human_flag where you disagree, set approved=yes
+make gym-gold                # approved rows -> data/calibration/gym_gold.jsonl (once)
+make docker-gym ARGS="..."   # from now on: auto-calibrates against gym gold (>= 90%), rewards "judge"
 ```
 
-Each episode runs through `env.reset()` and `env.step()`, and the env's verifier assigns the reward inside the episode. The container therefore mounts the full `data/` directory, answer key included. See [Isolation and reward hacking](docs/architecture.md#isolation-and-reward-hacking) for this trade-off.
+- **The gold set is dataset-level.** It lives in `data/`, so it survives any reset of
+  `transcripts/`, `gymnasium_transcripts/` or `results/`.
+- **Stale or missing calibration** (e.g. a new judge model or prompt) is redone automatically
+  against the gold set.
+- **A failed calibration stops the run.** Use `--reward keyword` to run without the judge.
+- The judge runs through OpenRouter, so it needs credit there.
+
+
+```bash
+make docker-gym ARGS="--repeats 1 --workers 8"   # live episodes -> gymnasium_transcripts/
+make docker-gym-score                            # csv + heatmap from those episodes -> results/gym_scored.csv
+```
+
+Each episode runs through `env.reset()` and `env.step()`, and the env's verifier assigns the reward *inside* the episode as it runs — not as a separate offline pass like Stage 1's. That's why `docker-gym` mounts the full `data/` directory, answer key included: the reward can't be computed without it, and it's computed live, in the same container as the agent's tool calls. See [Isolation and reward hacking](docs/architecture.md#isolation-and-reward-hacking) for this trade-off. `docker-gym-score` (`fh-gym --report`) only rebuilds the csv and heatmap from episodes already written, so it needs no answer key and makes no API calls.
 
 **5. Test** (no API keys needed)
 
@@ -49,6 +66,15 @@ Each episode runs through `env.reset()` and `env.step()`, and the env's verifier
 make docker-test              # run the 23-test suite inside the image
 make docker-verify            # confirm the agent container cannot see any answer key or grade
 make docker-report            # rebuild every Stage 1 and Stage 2 table and figure from the committed transcripts
+```
+
+**Folders and clean slates.** Every Docker target (via `docker-build`) and the local `run`, `score`,
+`gym` and `gold` targets create any missing folders first: `transcripts/raw`, `gymnasium_transcripts`,
+`results/agent_run` and `data/calibration`. Nothing is ever deleted as a side effect. To start over:
+
+```bash
+make clean                    # delete transcripts/ and gymnasium_transcripts/ (all model answers + live episodes)
+make docker-fresh             # clean + docker-build: folders recreated empty; results/ and data/calibration/ kept
 ```
 
 **Narrowing a run.** Any of these flags can go in `ARGS` for `docker-run` and `docker-gym`. Runs are resume-safe: existing transcripts are skipped.

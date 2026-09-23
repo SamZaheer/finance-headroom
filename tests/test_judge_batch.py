@@ -154,3 +154,33 @@ def test_judge_retries_malformed_json(tmp_path, monkeypatch):
     replies = iter(['{"comparability_flag": "par', json.dumps(good)])
     client = NS(chat=NS(completions=NS(create=lambda **kw: NS(choices=[NS(message=NS(content=next(replies)))]))))
     assert judge.Judge("m", client=client).grade({"id": "X"}, "Delta", False, [])["comparability_flag"] == "partial"
+
+
+def test_ensure_calibrated_recalibrates_from_gold_and_refuses_without_it(tmp_path, monkeypatch):
+    for name, fname in (("GOLD", "gold.jsonl"), ("CALIBRATION_JSON", "cal.json"), ("CALIBRATION_CSV", "cal.csv")):
+        monkeypatch.setattr(judge, name, tmp_path / fname)
+    monkeypatch.setattr(judge, "RESULTS", tmp_path)
+    monkeypatch.setattr(judge, "load_keys", lambda: {"X-01": {"id": "X-01"}})
+
+    class FakeJudge:
+        model = "fake/judge"
+        calls = 0
+
+        def grade(self, key, answer, tools_used, calls):
+            FakeJudge.calls += 1
+            return {"comparability_flag": "correct" if "Delta" in answer else "partial", "confidence": "high",
+                    "evidence_quote": "q", "evidence_grounding": "cites_relevant_note", "tool_use_correctness": "n/a",
+                    "failure_category": ""}
+
+    ok, msg = judge.ensure_calibrated(FakeJudge())
+    assert not ok and "gold" in msg  # no baseline -> never invents one
+
+    gold = [{"model": "gpt", "tool_condition": "no_tool", "item_id": "X-01", "repeat": "1", "bucket": "b",
+             "human_flag": flag, "final_answer": ans, "tools_used": False, "calls": []}
+            for flag, ans in [("correct", "Delta wins")] * 9 + [("partial", "United")]]
+    (tmp_path / "gold.jsonl").write_text("".join(json.dumps(g) + "\n" for g in gold))
+    ok, msg = judge.ensure_calibrated(FakeJudge())
+    assert ok and FakeJudge.calls == 10
+    assert json.loads((tmp_path / "cal.json").read_text())["agreement"] == 1.0
+    judge.ensure_calibrated(FakeJudge())  # already calibrated -> no new judge calls
+    assert FakeJudge.calls == 10
