@@ -1,0 +1,54 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-CTRL-04",
+  "repeat": 2,
+  "bucket": "tech_control",
+  "final_answer": "**Calculation (FY2024, per Meta's FY2024 10-K):**\n\n- Income from operations: $69,380 million [DOC-1]\n- Revenue: $164,501 million [DOC-1]\n- Operating margin = $69,380 \u00f7 $164,501 = 42.2%\n\nComparability note: no adjustment issues arise here \u2014 both figures are drawn from the same consolidated statements of income for the same fiscal year ended December 31, 2024, as reported in the same filing [DOC-1]. (For context only, the same statement shows FY2023 operating margin of $46,751 \u00f7 $134,902 = 34.7% and FY2022 of $28,944 \u00f7 $116,609 = 24.8% [DOC-1].)\n\nANSWER: \u224842.2% (operating income of $69,380M on revenue of $164,501M)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | meta_10k_fy2024.txt]\nMeta Platforms, Inc. Form 10-K, fiscal year ended December 31, 2024 (accession 0001326801-25-000017).\n\nCONSOLIDATED STATEMENTS OF INCOME (in millions)\nFiscal year 2024: Revenue $164,501; Income from operations $69,380.\nFiscal year 2023 (comparative): Revenue $134,902; Income from operations $46,751.\nFiscal year 2022 (comparative): Revenue $116,609; Income from operations $28,944.\n</excerpts>\n\nQuestion: What was Meta's operating margin in fiscal year 2024, per Meta's FY2024 10-K?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISwgQKjgEIEhgCKkAiN3IPTWk4TJCR3sL7Prh1CJDwOB65Lke0xCnwxy5V059FIM03zHbmFZjR+OiUdegMbDy/68vT/wMtMEGirK/5Mg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAfGs0NUGEgwJEf5Btcdpu5evI2AaDK7fjMnGNvbbSg2BMSIwuHi/8IdCkqxUgSPZWeJFmdXp4U1VqFE6LW0TXqY53OcSa0e/YZJ632SWjcs70LkEKuACmlskCPYAyGSq6VSNRCxZP9O1Xrqt1LDa9D6no2BfitBlBgmWNKjZ6gZsTQw/zWiR9EWVUjT50EzVLHgPDUpKFphjLUgSTGlhNljlUnfNDwx8j1PTB39Qxi0LRaDCFUSoSYXDyawJGztYU740viVuSFjciMNkox8LS+2/7eKe8RSKRmXOVIf9bNC5aQnnmOPCAnFgA5Z3aQomr/tFA3+PiIGR66WcS/HtrY91SOyBwDpSS8TgBlJz/1BpaUT7lqyGkH8PqR65g0cphIXT7REraNcGs52rDFxVcudB0vT8xMTAapFWe54SPWGv0epLuKa5kCof3KNNVnGT01xvm6hyKSQ1kvarhaDaB6QKR6kgZqblnikJ/6ivVfIcgZwgEdviJRTw8DdSirXtntRBJUR7mwDAbP1atcourWIrSkaP3frxJJ2DhmPO7F0eArInl8Qp8tZ18mqXIRBiDKHzCr/jBxgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Calculation (FY2024, per Meta's FY2024 10-K):**\n\n- Income from operations: $69,380 million [DOC-1]\n- Revenue: $164,501 million [DOC-1]\n- Operating margin = $69,380 \u00f7 $164,501 = 42.2%\n\nComparability note: no adjustment issues arise here \u2014 both figures are drawn from the same consolidated statements of income for the same fiscal year ended December 31, 2024, as reported in the same filing [DOC-1]. (For context only, the same statement shows FY2023 operating margin of $46,751 \u00f7 $134,902 = 34.7% and FY2022 of $28,944 \u00f7 $116,609 = 24.8% [DOC-1].)\n\nANSWER: \u224842.2% (operating income of $69,380M on revenue of $164,501M)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "ame fiscal year ended December 31, 2024, as reported in the same filing [DOC-1]. (For context only, the same statement shows FY2023 operating margin of $46,751 \u00f7 $134,902 = 34.7% and FY2022 of $28,944 \u00f7 $116,609 = 24.8% [DOC-1].)\n\nANSWER: \u224842.2% (operating income of $69,380M on revenue of $164,501M)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:10:50+00:00"
+  }
+}

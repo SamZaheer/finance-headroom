@@ -1,0 +1,56 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-04",
+  "repeat": 3,
+  "bucket": "tech_gaap_adjustment",
+  "final_answer": "**Comparability caveat.** These three reconciliations are not strictly like-for-like:\n\n- **Fiscal-year mismatch:** Workday's figures are labeled FY2026 [DOC-1], while ServiceNow's and Datadog's are FY2025 [DOC-1]. Workday's fiscal year ends in late January, so its \"FY2026\" largely overlaps the calendar year covered by the other two companies' \"FY2025,\" but the periods are not identical.\n- **Different adjustment menus:** Workday adds back restructuring costs of $303M [DOC-1] and ServiceNow adds back impairment of assets $30M, severance $74M, and contract termination costs $37M [DOC-1], whereas Datadog's reconciliation contains no restructuring/impairment items at all [DOC-1]. Datadog and Workday adjust for employer payroll taxes on stock transactions [DOC-1], while ServiceNow's listed items do not include such a line [DOC-1].\n- **Units differ:** Datadog is reported in thousands, the other two in millions [DOC-1] \u2014 Datadog's figures must be scaled before comparison.\n- The total is also unaffected by scale of revenue/size; this is an absolute-dollar comparison, not a margin comparison.\n\n**Computation (all converted to $ millions):**\n\n- **Workday (FY2026):** $1,570 + $62 + $106 + $62 + $303 = **$2,103M** [DOC-1: \"Share-based compensation $1,570; Employer payroll tax-related items $62; Amortization of acquisition-related intangibles $106; Acquisition-related costs $62; Restructuring costs $303\"]\n- **ServiceNow (FY2025):** $1,955 + $120 + $109 + $30 + $74 + $0 + $37 = **$2,325M** [DOC-1: \"Stock-based compensation $1,955; Amortization of purchased intangibles $120; Business combination and other related costs $109; Impairment of assets $30; Severance costs $74; Legal settlements $0; Contract termination costs $37\"]\n- **Datadog (FY2025):** $750,671K + $6,373K + $53,799K + $1,574K = $812,417K = **$812.4M** [DOC-1: \"Stock-based compensation expense $750,671; Amortization of acquired intangibles $6,373; Employer payroll taxes on employee stock transactions $53,799; M&A transaction costs $1,574\"]\n\nServiceNow has the largest total at ~$2,325M, roughly $222M above Workday and nearly 3x Datadog, driven primarily by its $1,955M stock-based compensation add-back [DOC-1]. The ranking would be unchanged even if Workday's restructuring costs were excluded for comparability.\n\nANSWER: ServiceNow, Inc. \u2014 approximately $2,325 million in total non-GAAP adjustments (vs. Workday ~$2,103 million and Datadog ~$812 million)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | all_three_tables.txt]\nWorkday, Inc. reconciliation (in MILLIONS), FY2026: Share-based compensation $1,570; Employer payroll tax-related items $62; Amortization of acquisition-related intangibles $106; Acquisition-related costs $62; Restructuring costs $303. (Total adjustments not pre-summed -- sum these yourself.)\n\nServiceNow, Inc. reconciliation (in MILLIONS), FY2025 (operating income table): Stock-based compensation $1,955; Amortization of purchased intangibles $120; Business combination and other related costs $109; Impairment of assets $30; Severance costs $74; Legal settlements $0; Contract termination costs $37.\n\nDatadog, Inc. reconciliation (in THOUSANDS), FY2025: Stock-based compensation expense $750,671; Amortization of acquired intangibles $6,373; Employer payroll taxes on employee stock transactions $53,799; M&A transaction costs $1,574.\n</excerpts>\n\nQuestion: Among Workday, ServiceNow, and Datadog, which company had the largest total dollar amount of non-GAAP adjustments (the sum of all add-back/adjustment line items, not counting the GAAP starting figure) in their most recent fiscal year's operating income reconciliation?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAIS9gUKjgEIEhgCKkC/2E2Hts6c5wHxvAyIE7Cl2BxVw8DYmOf/4Moru02NOBpikWAlOpP4Cud1D1L/npsPH+eGijxkB4xZi/eETCUDMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAcet0NUGEgy9RKewxYzML/x9pvkaDNw20KNQ9eDgYyxFYSIwPfnIKYt6nyGxtJ3HHdrZ61SjWbiTPzki1u7JyAcvkfyF0OseH2Mh+bDnccuPUucDKpQEhxW9Dl7DhRWrp4OAUjjfFysHAfvyNAadKrcE6Ur4VfbqwenWDCUgOBYCFqf06fru3R9o1qvdFN5KOVHoDkX3a4j7VVQgtKyulcgK7DCeb6seAqvKzTD8zHtd0Cvvn0ioB7QGlHRQCudA9wCE3qHn4e9E1CUlacZ4eKhetv6jbr/osNLznx7fsT80APPlxPHE0vrj66dUzF3mct2ePJVTGWdYdnFsCPbBZSKeFbujCifeJplSzR33iHjoG9QqQtSL9ElqsRErSbaQEZnIFIID/77YrXrdctk3tvJomm3ZBeiOos72LLKQhjytfEH5ld48pie5hY8tb0iG3yeK88ynswN8Kb/atyiPff21pkcI2cXrw53f3n2fqkzQIAub54UkSM0MIlE3heS/AkiRmGvsrGsxL0iz63mpS7MV9wLJfQXnyv+xMuFXudwLUbX1YuZFz/aHH3o9hvogJiB87Fby59N6Km6T5IjJsJHsjjZD4BKJinolWUK0p4flMzOaDULWuz4d6A4kvqc2d2FDOVkDd/aKRw6g78R0QHhbdQVv0PL6m46e+5HBrkRe/7OB2kJp0y3N2Nl1wpmGH+goUGDfobQnEGOj2CIxZFI56W54iyN+fPFjXBBgaEVvb1TCRRIDQwhCZh/CUOvUMBJ1swUAObghEUxGCQm1wFruSrBuDPToLJDvgmJeTtjumkMRazT0LFpJABgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Comparability caveat.** These three reconciliations are not strictly like-for-like:\n\n- **Fiscal-year mismatch:** Workday's figures are labeled FY2026 [DOC-1], while ServiceNow's and Datadog's are FY2025 [DOC-1]. Workday's fiscal year ends in late January, so its \"FY2026\" largely overlaps the calendar year covered by the other two companies' \"FY2025,\" but the periods are not identical.\n- **Different adjustment menus:** Workday adds back restructuring costs of $303M [DOC-1] and ServiceNow adds back impairment of assets $30M, severance $74M, and contract termination costs $37M [DOC-1], whereas Datadog's reconciliation contains no restructuring/impairment items at all [DOC-1]. Datadog and Workday adjust for employer payroll taxes on stock transactions [DOC-1], while ServiceNow's listed items do not include such a line [DOC-1].\n- **Units differ:** Datadog is reported in thousands, the other two in millions [DOC-1] \u2014 Datadog's figures must be scaled before comparison.\n- The total is also unaffected by scale of revenue/size; this is an absolute-dollar comparison, not a margin comparison.\n\n**Computation (all converted to $ millions):**\n\n- **Workday (FY2026):** $1,570 + $62 + $106 + $62 + $303 = **$2,103M** [DOC-1: \"Share-based compensation $1,570; Employer payroll tax-related items $62; Amortization of acquisition-related intangibles $106; Acquisition-related costs $62; Restructuring costs $303\"]\n- **ServiceNow (FY2025):** $1,955 + $120 + $109 + $30 + $74 + $0 + $37 = **$2,325M** [DOC-1: \"Stock-based compensation $1,955; Amortization of purchased intangibles $120; Business combination and other related costs $109; Impairment of assets $30; Severance costs $74; Legal settlements $0; Contract termination costs $37\"]\n- **Datadog (FY2025):** $750,671K + $6,373K + $53,799K + $1,574K = $812,417K = **$812.4M** [DOC-1: \"Stock-based compensation expense $750,671; Amortization of acquired intangibles $6,373; Employer payroll taxes on employee stock transactions $53,799; M&A transaction costs $1,574\"]\n\nServiceNow has the largest total at ~$2,325M, roughly $222M above Workday and nearly 3x Datadog, driven primarily by its $1,955M stock-based compensation add-back [DOC-1]. The ranking would be unchanged even if Workday's restructuring costs were excluded for comparability.\n\nANSWER: ServiceNow, Inc. \u2014 approximately $2,325 million in total non-GAAP adjustments (vs. Workday ~$2,103 million and Datadog ~$812 million)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": " its $1,955M stock-based compensation add-back [DOC-1]. The ranking would be unchanged even if Workday's restructuring costs were excluded for comparability.\n\nANSWER: ServiceNow, Inc. \u2014 approximately $2,325 million in total non-GAAP adjustments (vs. Workday ~$2,103 million and Datadog ~$812 million)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T18:12:30+00:00"
+  }
+}

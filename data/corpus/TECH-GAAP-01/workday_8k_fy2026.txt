@@ -1,0 +1,8 @@
+Workday, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-24, accession 0001327811-26-000010).
+RECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (in millions), Year Ended January 31, 2026:
+GAAP operating income: $721
+Share-based compensation expense: $1,570
+Employer payroll tax-related items on employee stock transactions: $62
+Amortization of acquisition-related intangible assets: $106
+Acquisition-related costs: $62
+Restructuring costs: $303

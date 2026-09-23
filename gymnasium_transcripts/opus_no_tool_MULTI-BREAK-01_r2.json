@@ -1,0 +1,56 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "MULTI-BREAK-01",
+  "repeat": 2,
+  "bucket": "multi_sector_comparability_break",
+  "final_answer": "**Comparability caveat:** These two figures are not directly comparable on an as-originally-reported basis. IBM completed the spin-off of its managed infrastructure services unit into Kyndryl Holdings on November 3, 2021, and \"the historical results of Kyndryl have been presented as discontinued operations in these consolidated financial statements\" [DOC-3]. As a result, the FY2020 total revenue of $73,620 million reported in the FY2020 10-K [DOC-1] includes the Kyndryl business, while FY2022 revenue of $60,530 million reflects continuing operations only [DOC-2]. Comparing those two directly would show a ~17.8% decline, which is an artifact of the spin-off, not of underlying performance.\n\n**Apples-to-apples calculation (continuing operations, as recast in the FY2022 10-K):**\n\n- FY2020 revenue, recast: $55,179 million [DOC-2]\n- FY2022 revenue: $60,530 million [DOC-2]\n- Change: +$5,351 million\n- Growth: $5,351 / $55,179 = **+9.7%** over the two-year period (roughly 4.7% compound annual growth)\n\nANSWER: On a comparable continuing-operations basis (excluding Kyndryl, spun off Nov. 3, 2021), IBM revenue grew from $55,179M in FY2020 to $60,530M in FY2022, an increase of $5,351M, or +9.7% (~4.7% CAGR). Using FY2020 as originally reported ($73,620M, including Kyndryl), the figure would be \u221217.8%, but that comparison is not valid.",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | ibm_fy2020_10k.txt]\nIBM Corporation Form 10-K, fiscal year 2020 (filed 2021-02-23, accession 0001558370-21-001489).\nTotal revenue for fiscal year 2020: $73,620 million.\n\n[DOC-2 | ibm_fy2022_income_statement.txt]\nIBM Corporation Form 10-K, fiscal year 2022 (filed 2023-02-28, accession 0001558370-23-002376).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2022: $60,530 million.\nTotal revenue for fiscal year 2020 (as presented for comparative purposes in this filing): $55,179 million.\n\n[DOC-3 | ibm_fy2022_notes.txt]\nIBM Corporation Form 10-K, fiscal year 2022. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Divestitures: On November 3, 2021, the company completed the separation of its managed infrastructure services unit into a new public company, Kyndryl Holdings, Inc., with the distribution of 80.1 percent of the outstanding shares of Kyndryl to IBM stockholders on a pro rata basis. The accounting requirements for reporting the separation of Kyndryl as a discontinued operation were met when the separation was completed. Accordingly, the historical results of Kyndryl have been presented as discontinued operations in these consolidated financial statements.\n</excerpts>\n\nQuestion: What was IBM's revenue growth from fiscal year 2020 to fiscal year 2022?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAIS4wQKjgEIEhgCKkB+ARjpQ8gmo+isvM/RL7qH4EnROJ6LJtL3EwwebQq6gB4wl+yb8nV1WeffP74oyMOiPc8jLuVYcfeOIpQmAj7kMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAZit0NUGEgw6nF2iaMvoHtjBeK8aDOL3ENJJqiRhCuCa7CIwj6Bc+um9c7d7naCP8VE7Hp4Tj4w0t8dtwrxe6OLoMz88y1CosRq9hcCLiSIyeGBsKoEDdVciq+ZuLMPNQ3sx8h+c8BU8YYpnOE3lXLaNIH5D5mxDl78Sn7JWH8nDcXJSlvWQRLMBJy7tke/0ZYPMxqHBhSF764Q44/MNzSzrgYi5Pw/xOQR7i4GHFVaVKlqOqB8tTp9hJM+bCUKqDYClJGlK3ZOREl8D3icxSM4W4fWZNYn5s0L2I6CxPmVb+u3lyqZugvwy0w0JPIrJMbLSVjOtI+VU8JHz5Kfbzzm/erO3XzzPZmCQGIFQgviewTdM2XkK12CUaYrZ6Nwypi7znMZLSVr5P1k2bjzN34A9sHThiu2Mo7+uMHlk1owkslYPvH01gl/aborA7gdusDgdwJ7LhGuGWLL8qVSPNd5Bbfs7yai+sbnkdtG0ILtTK38ugPYvU7C5mSJuiG8Rg4eTiNhfPxTClrT1fFNrQlF/hlIu1WYoBp/OEyXuEXZTxqq+NUmZG0w8z+Qrx8p51k9Qv2unjQRV3ndH+iKNm8LVcxIsYH3RlEHSpT1FfuXOHInVy9h6XRgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Comparability caveat:** These two figures are not directly comparable on an as-originally-reported basis. IBM completed the spin-off of its managed infrastructure services unit into Kyndryl Holdings on November 3, 2021, and \"the historical results of Kyndryl have been presented as discontinued operations in these consolidated financial statements\" [DOC-3]. As a result, the FY2020 total revenue of $73,620 million reported in the FY2020 10-K [DOC-1] includes the Kyndryl business, while FY2022 revenue of $60,530 million reflects continuing operations only [DOC-2]. Comparing those two directly would show a ~17.8% decline, which is an artifact of the spin-off, not of underlying performance.\n\n**Apples-to-apples calculation (continuing operations, as recast in the FY2022 10-K):**\n\n- FY2020 revenue, recast: $55,179 million [DOC-2]\n- FY2022 revenue: $60,530 million [DOC-2]\n- Change: +$5,351 million\n- Growth: $5,351 / $55,179 = **+9.7%** over the two-year period (roughly 4.7% compound annual growth)\n\nANSWER: On a comparable continuing-operations basis (excluding Kyndryl, spun off Nov. 3, 2021), IBM revenue grew from $55,179M in FY2020 to $60,530M in FY2022, an increase of $5,351M, or +9.7% (~4.7% CAGR). Using FY2020 as originally reported ($73,620M, including Kyndryl), the figure would be \u221217.8%, but that comparison is not valid.",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "operations basis (excluding Kyndryl, spun off Nov. 3, 2021), IBM revenue grew from $55,179M in FY2020 to $60,530M in FY2022, an increase of $5,351M, or +9.7% (~4.7% CAGR). Using FY2020 as originally reported ($73,620M, including Kyndryl), the figure would be \u221217.8%, but that comparison is not valid."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T18:11:37+00:00"
+  }
+}

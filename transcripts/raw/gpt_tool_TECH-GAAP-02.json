@@ -1,0 +1,89 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "TECH-GAAP-02",
+  "final_answer": "ServiceNow\u2019s fiscal year 2025 (year ended December 31, 2025) GAAP-to-non-GAAP net income reconciliation shows:\n\n- GAAP net income: $1,748 million  \n- Adjustments:  \n  - Stock-based compensation: +$1,955 million  \n  - Amortization of purchased intangibles: +$120 million  \n  - Business combination and other related costs: +$109 million  \n  - Impairment of assets: +$30 million  \n  - Severance costs: +$74 million  \n  - Contract termination costs: +$37 million  \n  - Income tax effects and adjustments: \u2212$404 million  \n\nAll figures are for the same fiscal year (year ended December 31, 2025) and are directly comparable within the non-GAAP reconciliation table. [DOC]\n\nSumming these items yields non-GAAP net income of $3,669 million for fiscal year 2025. The component amounts and the fact that the table is titled \u201cRECONCILIATION OF GAAP TO NON-GAAP NET INCOME (in millions), Year Ended December 31, 2025\u201d support this conclusion. [DOC]\n\nANSWER: $3,669 million non-GAAP net income for fiscal year 2025 (year ended December 31, 2025).",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was ServiceNow's non-GAAP net income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_pwC3CHTrriLnvS1dO33ogmb0",
+          "function": {
+            "arguments": "{\"query\":\"ServiceNow non-GAAP net income fiscal year 2025 ended December 31, 2025\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_pwC3CHTrriLnvS1dO33ogmb0",
+      "name": "search_corpus",
+      "input": {
+        "query": "ServiceNow non-GAAP net income fiscal year 2025 ended December 31, 2025"
+      },
+      "output": "[servicenow_8k_fy2025_netincome.txt] ServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP NET INCOME (in millions), Year Ended December 31, 2025:\nGAAP net income: $1,748\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\nIncome tax effects and adjustments: $(404)\n\n[servicenow_8k_fy2025_opinc.txt] ServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP INCOME FROM OPERATIONS (in millions), Year Ended December 31, 2025:\nGAAP income from operations: $1,824\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_v50oqNLIpFl2XpekG95uAG25",
+          "function": {
+            "arguments": "{\"code\":\"1748+1955+120+109+30+74+37-404\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_v50oqNLIpFl2XpekG95uAG25",
+      "name": "python_eval",
+      "input": {
+        "code": "1748+1955+120+109+30+74+37-404"
+      },
+      "output": "(no output -- did you print()?)"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_HQA3K800TRyBZXFr8fiFWNFt",
+          "function": {
+            "arguments": "{\"code\":\"print(1748+1955+120+109+30+74+37-404)\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_HQA3K800TRyBZXFr8fiFWNFt",
+      "name": "python_eval",
+      "input": {
+        "code": "print(1748+1955+120+109+30+74+37-404)"
+      },
+      "output": "3669"
+    },
+    {
+      "content": "ServiceNow\u2019s fiscal year 2025 (year ended December 31, 2025) GAAP-to-non-GAAP net income reconciliation shows:\n\n- GAAP net income: $1,748 million  \n- Adjustments:  \n  - Stock-based compensation: +$1,955 million  \n  - Amortization of purchased intangibles: +$120 million  \n  - Business combination and other related costs: +$109 million  \n  - Impairment of assets: +$30 million  \n  - Severance costs: +$74 million  \n  - Contract termination costs: +$37 million  \n  - Income tax effects and adjustments: \u2212$404 million  \n\nAll figures are for the same fiscal year (year ended December 31, 2025) and are directly comparable within the non-GAAP reconciliation table. [DOC]\n\nSumming these items yields non-GAAP net income of $3,669 million for fiscal year 2025. The component amounts and the fact that the table is titled \u201cRECONCILIATION OF GAAP TO NON-GAAP NET INCOME (in millions), Year Ended December 31, 2025\u201d support this conclusion. [DOC]\n\nANSWER: $3,669 million non-GAAP net income for fiscal year 2025 (year ended December 31, 2025).",
+      "role": "assistant"
+    }
+  ]
+}

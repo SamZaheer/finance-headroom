@@ -1,0 +1,5 @@
+Workday, Inc. reconciliation (in MILLIONS), FY2026: Share-based compensation $1,570; Employer payroll tax-related items $62; Amortization of acquisition-related intangibles $106; Acquisition-related costs $62; Restructuring costs $303. (Total adjustments not pre-summed -- sum these yourself.)
+
+ServiceNow, Inc. reconciliation (in MILLIONS), FY2025 (operating income table): Stock-based compensation $1,955; Amortization of purchased intangibles $120; Business combination and other related costs $109; Impairment of assets $30; Severance costs $74; Legal settlements $0; Contract termination costs $37.
+
+Datadog, Inc. reconciliation (in THOUSANDS), FY2025: Stock-based compensation expense $750,671; Amortization of acquired intangibles $6,373; Employer payroll taxes on employee stock transactions $53,799; M&A transaction costs $1,574.

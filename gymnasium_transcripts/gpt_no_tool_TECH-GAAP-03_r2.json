@@ -1,0 +1,47 @@
+{
+  "model": "gpt",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-03",
+  "repeat": 2,
+  "bucket": "tech_gaap_adjustment",
+  "final_answer": "The non-GAAP operating income is calculated by adding back the listed non-GAAP adjustments to the GAAP operating loss:\n\n- GAAP operating loss: $(44,373) [DOC-1]  \n- Stock-based compensation expense: $750,671 [DOC-1]  \n- Amortization of acquired intangibles: $6,373 [DOC-1]  \n- Employer payroll taxes on employee stock transactions: $53,799 [DOC-1]  \n- M&A transaction costs: $1,574 [DOC-1]  \n\nNon-GAAP operating income =  \n\u221244,373 + 750,671 + 6,373 + 53,799 + 1,574 = 768,044 (thousands of dollars) [DOC-1]\n\nNo changes in reporting segments, accounting basis, or fiscal year are indicated in the provided excerpt, so the GAAP and non-GAAP figures are directly comparable for the same period.\n\nANSWER: $768,044 thousand (i.e., $768.0 million)",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | datadog_8k_fy2025.txt]\nDatadog, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-10, accession 0001628280-26-006645).\nRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025:\nGAAP operating loss: $(44,373)\nStock-based compensation expense: $750,671\nAmortization of acquired intangibles: $6,373\nEmployer payroll taxes on employee stock transactions: $53,799\nM&A transaction costs: $1,574\n</excerpts>\n\nQuestion: What was Datadog's non-GAAP operating income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "content": "The non-GAAP operating income is calculated by adding back the listed non-GAAP adjustments to the GAAP operating loss:\n\n- GAAP operating loss: $(44,373) [DOC-1]  \n- Stock-based compensation expense: $750,671 [DOC-1]  \n- Amortization of acquired intangibles: $6,373 [DOC-1]  \n- Employer payroll taxes on employee stock transactions: $53,799 [DOC-1]  \n- M&A transaction costs: $1,574 [DOC-1]  \n\nNon-GAAP operating income =  \n\u221244,373 + 750,671 + 6,373 + 53,799 + 1,574 = 768,044 (thousands of dollars) [DOC-1]\n\nNo changes in reporting segments, accounting basis, or fiscal year are indicated in the provided excerpt, so the GAAP and non-GAAP figures are directly comparable for the same period.\n\nANSWER: $768,044 thousand (i.e., $768.0 million)",
+      "role": "assistant"
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "+ 6,373 + 53,799 + 1,574 = 768,044 (thousands of dollars) [DOC-1]\n\nNo changes in reporting segments, accounting basis, or fiscal year are indicated in the provided excerpt, so the GAAP and non-GAAP figures are directly comparable for the same period.\n\nANSWER: $768,044 thousand (i.e., $768.0 million)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:21:21+00:00"
+  }
+}

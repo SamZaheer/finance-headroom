@@ -1,0 +1,54 @@
+{
+  "model": "claude",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-CTRL-04",
+  "repeat": 2,
+  "bucket": "tech_control",
+  "final_answer": "**Meta's FY2024 Operating Margin Calculation**\n\nPer Meta's FY2024 10-K, the consolidated income statement reports:\n- Revenue: $164,501 million [DOC-1]\n- Income from operations: $69,380 million [DOC-1]\n\nOperating margin = Income from operations \u00f7 Revenue = $69,380M \u00f7 $164,501M \u2248 42.2%\n\nThis calculation uses figures from the same fiscal year (FY2024) and the same accounting basis, so no comparability adjustments are needed.\n\nANSWER: Approximately 42.2% ($69,380M operating income / $164,501M revenue)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | meta_10k_fy2024.txt]\nMeta Platforms, Inc. Form 10-K, fiscal year ended December 31, 2024 (accession 0001326801-25-000017).\n\nCONSOLIDATED STATEMENTS OF INCOME (in millions)\nFiscal year 2024: Revenue $164,501; Income from operations $69,380.\nFiscal year 2023 (comparative): Revenue $134,902; Income from operations $46,751.\nFiscal year 2022 (comparative): Revenue $116,609; Income from operations $28,944.\n</excerpts>\n\nQuestion: What was Meta's operating margin in fiscal year 2024, per Meta's FY2024 10-K?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EsQCCpABCBIYAipAwHVoqHdQMg+WfvQ6vXzhjFQx2EMLftPvATqkHKeWN24LWQrLfTBON1Kuc/Fn8G2FJ6+zXZ7UVUrjZkU2u9iBozIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAbqx0NUGEgx2hnNKs5uGygqpn24aDAt0WtZbDN98JM+v3CIwYwjxGrKMjQMl77kUxGcTVfOi/Tmg3uht2rmwiQ5IX20j+tSj206gLZywFKRA4A62KmHw8+L2zlZ+g0YMBpnhGZ5o+UmhIvdxd+Ix1xFnX6ll8rRHuPjJUVUSb+OnjGFqvCIboXOeTIkSB4XB5tRx9qyajvP5X/7ShpeSBMMIUpuarS3y+lJ4RANZeg3VAZV95r2jGAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Meta's FY2024 Operating Margin Calculation**\n\nPer Meta's FY2024 10-K, the consolidated income statement reports:\n- Revenue: $164,501 million [DOC-1]\n- Income from operations: $69,380 million [DOC-1]\n\nOperating margin = Income from operations \u00f7 Revenue = $69,380M \u00f7 $164,501M \u2248 42.2%\n\nThis calculation uses figures from the same fiscal year (FY2024) and the same accounting basis, so no comparability adjustments are needed.\n\nANSWER: Approximately 42.2% ($69,380M operating income / $164,501M revenue)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "Operating margin = Income from operations \u00f7 Revenue = $69,380M \u00f7 $164,501M \u2248 42.2%\n\nThis calculation uses figures from the same fiscal year (FY2024) and the same accounting basis, so no comparability adjustments are needed.\n\nANSWER: Approximately 42.2% ($69,380M operating income / $164,501M revenue)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:20:34+00:00"
+  }
+}

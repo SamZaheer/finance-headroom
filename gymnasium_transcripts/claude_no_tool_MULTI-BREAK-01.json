@@ -1,0 +1,56 @@
+{
+  "model": "claude",
+  "tool_condition": "no_tool",
+  "item_id": "MULTI-BREAK-01",
+  "repeat": 1,
+  "bucket": "multi_sector_comparability_break",
+  "final_answer": "**Note on comparability:** The FY2020 revenue figure originally reported in IBM's FY2020 10-K was **$73,620 million** [DOC-1]. However, this figure is **not directly comparable** to the FY2022 revenue of $60,530 million, because IBM completed the spin-off of its managed infrastructure services business (Kyndryl Holdings, Inc.) on November 3, 2021, and its historical results were subsequently reclassified as discontinued operations in later filings [DOC-3]. As a result, the FY2022 10-K presents a restated FY2020 comparative revenue figure of **$55,179 million**, which excludes Kyndryl's results to align with the FY2022 reporting basis [DOC-2].\n\nUsing the comparable (restated, continuing-operations) basis presented in the FY2022 10-K:\n\n- FY2020 (restated, continuing operations): $55,179 million [DOC-2]\n- FY2022: $60,530 million [DOC-2]\n\nGrowth = ($60,530M \u2212 $55,179M) / $55,179M \u2248 9.7%\n\nIf instead one compares the originally reported FY2020 figure ($73,620 million, including the since-divested Kyndryl business) [DOC-1] to FY2022 revenue ($60,530 million) [DOC-2], revenue would appear to have *declined* by about 17.8% \u2014 but this comparison is misleading because it mixes different reporting scopes (with vs. without Kyndryl) and should not be used to assess underlying business growth.\n\nANSWER: On a comparable (continuing-operations) basis, IBM's revenue grew approximately 9.7% from FY2020 ($55,179M, restated) to FY2022 ($60,530M). Note: the originally reported FY2020 figure ($73,620M) is not comparable due to the Kyndryl spin-off, which was later treated as a discontinued operation.",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | ibm_fy2020_10k.txt]\nIBM Corporation Form 10-K, fiscal year 2020 (filed 2021-02-23, accession 0001558370-21-001489).\nTotal revenue for fiscal year 2020: $73,620 million.\n\n[DOC-2 | ibm_fy2022_income_statement.txt]\nIBM Corporation Form 10-K, fiscal year 2022 (filed 2023-02-28, accession 0001558370-23-002376).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2022: $60,530 million.\nTotal revenue for fiscal year 2020 (as presented for comparative purposes in this filing): $55,179 million.\n\n[DOC-3 | ibm_fy2022_notes.txt]\nIBM Corporation Form 10-K, fiscal year 2022. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Divestitures: On November 3, 2021, the company completed the separation of its managed infrastructure services unit into a new public company, Kyndryl Holdings, Inc., with the distribution of 80.1 percent of the outstanding shares of Kyndryl to IBM stockholders on a pro rata basis. The accounting requirements for reporting the separation of Kyndryl as a discontinued operation were met when the separation was completed. Accordingly, the historical results of Kyndryl have been presented as discontinued operations in these consolidated financial statements.\n</excerpts>\n\nQuestion: What was IBM's revenue growth from fiscal year 2020 to fiscal year 2022?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EtAHCpABCBIYAipAWaYt/VZKrrWE5SdOh77931ZhIk08snPNpc6Z5q9KycAN8LcZ1zOCo9rZ2/J0/AhXNplLNv73aqmGEi1r4Il3EzIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAeWd0NUGEgwtayKncC94THoKYZoaDDvHJOkWDTI1PeS8+yIwmOK4+X2d2lxPDADUNedz3aJKvoMYAKYK22RUXeJcskhrcqW/D/JT5CrZ+PgFzxIbKuwFPsT4Fx13FVe4GIa3spVyiHM4oDnnY0AW7+Fxnu+ZrC42WiW0Tez3NZ/BnfmEN1a9kVo/yBACidYV35F0lRgV4HvRxvG8+HvUubeq856W5dzjZQjEPtZ9nQn7fAc+oXOBp9ILxLap/GAs9UJ084VWNE08bFPO7K8UFDVose73aoVE5fqTax/emgBSRuXQiWUYzNDAKxCg83G2uRblx1A/NvTzmywb+ZgZ98KgUZ7zBfuAZelBFHO9uyNpF1sSPj1lYaBuQK6q+bdI7VWnnHOPHLmADEn2G05IqtE2pllwcHTlO4gDEnAGwMLnisyQ//EUVt9lkYr1clxqjImJiSYGpHxes0yQVEewI+ERhsADgIWXzHUlOASf+78fRIF01YcYR6/Joegx5AauNV0aA0QZ2CDSFFvyafcuoWchsP/q9EjFC8lihU2K2yB8NoGamPe4TNVmJCc2DuU/Q4dMORQSv7CIEOQyvUexNhcDcS6TvWP1OIU5IvvSUPEq3enPhfWttCnW1pqDdV9Ti0vY/mwY4UG65zicKj00v/2dHjr31wOhA1k+mIrnWVlgAKkIpFmLn/rR5L4oWIfCYIuXSVeY0vvT/h7N/Nwhwumvco0Bb6UFa38OdhbpR7JM00ssMggxyVO0LpfSPCx9gTMNCbLh8WN4HRHnnDK4k2YDsleKbtTY2TteQcUdRazuki8d5q91hU3F6tZ84OHb7fNgKTIzIHcxxXm4LUBMD99J8DRPXyXKo/UvebakDdGppUN8WEY26FTr9wWQNEoVqorJQHEig3gxGDptUf1Pljh5RSwq2OYDPb+nne7Dew5EyZZo1+uD1ikLxKuV4aw8Usb6MCPpemWrp99RNygoz1rHP7Pl1fBaOHWUiW0wd1QsTZEUrp11X1+GUkco8DueK0CnJZs0XxEsxONmcgdhgQ4v8+bJqEbeOy2ooI+CPjmCfuSV2L54qzfkJNyx9bHNJRxjUO0YjafgVdAqbcDGiXI0ehgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Note on comparability:** The FY2020 revenue figure originally reported in IBM's FY2020 10-K was **$73,620 million** [DOC-1]. However, this figure is **not directly comparable** to the FY2022 revenue of $60,530 million, because IBM completed the spin-off of its managed infrastructure services business (Kyndryl Holdings, Inc.) on November 3, 2021, and its historical results were subsequently reclassified as discontinued operations in later filings [DOC-3]. As a result, the FY2022 10-K presents a restated FY2020 comparative revenue figure of **$55,179 million**, which excludes Kyndryl's results to align with the FY2022 reporting basis [DOC-2].\n\nUsing the comparable (restated, continuing-operations) basis presented in the FY2022 10-K:\n\n- FY2020 (restated, continuing operations): $55,179 million [DOC-2]\n- FY2022: $60,530 million [DOC-2]\n\nGrowth = ($60,530M \u2212 $55,179M) / $55,179M \u2248 9.7%\n\nIf instead one compares the originally reported FY2020 figure ($73,620 million, including the since-divested Kyndryl business) [DOC-1] to FY2022 revenue ($60,530 million) [DOC-2], revenue would appear to have *declined* by about 17.8% \u2014 but this comparison is misleading because it mixes different reporting scopes (with vs. without Kyndryl) and should not be used to assess underlying business growth.\n\nANSWER: On a comparable (continuing-operations) basis, IBM's revenue grew approximately 9.7% from FY2020 ($55,179M, restated) to FY2022 ($60,530M). Note: the originally reported FY2020 figure ($73,620M) is not comparable due to the Kyndryl spin-off, which was later treated as a discontinued operation.",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "SWER: On a comparable (continuing-operations) basis, IBM's revenue grew approximately 9.7% from FY2020 ($55,179M, restated) to FY2022 ($60,530M). Note: the originally reported FY2020 figure ($73,620M) is not comparable due to the Kyndryl spin-off, which was later treated as a discontinued operation."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T17:38:46+00:00"
+  }
+}

@@ -1,0 +1,11 @@
+Selected figures from each company's fiscal year 2024 Form 10-K (all calendar-year, Jan 1 - Dec 31; $ in millions; source: SEC XBRL financial data):
+
+Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2024 $61,643M. Operating income: FY2024 $5,995M. Net income: FY2024 $3,457M.
+
+United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Operating income: FY2024 $5,096M. Net income: FY2024 $3,149M.
+
+Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Operating income: FY2024 $321M. Net income: FY2024 $465M.
+
+American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Operating income: FY2024 $2,614M. Net income: FY2024 $846M.
+
+Alaska Air Group (CIK 766421, 10-K accession 0000766421-25-000009): Total operating revenue: FY2024 $11,735M. Operating income: FY2024 $570M. Net income: FY2024 $395M.

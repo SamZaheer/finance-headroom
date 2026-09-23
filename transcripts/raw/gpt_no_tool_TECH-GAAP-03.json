@@ -1,0 +1,20 @@
+{
+  "model": "gpt",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-03",
+  "final_answer": "The non-GAAP operating income is calculated by adding the specified non-GAAP adjustments to GAAP operating loss:\n\n- GAAP operating loss for year ended Dec. 31, 2025: $(44,373) thousand [DOC-1]  \n- Add stock-based compensation expense: $750,671 thousand [DOC-1]  \n- Add amortization of acquired intangibles: $6,373 thousand [DOC-1]  \n- Add employer payroll taxes on employee stock transactions: $53,799 thousand [DOC-1]  \n- Add M&A transaction costs: $1,574 thousand [DOC-1]\n\nSum of adjustments:  \n$750,671 + $6,373 + $53,799 + $1,574 = $812,417 thousand [DOC-1]\n\nNon-GAAP operating income:  \n$812,417 \u2212 $44,373 = $768,044 thousand [DOC-1]\n\nANSWER: $768,044 thousand",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | datadog_8k_fy2025.txt]\nDatadog, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-10, accession 0001628280-26-006645).\nRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025:\nGAAP operating loss: $(44,373)\nStock-based compensation expense: $750,671\nAmortization of acquired intangibles: $6,373\nEmployer payroll taxes on employee stock transactions: $53,799\nM&A transaction costs: $1,574\n</excerpts>\n\nQuestion: What was Datadog's non-GAAP operating income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "content": "The non-GAAP operating income is calculated by adding the specified non-GAAP adjustments to GAAP operating loss:\n\n- GAAP operating loss for year ended Dec. 31, 2025: $(44,373) thousand [DOC-1]  \n- Add stock-based compensation expense: $750,671 thousand [DOC-1]  \n- Add amortization of acquired intangibles: $6,373 thousand [DOC-1]  \n- Add employer payroll taxes on employee stock transactions: $53,799 thousand [DOC-1]  \n- Add M&A transaction costs: $1,574 thousand [DOC-1]\n\nSum of adjustments:  \n$750,671 + $6,373 + $53,799 + $1,574 = $812,417 thousand [DOC-1]\n\nNon-GAAP operating income:  \n$812,417 \u2212 $44,373 = $768,044 thousand [DOC-1]\n\nANSWER: $768,044 thousand",
+      "role": "assistant"
+    }
+  ]
+}

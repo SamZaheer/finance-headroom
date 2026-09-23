@@ -1,0 +1,5 @@
+Selected figures from each company's fiscal year 2024 Form 10-K (all calendar-year, Jan 1 - Dec 31; $ in millions; source: SEC XBRL financial data):
+
+American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Operating income: FY2024 $2,614M. Net income: FY2024 $846M. Total stockholders' equity (deficit) at Dec 31: FY2024 -$3,977M. Long-term debt at Dec 31: FY2024 $24,617M.
+
+Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Operating income: FY2024 $321M. Net income: FY2024 $465M. Total stockholders' equity (deficit) at Dec 31: FY2024 $10,350M. Long-term debt at Dec 31: FY2024 $6,697M.

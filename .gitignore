@@ -1,0 +1,17 @@
+# secrets
+.env
+
+# environments and build artifacts
+venv/
+.venv/
+*.egg-info/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+
+# regenerable local output: `make docker-run` scratch, fh-replay diagnostics
+results/agent_run/
+results/env_scored*.csv
+results/figures/env_reward_heatmap*.png

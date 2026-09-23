@@ -1,0 +1,154 @@
+{
+  "model": "opus",
+  "tool_condition": "tool",
+  "item_id": "TECH-CMP-04",
+  "repeat": 2,
+  "bucket": "tech_clean_comparison",
+  "final_answer": "**Comparability note:** Both companies use calendar-year fiscal years ending December 31, so FY2023\u2192FY2024 growth rates are directly comparable. One caveat on basis: Meta reports \"revenue\" while Amazon reports \"net sales\" \u2014 both are the top-line GAAP revenue measure, so the comparison is reasonable, though Amazon's mix includes large third-party/gross-vs-net presentation effects.\n\n**Calculation:**\n\n| Company | FY2023 | FY2024 | Growth |\n|---|---|---|---|\n| Meta Platforms | $134,902M | $164,501M | +21.94% |\n| Amazon.com | $574,785M | $637,959M | +10.99% |\n\n- Meta: revenue rose from $134,902M in FY2023 to $164,501M in FY2024 [DOC: meta_amzn_growth.txt \u2014 Meta Platforms 10-K FY2024, accession 0001326801-25-000017], a gain of 21.94%.\n- Amazon: net sales rose from $574,785M in FY2023 to $637,959M in FY2024 [DOC: meta_amzn_growth.txt \u2014 Amazon.com 10-K FY2024, accession 0001018724-25-000004], a gain of 10.99%.\n\nMeta grew faster, by approximately 10.95 percentage points (21.94% \u2212 10.99%). Note this is a difference in growth *rates* off very different revenue bases \u2014 Amazon's smaller percentage gain still represented ~$63.2B of incremental sales versus Meta's ~$29.6B.\n\nANSWER: Meta grew faster \u2014 21.9% vs. Amazon's 11.0%, a difference of approximately 10.95 percentage points.",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: Between Meta and Amazon, whose revenue grew faster from fiscal year 2023 to fiscal year 2024, and by how many percentage points?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "I'll search for revenue figures for both companies.",
+          "type": "text"
+        },
+        {
+          "id": "toolu_013yxuWdKKqVdBfoPe2oqniu",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Meta total revenue 2024 2023"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01WGeLbvoZENVVt53XqAgvLR",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Amazon net sales 2024 2023 total"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Meta total revenue 2024 2023"
+      },
+      "output": "[meta_amzn_growth.txt] Meta Platforms 10-K FY2024 (accession 0001326801-25-000017): revenue FY2023 $134,902M, FY2024 $164,501M.\nAmazon.com 10-K FY2024 (accession 0001018724-25-000004): net sales FY2023 $574,785M, FY2024 $637,959M."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Amazon net sales 2024 2023 total"
+      },
+      "output": "[meta_amzn_growth.txt] Meta Platforms 10-K FY2024 (accession 0001326801-25-000017): revenue FY2023 $134,902M, FY2024 $164,501M.\nAmazon.com 10-K FY2024 (accession 0001018724-25-000004): net sales FY2023 $574,785M, FY2024 $637,959M."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "id": "toolu_019marqf9pumyDdyscks5rcZ",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "m=(164501-134902)/134902*100\na=(637959-574785)/574785*100\nprint(m,a,m-a)"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "m=(164501-134902)/134902*100\na=(637959-574785)/574785*100\nprint(m,a,m-a)"
+      },
+      "output": "21.941112807816044 10.990892246666146 10.950220561149898"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "**Comparability note:** Both companies use calendar-year fiscal years ending December 31, so FY2023\u2192FY2024 growth rates are directly comparable. One caveat on basis: Meta reports \"revenue\" while Amazon reports \"net sales\" \u2014 both are the top-line GAAP revenue measure, so the comparison is reasonable, though Amazon's mix includes large third-party/gross-vs-net presentation effects.\n\n**Calculation:**\n\n| Company | FY2023 | FY2024 | Growth |\n|---|---|---|---|\n| Meta Platforms | $134,902M | $164,501M | +21.94% |\n| Amazon.com | $574,785M | $637,959M | +10.99% |\n\n- Meta: revenue rose from $134,902M in FY2023 to $164,501M in FY2024 [DOC: meta_amzn_growth.txt \u2014 Meta Platforms 10-K FY2024, accession 0001326801-25-000017], a gain of 21.94%.\n- Amazon: net sales rose from $574,785M in FY2023 to $637,959M in FY2024 [DOC: meta_amzn_growth.txt \u2014 Amazon.com 10-K FY2024, accession 0001018724-25-000004], a gain of 10.99%.\n\nMeta grew faster, by approximately 10.95 percentage points (21.94% \u2212 10.99%). Note this is a difference in growth *rates* off very different revenue bases \u2014 Amazon's smaller percentage gain still represented ~$63.2B of incremental sales versus Meta's ~$29.6B.\n\nANSWER: Meta grew faster \u2014 21.9% vs. Amazon's 11.0%, a difference of approximately 10.95 percentage points.",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Meta total revenue 2024 2023"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Amazon net sales 2024 2023 total"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "m=(164501-134902)/134902*100\na=(637959-574785)/574785*100\nprint(m,a,m-a)"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": " 10.99%). Note this is a difference in growth *rates* off very different revenue bases \u2014 Amazon's smaller percentage gain still represented ~$63.2B of incremental sales versus Meta's ~$29.6B.\n\nANSWER: Meta grew faster \u2014 21.9% vs. Amazon's 11.0%, a difference of approximately 10.95 percentage points."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 3,
+    "terminal_reward": 1.0,
+    "return": 0.97,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:15:47+00:00"
+  }
+}

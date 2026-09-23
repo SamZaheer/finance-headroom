@@ -1,0 +1,54 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-CMP-03",
+  "repeat": 2,
+  "bucket": "tech_clean_comparison",
+  "final_answer": "**Comparability:** Both figures are Apple Inc. consolidated full-fiscal-year amounts drawn from the same filing, same entity, same accounting basis \u2014 directly comparable [DOC-1].\n\n**Calculation:**\n\n| Fiscal Year | R&D Expense | Revenue | R&D % of Revenue |\n|---|---|---|---|\n| FY2023 | $29,915M [DOC-1] | $383,285M [DOC-1] | 7.80% |\n| FY2024 | $31,370M [DOC-1] | $391,035M [DOC-1] | 8.02% |\n\n- FY2023: 29,915 \u00f7 383,285 = 7.805%\n- FY2024: 31,370 \u00f7 391,035 = 8.022%\n- Change: +0.217 percentage points\n\n**Interpretation:** R&D intensity **increased**, because R&D expense grew ~4.9% ($29,915M \u2192 $31,370M) [DOC-1] while revenue grew only ~2.0% ($383,285M \u2192 $391,035M) [DOC-1] \u2014 R&D outpaced the top line.\n\nANSWER: Increased by approximately 0.22 percentage points (7.80% in FY2023 to 8.02% in FY2024)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | apple_rd.txt]\nApple Inc. Form 10-K FY2024 (accession 0000320193-24-000123): Research and development expense FY2024: $31,370M (FY2024 revenue $391,035M). Research and development expense FY2023: $29,915M (FY2023 revenue $383,285M).\n</excerpts>\n\nQuestion: Did Apple's R&D spending as a percentage of revenue increase or decrease from fiscal year 2023 to fiscal year 2024, and by how many percentage points?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISiQYKjgEIEhgCKkAvjpyorzf7yejsdCdahTXILCmLnAydd2sxnzZNA8ykRE3gUymhReJXwkad3z33PQI62ytkeRvi6ZXvGLmjaQs0Mg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAYKt0NUGEgwG5KctxOTQmTx/+2waDF8i9ayf+3Uqj9DOriIwEyUw547Gxs/EV4dWL7cw8AVkHrBcdG91iP0ErtxRXT7TkM/LiVRWQtIABrFMnV/MKqcEIjU8si3JmIuqeMuXw7r92rmwmuQpzw+PYU1iPRog4aN13Rd87KDhPXHkzEpz86XMsNq7gTz6ZYjDqrOHcnUTvdVu+eLzc7jRzU1nXVh3VRlWXJee2vhB+Wow4qZ7KdaaYStHHRaCKgpnTqzupPAlH4SwxO2Dfa72BkgU962JedmHYxEYk7pCiprwV9Zrl4Z9n/vlOj1VzMOxSUL+UAsVIAKdOhCGljDqCQ1l8cZcmfY1sjgVwoU09ZHFytMvbXO9SOeoJx3mM994OYa124U9J2cnNSSyJUwxwrAMdkPhH0K8VCPpJcUtambDBOoaOniHQXm2vsdV6m6TRAseZc5G9tai/mgITKvN+8spJH+v60PoyqstudW2Zob6HiT69reI7E1aNIXoQWakPpYzsTFV0/ptNA7FoDyUM5dbsG+fHf1U/SS2MAIy+RVDainzyHZtPHrG5ryqQYUhftdXJJC2yenoj/T9okRNxE8Wg7U5iFWfsdgBd5puEN9BQ+BwWpowPyleNFYJ6MqSGBxjvOrA+Pw2x2WoJqGWIA33uYmPT+rWVxwLSlr2mL+LdmC0ijqrY3ILmLbOm9RWHl9mlEsaoRWTK+jWZFmgUhHRku/iW6Tzc90XLMrqht7u5g6yOcHKjOxnwRGFI76bTbxYl/MSIFW5NWd1Z5xZoaNodAp3lAY74xLsQL2A7sGzgwH8kT9N0Hri8NyvXQ6+VlbSknWZGnD4p4BAd1AYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Comparability:** Both figures are Apple Inc. consolidated full-fiscal-year amounts drawn from the same filing, same entity, same accounting basis \u2014 directly comparable [DOC-1].\n\n**Calculation:**\n\n| Fiscal Year | R&D Expense | Revenue | R&D % of Revenue |\n|---|---|---|---|\n| FY2023 | $29,915M [DOC-1] | $383,285M [DOC-1] | 7.80% |\n| FY2024 | $31,370M [DOC-1] | $391,035M [DOC-1] | 8.02% |\n\n- FY2023: 29,915 \u00f7 383,285 = 7.805%\n- FY2024: 31,370 \u00f7 391,035 = 8.022%\n- Change: +0.217 percentage points\n\n**Interpretation:** R&D intensity **increased**, because R&D expense grew ~4.9% ($29,915M \u2192 $31,370M) [DOC-1] while revenue grew only ~2.0% ($383,285M \u2192 $391,035M) [DOC-1] \u2014 R&D outpaced the top line.\n\nANSWER: Increased by approximately 0.22 percentage points (7.80% in FY2023 to 8.02% in FY2024)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "ts\n\n**Interpretation:** R&D intensity **increased**, because R&D expense grew ~4.9% ($29,915M \u2192 $31,370M) [DOC-1] while revenue grew only ~2.0% ($383,285M \u2192 $391,035M) [DOC-1] \u2014 R&D outpaced the top line.\n\nANSWER: Increased by approximately 0.22 percentage points (7.80% in FY2023 to 8.02% in FY2024)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:11:09+00:00"
+  }
+}

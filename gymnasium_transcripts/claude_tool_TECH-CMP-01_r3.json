@@ -1,0 +1,159 @@
+{
+  "model": "claude",
+  "tool_condition": "tool",
+  "item_id": "TECH-CMP-01",
+  "repeat": 3,
+  "bucket": "tech_clean_comparison",
+  "final_answer": "**Alphabet:**\n- FY2022 operating margin: $74,842M / $282,836M = 26.46% [DOC: Alphabet Inc. (10-K FY2022, accession 0001652044-23-000016): revenue $282,836M, operating income $74,842M.]\n- FY2024 operating margin: $112,390M / $350,018M = 32.11% [DOC: Alphabet Inc. (10-K FY2024, accession 0001652044-25-000014): revenue $350,018M, operating income $112,390M.]\n- Expansion: +5.65 percentage points\n\n**Meta:**\n- FY2022 operating margin: $28,944M / $116,609M = 24.82% [DOC: Meta Platforms, Inc. (10-K FY2022, accession 0001326801-23-000013): revenue $116,609M, operating income $28,944M.]\n- FY2024 operating margin: $69,380M / $164,501M = 42.18% [DOC: Meta Platforms, Inc. (10-K FY2024, accession 0001326801-25-000017): revenue $164,501M, operating income $69,380M.]\n- Expansion: +17.35 percentage points\n\nBoth companies' fiscal years 2022 and 2024 are calendar-year 10-K filings on a consistent GAAP basis, so the comparison is directly comparable (no divestitures, spinoffs, or segment redefinitions noted in the excerpts).\n\nMeta's operating margin expanded significantly more than Alphabet's over this period \u2014 by roughly 11.7 percentage points more (17.35 pp vs. 5.65 pp expansion).\n\nANSWER: Meta expanded its operating margin more, by approximately 11.7 percentage points more than Alphabet (Meta: +17.35 pp vs. Alphabet: +5.65 pp from FY2022 to FY2024).",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: Which company expanded its operating margin more from fiscal year 2022 to fiscal year 2024, Alphabet or Meta, and by how many percentage points more?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EuoCCpABCBIYAipARLrFaZ1jhiZK+QGig1n0Ihq3T8fzwKE0rm+n7h0OgkOrgSrGr9P3DJzt8ApN4R4kYTf+6xbR2kDc7c3Bpo5grTIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAd6q0NUGEgx9AKAeNsSMb3p/PVoaDBVQaYT3kVvYZmge1iIwnRclxA4s9L434gs2kDbARNXxjA490orePV6JOZzTQR6tf5M/GEF+Fwq3ibJX0vFXKoYBrnsHv3oqRXWtvnxTjChPmjj0awuzGQHj9dam8VJVwZ2RKHqcI0F7mCsXssxiFLt7b63CxcNRagJdWrqWjqbvcxnv+RdBvy9Wjln1+mxk9kOJoivXbJtMx5KE5tuNRPnFaY53AdcS20NdGc38kEtvw5Nba2oZoExJ998TqM9xcp8b7T0tfwkYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01TjDU9WMdAtmiFU7t1DjSCm",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Alphabet operating income operating margin 2024 2022"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01Ky7SGwjRrk9dt53axRNmyt",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Meta operating income operating margin 2024 2022"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Alphabet operating income operating margin 2024 2022"
+      },
+      "output": "[comparison_data.txt] Alphabet Inc. (10-K FY2022, accession 0001652044-23-000016): revenue $282,836M, operating income $74,842M.\nAlphabet Inc. (10-K FY2024, accession 0001652044-25-000014): revenue $350,018M, operating income $112,390M.\n\n[comparison_data.txt] Meta Platforms, Inc. (10-K FY2022, accession 0001326801-23-000013): revenue $116,609M, operating income $28,944M.\nMeta Platforms, Inc. (10-K FY2024, accession 0001326801-25-000017): revenue $164,501M, operating income $69,380M."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Meta operating income operating margin 2024 2022"
+      },
+      "output": "[comparison_data.txt] Meta Platforms, Inc. (10-K FY2022, accession 0001326801-23-000013): revenue $116,609M, operating income $28,944M.\nMeta Platforms, Inc. (10-K FY2024, accession 0001326801-25-000017): revenue $164,501M, operating income $69,380M.\n\n[comparison_data.txt] Alphabet Inc. (10-K FY2022, accession 0001652044-23-000016): revenue $282,836M, operating income $74,842M.\nAlphabet Inc. (10-K FY2024, accession 0001652044-25-000014): revenue $350,018M, operating income $112,390M."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "id": "toolu_015mnp1LmiNgDPEknSakeY3J",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "\nalpha_2022 = 74842/282836*100\nalpha_2024 = 112390/350018*100\nmeta_2022 = 28944/116609*100\nmeta_2024 = 69380/164501*100\nprint(alpha_2022, alpha_2024, alpha_2024-alpha_2022)\nprint(meta_2022, meta_2024, meta_2024-meta_2022)\nprint((meta_2024-meta_2022)-(alpha_2024-alpha_2022))\n"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "\nalpha_2022 = 74842/282836*100\nalpha_2024 = 112390/350018*100\nmeta_2022 = 28944/116609*100\nmeta_2024 = 69380/164501*100\nprint(alpha_2022, alpha_2024, alpha_2024-alpha_2022)\nprint(meta_2022, meta_2024, meta_2024-meta_2022)\nprint((meta_2024-meta_2022)-(alpha_2024-alpha_2022))\n"
+      },
+      "output": "26.46127084246701 32.1097772114577 5.648506368990688\n24.821411726367604 42.1760354040401 17.354623677672496\n11.706117308681808"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EtECCpABCBIYAipAqa2UN0XJ3i7CZxAU2LoBla1Pv8YatQbIQIKN2MNILoO/K338lTLxBnWYDPzHwNoA4j+mURqmlJAaqDXUM/5o/DIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAeOq0NUGEgxq+5W1h8Iu5Dd4bPAaDP2JCpFRtvHFmd6njyIwsiqf/d6pQu2mjw7ikF7v402IlqSsfQSx+7G3gEwWiIptvsdtqFbs7HxuMxP7ApZnKm5C9yidg3qHJa90btzDka3HmInWiET8fmCmjz0ozYuCU/JclsgZEz35UB3dqS1AMcWTqA92XOUV+RH72o1vUMjREMpyFiIxVCjs1wU39UG4juxrk2hCl+jr1K0070xh6b2s5SLlhQmJrIyxoVmpTxgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Alphabet:**\n- FY2022 operating margin: $74,842M / $282,836M = 26.46% [DOC: Alphabet Inc. (10-K FY2022, accession 0001652044-23-000016): revenue $282,836M, operating income $74,842M.]\n- FY2024 operating margin: $112,390M / $350,018M = 32.11% [DOC: Alphabet Inc. (10-K FY2024, accession 0001652044-25-000014): revenue $350,018M, operating income $112,390M.]\n- Expansion: +5.65 percentage points\n\n**Meta:**\n- FY2022 operating margin: $28,944M / $116,609M = 24.82% [DOC: Meta Platforms, Inc. (10-K FY2022, accession 0001326801-23-000013): revenue $116,609M, operating income $28,944M.]\n- FY2024 operating margin: $69,380M / $164,501M = 42.18% [DOC: Meta Platforms, Inc. (10-K FY2024, accession 0001326801-25-000017): revenue $164,501M, operating income $69,380M.]\n- Expansion: +17.35 percentage points\n\nBoth companies' fiscal years 2022 and 2024 are calendar-year 10-K filings on a consistent GAAP basis, so the comparison is directly comparable (no divestitures, spinoffs, or segment redefinitions noted in the excerpts).\n\nMeta's operating margin expanded significantly more than Alphabet's over this period \u2014 by roughly 11.7 percentage points more (17.35 pp vs. 5.65 pp expansion).\n\nANSWER: Meta expanded its operating margin more, by approximately 11.7 percentage points more than Alphabet (Meta: +17.35 pp vs. Alphabet: +5.65 pp from FY2022 to FY2024).",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Alphabet operating income operating margin 2024 2022"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Meta operating income operating margin 2024 2022"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "\nalpha_2022 = 74842/282836*100\nalpha_2024 = 112390/350018*100\nmeta_2022 = 28944/116609*100\nmeta_2024 = 69380/164501*100\nprint(alpha_2022, alpha_2024, alpha_2024-alpha_2022)\nprint(meta_2022, meta_2024, meta_2024-meta_2022)\nprint((meta_2024-meta_2022)-(alpha_2024-alpha_2022))\n"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": " significantly more than Alphabet's over this period \u2014 by roughly 11.7 percentage points more (17.35 pp vs. 5.65 pp expansion).\n\nANSWER: Meta expanded its operating margin more, by approximately 11.7 percentage points more than Alphabet (Meta: +17.35 pp vs. Alphabet: +5.65 pp from FY2022 to FY2024)."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 3,
+    "terminal_reward": 1.0,
+    "return": 0.97,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:06:22+00:00"
+  }
+}

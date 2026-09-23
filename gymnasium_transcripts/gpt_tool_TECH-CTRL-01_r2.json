@@ -1,0 +1,80 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "TECH-CTRL-01",
+  "repeat": 2,
+  "bucket": "tech_control",
+  "final_answer": "Apple\u2019s gross margin in fiscal year 2024 was **$180,683 million** (i.e., $180.683 billion), as reported in the Consolidated Statements of Operations for the fiscal year ended September 28, 2024. [DOC: apple_10k_fy2024.txt]\n\nANSWER: $180,683 million",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was Apple's gross margin in fiscal year 2024, per Apple's FY2024 10-K?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_afmyq5vkJAbdc2DmjU9rLqAW",
+          "function": {
+            "arguments": "{\"query\":\"Apple Inc. Form 10-K 2024 gross margin fiscal 2024\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_afmyq5vkJAbdc2DmjU9rLqAW",
+      "name": "search_corpus",
+      "input": {
+        "query": "Apple Inc. Form 10-K 2024 gross margin fiscal 2024"
+      },
+      "output": "[apple_10k_fy2024.txt] Apple Inc. Form 10-K, fiscal year ended September 28, 2024 (accession 0000320193-24-000123).\n\n[apple_10k_fy2024.txt] CONSOLIDATED STATEMENTS OF OPERATIONS (in millions, except per-share amounts)\nFiscal year ended September 28, 2024:\nTotal net sales: $391,035\nCost of sales: $210,352\nGross margin: $180,683\n\n[apple_10k_fy2024.txt] Fiscal year ended September 30, 2023 (prior-year comparative):\nTotal net sales: $383,285\nCost of sales: $214,137\nGross margin: $169,148"
+    },
+    {
+      "content": "Apple\u2019s gross margin in fiscal year 2024 was **$180,683 million** (i.e., $180.683 billion), as reported in the Consolidated Statements of Operations for the fiscal year ended September 28, 2024. [DOC: apple_10k_fy2024.txt]\n\nANSWER: $180,683 million",
+      "role": "assistant"
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Apple Inc. Form 10-K 2024 gross margin fiscal 2024"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "Apple\u2019s gross margin in fiscal year 2024 was **$180,683 million** (i.e., $180.683 billion), as reported in the Consolidated Statements of Operations for the fiscal year ended September 28, 2024. [DOC: apple_10k_fy2024.txt]\n\nANSWER: $180,683 million"
+        },
+        "reward": 0.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": false
+        }
+      }
+    ],
+    "tool_steps": 1,
+    "terminal_reward": 0.0,
+    "return": -0.01,
+    "solved": false,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": false
+    },
+    "finished_at": "2026-09-23T18:23:10+00:00"
+  }
+}

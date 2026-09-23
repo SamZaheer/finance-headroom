@@ -1,0 +1,148 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "MULTI-BREAK-01",
+  "repeat": 3,
+  "bucket": "multi_sector_comparability_break",
+  "final_answer": "IBM\u2019s 2022 Form 10-K income statement presents total revenue of $60,530 million for 2022 and $55,179 million for 2020 (with Kyndryl treated as discontinued operations). [DOC: ibm_fy2022_income_statement.txt]  \n\nThe notes explain that, following the November 3, 2021 separation of Kyndryl, \u201cthe historical results of Kyndryl have been presented as discontinued operations in these consolidated financial statements,\u201d meaning the 2020 revenue shown in the 2022 filing is restated and not directly comparable to the originally reported 2020 revenue of $73,620 million in IBM\u2019s 2020 Form 10-K. [DOC: ibm_fy2022_notes.txt; ibm_fy2020_10k.txt]\n\nBecause of the discontinued-operations restatement, the directly comparable revenue figures for 2020 and 2022 are those presented together in the 2022 Form 10-K:  \n- 2020 revenue (restated, continuing operations basis): $55,179 million [DOC: ibm_fy2022_income_statement.txt]  \n- 2022 revenue: $60,530 million [DOC: ibm_fy2022_income_statement.txt]\n\nUsing these comparable figures, revenue growth from 2020 to 2022 is:\n\n\\[\n\\text{Growth} = \\frac{60{,}530 - 55{,}179}{55{,}179} \\approx 9.7\\%\n\\]\n\n[DOC: ibm_fy2022_income_statement.txt]\n\nANSWER: Approximately 9.7% revenue growth from fiscal 2020 to fiscal 2022 (on a continuing-operations, post-Kyndryl-separation basis).",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was IBM's revenue growth from fiscal year 2020 to fiscal year 2022?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_7qIZijIX8Dr8VXtqCYPW2mu7",
+          "function": {
+            "arguments": "{\"query\":\"International Business Machines 2022 Form 10-K total revenue 2020 2021 2022\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_7qIZijIX8Dr8VXtqCYPW2mu7",
+      "name": "search_corpus",
+      "input": {
+        "query": "International Business Machines 2022 Form 10-K total revenue 2020 2021 2022"
+      },
+      "output": "[ibm_fy2022_income_statement.txt] IBM Corporation Form 10-K, fiscal year 2022 (filed 2023-02-28, accession 0001558370-23-002376).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2022: $60,530 million.\nTotal revenue for fiscal year 2020 (as presented for comparative purposes in this filing): $55,179 million.\n\n[ibm_fy2020_10k.txt] IBM Corporation Form 10-K, fiscal year 2020 (filed 2021-02-23, accession 0001558370-21-001489).\nTotal revenue for fiscal year 2020: $73,620 million.\n\n[ibm_fy2022_notes.txt] IBM Corporation Form 10-K, fiscal year 2022. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Divestitures: On November 3, 2021, the company completed the separation of its managed infrastructure services unit into a new public company, Kyndryl Holdings, Inc., with the distribution of 80.1 percent of the outstanding shares of Kyndryl to IBM stockholders on a pro rata basis. The accounting requirements for reporting the separation of Kyndryl as a discontinued operation were met when the separation was completed. Accordingly, the historical results of Kyndryl have been presented as discontinued operations in these consolidated financial statements."
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_8JMY2h2d3JB1ym4gjougJRNO",
+          "function": {
+            "arguments": "{\"code\":\"(60530-55179)/55179*100\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_8JMY2h2d3JB1ym4gjougJRNO",
+      "name": "python_eval",
+      "input": {
+        "code": "(60530-55179)/55179*100"
+      },
+      "output": "(no output -- did you print()?)"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_CZ7hnwyJ6yBSotgz3t8qKmGS",
+          "function": {
+            "arguments": "{\"code\":\"print((60530-55179)/55179*100)\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_CZ7hnwyJ6yBSotgz3t8qKmGS",
+      "name": "python_eval",
+      "input": {
+        "code": "print((60530-55179)/55179*100)"
+      },
+      "output": "9.697529857373276"
+    },
+    {
+      "content": "IBM\u2019s 2022 Form 10-K income statement presents total revenue of $60,530 million for 2022 and $55,179 million for 2020 (with Kyndryl treated as discontinued operations). [DOC: ibm_fy2022_income_statement.txt]  \n\nThe notes explain that, following the November 3, 2021 separation of Kyndryl, \u201cthe historical results of Kyndryl have been presented as discontinued operations in these consolidated financial statements,\u201d meaning the 2020 revenue shown in the 2022 filing is restated and not directly comparable to the originally reported 2020 revenue of $73,620 million in IBM\u2019s 2020 Form 10-K. [DOC: ibm_fy2022_notes.txt; ibm_fy2020_10k.txt]\n\nBecause of the discontinued-operations restatement, the directly comparable revenue figures for 2020 and 2022 are those presented together in the 2022 Form 10-K:  \n- 2020 revenue (restated, continuing operations basis): $55,179 million [DOC: ibm_fy2022_income_statement.txt]  \n- 2022 revenue: $60,530 million [DOC: ibm_fy2022_income_statement.txt]\n\nUsing these comparable figures, revenue growth from 2020 to 2022 is:\n\n\\[\n\\text{Growth} = \\frac{60{,}530 - 55{,}179}{55{,}179} \\approx 9.7\\%\n\\]\n\n[DOC: ibm_fy2022_income_statement.txt]\n\nANSWER: Approximately 9.7% revenue growth from fiscal 2020 to fiscal 2022 (on a continuing-operations, post-Kyndryl-separation basis).",
+      "role": "assistant"
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "International Business Machines 2022 Form 10-K total revenue 2020 2021 2022"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "(60530-55179)/55179*100"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "print((60530-55179)/55179*100)"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "able figures, revenue growth from 2020 to 2022 is:\n\n\\[\n\\text{Growth} = \\frac{60{,}530 - 55{,}179}{55{,}179} \\approx 9.7\\%\n\\]\n\n[DOC: ibm_fy2022_income_statement.txt]\n\nANSWER: Approximately 9.7% revenue growth from fiscal 2020 to fiscal 2022 (on a continuing-operations, post-Kyndryl-separation basis)."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 3,
+    "terminal_reward": 1.0,
+    "return": 0.97,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T18:24:06+00:00"
+  }
+}

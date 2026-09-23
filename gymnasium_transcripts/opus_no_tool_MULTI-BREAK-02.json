@@ -1,0 +1,56 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "MULTI-BREAK-02",
+  "repeat": 1,
+  "bucket": "multi_sector_comparability_break",
+  "final_answer": "## Comparability caveat\n\nThese periods are **not directly comparable on an as-originally-reported basis**. GE completed two major separations between FY2022 and FY2024: the GE HealthCare spin-off on January 3, 2023, and the GE Vernova separation on April 2, 2024; \"GE's continuing operations following the GE Vernova separation, and following the earlier GE HealthCare separation, are referred to as GE Aerospace. Results of both GE HealthCare and GE Vernova are reported as discontinued operations for all periods presented\" [DOC-4].\n\nThis is visible in the shifting FY2022 revenue figure across filings:\n- As originally reported in the FY2022 10-K: **$76,555 million** [DOC-1]\n- As recast in the FY2023 10-K (post-HealthCare): **$58,100 million** [DOC-2]\n- As recast in the FY2024 10-K (post-HealthCare and post-Vernova, i.e., GE Aerospace continuing operations): **$29,139 million** [DOC-3]\n\nComparing FY2024 revenue of $38,702 million [DOC-3] against the original $76,555 million [DOC-1] would wrongly suggest a ~49% revenue *decline*; that difference reflects divestitures/spin-offs, not operating performance.\n\n## Like-for-like calculation\n\nUsing the consistent continuing-operations (GE Aerospace) basis presented in the FY2024 10-K:\n\n- FY2022 revenue: $29,139 million [DOC-3]\n- FY2024 revenue: $38,702 million [DOC-3]\n- Growth: ($38,702 \u2212 $29,139) / $29,139 = $9,563 / $29,139 \u2248 **32.8%** (\u224815.3% CAGR over two years)\n\nANSWER: Approximately +32.8% (from $29,139M in FY2022 to $38,702M in FY2024 on a comparable GE Aerospace continuing-operations basis; not comparable to the originally reported FY2022 revenue of $76,555M due to the GE HealthCare and GE Vernova separations)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | ge_fy2022_10k.txt]\nGeneral Electric Company Form 10-K, fiscal year 2022 (filed 2023-02-10, accession 0000040545-23-000023).\nTotal revenue for fiscal year 2022: $76,555 million.\n\n[DOC-2 | ge_fy2023_10k.txt]\nGeneral Electric Company Form 10-K, fiscal year 2023 (filed 2024, accession 0000040545-24-000027).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2023: $67,954 million.\nTotal revenue for fiscal year 2022 (as presented for comparative purposes in this filing): $58,100 million.\n\n[DOC-3 | ge_fy2024_income_statement.txt]\nGE Aerospace Form 10-K, fiscal year 2024 (filed 2025, accession 0000040545-25-000015).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2024: $38,702 million.\nTotal revenue for fiscal year 2022 (as presented for comparative purposes in this filing): $29,139 million.\n\n[DOC-4 | ge_fy2024_notes.txt]\nGE Aerospace Form 10-K, fiscal year 2024. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Discontinued Operations: On January 3, 2023, we completed the previously announced separation of our HealthCare business, structured as a tax-free spin-off, through GE's pro-rata distribution of approximately 80.1% of the outstanding shares of GE HealthCare. On April 2, 2024, we completed the previously announced separation of GE Vernova, our energy business, on similar terms. GE's continuing operations following the GE Vernova separation, and following the earlier GE HealthCare separation, are referred to as GE Aerospace. Results of both GE HealthCare and GE Vernova are reported as discontinued operations for all periods presented in these consolidated financial statements.\n</excerpts>\n\nQuestion: What was the revenue growth from fiscal year 2022 to fiscal year 2024 for the company now known as GE Aerospace?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAIS9ggKjgEIEhgCKkAQfwnhXo0u6o3qQGgf5TMsXxd9GSMJQWBQxlFfmjOaZ+hza1YGOR/Yk0Ju0jbjE/hFXbxt9Nv7tzWIz7d3D1QiMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAcqf0NUGEgyxoSc1md/q7jklGroaDBJmbKN1noytsIwivyIwNcDBltBvBlpV6aUuyYXke0DTuaGa3gqObkW8o8kYnf1Sn9ZEA6khEtW0V4a2T8mlKpQHcwRiD3sxSHBH8oW9I4sa1car9ucaGMWwVBgeFjxp7R0PalEKihSuuYclQesbORGzwU3M28xVT/523lUPcFnUfnIupmL+IeLlylVurN1owWosiNoVMYw+OtlsJb+Gj+Xmq73hPbwOkzJMZB/weKQoGZO+wLsuTYIb9nKggL5iyBQrTsWCYHARCr8ph9wUZSr6gJvcrUkk1m1sZaQa7xUVKqDFQzkv95ofAHaR1jKk65A3xPMVnD5rT/USNcRzvOxZ7S73hRbUPx/A+WKOhcpWYm8/1+Q+unEH+sMj8GqCUkoGJ571DMLoVAhy0vQY1z0+GYUNAG39zfutHO2iU2cYm6TDGyHW7v+Q1lf4QjGlHCO8r3hw/uo/QGyO1J42xzYs4wBQiEby4fLkB1f0ECc1M5oAxBdj4wSht4p2AgsHLu6hEasA75TgXV1vnubtrVFDRVvNFbRHYT3nv5uYqPYE0Macw6O7EfqqPd1xYXQu/SD7g1+sDwIBX3aHnKFlRl+0iWosVtPR7XC0oI2ipy2aLgu4QTdTK8VJkhkAMpYe+i7zoLnZpoG99I2B2CeW8z1QtxYUPlAZLGDOIzy3IMYsqzbivaTxKrJUFgSD2ZeBoqWUO8rUdDX9/3tlR6a3qlufJk7yF+3hXtUWI9Q8O+s99f7EAK2JBGUIUvkj0JLo275Lh6jM3cBR7h7dHRXC1E3ltMXOA5Iw30wtN1JuezQ4uKQ8Up6ihQVZgtK9nrbJHN5EMUXtg+csB+glZUApyu0rbef4/InVM4mEspep7KOIwbC7iaRWLTOtNQr2z8N7i6jCaoBjOB2ut6JAS0rKOGWJwKqrYgvMG68bCn2CAkktTWetoBQln1OOo7E57gto1Y4nXBilZexEykCdm6+Q488oW6MgOL0s1jitsAzHD+2dN2HapfeF5QQsSRW0Q3HG2IKQSb1p1uwlBdkbPv1xyNPhRZdkdq0TtL+CEbZGx3XJ39nnnhz2ibvgqk637Hul7L1OnsPxusMYXARw/ylGeA/cbmFYIsbgfglPZavYqZSaqEeJSXp4UbDBD6yoI+uYscHhvh1HsFlXqAswUG0qALC9ycY45QoSaf22Tbf1OaIiRzcKVdNq2qPVdsCvbUKlg8GsplQOiXrBUpgNDBibBRDE9Hh7L48JICEMbj/ZxQWknJiwkxpPy5YhAFKRvxwcVJwfNkGEQVF7cl8HW8Xoq6ODcsTTxBgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "## Comparability caveat\n\nThese periods are **not directly comparable on an as-originally-reported basis**. GE completed two major separations between FY2022 and FY2024: the GE HealthCare spin-off on January 3, 2023, and the GE Vernova separation on April 2, 2024; \"GE's continuing operations following the GE Vernova separation, and following the earlier GE HealthCare separation, are referred to as GE Aerospace. Results of both GE HealthCare and GE Vernova are reported as discontinued operations for all periods presented\" [DOC-4].\n\nThis is visible in the shifting FY2022 revenue figure across filings:\n- As originally reported in the FY2022 10-K: **$76,555 million** [DOC-1]\n- As recast in the FY2023 10-K (post-HealthCare): **$58,100 million** [DOC-2]\n- As recast in the FY2024 10-K (post-HealthCare and post-Vernova, i.e., GE Aerospace continuing operations): **$29,139 million** [DOC-3]\n\nComparing FY2024 revenue of $38,702 million [DOC-3] against the original $76,555 million [DOC-1] would wrongly suggest a ~49% revenue *decline*; that difference reflects divestitures/spin-offs, not operating performance.\n\n## Like-for-like calculation\n\nUsing the consistent continuing-operations (GE Aerospace) basis presented in the FY2024 10-K:\n\n- FY2022 revenue: $29,139 million [DOC-3]\n- FY2024 revenue: $38,702 million [DOC-3]\n- Growth: ($38,702 \u2212 $29,139) / $29,139 = $9,563 / $29,139 \u2248 **32.8%** (\u224815.3% CAGR over two years)\n\nANSWER: Approximately +32.8% (from $29,139M in FY2022 to $38,702M in FY2024 on a comparable GE Aerospace continuing-operations basis; not comparable to the originally reported FY2022 revenue of $76,555M due to the GE HealthCare and GE Vernova separations)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "39 \u2248 **32.8%** (\u224815.3% CAGR over two years)\n\nANSWER: Approximately +32.8% (from $29,139M in FY2022 to $38,702M in FY2024 on a comparable GE Aerospace continuing-operations basis; not comparable to the originally reported FY2022 revenue of $76,555M due to the GE HealthCare and GE Vernova separations)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T17:42:38+00:00"
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "model": "opus",
+  "tool_condition": "tool",
+  "item_id": "TECH-CTRL-01",
+  "repeat": 3,
+  "bucket": "tech_control",
+  "final_answer": "**Apple FY2024 gross margin**\n\n| Item (FY ended 9/28/2024) | Amount |\n|---|---|\n| Total net sales | $391,035M [DOC: apple_10k_fy2024.txt] |\n| Cost of sales | $210,352M [DOC: apple_10k_fy2024.txt] |\n| **Gross margin** | **$180,683M** [DOC: apple_10k_fy2024.txt] |\n| Gross margin % | 46.2% (calculated: 180,683 \u00f7 391,035) |\n\nComparison to prior year: FY2023 gross margin was $169,148M on net sales of $383,285M, or 44.1% [DOC: apple_10k_fy2024.txt] \u2014 an increase of $11,535M (+6.8%) and ~2.1 percentage points of margin expansion. Both periods are presented on the same basis in the same 10-K, so they are directly comparable, though note the fiscal years end on different calendar dates (Sept 28, 2024 vs. Sept 30, 2023) as a result of Apple's 52/53-week fiscal calendar.\n\nANSWER: $180,683 million (46.2% of net sales of $391,035 million) for fiscal 2024",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was Apple's gross margin in fiscal year 2024, per Apple's FY2024 10-K?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "I'll search the filings for Apple's FY2024 gross margin.",
+          "type": "text"
+        },
+        {
+          "id": "toolu_01DqkTAtbJPoFccreJcizpnC",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "gross margin fiscal 2024"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01JFVF9g1opNFRDtF5dUaqYd",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "total gross margin percentage products services"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "gross margin fiscal 2024"
+      },
+      "output": "[apple_10k_fy2024.txt] CONSOLIDATED STATEMENTS OF OPERATIONS (in millions, except per-share amounts)\nFiscal year ended September 28, 2024:\nTotal net sales: $391,035\nCost of sales: $210,352\nGross margin: $180,683\n\n[apple_10k_fy2024.txt] Fiscal year ended September 30, 2023 (prior-year comparative):\nTotal net sales: $383,285\nCost of sales: $214,137\nGross margin: $169,148\n\n[apple_10k_fy2024.txt] Apple Inc. Form 10-K, fiscal year ended September 28, 2024 (accession 0000320193-24-000123)."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "total gross margin percentage products services"
+      },
+      "output": "[apple_10k_fy2024.txt] CONSOLIDATED STATEMENTS OF OPERATIONS (in millions, except per-share amounts)\nFiscal year ended September 28, 2024:\nTotal net sales: $391,035\nCost of sales: $210,352\nGross margin: $180,683\n\n[apple_10k_fy2024.txt] Fiscal year ended September 30, 2023 (prior-year comparative):\nTotal net sales: $383,285\nCost of sales: $214,137\nGross margin: $169,148"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAIShwQKjgEIEhgCKkCtUQtlh2yrZGGFLlcs2KSMZMvTQKJF1DO6EJphaGTIohXPkMJlfGxkuqopXwZwUQCE/OzJA+m2JE7gyeIE+f1MMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAeWu0NUGEgxSiQZrVKdBw8nZh28aDHT7pDGUZSiF2zUEmyIwHkKxwklGMp3sdknOo4DJOPmQ+1cjKtyWKIoJeFd8BMC7tcvzm8G2aZKi16k8C7bfKqUCw01qPW5yfnPRJ7NUW0kHlPkF/T1pZ/o8Xb0KyRALsUHptTNCyb7jasTkt++cM5gesvL0nYELndVjC7h9z7dEnZngFw94yROsxGiPbCYhQvZyRvxL/ugpIYC3/5Bk1cH7Emp0Ayp00Fh9vd5HwdlOd4Qw+dYj0F5XHjMrjalTtcQ/PmvdI6tODrmEcv+MiYpGNw5yMA01sKyEY/osoTmCTbUltaYVkCaOUBxauUBkCp2mOG+C0Nx7uRSP11hB0p6Lcx0NPntvoLgtYs5eleoqPVDjklof6wu9qHZrYQixp0AYPmAomVS0QmB1GMMnWKv3v2j8TEZmeY0YmSocizvGvGjSTWasc4xI3jFRZIBOmQ5cFGvdRAeKpws65CLs+qDXn2bOG4MYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01WiZTYQdw8S1yKqz1bzhKGv",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "print(180683/391035*100, 169148/383285*100, 180683-169148, (180683/169148-1)*100)"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "print(180683/391035*100, 169148/383285*100, 180683-169148, (180683/169148-1)*100)"
+      },
+      "output": "46.206349815233935 44.13112957720756 11535 6.819471705252211"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "**Apple FY2024 gross margin**\n\n| Item (FY ended 9/28/2024) | Amount |\n|---|---|\n| Total net sales | $391,035M [DOC: apple_10k_fy2024.txt] |\n| Cost of sales | $210,352M [DOC: apple_10k_fy2024.txt] |\n| **Gross margin** | **$180,683M** [DOC: apple_10k_fy2024.txt] |\n| Gross margin % | 46.2% (calculated: 180,683 \u00f7 391,035) |\n\nComparison to prior year: FY2023 gross margin was $169,148M on net sales of $383,285M, or 44.1% [DOC: apple_10k_fy2024.txt] \u2014 an increase of $11,535M (+6.8%) and ~2.1 percentage points of margin expansion. Both periods are presented on the same basis in the same 10-K, so they are directly comparable, though note the fiscal years end on different calendar dates (Sept 28, 2024 vs. Sept 30, 2023) as a result of Apple's 52/53-week fiscal calendar.\n\nANSWER: $180,683 million (46.2% of net sales of $391,035 million) for fiscal 2024",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "gross margin fiscal 2024"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "total gross margin percentage products services"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "print(180683/391035*100, 169148/383285*100, 180683-169148, (180683/169148-1)*100)"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "ed on the same basis in the same 10-K, so they are directly comparable, though note the fiscal years end on different calendar dates (Sept 28, 2024 vs. Sept 30, 2023) as a result of Apple's 52/53-week fiscal calendar.\n\nANSWER: $180,683 million (46.2% of net sales of $391,035 million) for fiscal 2024"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 3,
+    "terminal_reward": 1.0,
+    "return": 0.97,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:14:58+00:00"
+  }
+}

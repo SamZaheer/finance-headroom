@@ -1,0 +1,27 @@
+{
+  "model": "claude",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-03",
+  "final_answer": "Based on the reconciliation provided, Datadog's non-GAAP operating income for FY2025 is calculated by adding back stock-based compensation expense, amortization of acquired intangibles, employer payroll taxes on employee stock transactions, and M&A transaction costs to the GAAP operating loss.\n\nCalculation:\n- GAAP operating loss: $(44,373) thousand [DOC-1]\n- Plus: Stock-based compensation expense: $750,671 thousand [DOC-1]\n- Plus: Amortization of acquired intangibles: $6,373 thousand [DOC-1]\n- Plus: Employer payroll taxes on employee stock transactions: $53,799 thousand [DOC-1]\n- Plus: M&A transaction costs: $1,574 thousand [DOC-1]\n\nTotal = -44,373 + 750,671 + 6,373 + 53,799 + 1,574 = $768,044 thousand\n\nANSWER: Approximately $768.0 million (non-GAAP operating income for FY2025)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | datadog_8k_fy2025.txt]\nDatadog, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-10, accession 0001628280-26-006645).\nRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025:\nGAAP operating loss: $(44,373)\nStock-based compensation expense: $750,671\nAmortization of acquired intangibles: $6,373\nEmployer payroll taxes on employee stock transactions: $53,799\nM&A transaction costs: $1,574\n</excerpts>\n\nQuestion: What was Datadog's non-GAAP operating income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "Er8DCpABCBIYAipA5oQ+Ss982eoYDhfuQkD/MJINXb96OddQ0hCnhnUprOMmRBDBvbdpoAvFpPs7XkUNtODzF+e2faSybklKqLe0RTIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAYeaz9UGEgyTWHyNt3LilzI+tnMaDOVYAbIw7YiHxzZteiIw3ziZIAwthcF2R3r63IQ9g71LOOkUxTWbw61bVBaXlMxDcnClfLT7Sa7DQF8Kt0aPKtsBrbt+dfylBNu1mRZR+YIk0uiTmG1bes31u7prZISz1zknQ4xQKwS4VVLnbxhjuQXhihoBdJaBJvULxjxvefA7Xvc+tQRRxfS6rIs9IB5Oy9HwmzEvkbFE9zYPP7NH5hXkHmQC9qxPhqjsx11Py+WAf5eI/Wr39FcDkle8EBSkn4HOovfvyM1qUToUKwUyeEeDM8pRbatFLOL4uUcm/fJ82GoKbuhtCKgBEWlAXgouAsWxi9I7vWHGzgTDkYEUc3iGRHBKNl05EowlJVzgvuICeVbZIpK0LI0DK7U/GAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "Based on the reconciliation provided, Datadog's non-GAAP operating income for FY2025 is calculated by adding back stock-based compensation expense, amortization of acquired intangibles, employer payroll taxes on employee stock transactions, and M&A transaction costs to the GAAP operating loss.\n\nCalculation:\n- GAAP operating loss: $(44,373) thousand [DOC-1]\n- Plus: Stock-based compensation expense: $750,671 thousand [DOC-1]\n- Plus: Amortization of acquired intangibles: $6,373 thousand [DOC-1]\n- Plus: Employer payroll taxes on employee stock transactions: $53,799 thousand [DOC-1]\n- Plus: M&A transaction costs: $1,574 thousand [DOC-1]\n\nTotal = -44,373 + 750,671 + 6,373 + 53,799 + 1,574 = $768,044 thousand\n\nANSWER: Approximately $768.0 million (non-GAAP operating income for FY2025)",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "AIR-CTRL-04",
+  "final_answer": "All five are large U.S. airlines reporting on a comparable U.S. GAAP, calendar-year 2024 basis; no divestitures, spinoffs, or fiscal-year mismatches are indicated in the excerpts, so the percentages are directly comparable.\n\n**Source data (FY 2024)**  \n- **Delta Air Lines** \u2013 Total operating revenue $61,643M; aircraft fuel expense $10,566M; salaries, wages and benefits $16,161M. [DOC: airlines_costs_fy2024.txt]  \n- **United Airlines Holdings** \u2013 Total operating revenue $57,063M; aircraft fuel expense $11,756M; salaries, wages and benefits $16,678M. [DOC: airlines_costs_fy2024.txt]  \n- **Southwest Airlines** \u2013 Total operating revenue $27,483M; aircraft fuel expense $5,812M; salaries, wages and benefits $12,240M. [DOC: airlines_costs_fy2024.txt]  \n- **American Airlines Group** \u2013 Total operating revenue $54,211M; aircraft fuel expense $11,418M; salaries, wages and benefits $16,021M. [DOC: airlines_costs_fy2024.txt]  \n- **Alaska Air Group** \u2013 Total operating revenue $11,735M; aircraft fuel expense $2,506M; salaries, wages and benefits $3,588M. [DOC: airlines_costs_fy2024.txt]\n\nUsing these values, the calculated 2024 percentages of revenue are:  \n- **Delta** \u2013 Fuel: 10,566 / 61,643 \u2248 **17.14%**; Labor: 16,161 / 61,643 \u2248 **26.22%**. [DOC: airlines_costs_fy2024.txt]  \n- **United** \u2013 Fuel: 11,756 / 57,063 \u2248 **20.60%**; Labor: 16,678 / 57,063 \u2248 **29.23%**. [DOC: airlines_costs_fy2024.txt]  \n- **American** \u2013 Fuel: 11,418 / 54,211 \u2248 **21.06%**; Labor: 16,021 / 54,211 \u2248 **29.55%**. [DOC: airlines_costs_fy2024.txt]  \n- **Southwest** \u2013 Fuel: 5,812 / 27,483 \u2248 **21.15%**; Labor: 12,240 / 27,483 \u2248 **44.54%**. [DOC: airlines_costs_fy2024.txt]  \n- **Alaska** \u2013 Fuel: 2,506 / 11,735 \u2248 **21.35%**; Labor: 3,588 / 11,735 \u2248 **30.58%**. [DOC: airlines_costs_fy2024.txt]\n\n### Ranking by aircraft fuel expense as % of revenue (FY 2024, lowest first)\n1. **Delta** \u2013 17.14%  \n2. **United** \u2013 20.60%  \n3. **American** \u2013 21.06%  \n4. **Southwest** \u2013 21.15%  \n5. **Alaska** \u2013 21.35%  \n\n### Ranking by salaries, wages & benefits as % of revenue (FY 2024, lowest first)\n1. **Delta** \u2013 26.22%  \n2. **United** \u2013 29.23%  \n3. **American** \u2013 29.55%  \n4. **Alaska** \u2013 30.58%  \n5. **Southwest** \u2013 44.54%  \n\n**Is the top-ranked airline the same in both rankings?**  \nYes. **Delta** has the lowest aircraft fuel expense and the lowest salaries, wages and benefits as a percentage of revenue in fiscal year 2024. [DOC: airlines_costs_fy2024.txt]\n\nANSWER: Delta ranks lowest (best) in both aircraft fuel expense % of revenue and salaries, wages & benefits % of revenue for FY 2024.",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: For Delta, United, Southwest, American, and Alaska: rank the five airlines by aircraft fuel expense as a percentage of revenue in fiscal year 2024 (lowest first), and separately by salaries, wages and benefits as a percentage of revenue in fiscal year 2024 (lowest first). Is the top-ranked airline the same in both rankings?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_7iC1EK3YvMiXVQfao6zcmKtE",
+          "function": {
+            "arguments": "{\"query\":\"Delta Air Lines 2024 Form 10-K total operating revenue fuel expense salaries wages benefits\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        },
+        {
+          "id": "call_M1pu0Uy3ZXsPsVpxBLC4I5EU",
+          "function": {
+            "arguments": "{\"query\":\"United Airlines Holdings Inc 2024 Form 10-K total operating revenue aircraft fuel salaries wages benefits\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 1
+        },
+        {
+          "id": "call_IIf5ckT2to7ZHYUKSZkiALvh",
+          "function": {
+            "arguments": "{\"query\":\"Southwest Airlines Co 2024 Form 10-K total operating revenues fuel and oil salaries wages benefits\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 2
+        },
+        {
+          "id": "call_fC5l5k50bzAnhzOb2NV5TXUT",
+          "function": {
+            "arguments": "{\"query\":\"American Airlines Group Inc 2024 Form 10-K total operating revenues aircraft fuel salaries wages benefits\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 3
+        },
+        {
+          "id": "call_h3j4o0aLKsF4sKyxXnLzRFWT",
+          "function": {
+            "arguments": "{\"query\":\"Alaska Air Group Inc 2024 Form 10-K total operating revenues aircraft fuel salaries wages benefits\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_7iC1EK3YvMiXVQfao6zcmKtE",
+      "name": "search_corpus",
+      "input": {
+        "query": "Delta Air Lines 2024 Form 10-K total operating revenue fuel expense salaries wages benefits"
+      },
+      "output": "[airlines_costs_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2024 $61,643M. Aircraft fuel expense: FY2024 $10,566M. Salaries, wages and benefits: FY2024 $16,161M. Operating income: FY2024 $5,995M.\n\n[airlines_costs_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Aircraft fuel expense: FY2024 $11,756M. Salaries, wages and benefits: FY2024 $16,678M. Operating income: FY2024 $5,096M.\n\n[airlines_costs_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Aircraft fuel expense: FY2024 $5,812M. Salaries, wages and benefits: FY2024 $12,240M. Operating income: FY2024 $321M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_M1pu0Uy3ZXsPsVpxBLC4I5EU",
+      "name": "search_corpus",
+      "input": {
+        "query": "United Airlines Holdings Inc 2024 Form 10-K total operating revenue aircraft fuel salaries wages benefits"
+      },
+      "output": "[airlines_costs_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Aircraft fuel expense: FY2024 $11,756M. Salaries, wages and benefits: FY2024 $16,678M. Operating income: FY2024 $5,096M.\n\n[airlines_costs_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Aircraft fuel expense: FY2024 $5,812M. Salaries, wages and benefits: FY2024 $12,240M. Operating income: FY2024 $321M.\n\n[airlines_costs_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Aircraft fuel expense: FY2024 $11,418M. Salaries, wages and benefits: FY2024 $16,021M. Operating income: FY2024 $2,614M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_IIf5ckT2to7ZHYUKSZkiALvh",
+      "name": "search_corpus",
+      "input": {
+        "query": "Southwest Airlines Co 2024 Form 10-K total operating revenues fuel and oil salaries wages benefits"
+      },
+      "output": "[airlines_costs_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Aircraft fuel expense: FY2024 $5,812M. Salaries, wages and benefits: FY2024 $12,240M. Operating income: FY2024 $321M.\n\n[airlines_costs_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Aircraft fuel expense: FY2024 $11,756M. Salaries, wages and benefits: FY2024 $16,678M. Operating income: FY2024 $5,096M.\n\n[airlines_costs_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Aircraft fuel expense: FY2024 $11,418M. Salaries, wages and benefits: FY2024 $16,021M. Operating income: FY2024 $2,614M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_fC5l5k50bzAnhzOb2NV5TXUT",
+      "name": "search_corpus",
+      "input": {
+        "query": "American Airlines Group Inc 2024 Form 10-K total operating revenues aircraft fuel salaries wages benefits"
+      },
+      "output": "[airlines_costs_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Aircraft fuel expense: FY2024 $11,418M. Salaries, wages and benefits: FY2024 $16,021M. Operating income: FY2024 $2,614M.\n\n[airlines_costs_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Aircraft fuel expense: FY2024 $11,756M. Salaries, wages and benefits: FY2024 $16,678M. Operating income: FY2024 $5,096M.\n\n[airlines_costs_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Aircraft fuel expense: FY2024 $5,812M. Salaries, wages and benefits: FY2024 $12,240M. Operating income: FY2024 $321M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_h3j4o0aLKsF4sKyxXnLzRFWT",
+      "name": "search_corpus",
+      "input": {
+        "query": "Alaska Air Group Inc 2024 Form 10-K total operating revenues aircraft fuel salaries wages benefits"
+      },
+      "output": "[airlines_costs_fy2024.txt] Alaska Air Group (CIK 766421, 10-K accession 0000766421-25-000009): Total operating revenue: FY2024 $11,735M. Aircraft fuel expense: FY2024 $2,506M. Salaries, wages and benefits: FY2024 $3,588M. Operating income: FY2024 $570M.\n\n[airlines_costs_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Aircraft fuel expense: FY2024 $11,418M. Salaries, wages and benefits: FY2024 $16,021M. Operating income: FY2024 $2,614M.\n\n[airlines_costs_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2024 $61,643M. Aircraft fuel expense: FY2024 $10,566M. Salaries, wages and benefits: FY2024 $16,161M. Operating income: FY2024 $5,995M."
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_4FUaro2xuDx9kB3TC2RaZKLp",
+          "function": {
+            "arguments": "{\"code\":\"revenues = {'Delta':61643, 'United':57063, 'Southwest':27483, 'American':54211, 'Alaska':11735}\\nfuel = {'Delta':10566, 'United':11756, 'Southwest':5812, 'American':11418, 'Alaska':2506}\\nlabor = {'Delta':16161, 'United':16678, 'Southwest':12240, 'American':16021, 'Alaska':3588}\\n\\nfor name in revenues:\\n    f_pct = fuel[name]/revenues[name]*100\\n    l_pct = labor[name]/revenues[name]*100\\n    print(name, 'fuel %', round(f_pct,2), 'labor %', round(l_pct,2))\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_4FUaro2xuDx9kB3TC2RaZKLp",
+      "name": "python_eval",
+      "input": {
+        "code": "revenues = {'Delta':61643, 'United':57063, 'Southwest':27483, 'American':54211, 'Alaska':11735}\nfuel = {'Delta':10566, 'United':11756, 'Southwest':5812, 'American':11418, 'Alaska':2506}\nlabor = {'Delta':16161, 'United':16678, 'Southwest':12240, 'American':16021, 'Alaska':3588}\n\nfor name in revenues:\n    f_pct = fuel[name]/revenues[name]*100\n    l_pct = labor[name]/revenues[name]*100\n    print(name, 'fuel %', round(f_pct,2), 'labor %', round(l_pct,2))"
+      },
+      "output": "Delta fuel % 17.14 labor % 26.22\nUnited fuel % 20.6 labor % 29.23\nSouthwest fuel % 21.15 labor % 44.54\nAmerican fuel % 21.06 labor % 29.55\nAlaska fuel % 21.35 labor % 30.58"
+    },
+    {
+      "content": "All five are large U.S. airlines reporting on a comparable U.S. GAAP, calendar-year 2024 basis; no divestitures, spinoffs, or fiscal-year mismatches are indicated in the excerpts, so the percentages are directly comparable.\n\n**Source data (FY 2024)**  \n- **Delta Air Lines** \u2013 Total operating revenue $61,643M; aircraft fuel expense $10,566M; salaries, wages and benefits $16,161M. [DOC: airlines_costs_fy2024.txt]  \n- **United Airlines Holdings** \u2013 Total operating revenue $57,063M; aircraft fuel expense $11,756M; salaries, wages and benefits $16,678M. [DOC: airlines_costs_fy2024.txt]  \n- **Southwest Airlines** \u2013 Total operating revenue $27,483M; aircraft fuel expense $5,812M; salaries, wages and benefits $12,240M. [DOC: airlines_costs_fy2024.txt]  \n- **American Airlines Group** \u2013 Total operating revenue $54,211M; aircraft fuel expense $11,418M; salaries, wages and benefits $16,021M. [DOC: airlines_costs_fy2024.txt]  \n- **Alaska Air Group** \u2013 Total operating revenue $11,735M; aircraft fuel expense $2,506M; salaries, wages and benefits $3,588M. [DOC: airlines_costs_fy2024.txt]\n\nUsing these values, the calculated 2024 percentages of revenue are:  \n- **Delta** \u2013 Fuel: 10,566 / 61,643 \u2248 **17.14%**; Labor: 16,161 / 61,643 \u2248 **26.22%**. [DOC: airlines_costs_fy2024.txt]  \n- **United** \u2013 Fuel: 11,756 / 57,063 \u2248 **20.60%**; Labor: 16,678 / 57,063 \u2248 **29.23%**. [DOC: airlines_costs_fy2024.txt]  \n- **American** \u2013 Fuel: 11,418 / 54,211 \u2248 **21.06%**; Labor: 16,021 / 54,211 \u2248 **29.55%**. [DOC: airlines_costs_fy2024.txt]  \n- **Southwest** \u2013 Fuel: 5,812 / 27,483 \u2248 **21.15%**; Labor: 12,240 / 27,483 \u2248 **44.54%**. [DOC: airlines_costs_fy2024.txt]  \n- **Alaska** \u2013 Fuel: 2,506 / 11,735 \u2248 **21.35%**; Labor: 3,588 / 11,735 \u2248 **30.58%**. [DOC: airlines_costs_fy2024.txt]\n\n### Ranking by aircraft fuel expense as % of revenue (FY 2024, lowest first)\n1. **Delta** \u2013 17.14%  \n2. **United** \u2013 20.60%  \n3. **American** \u2013 21.06%  \n4. **Southwest** \u2013 21.15%  \n5. **Alaska** \u2013 21.35%  \n\n### Ranking by salaries, wages & benefits as % of revenue (FY 2024, lowest first)\n1. **Delta** \u2013 26.22%  \n2. **United** \u2013 29.23%  \n3. **American** \u2013 29.55%  \n4. **Alaska** \u2013 30.58%  \n5. **Southwest** \u2013 44.54%  \n\n**Is the top-ranked airline the same in both rankings?**  \nYes. **Delta** has the lowest aircraft fuel expense and the lowest salaries, wages and benefits as a percentage of revenue in fiscal year 2024. [DOC: airlines_costs_fy2024.txt]\n\nANSWER: Delta ranks lowest (best) in both aircraft fuel expense % of revenue and salaries, wages & benefits % of revenue for FY 2024.",
+      "role": "assistant"
+    }
+  ]
+}

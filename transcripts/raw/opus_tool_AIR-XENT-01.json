@@ -1,0 +1,202 @@
+{
+  "model": "opus",
+  "tool_condition": "tool",
+  "item_id": "AIR-XENT-01",
+  "final_answer": "## Comparability notes first\n\n- All five filers are on the same calendar fiscal year (Jan 1 \u2013 Dec 31), so the periods line up cleanly [DOC: airlines_fy2024.txt \u2014 \"Five major U.S. airlines, fiscal year 2023 and fiscal year 2024 (all calendar-year, Jan 1 - Dec 31, verified from each company's FY2024 10-K)\"].\n- **One real comparability problem:** Alaska Air Group's FY2024 is not organically comparable to its FY2023 \u2014 Alaska closed its acquisition of Hawaiian Holdings in September 2024, so roughly a quarter of Hawaiian revenue is consolidated into FY2024 but none into FY2023. The excerpts provided do **not** break out that acquisition contribution, so Alaska's 12.6% revenue growth cannot be read as organic outperformance.\n- **Data limitation:** the source excerpts contain only revenue and operating income \u2014 no net income, EPS, ROIC, CASM/RASM, or balance-sheet data. So \"strongest performer\" here can only be judged on scale, margin, and operating-income growth.\n\n## The numbers\n\n| Airline | FY24 Revenue | FY24 Op. income | Op. margin FY23 \u2192 FY24 | Op. income growth |\n|---|---|---|---|---|\n| Delta | $61,643M | $5,995M | 9.5% \u2192 **9.7%** | +8.6% |\n| United | $57,063M | $5,096M | 7.8% \u2192 8.9% (+1.1pp) | +21.0% |\n| American | $54,211M | $2,614M | 5.7% \u2192 4.8% (\u22120.9pp) | **\u221213.8%** |\n| Southwest | $27,483M | $321M | 0.9% \u2192 **1.2%** | +43.3% |\n| Alaska | $11,735M | $570M | 3.8% \u2192 4.9% (+1.1pp) | +44.7% |\n\nSources: [DOC: airlines_fy2024.txt \u2014 Delta Air Lines (CIK 27904, 10-K 0000027904-25-000004): Revenue FY2023 $58,048M, FY2024 $61,643M; Operating income FY2023 $5,521M, FY2024 $5,995M]; [DOC: airlines_fy2024.txt \u2014 United Airlines Holdings (CIK 100517, 10-K 0000100517-25-000046): Revenue FY2023 $53,717M, FY2024 $57,063M; Operating income FY2023 $4,211M, FY2024 $5,096M]; [DOC: airlines_fy2024.txt \u2014 American Airlines Group (CIK 6201, 10-K 0000006201-25-000010): Revenue FY2023 $52,788M, FY2024 $54,211M; Operating income FY2023 $3,034M, FY2024 $2,614M]; [DOC: airlines_fy2024.txt \u2014 Southwest Airlines (CIK 92380, 10-K 0000092380-25-000024): Revenue FY2023 $26,091M, FY2024 $27,483M; Operating income FY2023 $224M, FY2024 $321M]; [DOC: airlines_fy2024.txt \u2014 Alaska Air Group (CIK 766421, 10-K 0000766421-25-000009): Revenue FY2023 $10,426M, FY2024 $11,735M; Operating income FY2023 $394M, FY2024 $570M].\n\n## Interpretation\n\n- **Delta** wins on the two measures that matter most for absolute profitability: the largest operating income ($5,995M) and the highest operating margin (9.7%), while still growing revenue 6.2%. It is the only carrier combining top-tier scale with near-double-digit margin.\n- **United** is the closest challenger and the best on *improvement*: +1.1pp margin expansion and +21.0% operating income growth on the same 6.2% revenue growth, narrowing the gap with Delta from 1.7pp to 0.8pp. If the question were \"most improved,\" United would win.\n- **Southwest and Alaska** post the largest percentage gains (+43% and +45%), but off very low bases \u2014 Southwest's 1.2% operating margin is barely breakeven at the operating line, and Alaska's gain is contaminated by the Hawaiian acquisition noted above.\n- **American** is the clear laggard: the only carrier with declining operating income (\u221213.8%) and contracting margin, plus the weakest revenue growth (2.7%).\n\nCaveat: because net income, interest expense, and leverage are not in the provided excerpts, this ranking is an operating-performance ranking only. American and United carry materially heavier debt loads than Delta, which would likely widen Delta's lead on a bottom-line basis, but that cannot be verified from these filings.\n\nANSWER: Delta \u2014 it posted both the highest FY2024 operating income ($5,995M) and the highest operating margin (9.7%) of the five, on 6.2% revenue growth; United was a close second and the fastest improver (+21% operating income, +1.1pp margin), while American was the clear laggard (operating income \u221213.8%). Note Alaska's 12.6% revenue growth is inflated by the mid-2024 Hawaiian acquisition and is not organically comparable.",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: Based on their fiscal year 2024 results, which of these five airlines was the strongest performer: Delta, United, Southwest, American, or Alaska?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "I'll research each airline's FY2024 results.",
+          "type": "text"
+        },
+        {
+          "id": "toolu_01JsVR82L4GXdsvruWrMDgE9",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Delta Air Lines 2024 net income operating margin results"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_0187nAh6pjNEhWz4e3gMPjMX",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "United Airlines 2024 net income operating revenue results"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Delta Air Lines 2024 net income operating margin results"
+      },
+      "output": "[airlines_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Revenue FY2023 $58,048M, FY2024 $61,643M. Operating income FY2023 $5,521M, FY2024 $5,995M.\n\n[airlines_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Revenue FY2023 $53,717M, FY2024 $57,063M. Operating income FY2023 $4,211M, FY2024 $5,096M.\n\n[airlines_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Revenue FY2023 $26,091M, FY2024 $27,483M. Operating income FY2023 $224M, FY2024 $321M."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "United Airlines 2024 net income operating revenue results"
+      },
+      "output": "[airlines_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Revenue FY2023 $53,717M, FY2024 $57,063M. Operating income FY2023 $4,211M, FY2024 $5,096M.\n\n[airlines_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Revenue FY2023 $26,091M, FY2024 $27,483M. Operating income FY2023 $224M, FY2024 $321M.\n\n[airlines_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Revenue FY2023 $52,788M, FY2024 $54,211M. Operating income FY2023 $3,034M, FY2024 $2,614M."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISggIKjgEIEhgCKkAJcIQZjLy6c1vLD4AInTX/IPk56xuue1LzkglBauIZpQJUumu3llLO6tnJj8yfBISLHEbLWpFL/uJ4BmyczSayMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAfyjz9UGEgxQGFrYKDjz/0jzJ8saDDC2uCa6/d3jXkl0VCIwlhxrRyUtyDcJ1LRArWyC3BMk17lmUrzt4Qk9gRnTebJbwmIo618PVVxRBwA3Xcv9KiF3G6lZ0A99qkXK07P2/8FYNolotuA1LmLZyusG7DOXvkoYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01D1q7bNNVfwhKVKm5caKkdn",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Alaska Air Group FY2024 revenue operating income"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01DndRjQxvd7DX9sfUcwgKNY",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Alaska Hawaiian acquisition fiscal year note comparability"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Alaska Air Group FY2024 revenue operating income"
+      },
+      "output": "[airlines_fy2024.txt] Alaska Air Group (CIK 766421, 10-K accession 0000766421-25-000009): Revenue FY2023 $10,426M, FY2024 $11,735M. Operating income FY2023 $394M, FY2024 $570M.\n\n[airlines_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Revenue FY2023 $52,788M, FY2024 $54,211M. Operating income FY2023 $3,034M, FY2024 $2,614M.\n\n[airlines_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Revenue FY2023 $58,048M, FY2024 $61,643M. Operating income FY2023 $5,521M, FY2024 $5,995M."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Alaska Hawaiian acquisition fiscal year note comparability"
+      },
+      "output": "[airlines_fy2024.txt] Five major U.S. airlines, fiscal year 2023 and fiscal year 2024 (all calendar-year, Jan 1 - Dec 31, verified from each company's FY2024 10-K):\n\n[airlines_fy2024.txt] Alaska Air Group (CIK 766421, 10-K accession 0000766421-25-000009): Revenue FY2023 $10,426M, FY2024 $11,735M. Operating income FY2023 $394M, FY2024 $570M."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "id": "toolu_017XP3mJutBpaLckdgj743jZ",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "\nd={'Delta':(58048,61643,5521,5995),'United':(53717,57063,4211,5096),'Southwest':(26091,27483,224,321),'American':(52788,54211,3034,2614),'Alaska':(10426,11735,394,570)}\nfor k,(r0,r1,o0,o1) in d.items():\n    print(k, f\"rev gr {100*(r1/r0-1):.1f}%\", f\"op margin24 {100*o1/r1:.1f}%\", f\"op margin23 {100*o0/r0:.1f}%\", f\"op inc gr {100*(o1/o0-1):.1f}%\", f\"margin chg {100*(o1/r1-o0/r0):.1f}pp\")\n"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "\nd={'Delta':(58048,61643,5521,5995),'United':(53717,57063,4211,5096),'Southwest':(26091,27483,224,321),'American':(52788,54211,3034,2614),'Alaska':(10426,11735,394,570)}\nfor k,(r0,r1,o0,o1) in d.items():\n    print(k, f\"rev gr {100*(r1/r0-1):.1f}%\", f\"op margin24 {100*o1/r1:.1f}%\", f\"op margin23 {100*o0/r0:.1f}%\", f\"op inc gr {100*(o1/o0-1):.1f}%\", f\"margin chg {100*(o1/r1-o0/r0):.1f}pp\")\n"
+      },
+      "output": "Delta rev gr 6.2% op margin24 9.7% op margin23 9.5% op inc gr 8.6% margin chg 0.2pp\nUnited rev gr 6.2% op margin24 8.9% op margin23 7.8% op inc gr 21.0% margin chg 1.1pp\nSouthwest rev gr 5.3% op margin24 1.2% op margin23 0.9% op inc gr 43.3% margin chg 0.3pp\nAmerican rev gr 2.7% op margin24 4.8% op margin23 5.7% op inc gr -13.8% margin chg -0.9pp\nAlaska rev gr 12.6% op margin24 4.9% op margin23 3.8% op inc gr 44.7% margin chg 1.1pp"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISvwUKjgEIEhgCKkDd150mT5HP8WhYRjiP1XXm3jlsEtb+qxxOz2wtEQgNKuMGtIe2aWOcBwXAV2oqDwMuaLXmi2eNvkK+9A5MfmuJMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAYSkz9UGEgy7GDtGjTcnRYatCZMaDH/teYZYapggrdB32yIwCj6Szh/W9DG5ksn2NTatxPdpTobqSrbv8BSMNv0hnjPAu7IJlYFu/slWgSuymbeuKt0DQ2i2ytmmrV2JxnpBkT2+3o7Q0nExChA/uSXqkG3YvFT5lZWA+jKPzs34HRYqqbVEqfgSEoNmn1tV8aIUl52/GY0eV5CKB5QKmpTnc093mqFhXRWafe81y+Mqeo41KWNCVkGlcWlmAQ79R27Ul69U2Y++4fAvBoLxNrmj7BRJDRpm/zbTDMJUyvuiI3GNN0CzI8A+Mh343bTQzG24gL+VNuGe3m9lwwTcKs6/+vl2uL/mGozR+6bkYVn/eaoMKkQGrIBCs0GkJp4eXMP0O8sMovRI78CDfP4KA48CANXy3F9Gej9Khr3SW7qAM5ynge47a8fi7kC3qLQJ7vq8LEnByTm+BXgU0+m/3y/z6NIuKNIaTdUjW8KfXMeOIIOLsqlNvd62MwU7W2KzC+BSDL2lNcxbva5lAIfK3R/7Ae+CFdOH5sFY0hEfYi+55wu1KKOUccwhBsWolbXSReSVR++KRRcpkzyHzJJOggALxwZn9vEcjIFWeXxhLzpH9wVnWrKa3or5ivYanWcTtMoOGUAJUom2RCPLKjVxeZsstiujR5KVvJUsUrfw2PegT8fsKrBMj+HRrNXri9dPwQFJ3amYXum/Yyq9dbPnnqnrW4rTDIKqJcEkB7PK+xoLPTkYGAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01D7DpMbhRkCV3LDEo9xXsew",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "net income per share 2024 airlines"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01JXbJzgtofBwj9u2V5LKK3M",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Hawaiian Airlines acquired September 2024 Alaska consolidated results include"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "net income per share 2024 airlines"
+      },
+      "output": "[airlines_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Revenue FY2023 $53,717M, FY2024 $57,063M. Operating income FY2023 $4,211M, FY2024 $5,096M.\n\n[airlines_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Revenue FY2023 $26,091M, FY2024 $27,483M. Operating income FY2023 $224M, FY2024 $321M.\n\n[airlines_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Revenue FY2023 $52,788M, FY2024 $54,211M. Operating income FY2023 $3,034M, FY2024 $2,614M."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Hawaiian Airlines acquired September 2024 Alaska consolidated results include"
+      },
+      "output": "[airlines_fy2024.txt] Five major U.S. airlines, fiscal year 2023 and fiscal year 2024 (all calendar-year, Jan 1 - Dec 31, verified from each company's FY2024 10-K):\n\n[airlines_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Revenue FY2023 $53,717M, FY2024 $57,063M. Operating income FY2023 $4,211M, FY2024 $5,096M.\n\n[airlines_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Revenue FY2023 $26,091M, FY2024 $27,483M. Operating income FY2023 $224M, FY2024 $321M."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAIS3AcKjgEIEhgCKkBmIsq330HNZ5iHvEgkhf4RolbfCRPMw/Qu/YL4TzwfXVTi2jp5sqN3zUPbEfH2IU/tY1WqojRxtCGkm1YXzyF3Mg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAYqkz9UGEgzJ6kJA//ID30Z4TYgaDBCTwbZ+Y7zzz8YulCIwPyTSaxcbGVO/QTyQCeuNqm6eQRAJGNVC83SFL14NJ80jq7+ymIeb70y/OeJDcSJJKvoFBe3hqjLc6Hj4RBQTcVRe/cbi91JYLLH8YqpRl0b/b40fgEhbrLPnRe5O+glXT/lVtaKBfYhfMvgFkuxwaPh1MnIpNjA+mg5/ayFrQmSaGJMvtMDQ/YbOQcsm3agUAdEhl3rBC7p07uwlsIj2gvckMBffgG1M03SvqCdj/p6bRz+YSzbS8XPPcHmEn8AZIPjqE+K20whKhw3jlKY4r8E5lGAezr/SMa2Y/kx3gjhISwLh0fLzy8a8ilu/nS1CG2uzemspZMo44tNCqDAFO7vOHYpDoV7jZJJakeWeBO09YnPdtmqwJHNEBVYJN2F+3taguIxdhcYChivL47bOj9VzbQJlg5QhQq65M+qf++zOcpbYeN6KLnV77uu/UOPwSNJ0tQWKiXjdB5a3SPHyeL485SbEKUwzpxmTi7f4oDNhn6QjF1uoHNpGF+Ma8gDFgisJoOmn7Yib/NNFc+YIzHwe2+tN4edOH4xoLqQ38qfRa409AP15065riMHqn4pjFwMql7EguR870QssCHC4uwjkFNHjeFP4hflI/vW1OFXNPoFPwicx39sr76dWKxMzWPq9x5t0GGmHU94SBrGk8O1IAuv2MhFXcQYkJM1Uxn8akTY4zE5PZ3KWZYmTNamPo9i6A2UIX+VR59ja6gLIOGJIcsrD+WeUAP1REyZaoDKaMWU1UbMEltB6Fxa3Z6fYrp66e6kC+4wN/t3koqI47wJVrCkqxCSfxH+WNCmmnBALwOijfZhUu8ur1fxEbvYXyUixEUshmnXOAX/Ny2/9ZPiYoGBi0wvz38UJy+6cN4ET8XPlOkdWWVODRoZrD+58UtNUgCXaxbof9fPiPh38mIBWl5LXzMC9LqDWX/I7A9AcC6oyHHHALoeNwtGA7x/8rL9yyudfzYIFndq9WKSmP8yZhk1xkzFbOXoupDOBzIihxImqs/XG2f27BKM8naEviQm19qYGaCiy0HuipUQBpHaDkPNDJuMqlfLkH5x7GO2gvGi9ZIglhwAwS5i7GAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "## Comparability notes first\n\n- All five filers are on the same calendar fiscal year (Jan 1 \u2013 Dec 31), so the periods line up cleanly [DOC: airlines_fy2024.txt \u2014 \"Five major U.S. airlines, fiscal year 2023 and fiscal year 2024 (all calendar-year, Jan 1 - Dec 31, verified from each company's FY2024 10-K)\"].\n- **One real comparability problem:** Alaska Air Group's FY2024 is not organically comparable to its FY2023 \u2014 Alaska closed its acquisition of Hawaiian Holdings in September 2024, so roughly a quarter of Hawaiian revenue is consolidated into FY2024 but none into FY2023. The excerpts provided do **not** break out that acquisition contribution, so Alaska's 12.6% revenue growth cannot be read as organic outperformance.\n- **Data limitation:** the source excerpts contain only revenue and operating income \u2014 no net income, EPS, ROIC, CASM/RASM, or balance-sheet data. So \"strongest performer\" here can only be judged on scale, margin, and operating-income growth.\n\n## The numbers\n\n| Airline | FY24 Revenue | FY24 Op. income | Op. margin FY23 \u2192 FY24 | Op. income growth |\n|---|---|---|---|---|\n| Delta | $61,643M | $5,995M | 9.5% \u2192 **9.7%** | +8.6% |\n| United | $57,063M | $5,096M | 7.8% \u2192 8.9% (+1.1pp) | +21.0% |\n| American | $54,211M | $2,614M | 5.7% \u2192 4.8% (\u22120.9pp) | **\u221213.8%** |\n| Southwest | $27,483M | $321M | 0.9% \u2192 **1.2%** | +43.3% |\n| Alaska | $11,735M | $570M | 3.8% \u2192 4.9% (+1.1pp) | +44.7% |\n\nSources: [DOC: airlines_fy2024.txt \u2014 Delta Air Lines (CIK 27904, 10-K 0000027904-25-000004): Revenue FY2023 $58,048M, FY2024 $61,643M; Operating income FY2023 $5,521M, FY2024 $5,995M]; [DOC: airlines_fy2024.txt \u2014 United Airlines Holdings (CIK 100517, 10-K 0000100517-25-000046): Revenue FY2023 $53,717M, FY2024 $57,063M; Operating income FY2023 $4,211M, FY2024 $5,096M]; [DOC: airlines_fy2024.txt \u2014 American Airlines Group (CIK 6201, 10-K 0000006201-25-000010): Revenue FY2023 $52,788M, FY2024 $54,211M; Operating income FY2023 $3,034M, FY2024 $2,614M]; [DOC: airlines_fy2024.txt \u2014 Southwest Airlines (CIK 92380, 10-K 0000092380-25-000024): Revenue FY2023 $26,091M, FY2024 $27,483M; Operating income FY2023 $224M, FY2024 $321M]; [DOC: airlines_fy2024.txt \u2014 Alaska Air Group (CIK 766421, 10-K 0000766421-25-000009): Revenue FY2023 $10,426M, FY2024 $11,735M; Operating income FY2023 $394M, FY2024 $570M].\n\n## Interpretation\n\n- **Delta** wins on the two measures that matter most for absolute profitability: the largest operating income ($5,995M) and the highest operating margin (9.7%), while still growing revenue 6.2%. It is the only carrier combining top-tier scale with near-double-digit margin.\n- **United** is the closest challenger and the best on *improvement*: +1.1pp margin expansion and +21.0% operating income growth on the same 6.2% revenue growth, narrowing the gap with Delta from 1.7pp to 0.8pp. If the question were \"most improved,\" United would win.\n- **Southwest and Alaska** post the largest percentage gains (+43% and +45%), but off very low bases \u2014 Southwest's 1.2% operating margin is barely breakeven at the operating line, and Alaska's gain is contaminated by the Hawaiian acquisition noted above.\n- **American** is the clear laggard: the only carrier with declining operating income (\u221213.8%) and contracting margin, plus the weakest revenue growth (2.7%).\n\nCaveat: because net income, interest expense, and leverage are not in the provided excerpts, this ranking is an operating-performance ranking only. American and United carry materially heavier debt loads than Delta, which would likely widen Delta's lead on a bottom-line basis, but that cannot be verified from these filings.\n\nANSWER: Delta \u2014 it posted both the highest FY2024 operating income ($5,995M) and the highest operating margin (9.7%) of the five, on 6.2% revenue growth; United was a close second and the fastest improver (+21% operating income, +1.1pp margin), while American was the clear laggard (operating income \u221213.8%). Note Alaska's 12.6% revenue growth is inflated by the mid-2024 Hawaiian acquisition and is not organically comparable.",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

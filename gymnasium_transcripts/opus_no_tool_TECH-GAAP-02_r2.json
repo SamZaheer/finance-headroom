@@ -1,0 +1,54 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-02",
+  "repeat": 2,
+  "bucket": "tech_gaap_adjustment",
+  "final_answer": "**Calculation \u2014 Non-GAAP net income, FY2025 (year ended December 31, 2025)**\n\nStarting from GAAP net income and applying the reconciling items disclosed in the earnings release:\n\n| Item | Amount ($M) | Source |\n|---|---|---|\n| GAAP net income | 1,748 | [DOC-1] \"GAAP net income: $1,748\" |\n| Stock-based compensation | +1,955 | [DOC-1] \"Stock-based compensation: $1,955\" |\n| Amortization of purchased intangibles | +120 | [DOC-1] \"Amortization of purchased intangibles: $120\" |\n| Business combination and other related costs | +109 | [DOC-1] \"Business combination and other related costs: $109\" |\n| Impairment of assets | +30 | [DOC-1] \"Impairment of assets: $30\" |\n| Severance costs | +74 | [DOC-1] \"Severance costs: $74\" |\n| Legal settlements | +0 | [DOC-1] \"Legal settlements: $0\" |\n| Contract termination costs | +37 | [DOC-1] \"Contract termination costs: $37\" |\n| Income tax effects and adjustments | \u2212404 | [DOC-1] \"Income tax effects and adjustments: $(404)\" |\n| **Non-GAAP net income** | **3,669** | Sum of above |\n\n**Comparability note:** DOC-2 presents a reconciliation of GAAP to **non-GAAP income from operations** (GAAP income from operations of $1,824, per [DOC-2]), which is a different measure on a different basis \u2014 it excludes the income tax effects and adjustments line and sits above non-operating items. It should not be substituted for or blended with the net income reconciliation in [DOC-1]. Both figures come from the same filing and same period (8-K Exhibit 99.1, filed 2026-01-28, accession 0001373715-26-000005), so there is no fiscal-period or entity mismatch [DOC-1][DOC-2]. For reference, non-GAAP income from operations computes to $4,149 million from [DOC-2], but the question asks for non-GAAP **net income**.\n\nANSWER: $3,669 million",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | servicenow_8k_fy2025_netincome.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP NET INCOME (in millions), Year Ended December 31, 2025:\nGAAP net income: $1,748\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\nIncome tax effects and adjustments: $(404)\n\n[DOC-2 | servicenow_8k_fy2025_opinc.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP INCOME FROM OPERATIONS (in millions), Year Ended December 31, 2025:\nGAAP income from operations: $1,824\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\n</excerpts>\n\nQuestion: What was ServiceNow's non-GAAP net income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISmAQKjgEIEhgCKkCbbEJzaYwYhm/lm+Dfo2pYHm7sF2yvCds3OPbsFUS//9TED+gxVxrfyBu4eAbOTW9C6erF6YjTPP4wiBkh58nzMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAbut0NUGEgxSbysr+1zcZjvckJkaDB+xaLWFwC9HATZwwyIwRvi7wo39+/H2tIK485GSPAoiuzwq0z73kXR41B8bCjtNtXVccPzH/fbhxmmDBK7QKrYCDPfM57aLgqs2hJm5e+DZ6p2wemwNWGlG6jmY8gSzeiw4FKK45t6S42IK8QMgVamUWy8s0mPrXxXKqGFaDZicqTHwrMWE7Z8ipYCvrRXz99FjD513vSVZLq2IW4qb1mFOmsmunlmY804C0nL9ISonxzKrsc6blVcbm3G7KLniROV5pecxIohE/saYy+b6K2nPF6Wql2qavtWAebZlpLBwS9rqUh1FH3Qg38pNuVHbYRwKnugWG8IftgAKdUDCl1eOYr6duQoIaVire8ULYZdtokBQa2oD6HhqeGeqmaRG+axuo4jpYfbdXN6iCEMFsVdBwbVHAQ07cM4EVRu9Y2I6Fe7ROHdeoamXIAcDytZ9dXc2p6NUr8cE1/9SE9o4ygDSkM8omvq/wny4YCR1arm/RY0NtSNIYBgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Calculation \u2014 Non-GAAP net income, FY2025 (year ended December 31, 2025)**\n\nStarting from GAAP net income and applying the reconciling items disclosed in the earnings release:\n\n| Item | Amount ($M) | Source |\n|---|---|---|\n| GAAP net income | 1,748 | [DOC-1] \"GAAP net income: $1,748\" |\n| Stock-based compensation | +1,955 | [DOC-1] \"Stock-based compensation: $1,955\" |\n| Amortization of purchased intangibles | +120 | [DOC-1] \"Amortization of purchased intangibles: $120\" |\n| Business combination and other related costs | +109 | [DOC-1] \"Business combination and other related costs: $109\" |\n| Impairment of assets | +30 | [DOC-1] \"Impairment of assets: $30\" |\n| Severance costs | +74 | [DOC-1] \"Severance costs: $74\" |\n| Legal settlements | +0 | [DOC-1] \"Legal settlements: $0\" |\n| Contract termination costs | +37 | [DOC-1] \"Contract termination costs: $37\" |\n| Income tax effects and adjustments | \u2212404 | [DOC-1] \"Income tax effects and adjustments: $(404)\" |\n| **Non-GAAP net income** | **3,669** | Sum of above |\n\n**Comparability note:** DOC-2 presents a reconciliation of GAAP to **non-GAAP income from operations** (GAAP income from operations of $1,824, per [DOC-2]), which is a different measure on a different basis \u2014 it excludes the income tax effects and adjustments line and sits above non-operating items. It should not be substituted for or blended with the net income reconciliation in [DOC-1]. Both figures come from the same filing and same period (8-K Exhibit 99.1, filed 2026-01-28, accession 0001373715-26-000005), so there is no fiscal-period or entity mismatch [DOC-1][DOC-2]. For reference, non-GAAP income from operations computes to $4,149 million from [DOC-2], but the question asks for non-GAAP **net income**.\n\nANSWER: $3,669 million",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "iod (8-K Exhibit 99.1, filed 2026-01-28, accession 0001373715-26-000005), so there is no fiscal-period or entity mismatch [DOC-1][DOC-2]. For reference, non-GAAP income from operations computes to $4,149 million from [DOC-2], but the question asks for non-GAAP **net income**.\n\nANSWER: $3,669 million"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:12:10+00:00"
+  }
+}

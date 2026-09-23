@@ -1,0 +1,56 @@
+{
+  "model": "claude",
+  "tool_condition": "no_tool",
+  "item_id": "MULTI-BREAK-02",
+  "repeat": 2,
+  "bucket": "multi_sector_comparability_break",
+  "final_answer": "**Important comparability note:** GE's reported total revenue has changed significantly in scope due to two major divestitures. GE HealthCare was spun off on January 3, 2023, and GE Vernova (the energy business) was spun off on April 2, 2024 [DOC-4]. As a result, the entity \"GE Aerospace\" today reflects only continuing operations, with HealthCare and Vernova now reported as discontinued operations for all historical periods in the FY2024 10-K [DOC-4].\n\nThis means the FY2022 revenue figure as originally reported in the FY2022 10-K ($76,555 million) [DOC-1] is **not** comparable to FY2024 revenue, because it includes the HealthCare and Vernova businesses that have since been separated. To measure growth for the entity now known as GE Aerospace on a like-for-like (continuing-operations) basis, the correct comparison uses the FY2022 revenue figure as restated in the FY2024 10-K to reflect continuing operations only: $29,139 million [DOC-3], versus FY2024 revenue of $38,702 million [DOC-3].\n\nUsing these comparable continuing-operations figures:\n\nGrowth = ($38,702M \u2212 $29,139M) / $29,139M = $9,563M / $29,139M \u2248 32.8%\n\nBy contrast, if one incorrectly compared the originally reported FY2022 total ($76,555 million, including HealthCare and Vernova) [DOC-1] to FY2024 GE Aerospace-only revenue ($38,702 million) [DOC-3], the result would show a *decline* of roughly 49%, but this comparison would be misleading since it mixes different corporate structures (pre- and post-spinoff).\n\nANSWER: On a comparable, continuing-operations (GE Aerospace-only) basis, revenue grew approximately 32.8%, from $29,139 million in FY2022 to $38,702 million in FY2024. Note that this is not comparable to the originally reported FY2022 total revenue of $76,555 million, which included the since-divested GE HealthCare and GE Vernova businesses.",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | ge_fy2022_10k.txt]\nGeneral Electric Company Form 10-K, fiscal year 2022 (filed 2023-02-10, accession 0000040545-23-000023).\nTotal revenue for fiscal year 2022: $76,555 million.\n\n[DOC-2 | ge_fy2023_10k.txt]\nGeneral Electric Company Form 10-K, fiscal year 2023 (filed 2024, accession 0000040545-24-000027).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2023: $67,954 million.\nTotal revenue for fiscal year 2022 (as presented for comparative purposes in this filing): $58,100 million.\n\n[DOC-3 | ge_fy2024_income_statement.txt]\nGE Aerospace Form 10-K, fiscal year 2024 (filed 2025, accession 0000040545-25-000015).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2024: $38,702 million.\nTotal revenue for fiscal year 2022 (as presented for comparative purposes in this filing): $29,139 million.\n\n[DOC-4 | ge_fy2024_notes.txt]\nGE Aerospace Form 10-K, fiscal year 2024. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Discontinued Operations: On January 3, 2023, we completed the previously announced separation of our HealthCare business, structured as a tax-free spin-off, through GE's pro-rata distribution of approximately 80.1% of the outstanding shares of GE HealthCare. On April 2, 2024, we completed the previously announced separation of GE Vernova, our energy business, on similar terms. GE's continuing operations following the GE Vernova separation, and following the earlier GE HealthCare separation, are referred to as GE Aerospace. Results of both GE HealthCare and GE Vernova are reported as discontinued operations for all periods presented in these consolidated financial statements.\n</excerpts>\n\nQuestion: What was the revenue growth from fiscal year 2022 to fiscal year 2024 for the company now known as GE Aerospace?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EpoICpABCBIYAipArDhCiSLC5lF6xxbfFlSCF/TL6GggacO5X/bKoLdPW2qS10qoJli3bV2Rov/CPzRMFoMicuDV3cD+21vvpRQEtjIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAbmp0NUGEgwbcWSKHHyAkh3ZVvEaDGeB6IY42IFof9PM+SIwJn93wH7VQT4tTVMB6xSYmi97p+KYtoBfEylRhP9TcQlhgMuUqCkkfNypFUc+x3KvKrYGvej4v+aQwaeK8UgkPiQZHrRLq4R/hiluIUITReQrZv85p4bREMGmDWBjxP3qB/L2Mh8B1pfx6sztf6JMx6gwOvVBwKO6pSP7bDawIViTwvwfQ0DjXwikhytq1DAIdFGJiLOvO9fMbUU/mvjMDBfKpivO9t/CiGNgYaJRXAVvn/1zdU6M/5y8lY5fjqY0l8LdllHX1GBETakQA458J4HuyBFedv1Y5e/imJ2rLkO+I6p98PcVA7z2P5/E5grHi4xPyx/UV4XodAZC5TIxYb+tmY+p+AYW7zBcm1HvE73+XZW6u5o+AGjlTVFGjrUDFvOHNiEk9Je7Yux0iGpW51PeFct9nrew0njwV0Bx43VYzJzDPwfVoDgsojEvaYMpqiroMd4jHWZbWKGL+kZ1ebSPplBFSz79gi/E04U9XljtH/94ClmlBWFD8aeNLVPtRAcTdSMZjNa7j/+qs8yGouWOY+jeosdlYeKVXzWNoQSsNvQMzEGBirMNZ83aC11jWvL0RzECYvMNRIuXuoYqJpG8yj7emyUlJ15Vf+u8keyMd1JfX8xWbNBZezLh+3HU7sgEYWwsrSn8uzxDSnyVfvx5qqr+81l+yaIsmKyvQUyF6TuTAwdswx2pwK6uh94kB9BRakw6pBvc2YhO97eN912CxJsGF2U+y0/xtiPCBYiWNXPpIjNbHQC6JN0/haBLlf3mxnQ9YwnUnBb0sVNpDIReC8ZqhoklzuitMUXdy6ECmFMX+06f6kXLFV4U9SZS00bTYTdhNpurARJ8UDzwVdBWUWeSxuWMEX+gTLbN+3MPrPdtodveVtJTN4HJrDPD9qRgytfY4y/F4qXMjgWy1mYOo7AqB0sTgHLYoPoXpuoup66OOqT11WwhqSTR8vB/6x19iioKl3dmUQUKtkRpbkIZ+ZfeAbmFofsABpYJPxaptL6Vy1rQ8Sc8+JmO8965AbbtUkyqqIcin2dilUY63biEPirfAkD4EyxiNrPandySAT4NO3SKkTkhC6uJPDsxuOYHcP7l4+q6jQcKK1IOa2QvnIZ2sctlTe0SiE2qeMrQgrgrx+XuKfOF5wZ47eXRdpAK/mzs8+bkGAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Important comparability note:** GE's reported total revenue has changed significantly in scope due to two major divestitures. GE HealthCare was spun off on January 3, 2023, and GE Vernova (the energy business) was spun off on April 2, 2024 [DOC-4]. As a result, the entity \"GE Aerospace\" today reflects only continuing operations, with HealthCare and Vernova now reported as discontinued operations for all historical periods in the FY2024 10-K [DOC-4].\n\nThis means the FY2022 revenue figure as originally reported in the FY2022 10-K ($76,555 million) [DOC-1] is **not** comparable to FY2024 revenue, because it includes the HealthCare and Vernova businesses that have since been separated. To measure growth for the entity now known as GE Aerospace on a like-for-like (continuing-operations) basis, the correct comparison uses the FY2022 revenue figure as restated in the FY2024 10-K to reflect continuing operations only: $29,139 million [DOC-3], versus FY2024 revenue of $38,702 million [DOC-3].\n\nUsing these comparable continuing-operations figures:\n\nGrowth = ($38,702M \u2212 $29,139M) / $29,139M = $9,563M / $29,139M \u2248 32.8%\n\nBy contrast, if one incorrectly compared the originally reported FY2022 total ($76,555 million, including HealthCare and Vernova) [DOC-1] to FY2024 GE Aerospace-only revenue ($38,702 million) [DOC-3], the result would show a *decline* of roughly 49%, but this comparison would be misleading since it mixes different corporate structures (pre- and post-spinoff).\n\nANSWER: On a comparable, continuing-operations (GE Aerospace-only) basis, revenue grew approximately 32.8%, from $29,139 million in FY2022 to $38,702 million in FY2024. Note that this is not comparable to the originally reported FY2022 total revenue of $76,555 million, which included the since-divested GE HealthCare and GE Vernova businesses.",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "ns (GE Aerospace-only) basis, revenue grew approximately 32.8%, from $29,139 million in FY2022 to $38,702 million in FY2024. Note that this is not comparable to the originally reported FY2022 total revenue of $76,555 million, which included the since-divested GE HealthCare and GE Vernova businesses."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T18:03:38+00:00"
+  }
+}

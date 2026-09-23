@@ -1,0 +1,54 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-CTRL-04",
+  "repeat": 3,
+  "bucket": "tech_control",
+  "final_answer": "**Calculation (FY2024, as reported)**\n\n- Revenue: $164,501 million [DOC-1]\n- Income from operations: $69,380 million [DOC-1]\n- Operating margin = $69,380 \u00f7 $164,501 = **42.2%**\n\n**Comparability note:** Both figures come from the same consolidated statements of income in Meta's FY2024 Form 10-K for the same fiscal year ended December 31, 2024 [DOC-1], so no adjustment for fiscal-period or entity mismatch is needed. (For context, the same statement shows FY2023 revenue of $134,902 million and income from operations of $46,751 million, a 34.7% margin, and FY2022 revenue of $116,609 million with income from operations of $28,944 million, a 24.8% margin [DOC-1] \u2014 but note these comparative-year figures are presented on Meta's current segment/reporting basis and were not the question asked.)\n\nANSWER: Approximately 42.2% ($69,380M operating income \u00f7 $164,501M revenue)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | meta_10k_fy2024.txt]\nMeta Platforms, Inc. Form 10-K, fiscal year ended December 31, 2024 (accession 0001326801-25-000017).\n\nCONSOLIDATED STATEMENTS OF INCOME (in millions)\nFiscal year 2024: Revenue $164,501; Income from operations $69,380.\nFiscal year 2023 (comparative): Revenue $134,902; Income from operations $46,751.\nFiscal year 2022 (comparative): Revenue $116,609; Income from operations $28,944.\n</excerpts>\n\nQuestion: What was Meta's operating margin in fiscal year 2024, per Meta's FY2024 10-K?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAIS0wMKjgEIEhgCKkAspdkecrf5zaNFgPS6m8h7SRhq/N8HdRgck2TkDigpjeiVAV4GHjo1lg2XeSYUJF5uCLqYEnlezVZ17eFf6xuIMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAfKs0NUGEgxOJn4loNppq2HRAaUaDE8g2lUnTq2I8RF6xyIw4c6+0JN7WAgY/LQIP4xg5LtWS84Wu90f0OzI0NO0ITiYAWwoDatBI76ENxTzEgdJKvEBGbqoe/riBBKNzPjl0G7eF+Te0jbKX6pRl0q25WVTvVz8oY6JeGxEGs4BlozQFz64uOiMP+5e74uDhxbEfgNtHSIEHg+1U4FbL41ypqc6UOWjN9qStoSFwy2JMelbqK8SSWxnYCkwcMmxJ6unA9Yw5eR6vZj7ThP/L1L4NXHaAEG3p7CX8QthImyf6l3F4xfCaqKJU4c620t4UCL9j1EQ1VGFEse0fxEY0pVPfvMBHiuDR18pgCuPp3E2WiiqU/EJXxLVCieGi63fhtNzPG+FWnanIK5Mqtj9viQpJDyYINIvWuz7XM54QbtgM7Q3Xi0+nBgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Calculation (FY2024, as reported)**\n\n- Revenue: $164,501 million [DOC-1]\n- Income from operations: $69,380 million [DOC-1]\n- Operating margin = $69,380 \u00f7 $164,501 = **42.2%**\n\n**Comparability note:** Both figures come from the same consolidated statements of income in Meta's FY2024 Form 10-K for the same fiscal year ended December 31, 2024 [DOC-1], so no adjustment for fiscal-period or entity mismatch is needed. (For context, the same statement shows FY2023 revenue of $134,902 million and income from operations of $46,751 million, a 34.7% margin, and FY2022 revenue of $116,609 million with income from operations of $28,944 million, a 24.8% margin [DOC-1] \u2014 but note these comparative-year figures are presented on Meta's current segment/reporting basis and were not the question asked.)\n\nANSWER: Approximately 42.2% ($69,380M operating income \u00f7 $164,501M revenue)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": " of $116,609 million with income from operations of $28,944 million, a 24.8% margin [DOC-1] \u2014 but note these comparative-year figures are presented on Meta's current segment/reporting basis and were not the question asked.)\n\nANSWER: Approximately 42.2% ($69,380M operating income \u00f7 $164,501M revenue)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:10:52+00:00"
+  }
+}

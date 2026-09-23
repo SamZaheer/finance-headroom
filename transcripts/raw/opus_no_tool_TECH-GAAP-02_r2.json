@@ -1,0 +1,28 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-02",
+  "repeat": 2,
+  "final_answer": "**Calculation of FY2025 non\u2011GAAP net income (in millions)**\n\n| Item | Amount |\n|---|---|\n| GAAP net income [DOC-1] | $1,748 |\n| Stock-based compensation [DOC-1] | +1,955 |\n| Amortization of purchased intangibles [DOC-1] | +120 |\n| Business combination and other related costs [DOC-1] | +109 |\n| Impairment of assets [DOC-1] | +30 |\n| Severance costs [DOC-1] | +74 |\n| Legal settlements [DOC-1] | +0 |\n| Contract termination costs [DOC-1] | +37 |\n| Income tax effects and adjustments [DOC-1] | \u2212404 |\n| **Non-GAAP net income** | **$3,669** |\n\nSupporting source detail: \"GAAP net income: $1,748 / Stock-based compensation: $1,955 / Amortization of purchased intangibles: $120 / Business combination and other related costs: $109 / Impairment of assets: $30 / Severance costs: $74 / Legal settlements: $0 / Contract termination costs: $37 / Income tax effects and adjustments: $(404)\" [DOC-1].\n\nComparability note: Both excerpts come from the same earnings release for the same period (FY ended December 31, 2025), so there is no entity or fiscal-period mismatch. However, DOC-2 is the reconciliation of **income from operations** (GAAP $1,824, reconciling to non-GAAP income from operations of $4,149) [DOC-2] \u2014 a different measure that excludes non-operating items and income taxes. It should not be conflated with the net income measure; only DOC-1 is the correct basis for this question.\n\nANSWER: $3,669 million",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | servicenow_8k_fy2025_netincome.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP NET INCOME (in millions), Year Ended December 31, 2025:\nGAAP net income: $1,748\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\nIncome tax effects and adjustments: $(404)\n\n[DOC-2 | servicenow_8k_fy2025_opinc.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP INCOME FROM OPERATIONS (in millions), Year Ended December 31, 2025:\nGAAP income from operations: $1,824\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\n</excerpts>\n\nQuestion: What was ServiceNow's non-GAAP net income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAIS+QMKjgEIEhgCKkCS0MuzYi0NaNY/Z/1edyl8UBJ32CzbG4xU2MzLocNyYuq5shuQpuZo3J/ygTbe3XXB24stOzA7zEod9U+RXy40Mg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAbrwz9UGEgy7GVXkcumClEr/f6YaDFGYEj5O5Wr+YIIXFSIwEHMcxIhjAp5O1nfLiYtyHKT0vG3q0psJMBta51oSHy1NFfjiogVVA2VExbmKnFJQKpcCUNqPHoYJB3ZXEVn03UKyhtqwmPBbIFBGsQL1rwjoNGtiUqC2DEXzD+c0J1qZSU9UmR9Ki1xLo37il2KRbaFc/YF6nLTT2ajwmWz4BcLxcQK/lgIsdqUkVuV9TV2g1z8dTfL8LxPyDKJ7jc/D9QBb1i5LRIWlJiCEbwGr8Bq4k6KLLyae8D7elxJOf3QV1SSTzQlJD11/IPx8hRHr+/bNEWC7hdrNCeq0rZID3paSXpRYNOHLxxHXdhFEzatp4hY9AeIklrvVp35U1LqNxI4FAR11FlAOq0hOBuuyDeAPrt16yy0ANGo43yeiWJBs7nrJTaDfsPG/zhM+vtrN21zdqPK81B3LZXtwbrCMNrGRn7EF3YhsmkR+GAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Calculation of FY2025 non\u2011GAAP net income (in millions)**\n\n| Item | Amount |\n|---|---|\n| GAAP net income [DOC-1] | $1,748 |\n| Stock-based compensation [DOC-1] | +1,955 |\n| Amortization of purchased intangibles [DOC-1] | +120 |\n| Business combination and other related costs [DOC-1] | +109 |\n| Impairment of assets [DOC-1] | +30 |\n| Severance costs [DOC-1] | +74 |\n| Legal settlements [DOC-1] | +0 |\n| Contract termination costs [DOC-1] | +37 |\n| Income tax effects and adjustments [DOC-1] | \u2212404 |\n| **Non-GAAP net income** | **$3,669** |\n\nSupporting source detail: \"GAAP net income: $1,748 / Stock-based compensation: $1,955 / Amortization of purchased intangibles: $120 / Business combination and other related costs: $109 / Impairment of assets: $30 / Severance costs: $74 / Legal settlements: $0 / Contract termination costs: $37 / Income tax effects and adjustments: $(404)\" [DOC-1].\n\nComparability note: Both excerpts come from the same earnings release for the same period (FY ended December 31, 2025), so there is no entity or fiscal-period mismatch. However, DOC-2 is the reconciliation of **income from operations** (GAAP $1,824, reconciling to non-GAAP income from operations of $4,149) [DOC-2] \u2014 a different measure that excludes non-operating items and income taxes. It should not be conflated with the net income measure; only DOC-1 is the correct basis for this question.\n\nANSWER: $3,669 million",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

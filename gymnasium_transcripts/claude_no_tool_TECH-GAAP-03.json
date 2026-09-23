@@ -1,0 +1,54 @@
+{
+  "model": "claude",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-03",
+  "repeat": 1,
+  "bucket": "tech_gaap_adjustment",
+  "final_answer": "Based on the reconciliation provided in the 8-K filing, Datadog's non-GAAP operating income for FY2025 is calculated by starting with GAAP operating loss and adding back specific non-GAAP adjustments:\n\n- GAAP operating loss: $(44,373) thousand [DOC-1]\n- Add: Stock-based compensation expense: $750,671 thousand [DOC-1]\n- Add: Amortization of acquired intangibles: $6,373 thousand [DOC-1]\n- Add: Employer payroll taxes on employee stock transactions: $53,799 thousand [DOC-1]\n- Add: M&A transaction costs: $1,574 thousand [DOC-1]\n\nCalculation:\n$(44,373) + $750,671 + $6,373 + $53,799 + $1,574 = $768,044 thousand\n\nThis is a straightforward reconciliation for a single fiscal year (FY2025) with no indication of divestitures, spinoffs, segment changes, or fiscal-year mismatches \u2014 all figures are drawn from the same period and same reconciliation table, so the comparison basis is consistent.\n\nANSWER: $768.0 million (non-GAAP operating income for FY2025)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | datadog_8k_fy2025.txt]\nDatadog, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-10, accession 0001628280-26-006645).\nRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025:\nGAAP operating loss: $(44,373)\nStock-based compensation expense: $750,671\nAmortization of acquired intangibles: $6,373\nEmployer payroll taxes on employee stock transactions: $53,799\nM&A transaction costs: $1,574\n</excerpts>\n\nQuestion: What was Datadog's non-GAAP operating income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EuQDCpABCBIYAipAklQqingHhB7lVXs+z1KlbBNIh6czsdfP0GxwIz1iy7pyJhUh8nardLmiVhiuKLzRixJ5CTWTv+ic/KX+5qpbPDIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAfSd0NUGEgw0Dh7SuKHHEeH7OQEaDMM0Rw6RJwuHLsVpfSIw7b6WBG2ZaKlUCEBcz2IIa+PCrtYAD0rS0I38FofEYDj/3YmACvKtRLPihJDewbl5KoACKVRs4cQaEv/zA6qzyXijpKlRW1ighwuDHFuVXtSpnZhzS8684GTgWU48FG2JpuZBgjA0MP7xdYYF/6DpOds50H6mPs7j3dW8rUk8R5lu60Dyqx6N8gsAF9UIsafmNBQ6v/0lKl0Qb+Rws6nL7y1GOh6qiF6/wIrrYJ58RjqFxSbDDdNNzPeKAH+RMIHxOkjyNs0JptrcWqfYuRLPLjqaIcfRbnkbhIppLnZIznSZjI3FiFLh4JWQ6a61HPRFbgIAhA+v9ZHYIsM8zIsOBe33Rvte2YQSX/gltR+98Vrkqi55scGBiLsRCZzJSJYsGflfSF2TnhKIWEfXiJcTyAx18RgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "Based on the reconciliation provided in the 8-K filing, Datadog's non-GAAP operating income for FY2025 is calculated by starting with GAAP operating loss and adding back specific non-GAAP adjustments:\n\n- GAAP operating loss: $(44,373) thousand [DOC-1]\n- Add: Stock-based compensation expense: $750,671 thousand [DOC-1]\n- Add: Amortization of acquired intangibles: $6,373 thousand [DOC-1]\n- Add: Employer payroll taxes on employee stock transactions: $53,799 thousand [DOC-1]\n- Add: M&A transaction costs: $1,574 thousand [DOC-1]\n\nCalculation:\n$(44,373) + $750,671 + $6,373 + $53,799 + $1,574 = $768,044 thousand\n\nThis is a straightforward reconciliation for a single fiscal year (FY2025) with no indication of divestitures, spinoffs, segment changes, or fiscal-year mismatches \u2014 all figures are drawn from the same period and same reconciliation table, so the comparison basis is consistent.\n\nANSWER: $768.0 million (non-GAAP operating income for FY2025)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "for a single fiscal year (FY2025) with no indication of divestitures, spinoffs, segment changes, or fiscal-year mismatches \u2014 all figures are drawn from the same period and same reconciliation table, so the comparison basis is consistent.\n\nANSWER: $768.0 million (non-GAAP operating income for FY2025)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T17:38:54+00:00"
+  }
+}

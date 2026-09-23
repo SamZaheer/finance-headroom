@@ -1,0 +1,49 @@
+{
+  "model": "gpt",
+  "tool_condition": "no_tool",
+  "item_id": "MULTI-BREAK-01",
+  "repeat": 1,
+  "bucket": "multi_sector_comparability_break",
+  "final_answer": "IBM\u2019s 2020 and 2022 revenues in the provided documents are **not directly comparable** because the 2022 Form 10\u2011K restates prior-year figures to exclude Kyndryl as discontinued operations, while the standalone 2020 Form 10\u2011K includes Kyndryl in continuing operations.\n\n- The original 2020 Form 10\u2011K reports total revenue of **$73,620 million** for FY 2020. [DOC-1]  \n- The 2022 Form 10\u2011K income statement reports total revenue of **$60,530 million** for FY 2022 and, for comparison, shows **FY 2020 revenue of $55,179 million** (this 2020 figure reflects the re-presentation after the Kyndryl separation and discontinued-operations treatment). [DOC-2]  \n- The notes explain that Kyndryl was separated on November 3, 2021, and that \u201cthe historical results of Kyndryl have been presented as discontinued operations\u201d in the consolidated financial statements, i.e., prior periods in the 2022 10\u2011K are restated to exclude Kyndryl from continuing operations. [DOC-3]\n\nGiven you are asking for \u201crevenue growth from fiscal year 2020 to fiscal year 2022,\u201d the only directly comparable basis is to use the **re-presented 2020 revenue** from the 2022 filing (both 2020 and 2022 then exclude Kyndryl from continuing operations).\n\n1. 2020 revenue (as re-presented in 2022 filing): $55,179 million [DOC-2]  \n2. 2022 revenue: $60,530 million [DOC-2]  \n\nRevenue growth (2020\u21922022), comparable continuing-operations basis:\n\n\\[\n\\text{Growth} = \\frac{60{,}530 - 55{,}179}{55{,}179} \\approx 0.097 \\text{ or } 9.7\\%\n\\]\n\nANSWER: Approximately 9.7% revenue growth from 2020 to 2022 on a comparable (Kyndryl-excluded) basis.",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | ibm_fy2020_10k.txt]\nIBM Corporation Form 10-K, fiscal year 2020 (filed 2021-02-23, accession 0001558370-21-001489).\nTotal revenue for fiscal year 2020: $73,620 million.\n\n[DOC-2 | ibm_fy2022_income_statement.txt]\nIBM Corporation Form 10-K, fiscal year 2022 (filed 2023-02-28, accession 0001558370-23-002376).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2022: $60,530 million.\nTotal revenue for fiscal year 2020 (as presented for comparative purposes in this filing): $55,179 million.\n\n[DOC-3 | ibm_fy2022_notes.txt]\nIBM Corporation Form 10-K, fiscal year 2022. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Divestitures: On November 3, 2021, the company completed the separation of its managed infrastructure services unit into a new public company, Kyndryl Holdings, Inc., with the distribution of 80.1 percent of the outstanding shares of Kyndryl to IBM stockholders on a pro rata basis. The accounting requirements for reporting the separation of Kyndryl as a discontinued operation were met when the separation was completed. Accordingly, the historical results of Kyndryl have been presented as discontinued operations in these consolidated financial statements.\n</excerpts>\n\nQuestion: What was IBM's revenue growth from fiscal year 2020 to fiscal year 2022?"
+    },
+    {
+      "content": "IBM\u2019s 2020 and 2022 revenues in the provided documents are **not directly comparable** because the 2022 Form 10\u2011K restates prior-year figures to exclude Kyndryl as discontinued operations, while the standalone 2020 Form 10\u2011K includes Kyndryl in continuing operations.\n\n- The original 2020 Form 10\u2011K reports total revenue of **$73,620 million** for FY 2020. [DOC-1]  \n- The 2022 Form 10\u2011K income statement reports total revenue of **$60,530 million** for FY 2022 and, for comparison, shows **FY 2020 revenue of $55,179 million** (this 2020 figure reflects the re-presentation after the Kyndryl separation and discontinued-operations treatment). [DOC-2]  \n- The notes explain that Kyndryl was separated on November 3, 2021, and that \u201cthe historical results of Kyndryl have been presented as discontinued operations\u201d in the consolidated financial statements, i.e., prior periods in the 2022 10\u2011K are restated to exclude Kyndryl from continuing operations. [DOC-3]\n\nGiven you are asking for \u201crevenue growth from fiscal year 2020 to fiscal year 2022,\u201d the only directly comparable basis is to use the **re-presented 2020 revenue** from the 2022 filing (both 2020 and 2022 then exclude Kyndryl from continuing operations).\n\n1. 2020 revenue (as re-presented in 2022 filing): $55,179 million [DOC-2]  \n2. 2022 revenue: $60,530 million [DOC-2]  \n\nRevenue growth (2020\u21922022), comparable continuing-operations basis:\n\n\\[\n\\text{Growth} = \\frac{60{,}530 - 55{,}179}{55{,}179} \\approx 0.097 \\text{ or } 9.7\\%\n\\]\n\nANSWER: Approximately 9.7% revenue growth from 2020 to 2022 on a comparable (Kyndryl-excluded) basis.",
+      "role": "assistant"
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "2 revenue: $60,530 million [DOC-2]  \n\nRevenue growth (2020\u21922022), comparable continuing-operations basis:\n\n\\[\n\\text{Growth} = \\frac{60{,}530 - 55{,}179}{55{,}179} \\approx 0.097 \\text{ or } 9.7\\%\n\\]\n\nANSWER: Approximately 9.7% revenue growth from 2020 to 2022 on a comparable (Kyndryl-excluded) basis."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T17:47:30+00:00"
+  }
+}

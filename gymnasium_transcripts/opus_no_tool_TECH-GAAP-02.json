@@ -1,0 +1,54 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-02",
+  "repeat": 1,
+  "bucket": "tech_gaap_adjustment",
+  "final_answer": "**ServiceNow non-GAAP net income, FY2025 (year ended December 31, 2025)**\n\nBoth excerpts cover the same entity, same fiscal period (year ended December 31, 2025), and the same filing [DOC-1][DOC-2], so there is no comparability issue. Note that DOC-2 reconciles *income from operations*, a different measure, and is not additive to the net income build; the non-GAAP net income figure derives solely from DOC-1.\n\nBuild-up (in millions):\n\n| Item | Amount |\n|---|---|\n| GAAP net income [DOC-1] | $1,748 |\n| Stock-based compensation [DOC-1] | +1,955 |\n| Amortization of purchased intangibles [DOC-1] | +120 |\n| Business combination and other related costs [DOC-1] | +109 |\n| Impairment of assets [DOC-1] | +30 |\n| Severance costs [DOC-1] | +74 |\n| Legal settlements [DOC-1] | +0 |\n| Contract termination costs [DOC-1] | +37 |\n| Income tax effects and adjustments [DOC-1] | \u2212404 |\n| **Non-GAAP net income** | **$3,669** |\n\nCross-check via operations: GAAP income from operations of $1,824 [DOC-2] plus the same $2,325 of pre-tax add-backs [DOC-2] yields non-GAAP income from operations of $4,149, consistent with the pre-tax adjustment set used above.\n\nANSWER: $3,669 million",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | servicenow_8k_fy2025_netincome.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP NET INCOME (in millions), Year Ended December 31, 2025:\nGAAP net income: $1,748\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\nIncome tax effects and adjustments: $(404)\n\n[DOC-2 | servicenow_8k_fy2025_opinc.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP INCOME FROM OPERATIONS (in millions), Year Ended December 31, 2025:\nGAAP income from operations: $1,824\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\n</excerpts>\n\nQuestion: What was ServiceNow's non-GAAP net income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAIShQQKjgEIEhgCKkA1KKejSAqtXXbwIcMdlzFehpI/OInUmoQGTzgjHcfNEtT9Bk2akVxSwQIuxDqxoOBTadukY78NrrAIzj2fc/5eMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAdef0NUGEgx7X/q1SYZvEYsL/qMaDER9k7QUa/wnKKgCliIwrgPKbsi/xZdoeCfZB4nFgFkpSzf6PfuwM6w48RRBuFgqYQFkZ+fbucOdv5PhTF26KqMC8O9rbWuMWiNN1PI9k4EolBpahl5CkDSISta31Z5pGH+75buNS5kfH+qyAGmi+rVPuhzmdS3sb7SZpTwHgobuOv0gQlfR4LuTh5tl1QPzsLTMk4a6LoHMb4OxctzYZw/E57v/HYkecbaQA0NJW3K6GoDyw4zovS7fBYRKB7kCL7kOpgwACKWkps2fcbF9R453HqXLXnFo0AMv2dr+amkgLEWPlzHSnCzjx2To2/ytR2nlzth4I6F5OOODgxQPxVecxt7d2bd6jAEUysjdkY1rSW6N3APbbiC2SmW1Wzn4g1kb+Hiqt8tCzVo1Ywvy2bKuW57lDraEvKy9ZUcdsyLAbhqCcmxJQaQsoXuXr//LLvDNq8oCM7mYf3D0h08Ds4BEWYR2GAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**ServiceNow non-GAAP net income, FY2025 (year ended December 31, 2025)**\n\nBoth excerpts cover the same entity, same fiscal period (year ended December 31, 2025), and the same filing [DOC-1][DOC-2], so there is no comparability issue. Note that DOC-2 reconciles *income from operations*, a different measure, and is not additive to the net income build; the non-GAAP net income figure derives solely from DOC-1.\n\nBuild-up (in millions):\n\n| Item | Amount |\n|---|---|\n| GAAP net income [DOC-1] | $1,748 |\n| Stock-based compensation [DOC-1] | +1,955 |\n| Amortization of purchased intangibles [DOC-1] | +120 |\n| Business combination and other related costs [DOC-1] | +109 |\n| Impairment of assets [DOC-1] | +30 |\n| Severance costs [DOC-1] | +74 |\n| Legal settlements [DOC-1] | +0 |\n| Contract termination costs [DOC-1] | +37 |\n| Income tax effects and adjustments [DOC-1] | \u2212404 |\n| **Non-GAAP net income** | **$3,669** |\n\nCross-check via operations: GAAP income from operations of $1,824 [DOC-2] plus the same $2,325 of pre-tax add-backs [DOC-2] yields non-GAAP income from operations of $4,149, consistent with the pre-tax adjustment set used above.\n\nANSWER: $3,669 million",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "404 |\n| **Non-GAAP net income** | **$3,669** |\n\nCross-check via operations: GAAP income from operations of $1,824 [DOC-2] plus the same $2,325 of pre-tax add-backs [DOC-2] yields non-GAAP income from operations of $4,149, consistent with the pre-tax adjustment set used above.\n\nANSWER: $3,669 million"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T17:42:43+00:00"
+  }
+}

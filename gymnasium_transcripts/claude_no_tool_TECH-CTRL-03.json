@@ -1,0 +1,49 @@
+{
+  "model": "claude",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-CTRL-03",
+  "repeat": 1,
+  "bucket": "tech_control",
+  "final_answer": "ANSWER: $637,959 million\n\nAmazon's FY2024 10-K reports net sales of $637,959 million for fiscal year 2024 [DOC-1].",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | amzn_10k_fy2024.txt]\nAmazon.com, Inc. Form 10-K, fiscal year ended December 31, 2024 (accession 0001018724-25-000004).\n\nCONSOLIDATED STATEMENTS OF OPERATIONS (in millions)\nNet sales, fiscal year 2024: $637,959\nNet sales, fiscal year 2023 (comparative): $574,785\nNet sales, fiscal year 2022 (comparative): $513,983\n</excerpts>\n\nQuestion: What was Amazon's total revenue in fiscal year 2024, per Amazon's FY2024 10-K?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "ANSWER: $637,959 million\n\nAmazon's FY2024 10-K reports net sales of $637,959 million for fiscal year 2024 [DOC-1].",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "ANSWER: $637,959 million\n\nAmazon's FY2024 10-K reports net sales of $637,959 million for fiscal year 2024 [DOC-1]."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T17:38:30+00:00"
+  }
+}

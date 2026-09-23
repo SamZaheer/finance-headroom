@@ -1,0 +1,161 @@
+{
+  "model": "claude",
+  "tool_condition": "tool",
+  "item_id": "MULTI-BREAK-02",
+  "repeat": 1,
+  "bucket": "multi_sector_comparability_break",
+  "final_answer": "**Comparability note:** GE's originally reported FY2022 total revenue of $76,555 million [DOC: ge_fy2022_10k.txt] included the HealthCare and Vernova (Energy) businesses, both of which were subsequently spun off (HealthCare on January 3, 2023; Vernova on April 2, 2024) [DOC: ge_fy2024_notes.txt]. As a result, the FY2022 figure as originally reported is **not directly comparable** to FY2024 results, which reflect only the continuing \"GE Aerospace\" business.\n\nTo make a like-for-like comparison, the FY2024 10-K restates FY2022 revenue on a continuing-operations basis (i.e., GE Aerospace only, with HealthCare and Vernova reclassified as discontinued operations for all periods presented) [DOC: ge_fy2024_income_statement.txt]. On this comparable basis:\n\n- FY2022 (GE Aerospace continuing operations, restated): $29,139 million [DOC: ge_fy2024_income_statement.txt]\n- FY2024 (GE Aerospace): $38,702 million [DOC: ge_fy2024_income_statement.txt]\n\nGrowth = ($38,702M \u2212 $29,139M) / $29,139M \u2248 32.8%\n\nANSWER: On a comparable continuing-operations basis (GE Aerospace only, excluding the spun-off HealthCare and Vernova businesses), revenue grew from $29,139 million in FY2022 to $38,702 million in FY2024, an increase of approximately 32.8%. (Note: GE's originally reported FY2022 total revenue was $76,555 million, but that figure includes the HealthCare and Vernova segments that were later spun off, so it is not comparable to the FY2024 GE Aerospace-only figure.)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was the revenue growth from fiscal year 2022 to fiscal year 2024 for the company now known as GE Aerospace?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EtYCCpABCBIYAipAWoXD09JpLR0dHoZ/rXyqLZmfLJvNueprN8LjlNfi+yQpigdzGBlfRM/vxaLnto/FwVNVvcpY2LFbMMVNXseYrTIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAcOe0NUGEgz06saSjFZ0X6xjIL4aDH7QOeYZ3CHZJPtvRCIw7C5I4UhmVdfs777lyzpcq1HSsB/dIxfewti2vNdDzhu5t3EFJt6its4NdBet2CQKKnP7zwwYvoj/XWlVfs5g69ikAOqoVtR91CVOXI6ECeKvo48LwgiNrKFpoLkubGGGmbc9fANhqZiE56V6tcAIyiiV0Uzp2BXHoJcHDgYjsga5wZl6f1rvbAXC+XkyK8rxm/a/c02+NrfV6wuBdxOOK+f1KTjAGAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01Q8PvC4DBM2PjaG1mvqrLce",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "GE Aerospace total revenues 2024 2022"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01SroZHvjHaxE56PNkDoWmjF",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "General Electric total revenues fiscal year 2022"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "GE Aerospace total revenues 2024 2022"
+      },
+      "output": "[ge_fy2024_income_statement.txt] GE Aerospace Form 10-K, fiscal year 2024 (filed 2025, accession 0000040545-25-000015).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2024: $38,702 million.\nTotal revenue for fiscal year 2022 (as presented for comparative purposes in this filing): $29,139 million.\n\n[ge_fy2023_10k.txt] General Electric Company Form 10-K, fiscal year 2023 (filed 2024, accession 0000040545-24-000027).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2023: $67,954 million.\nTotal revenue for fiscal year 2022 (as presented for comparative purposes in this filing): $58,100 million.\n\n[ge_fy2024_notes.txt] GE Aerospace Form 10-K, fiscal year 2024. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Discontinued Operations: On January 3, 2023, we completed the previously announced separation of our HealthCare business, structured as a tax-free spin-off, through GE's pro-rata distribution of approximately 80.1% of the outstanding shares of GE HealthCare. On April 2, 2024, we completed the previously announced separation of GE Vernova, our energy business, on similar terms. GE's continuing operations following the GE Vernova separation, and following the earlier GE HealthCare separation, are referred to as GE Aerospace. Results of both GE HealthCare and GE Vernova are reported as discontinued operations for all periods presented in these consolidated financial statements."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "General Electric total revenues fiscal year 2022"
+      },
+      "output": "[ge_fy2023_10k.txt] General Electric Company Form 10-K, fiscal year 2023 (filed 2024, accession 0000040545-24-000027).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2023: $67,954 million.\nTotal revenue for fiscal year 2022 (as presented for comparative purposes in this filing): $58,100 million.\n\n[ge_fy2022_10k.txt] General Electric Company Form 10-K, fiscal year 2022 (filed 2023-02-10, accession 0000040545-23-000023).\nTotal revenue for fiscal year 2022: $76,555 million.\n\n[ge_fy2024_income_statement.txt] GE Aerospace Form 10-K, fiscal year 2024 (filed 2025, accession 0000040545-25-000015).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2024: $38,702 million.\nTotal revenue for fiscal year 2022 (as presented for comparative purposes in this filing): $29,139 million."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EvoFCpABCBIYAipApfhvg3KIi1ZLOXIP8nX+Z9a2ozXjcomDUxLjo1p+7RPl4O04w9/cqmtn/n6ZrWWw6MjYrXsC8tTyK1EG2nEcWzIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAcee0NUGEgx+Up28GrUs/F4IipMaDDkDnZtHteZThxG0riIwVANhvW+0qOE8u6DZgue1Re7AVHy80t6GOEIDu2/L1JbVjzcYneC26UMM+jfTEfyxKpYEUHKH5KWf4cu8DWkt5DpW4WewbO9/wPkprhX7k5wbJIuMhG7tcFTvhHPyty9FtxBs/JGfUQvi+FEs0B8vjw8PIMBM6sAkyJPWzglpci852GpmGLmAVVnPsdNzbBcMgO0T6ox0p5NPD2mYDhBHpE3fs7kHlOyXteMt2g3+GrRjp6bEyAZJjHM3Gv3iTo8+QbuP7xgkVelHeRj8LWTL9iCUb6YRZ4vR4+/LeSGWyNMzU8vc9J2R9C/XKLXWOLZtdmUNKpcCtlWBCt2l08rhB8OIw0jUnFi6IvIIvjvWNN1OWLZU8mXzHHz//iI31oWHxXOelVFqyRkfyjqwczcDpC9Di8vJfcUV9B+Qb7tZqkikVXJJo0pk7u1Z2d3AbkLsLXiWKkY91hQqADN/FQZIWCgMfYF+i6l2ckR9zIlEc5I7AiYPk7B9B3a9PwPzUqOjasy2ERY1gAeFFqF9uztARhEbc0oneqwvjSVYPOf8al7ubfSpJy9ugpjPeqNljyfzAtg50D3F4Zq0U6PlrSPDceq/IbXLMnYtgXSc1PdKzRBKCm25KyeM5pTkK+Xd98l+e4DXgKS9K68/sEwKjrecRyroZduQxric8rca3CSCFbYwFJYLqcdr5fhOgL+LhRik0QillGB+CyX88CarKC3btktDJLQ3X6V3aPCV5Qc/DeW2pVXib1UdEAgCCbhBNWYV9aw/l2vFi/E0GAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_016GkNiFiqieaeQayzcVKDs9",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "print((38702-29139)/29139*100)"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "print((38702-29139)/29139*100)"
+      },
+      "output": "32.818559319125576"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "**Comparability note:** GE's originally reported FY2022 total revenue of $76,555 million [DOC: ge_fy2022_10k.txt] included the HealthCare and Vernova (Energy) businesses, both of which were subsequently spun off (HealthCare on January 3, 2023; Vernova on April 2, 2024) [DOC: ge_fy2024_notes.txt]. As a result, the FY2022 figure as originally reported is **not directly comparable** to FY2024 results, which reflect only the continuing \"GE Aerospace\" business.\n\nTo make a like-for-like comparison, the FY2024 10-K restates FY2022 revenue on a continuing-operations basis (i.e., GE Aerospace only, with HealthCare and Vernova reclassified as discontinued operations for all periods presented) [DOC: ge_fy2024_income_statement.txt]. On this comparable basis:\n\n- FY2022 (GE Aerospace continuing operations, restated): $29,139 million [DOC: ge_fy2024_income_statement.txt]\n- FY2024 (GE Aerospace): $38,702 million [DOC: ge_fy2024_income_statement.txt]\n\nGrowth = ($38,702M \u2212 $29,139M) / $29,139M \u2248 32.8%\n\nANSWER: On a comparable continuing-operations basis (GE Aerospace only, excluding the spun-off HealthCare and Vernova businesses), revenue grew from $29,139 million in FY2022 to $38,702 million in FY2024, an increase of approximately 32.8%. (Note: GE's originally reported FY2022 total revenue was $76,555 million, but that figure includes the HealthCare and Vernova segments that were later spun off, so it is not comparable to the FY2024 GE Aerospace-only figure.)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "GE Aerospace total revenues 2024 2022"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "General Electric total revenues fiscal year 2022"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "print((38702-29139)/29139*100)"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "n FY2022 to $38,702 million in FY2024, an increase of approximately 32.8%. (Note: GE's originally reported FY2022 total revenue was $76,555 million, but that figure includes the HealthCare and Vernova segments that were later spun off, so it is not comparable to the FY2024 GE Aerospace-only figure.)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 3,
+    "terminal_reward": 1.0,
+    "return": 0.97,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T17:40:24+00:00"
+  }
+}

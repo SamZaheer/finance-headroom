@@ -1,0 +1,123 @@
+{
+  "model": "claude",
+  "tool_condition": "tool",
+  "item_id": "TECH-GAAP-04",
+  "repeat": 2,
+  "final_answer": "**Fiscal year note:** Each company's \"most recent fiscal year\" reconciliation is presented on its own fiscal calendar (Workday's FY2026 ended Jan 31, 2026; ServiceNow's and Datadog's FY2025 are calendar-year 2025), so the periods are not perfectly time-aligned, though each is the most recently reported fiscal year for that company and the reconciliations are prepared on a consistent non-GAAP operating-income basis.\n\nUsing the operating-income reconciliation line items (excluding the GAAP starting figure):\n\n- **Workday (FY2026, $M):** Share-based compensation $1,570 + Employer payroll tax-related items $62 + Amortization of acquisition-related intangibles $106 + Acquisition-related costs $62 + Restructuring costs $303 = **$2,103M** [DOC: all_three_tables.txt]\n\n- **ServiceNow (FY2025, $M):** Stock-based compensation $1,955 + Amortization of purchased intangibles $120 + Business combination and other related costs $109 + Impairment of assets $30 + Severance costs $74 + Legal settlements $0 + Contract termination costs $37 = **$2,325M** [DOC: all_three_tables.txt]\n\n- **Datadog (FY2025, $thousands):** Stock-based compensation $750,671 + Amortization of acquired intangibles $6,373 + Employer payroll taxes on employee stock transactions $53,799 + M&A transaction costs $1,574 = $812,417 thousand \u2248 **$812.4M** [DOC: all_three_tables.txt]\n\nComparing the three totals ($2,103M for Workday, $2,325M for ServiceNow, and $812.4M for Datadog), ServiceNow had the largest aggregate dollar amount of non-GAAP operating income adjustments in its most recent fiscal year.\n\nANSWER: ServiceNow (\u2248$2.33 billion in total non-GAAP operating income adjustments for FY2025, vs. \u2248$2.10 billion for Workday's FY2026 and \u2248$0.81 billion for Datadog's FY2025)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: Among Workday, ServiceNow, and Datadog, which company had the largest total dollar amount of non-GAAP adjustments (the sum of all add-back/adjustment line items, not counting the GAAP starting figure) in their most recent fiscal year's operating income reconciliation?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EuIDCpABCBIYAipAl7pBAGCcKhBmzdJbMIV+Xt80noYhuWYAJsxQKZY2gJ9jTJsHFDexpFzNGdJQmDrx/V35CR6qb1yAj674M1DdrTIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAYrvz9UGEgwuvVhV7VRWCpl5UJEaDPQHPdmTWTKF6SXIuyIwXNFHQe+kniKO933eEEZdeu8ULttatEToo6aV4zApwDblNPsjxxaZUOSWNYpuqU1EKv4BC+W8ad54RhifAFhjMhjivLUa4GAFuYsA+yMsD2KG8Ig+JqfNguOukZjQRJN+QRiA9RxRgIW5d9viT8dS7ysKXluhlfBidilypesyNgsz4JT/YGOyYWu3coPKlohIW65bCWfffTnWo+gDKb66YJrkIXNrCUxsvXQ7aAycIjv0O4zDFpsuO6WcsOsbpDPpwLyMgCXSeLoisnLGiqTSXUI7lY3IXtSYRb3kaYFsnFYFK0aNjEg6k2bQXh7hdULzsv2dHbJv94NO9WymdOGhp23Wa0n92zhfpNtEmyiYg9vt6KG/cLFeRxW2EzgnH8RopIIRu7Y0uUu7/rQmB9/9gXsYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01MzQTTm9xVkufaTjFqDyWuh",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Workday reconciliation of GAAP to non-GAAP operating income"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01Db53NaTcKq81BLx1pRUXLn",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "ServiceNow reconciliation of GAAP to non-GAAP operating income"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_019gwzyawiKKgFRGmwguduqd",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Datadog reconciliation of GAAP to non-GAAP operating income"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Workday reconciliation of GAAP to non-GAAP operating income"
+      },
+      "output": "[all_three_tables.txt] ServiceNow, Inc. reconciliation (in MILLIONS), FY2025 (operating income table): Stock-based compensation $1,955; Amortization of purchased intangibles $120; Business combination and other related costs $109; Impairment of assets $30; Severance costs $74; Legal settlements $0; Contract termination costs $37.\n\n[all_three_tables.txt] Workday, Inc. reconciliation (in MILLIONS), FY2026: Share-based compensation $1,570; Employer payroll tax-related items $62; Amortization of acquisition-related intangibles $106; Acquisition-related costs $62; Restructuring costs $303. (Total adjustments not pre-summed -- sum these yourself.)\n\n[all_three_tables.txt] Datadog, Inc. reconciliation (in THOUSANDS), FY2025: Stock-based compensation expense $750,671; Amortization of acquired intangibles $6,373; Employer payroll taxes on employee stock transactions $53,799; M&A transaction costs $1,574."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "ServiceNow reconciliation of GAAP to non-GAAP operating income"
+      },
+      "output": "[all_three_tables.txt] ServiceNow, Inc. reconciliation (in MILLIONS), FY2025 (operating income table): Stock-based compensation $1,955; Amortization of purchased intangibles $120; Business combination and other related costs $109; Impairment of assets $30; Severance costs $74; Legal settlements $0; Contract termination costs $37.\n\n[all_three_tables.txt] Workday, Inc. reconciliation (in MILLIONS), FY2026: Share-based compensation $1,570; Employer payroll tax-related items $62; Amortization of acquisition-related intangibles $106; Acquisition-related costs $62; Restructuring costs $303. (Total adjustments not pre-summed -- sum these yourself.)\n\n[all_three_tables.txt] Datadog, Inc. reconciliation (in THOUSANDS), FY2025: Stock-based compensation expense $750,671; Amortization of acquired intangibles $6,373; Employer payroll taxes on employee stock transactions $53,799; M&A transaction costs $1,574."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Datadog reconciliation of GAAP to non-GAAP operating income"
+      },
+      "output": "[all_three_tables.txt] ServiceNow, Inc. reconciliation (in MILLIONS), FY2025 (operating income table): Stock-based compensation $1,955; Amortization of purchased intangibles $120; Business combination and other related costs $109; Impairment of assets $30; Severance costs $74; Legal settlements $0; Contract termination costs $37.\n\n[all_three_tables.txt] Datadog, Inc. reconciliation (in THOUSANDS), FY2025: Stock-based compensation expense $750,671; Amortization of acquired intangibles $6,373; Employer payroll taxes on employee stock transactions $53,799; M&A transaction costs $1,574.\n\n[all_three_tables.txt] Workday, Inc. reconciliation (in MILLIONS), FY2026: Share-based compensation $1,570; Employer payroll tax-related items $62; Amortization of acquisition-related intangibles $106; Acquisition-related costs $62; Restructuring costs $303. (Total adjustments not pre-summed -- sum these yourself.)"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "id": "toolu_0175sjoL6JygEMLheBxrskXN",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "\nworkday = 1570+62+106+62+303\nservicenow = 1955+120+109+30+74+0+37\ndatadog = (750671+6373+53799+1574)/1000  # convert thousands to millions\nprint(workday, servicenow, datadog)\n"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "\nworkday = 1570+62+106+62+303\nservicenow = 1955+120+109+30+74+0+37\ndatadog = (750671+6373+53799+1574)/1000  # convert thousands to millions\nprint(workday, servicenow, datadog)\n"
+      },
+      "output": "2103 2325 812.417"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EvQFCpABCBIYAipA+sqbAfiknIekZ0X1Ok6G1ZWQooU9FefjnZvFuQz9CA8hVMA/XCCQ8bwYkfzqfalxQteB+hJ2DZRlcHmHEr7vDzIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAZDvz9UGEgz0FldCbEDrLB6WAJEaDDnlg923wADJ0FS0VCIw+CLP3gzuxnOf4sOWjhzADieD21UVdC92wTJ8SBflgPtHIwJYPHBq/tXE5ME+1FlcKpAExsv7+T8zUE8+lfg9MPsuRUAJxAeUtwc8ceMKRhxCqEPzFPJcAh3O3uosRtbjXi222IzVmqKxTYZIj1NK4Og+EzFhm3DV834ETEKhIGFjX9pusnX5fw6S8Tqmo9QqMQ12Ni3dT8UMqjd69yVxtPOHa8KS3hss5oKCuRVaEs2yFqd+xG3Jyj0IVGKoMtWXuee3ZXE6NhgDWa0mfJCrIzPkr+48L66RoysBZUAIoj5BM09aIPqpbCRDdM/hW+ILtMtH1bqATAGPRpVrwC9uHPWZvVOPuE01SzMxhx3uKPCxelXPKdQ9UhkgHVim2tjdNYiZkwANmatTy7pXA+E+Nr5HoX2VvTQGpzdza5mjIf/S3MNy1gU45OysxFZ+0IgHWdbZvNCnw88dRHmOsaVqNjJVKtvzsZSmuOtHp5Ij9UdbAA6itHd07uv2x59nTCjWd9NRgHPtDEiM3eLpabCOKjGauKygXL+mGE4kB1cTmu7EOpBHcCqJVzaU0jIv4jVlI7cDmWRhZpppfxrCA9wr7wpO3kPSjpK69oGIJikwZCNPpPMRV9i5mCYDLXpDfYFB7Sx5PzsQqDeSelU34wwmsia7mrRWCjN6/2KvKb7EFQKMG+cNjSG10WtTWwlQMP1lvxKEpFyEWHTFsANBQe7Y+k0VKEmD1L11Zz8MkkVi+gTgEIjj75qbFrBy+ItUGAJgtqxhGAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Fiscal year note:** Each company's \"most recent fiscal year\" reconciliation is presented on its own fiscal calendar (Workday's FY2026 ended Jan 31, 2026; ServiceNow's and Datadog's FY2025 are calendar-year 2025), so the periods are not perfectly time-aligned, though each is the most recently reported fiscal year for that company and the reconciliations are prepared on a consistent non-GAAP operating-income basis.\n\nUsing the operating-income reconciliation line items (excluding the GAAP starting figure):\n\n- **Workday (FY2026, $M):** Share-based compensation $1,570 + Employer payroll tax-related items $62 + Amortization of acquisition-related intangibles $106 + Acquisition-related costs $62 + Restructuring costs $303 = **$2,103M** [DOC: all_three_tables.txt]\n\n- **ServiceNow (FY2025, $M):** Stock-based compensation $1,955 + Amortization of purchased intangibles $120 + Business combination and other related costs $109 + Impairment of assets $30 + Severance costs $74 + Legal settlements $0 + Contract termination costs $37 = **$2,325M** [DOC: all_three_tables.txt]\n\n- **Datadog (FY2025, $thousands):** Stock-based compensation $750,671 + Amortization of acquired intangibles $6,373 + Employer payroll taxes on employee stock transactions $53,799 + M&A transaction costs $1,574 = $812,417 thousand \u2248 **$812.4M** [DOC: all_three_tables.txt]\n\nComparing the three totals ($2,103M for Workday, $2,325M for ServiceNow, and $812.4M for Datadog), ServiceNow had the largest aggregate dollar amount of non-GAAP operating income adjustments in its most recent fiscal year.\n\nANSWER: ServiceNow (\u2248$2.33 billion in total non-GAAP operating income adjustments for FY2025, vs. \u2248$2.10 billion for Workday's FY2026 and \u2248$0.81 billion for Datadog's FY2025)",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

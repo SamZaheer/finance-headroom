@@ -1,0 +1,49 @@
+{
+  "model": "gpt",
+  "tool_condition": "no_tool",
+  "item_id": "AIR-CTRL-01",
+  "repeat": 1,
+  "bucket": "airline_control",
+  "final_answer": "All five companies use the same fiscal year (calendar year 2024) and basis of accounting, but Alaska\u2019s 2024 net income includes Hawaiian\u2019s post\u2011acquisition results only from September 18, 2024 onward, so its profitability is not fully comparable to a standalone Alaska-only 12\u2011month period. The rest are directly comparable.\n\nNet income figures:\n\n- Delta Air Lines: Net income FY2024 $3,457M [DOC-1]  \n- United Airlines Holdings: Net income FY2024 $3,149M [DOC-1]  \n- Southwest Airlines: Net income FY2024 $465M [DOC-1]  \n- American Airlines Group: Net income FY2024 $846M [DOC-1]  \n- Alaska Air Group: Net income FY2024 $395M [DOC-1]; includes Hawaiian\u2019s revenue of $869M and net loss of $113M from Sept 18\u2013Dec 31, 2024 [DOC-2].\n\nDelta\u2019s FY2024 net income of $3,457M is the highest of the group. [DOC-1]\n\nANSWER: Delta Air Lines",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | airlines_fy2024.txt]\nSelected figures from each company's fiscal year 2024 Form 10-K (all calendar-year, Jan 1 - Dec 31; $ in millions; source: SEC XBRL financial data):\n\nDelta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2024 $61,643M. Operating income: FY2024 $5,995M. Net income: FY2024 $3,457M.\n\nUnited Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Operating income: FY2024 $5,096M. Net income: FY2024 $3,149M.\n\nSouthwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Operating income: FY2024 $321M. Net income: FY2024 $465M.\n\nAmerican Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Operating income: FY2024 $2,614M. Net income: FY2024 $846M.\n\nAlaska Air Group (CIK 766421, 10-K accession 0000766421-25-000009): Total operating revenue: FY2024 $11,735M. Operating income: FY2024 $570M. Net income: FY2024 $395M.\n\n[DOC-2 | alaska_10k_note_acquisition.txt]\nAlaska Air Group, Form 10-K for fiscal year 2024 (accession 0000766421-25-000009), excerpt from the notes to the consolidated financial statements:\n\nOn September 18, 2024, Alaska Air Group completed its acquisition of Hawaiian Holdings, Inc., the parent company of Hawaiian Airlines. The results of Hawaiian are included in the consolidated financial statements beginning September 18, 2024. For the period from the acquisition date to December 31, 2024, revenue and net loss from Hawaiian recognized in the Company's consolidated results of operations was $869 million and $113 million, respectively.\n</excerpts>\n\nQuestion: Which of these five airlines was the most profitable in fiscal year 2024: Delta, United, Southwest, American, and Alaska?"
+    },
+    {
+      "content": "All five companies use the same fiscal year (calendar year 2024) and basis of accounting, but Alaska\u2019s 2024 net income includes Hawaiian\u2019s post\u2011acquisition results only from September 18, 2024 onward, so its profitability is not fully comparable to a standalone Alaska-only 12\u2011month period. The rest are directly comparable.\n\nNet income figures:\n\n- Delta Air Lines: Net income FY2024 $3,457M [DOC-1]  \n- United Airlines Holdings: Net income FY2024 $3,149M [DOC-1]  \n- Southwest Airlines: Net income FY2024 $465M [DOC-1]  \n- American Airlines Group: Net income FY2024 $846M [DOC-1]  \n- Alaska Air Group: Net income FY2024 $395M [DOC-1]; includes Hawaiian\u2019s revenue of $869M and net loss of $113M from Sept 18\u2013Dec 31, 2024 [DOC-2].\n\nDelta\u2019s FY2024 net income of $3,457M is the highest of the group. [DOC-1]\n\nANSWER: Delta Air Lines",
+      "role": "assistant"
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "can Airlines Group: Net income FY2024 $846M [DOC-1]  \n- Alaska Air Group: Net income FY2024 $395M [DOC-1]; includes Hawaiian\u2019s revenue of $869M and net loss of $113M from Sept 18\u2013Dec 31, 2024 [DOC-2].\n\nDelta\u2019s FY2024 net income of $3,457M is the highest of the group. [DOC-1]\n\nANSWER: Delta Air Lines"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T17:47:54+00:00"
+  }
+}

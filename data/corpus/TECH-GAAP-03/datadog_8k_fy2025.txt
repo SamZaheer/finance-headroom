@@ -1,0 +1,7 @@
+Datadog, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-10, accession 0001628280-26-006645).
+RECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025:
+GAAP operating loss: $(44,373)
+Stock-based compensation expense: $750,671
+Amortization of acquired intangibles: $6,373
+Employer payroll taxes on employee stock transactions: $53,799
+M&A transaction costs: $1,574

@@ -1,0 +1,194 @@
+{
+  "model": "opus",
+  "tool_condition": "tool",
+  "item_id": "TECH-CMP-05",
+  "repeat": 2,
+  "bucket": "tech_clean_comparison",
+  "final_answer": "## Microsoft Gross Margin: FY2023 \u2192 FY2024\n\n**Source data** [DOC: msft_margin.txt \u2014 Microsoft Corporation 10-K FY2024, accession 0000950170-24-087843]:\n\n| | FY2024 (YE 6/30/2024) | FY2023 (YE 6/30/2023) |\n|---|---|---|\n| Revenue | $245,122M | $211,915M |\n| Cost of revenue | $74,114M | $65,863M |\n| **Gross margin ($)** | **$171,008M** | **$146,052M** |\n| **Gross margin (%)** | **69.76%** | **68.92%** |\n\n**Comparability note:** Both figures are drawn from the same FY2024 10-K (FY2023 shown as the comparative column), so they are on a consistent presentation basis, and both are 12-month periods ending June 30 \u2014 no fiscal-year mismatch. One caveat: the excerpt provided contains only the consolidated revenue and cost-of-revenue lines and no accompanying disclosure on acquisitions, segment redefinitions, or accounting-estimate changes, so I cannot verify from this source whether FY2024 includes partial-year results from an acquisition (which would make the year-over-year margin change partly mix-driven rather than purely organic).\n\n**Result:** Gross margin **improved** by approximately **0.84 percentage points** (69.76% \u2212 68.92%), with gross profit dollars rising from $146,052M to $171,008M (+17.1%) on revenue growth of 15.7% \u2014 i.e., revenue grew faster than cost of revenue (+12.5%), which is what drove the margin expansion.\n\nANSWER: Improved \u2014 gross margin rose from 68.92% in FY2023 to 69.76% in FY2024, an increase of approximately 0.84 percentage points (~0.8 pp)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: Did Microsoft's gross margin improve or decline from fiscal year 2023 to fiscal year 2024, and by how many percentage points?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "I'll search the filings for Microsoft's gross margin data.",
+          "type": "text"
+        },
+        {
+          "id": "toolu_01QUrh1o8SACAsUCCEW8xP8w",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "gross margin fiscal year 2024 2023"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01FED4qnV48YovStQjAtphdE",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "total revenue cost of revenue gross margin"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "gross margin fiscal year 2024 2023"
+      },
+      "output": "[msft_margin.txt] Microsoft Corporation 10-K FY2024 (accession 0000950170-24-087843): FY2024 (year ended June 30, 2024): revenue $245,122M, cost of revenue $74,114M. FY2023 (year ended June 30, 2023, comparative): revenue $211,915M, cost of revenue $65,863M."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "total revenue cost of revenue gross margin"
+      },
+      "output": "[msft_margin.txt] Microsoft Corporation 10-K FY2024 (accession 0000950170-24-087843): FY2024 (year ended June 30, 2024): revenue $245,122M, cost of revenue $74,114M. FY2023 (year ended June 30, 2023, comparative): revenue $211,915M, cost of revenue $65,863M."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISlAUKjgEIEhgCKkAhyJh87yufCKAIf7Xb+Vp0JCQuIZxtvUDjkUWY6+DtEG8e3pCeNg9iu/pWhZWZ+Nv03KJpWabS7OsFUwavL+VeMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAZqv0NUGEgwN1DGyxhDtUrN/gcwaDN5wIAtUQfpzBjd8KiIwXz43nIHQB7ovzT6v+/zEtSHBLb/sYQtjM4PHZgVAkj44LbIQKqhZjXrcqOeg3MqxKrIDeZ94a6OdNPh95bGM/5JvHLi/DTMn6p0QauxTMkC5cVMH2PyyEBoCI25voJI6mJtpYylOWSanm1XWYpK0e+J9ZfOIC8CxYDJsNeE+fWBuBqetIPFfW2HXiMHjH21p+n2XWLHDFtLUOyTKQYF/ROUAqisiXczK6JAHMy/BG7y81oqdoOmlD4QF4KekynO2eKMcM5Y19ZaMU2wVmklwOs3bRnvd+hYwngMaQEoi2Llb5SkdQMJ0XAfSrbmsqR7uEAH55KziAe2mhLl2vFs54YLCCMvNI4tLApD6lvB6AiJDBqzVKhW0Ic+XlH+xyYqeon1QQf+s18XXixWmaM/WjIid2YVJ+EQWrddyZmHHa2APaa+b01ksD9na0kfEr5OrGc/3q7RHwaVOvucq4TKaWTP2KUS3eDagvJDMOG72jYrHxb+n1rK0qLhdW/TmkZRFeW02Kv8FLiGq4KjwId1awYXzN8F59beZeE0pomf/EQMofzrfYvrv9aRMi09baf/xwctIZq/MmIKNlvoAKgL9cYRRXYFtlBdvfDtYrj0A6ttYgxju64OncXran+4JkIStszVbT/UYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01JVcq996g1DFyEi7WosqQxn",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "\nr24,c24=245122,74114\nr23,c23=211915,65863\ng24=(r24-c24)/r24*100\ng23=(r23-c23)/r23*100\nprint(r24-c24, r23-c23, round(g24,2), round(g23,2), round(g24-g23,2))\n"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01K8JyYvDWG7BQRVJXJwXnFq",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Activision Blizzard acquisition impact comparability segment reporting change"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "\nr24,c24=245122,74114\nr23,c23=211915,65863\ng24=(r24-c24)/r24*100\ng23=(r23-c23)/r23*100\nprint(r24-c24, r23-c23, round(g24,2), round(g23,2), round(g24-g23,2))\n"
+      },
+      "output": "171008 146052 69.76 68.92 0.84"
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Activision Blizzard acquisition impact comparability segment reporting change"
+      },
+      "output": "No matching passages found."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISmAQKjgEIEhgCKkCagDythY+mncWzZGC0Ad4Lu5BkA4OC3o0n3X64v76ZQR9JMUKQirdXiF7YSCH1bhTVyuYeEXkMG0SdmsN9MMcgMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAZ+v0NUGEgwxwvrH2cCZcigiye8aDIc5NjHEfDozNHjELCIwduH/8C3ihcGBBikejLlMOA2EoiKHC1Olt1HtHyjoLOEhsnRjfXoEn8+um477www8KrYCgnCFvIfjEMvJJuToUO+MK+Ja4gye4X/5i6eH0oOES6h+Gu4dv3FwDl6x986IgUL+dAW91+RXjivqZkm+6xaGyekQB5tccMu92K7pbWjnjD3CmHV6QsJ/HsSsx1EQ6YD/R8UhyQ7BAKovKbsYSoyNKZ4tmqe5jPS6DA68EZH4z9PS1WonOeR+r20VfzuAIUUtsHZcZDlMf4RHU8tuehalga87+rdOoy3/+Uw46d4XyVYKjdJ4u7O+xbi2YrpFst3KJgoAUOGYnQzvTNsDlJffvOqnVYmIDtbQ4uqK/M/rU+hWIEI5Q18e5l0acHnuU5l6QJrG0FU/OirHOVcDkgPXceCQJ+7/X9vzWllgFf/kvD5u+BI/82bjaSKPyzIamAmbE6xhc4dEo/V1tAJn8zew2pCua3k8SRgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "## Microsoft Gross Margin: FY2023 \u2192 FY2024\n\n**Source data** [DOC: msft_margin.txt \u2014 Microsoft Corporation 10-K FY2024, accession 0000950170-24-087843]:\n\n| | FY2024 (YE 6/30/2024) | FY2023 (YE 6/30/2023) |\n|---|---|---|\n| Revenue | $245,122M | $211,915M |\n| Cost of revenue | $74,114M | $65,863M |\n| **Gross margin ($)** | **$171,008M** | **$146,052M** |\n| **Gross margin (%)** | **69.76%** | **68.92%** |\n\n**Comparability note:** Both figures are drawn from the same FY2024 10-K (FY2023 shown as the comparative column), so they are on a consistent presentation basis, and both are 12-month periods ending June 30 \u2014 no fiscal-year mismatch. One caveat: the excerpt provided contains only the consolidated revenue and cost-of-revenue lines and no accompanying disclosure on acquisitions, segment redefinitions, or accounting-estimate changes, so I cannot verify from this source whether FY2024 includes partial-year results from an acquisition (which would make the year-over-year margin change partly mix-driven rather than purely organic).\n\n**Result:** Gross margin **improved** by approximately **0.84 percentage points** (69.76% \u2212 68.92%), with gross profit dollars rising from $146,052M to $171,008M (+17.1%) on revenue growth of 15.7% \u2014 i.e., revenue grew faster than cost of revenue (+12.5%), which is what drove the margin expansion.\n\nANSWER: Improved \u2014 gross margin rose from 68.92% in FY2023 to 69.76% in FY2024, an increase of approximately 0.84 percentage points (~0.8 pp)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "gross margin fiscal year 2024 2023"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "total revenue cost of revenue gross margin"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "\nr24,c24=245122,74114\nr23,c23=211915,65863\ng24=(r24-c24)/r24*100\ng23=(r23-c23)/r23*100\nprint(r24-c24, r23-c23, round(g24,2), round(g23,2), round(g24-g23,2))\n"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Activision Blizzard acquisition impact comparability segment reporting change"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "46,052M to $171,008M (+17.1%) on revenue growth of 15.7% \u2014 i.e., revenue grew faster than cost of revenue (+12.5%), which is what drove the margin expansion.\n\nANSWER: Improved \u2014 gross margin rose from 68.92% in FY2023 to 69.76% in FY2024, an increase of approximately 0.84 percentage points (~0.8 pp)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 4,
+    "terminal_reward": 1.0,
+    "return": 0.96,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:15:56+00:00"
+  }
+}

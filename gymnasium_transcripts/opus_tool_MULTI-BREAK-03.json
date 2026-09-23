@@ -1,0 +1,161 @@
+{
+  "model": "opus",
+  "tool_condition": "tool",
+  "item_id": "MULTI-BREAK-03",
+  "repeat": 1,
+  "bucket": "multi_sector_comparability_break",
+  "final_answer": "**Important comparability caveat:** The two fiscal years are not directly comparable on an as-originally-reported basis. On April 1, 2024, 3M spun off its Health Care business (Solventum), and \"the historical results of Solventum are reported in 3M's consolidated financial statements as discontinued operations for all periods presented\" [mmm_fy2024_notes.txt]. As a result, FY2023 revenue was originally reported as $32,681 million [mmm_fy2023_10k.txt], but was recast to $24,610 million in the FY2024 10-K [mmm_fy2024_income_statement.txt].\n\n**Apples-to-apples (continuing operations, both years recast):**\n- FY2024 revenue: $24,575 million; FY2023 revenue (as recast): $24,610 million [mmm_fy2024_income_statement.txt]\n- Change: \u2212$35 million, or **\u22120.1%**\n\n**Unadjusted headline comparison (not meaningful):** $32,681M \u2192 $24,575M = \u221224.8%, but essentially all of that decline reflects the Solventum spinoff reclassification rather than underlying business contraction.\n\nThe correct measure of revenue growth is the continuing-operations basis: approximately \u22120.14% (essentially flat, a slight decline).\n\nANSWER: Approximately \u22120.1% (a slight decline): revenue from continuing operations fell from $24,610M in FY2023 (as recast) to $24,575M in FY2024, a decrease of $35M. (On an as-originally-reported basis FY2023 was $32,681M, but that figure includes the Solventum health care business spun off in April 2024 and is not comparable.)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was 3M's revenue growth from fiscal year 2023 to fiscal year 2024?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "I'll search the filings for 3M's net sales figures.",
+          "type": "text"
+        },
+        {
+          "id": "toolu_01HPSyCtW4y8wQDfUdGNQoyr",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "3M net sales 2024 compared to 2023"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01NtpWcf1zd66Qq1XAdruHja",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "total net sales consolidated statement of income fiscal 2024"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "3M net sales 2024 compared to 2023"
+      },
+      "output": "[mmm_fy2023_10k.txt] 3M Company Form 10-K, fiscal year 2023 (filed 2024-02-07, accession 0000066740-24-000016).\nTotal revenue for fiscal year 2023: $32,681 million.\n\n[mmm_fy2024_income_statement.txt] 3M Company Form 10-K, fiscal year 2024 (filed 2025, accession 0000066740-25-000006).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2024: $24,575 million.\nTotal revenue for fiscal year 2023 (as presented for comparative purposes in this filing): $24,610 million.\n\n[mmm_fy2024_notes.txt] 3M Company Form 10-K, fiscal year 2024. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Separation of Solventum: On April 1, 2024, 3M completed the previously announced separation of its Health Care business through a pro rata distribution of 80.1% of the outstanding shares of Solventum Corporation to 3M shareholders, structured as a tax-free spin-off. The historical results of Solventum are reported in 3M's consolidated financial statements as discontinued operations for all periods presented."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "total net sales consolidated statement of income fiscal 2024"
+      },
+      "output": "[mmm_fy2024_income_statement.txt] 3M Company Form 10-K, fiscal year 2024 (filed 2025, accession 0000066740-25-000006).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2024: $24,575 million.\nTotal revenue for fiscal year 2023 (as presented for comparative purposes in this filing): $24,610 million.\n\n[mmm_fy2024_notes.txt] 3M Company Form 10-K, fiscal year 2024. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Separation of Solventum: On April 1, 2024, 3M completed the previously announced separation of its Health Care business through a pro rata distribution of 80.1% of the outstanding shares of Solventum Corporation to 3M shareholders, structured as a tax-free spin-off. The historical results of Solventum are reported in 3M's consolidated financial statements as discontinued operations for all periods presented.\n\n[mmm_fy2023_10k.txt] 3M Company Form 10-K, fiscal year 2023 (filed 2024-02-07, accession 0000066740-24-000016).\nTotal revenue for fiscal year 2023: $32,681 million."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISigIKjgEIEhgCKkA2jUULQYoD3DjC2zfLHA3/ey2R5DR+NLwNWzO08RVzHSwuSRaYgsYHnq9nikSYtoZGzXA0TW623tRSonJ1ftoeMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAd+g0NUGEgwA8u6XjYA3JX+/g7AaDCSPfm4+FvbtEmmpoiIwuFMEb1Ac4xL2iCowEksEJ3j3mdTl9qEYbF4HeVz+c8kOVRqptZPZ/ohCMTXfF6f5KiniSVa75TmnK4eVoBA1AXVYqkvJNfYLOyCnqMXj66MCkAHUM5f5ta2ToBgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01NRusBcB7dsDQ8UxBLA1Cyd",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "print((24575-24610)/24610*100, (24575-32681)/32681*100)"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "print((24575-24610)/24610*100, (24575-32681)/32681*100)"
+      },
+      "output": "-0.14221861032100772 -24.803402588660077"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "**Important comparability caveat:** The two fiscal years are not directly comparable on an as-originally-reported basis. On April 1, 2024, 3M spun off its Health Care business (Solventum), and \"the historical results of Solventum are reported in 3M's consolidated financial statements as discontinued operations for all periods presented\" [mmm_fy2024_notes.txt]. As a result, FY2023 revenue was originally reported as $32,681 million [mmm_fy2023_10k.txt], but was recast to $24,610 million in the FY2024 10-K [mmm_fy2024_income_statement.txt].\n\n**Apples-to-apples (continuing operations, both years recast):**\n- FY2024 revenue: $24,575 million; FY2023 revenue (as recast): $24,610 million [mmm_fy2024_income_statement.txt]\n- Change: \u2212$35 million, or **\u22120.1%**\n\n**Unadjusted headline comparison (not meaningful):** $32,681M \u2192 $24,575M = \u221224.8%, but essentially all of that decline reflects the Solventum spinoff reclassification rather than underlying business contraction.\n\nThe correct measure of revenue growth is the continuing-operations basis: approximately \u22120.14% (essentially flat, a slight decline).\n\nANSWER: Approximately \u22120.1% (a slight decline): revenue from continuing operations fell from $24,610M in FY2023 (as recast) to $24,575M in FY2024, a decrease of $35M. (On an as-originally-reported basis FY2023 was $32,681M, but that figure includes the Solventum health care business spun off in April 2024 and is not comparable.)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "3M net sales 2024 compared to 2023"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "total net sales consolidated statement of income fiscal 2024"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "print((24575-24610)/24610*100, (24575-32681)/32681*100)"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": " slight decline): revenue from continuing operations fell from $24,610M in FY2023 (as recast) to $24,575M in FY2024, a decrease of $35M. (On an as-originally-reported basis FY2023 was $32,681M, but that figure includes the Solventum health care business spun off in April 2024 and is not comparable.)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 3,
+    "terminal_reward": 1.0,
+    "return": 0.97,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T17:45:06+00:00"
+  }
+}

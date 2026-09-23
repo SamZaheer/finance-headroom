@@ -1,0 +1,54 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-CMP-01",
+  "repeat": 2,
+  "bucket": "tech_clean_comparison",
+  "final_answer": "**Margin computations (all figures GAAP, both companies on December 31 calendar fiscal years, so the periods are directly comparable):**\n\n**Alphabet**\n- FY2022: $74,842M \u00f7 $282,836M = **26.46%** operating margin [DOC-1: \"Alphabet Inc. (10-K FY2022...): revenue $282,836M, operating income $74,842M.\"]\n- FY2024: $112,390M \u00f7 $350,018M = **32.11%** operating margin [DOC-1: \"Alphabet Inc. (10-K FY2024...): revenue $350,018M, operating income $112,390M.\"]\n- Expansion: **+5.65 percentage points**\n\n**Meta Platforms**\n- FY2022: $28,944M \u00f7 $116,609M = **24.82%** operating margin [DOC-1: \"Meta Platforms, Inc. (10-K FY2022...): revenue $116,609M, operating income $28,944M.\"]\n- FY2024: $69,380M \u00f7 $164,501M = **42.18%** operating margin [DOC-1: \"Meta Platforms, Inc. (10-K FY2024...): revenue $164,501M, operating income $69,380M.\"]\n- Expansion: **+17.35 percentage points**\n\n**Comparability note:** Both issuers report on a December 31 fiscal year end and the excerpted figures are consolidated GAAP revenue and operating income from their respective 10-K filings, so the two-year changes are on a like-for-like basis. The excerpts provide only consolidated totals \u2014 they do not disclose segment definitions, restructuring/severance charges, or one-time items (e.g., Meta's 2022\u20132023 cost-efficiency actions or Alphabet's charges), any of which could affect the quality of the margin expansion but not the arithmetic below.\n\nMeta expanded its operating margin more: 17.35 pp versus 5.65 pp for Alphabet, a difference of roughly 11.7 percentage points.\n\nANSWER: Meta, by approximately 11.7 percentage points more (Meta +17.35 pp vs. Alphabet +5.65 pp)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | comparison_data.txt]\nAlphabet Inc. (10-K FY2022, accession 0001652044-23-000016): revenue $282,836M, operating income $74,842M.\nAlphabet Inc. (10-K FY2024, accession 0001652044-25-000014): revenue $350,018M, operating income $112,390M.\n\nMeta Platforms, Inc. (10-K FY2022, accession 0001326801-23-000013): revenue $116,609M, operating income $28,944M.\nMeta Platforms, Inc. (10-K FY2024, accession 0001326801-25-000017): revenue $164,501M, operating income $69,380M.\n</excerpts>\n\nQuestion: Which company expanded its operating margin more from fiscal year 2022 to fiscal year 2024, Alphabet or Meta, and by how many percentage points more?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISpAcKjgEIEhgCKkCS4NiV36BgoL3f8Uvrytr5bJeQfkY8M6Ymt0UIt0AkY0VqLNOOFtXYm36vpfpRO4KPhItzpA//LiIph/6fNFlmMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAfas0NUGEgz+YZYvrz9aRrkSXD4aDNZ+aSU5d/YepNn25yIwkFyEPZW9h19LebfN8UYZQcLU6xhYh7wOk6xB5frkrV8rqrQJSnpB4oYhvLmouDbnKsIFYyv/sbZKanOU4lwwVZt9HaX4LT+OYRZLFLWhYfgR6bOum7ojMqVqjREj0PdPAKQbd026hnElMaCJ162wnHxarNFTjaRawcjzZtVf3PSzQpa7J2Ng8m8goghDfU8PjHRwckxh5cSaSYut9/kqfqBHK/qDB7AdA6AaQOSXDOWheIhETilDLIV6TVKIFBM2XNpD6GQ7dc6eKCOSKzum6CIgPjQjLbZoiVts4IVYShLe+ljjFQOZFa7fyMrC/qRG1fCcwE0QQmmCEq9eSMMpcrwrdUiCGN8TDd/9lLejGnqWsl5unrg3LkYnKgFOIlBNU0ZtQuxUGmi+yDkxzuY9OIbYZIewL3L0pYiYb0qoPzuSHCk6DJMQc7YnJ4uv/hWM8Sqyo+jb8Q+JQL7ZNGlkj0AAoFBLg1IxJQTcry5GTQlDLGmgTDhpP8wmSxhBnoDk2dgqDWZfCQebqVUBWlq+y2N2cK3iXgzKqqNwTSEcYMrDFpkb5L1gOsbj+e6Nzn+dnMKKhMgCggRkByGoI3WY30OlpdF28O9eKRpYXRMJnqsn3TyxCD8NxiDgirzO7oFtCUzxiCQr+WEszuclsGaXK4dThhvOkEZrjup8zamZKWDnTuu67+RzDLol+jKbIvRRUv+anNwjtZ9mvc/38wyJNPuFblur3Ju6mx82+30Ocvrhy6ztr8ehUB1Ldp6fprwryrtDgRd2WSsI/5eUJRY90DbeX7htJcZ7bWBP3VnjyHyyzPeoLFXMAd90aPoK/yLgKHl5kGi2kSF3MmpQUH8P4ZDAMKCd8PUR2nrCs1LicxJ34JD00KPcoxAiHgCnHN0b3QEKdcEcbpJKtNVFE9FfWZx0gv9KJvQpQH/qMJNRB7F1v2Uc6G/ashfQgAwWb7KtT3KOJ5NWanf8mFcuceeXWSN2nqY2zA1mnv4cdr0PMUC+NsfcFRgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Margin computations (all figures GAAP, both companies on December 31 calendar fiscal years, so the periods are directly comparable):**\n\n**Alphabet**\n- FY2022: $74,842M \u00f7 $282,836M = **26.46%** operating margin [DOC-1: \"Alphabet Inc. (10-K FY2022...): revenue $282,836M, operating income $74,842M.\"]\n- FY2024: $112,390M \u00f7 $350,018M = **32.11%** operating margin [DOC-1: \"Alphabet Inc. (10-K FY2024...): revenue $350,018M, operating income $112,390M.\"]\n- Expansion: **+5.65 percentage points**\n\n**Meta Platforms**\n- FY2022: $28,944M \u00f7 $116,609M = **24.82%** operating margin [DOC-1: \"Meta Platforms, Inc. (10-K FY2022...): revenue $116,609M, operating income $28,944M.\"]\n- FY2024: $69,380M \u00f7 $164,501M = **42.18%** operating margin [DOC-1: \"Meta Platforms, Inc. (10-K FY2024...): revenue $164,501M, operating income $69,380M.\"]\n- Expansion: **+17.35 percentage points**\n\n**Comparability note:** Both issuers report on a December 31 fiscal year end and the excerpted figures are consolidated GAAP revenue and operating income from their respective 10-K filings, so the two-year changes are on a like-for-like basis. The excerpts provide only consolidated totals \u2014 they do not disclose segment definitions, restructuring/severance charges, or one-time items (e.g., Meta's 2022\u20132023 cost-efficiency actions or Alphabet's charges), any of which could affect the quality of the margin expansion but not the arithmetic below.\n\nMeta expanded its operating margin more: 17.35 pp versus 5.65 pp for Alphabet, a difference of roughly 11.7 percentage points.\n\nANSWER: Meta, by approximately 11.7 percentage points more (Meta +17.35 pp vs. Alphabet +5.65 pp)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": " affect the quality of the margin expansion but not the arithmetic below.\n\nMeta expanded its operating margin more: 17.35 pp versus 5.65 pp for Alphabet, a difference of roughly 11.7 percentage points.\n\nANSWER: Meta, by approximately 11.7 percentage points more (Meta +17.35 pp vs. Alphabet +5.65 pp)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:11:00+00:00"
+  }
+}

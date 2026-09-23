@@ -1,0 +1,54 @@
+{
+  "model": "claude",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-CMP-03",
+  "repeat": 2,
+  "bucket": "tech_clean_comparison",
+  "final_answer": "**Analysis:**\n\nBoth figures come from the same filing (Apple's FY2024 Form 10-K) and represent comparable, consistent fiscal-year and accounting bases \u2014 no divestitures, spinoffs, or segment redefinitions are indicated. Direct comparison is therefore appropriate.\n\n**Calculations:**\n\n- FY2024 R&D % of revenue = $31,370M / $391,035M = **8.02%**\n- FY2023 R&D % of revenue = $29,915M / $383,285M = **7.80%**\n\n[DOC-1 | apple_rd.txt]: \"Research and development expense FY2024: $31,370M (FY2024 revenue $391,035M). Research and development expense FY2023: $29,915M (FY2023 revenue $383,285M).\"\n\n**Change:** 8.02% \u2212 7.80% = **+0.22 percentage points** (an increase)\n\nANSWER: R&D as a percentage of revenue increased from FY2023 to FY2024, by approximately 0.22 percentage points (from ~7.80% to ~8.02%).",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | apple_rd.txt]\nApple Inc. Form 10-K FY2024 (accession 0000320193-24-000123): Research and development expense FY2024: $31,370M (FY2024 revenue $391,035M). Research and development expense FY2023: $29,915M (FY2023 revenue $383,285M).\n</excerpts>\n\nQuestion: Did Apple's R&D spending as a percentage of revenue increase or decrease from fiscal year 2023 to fiscal year 2024, and by how many percentage points?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EtwECpABCBIYAipA1uyZTUAnrmpI7SSHFJ8ufa2lGmgX+VtFgTT8h8F+ohpDY2XOeNioFQLZtXexivu9pY2CTf7W0XoGSKPyNsiXXTIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAamp0NUGEgxhMh+k3IZsx/SVqr4aDMxKSCeFaP3DRB8aWiIwIsydJVJmgdYwJTUNGArIqdBN2GxKfRWoZTs5hhVij6py2dyQy9VmqUfdwG2jnNiCKvgCQ++jSGHleS1eu6ddjY4piNtQKE1wKAdOkBJ9DHCqcgfD72tXzL/8dfs+7bOsQdcGWGdTkAhaBtU1jQxVFa9MoE/vfapFJKYdlKGp0bnuDgWfcwiZnKQAz5dQQQWg99r+fUxm6cLIdYejxE+x+cBSa8mwxXjSSZh3ooT+cLL2CJREPXk1IEja3gsbpXJZaHbK6pZ4gpwMrnbcdKEFU2N236s7i54UnfHoiw2RqfU3EH8dUwyijc4bd+o49Pc1T0e79zZ1CCjEzvmYIgeGTS7NaVXEvfzY3nso1wxFCyKbYx382dzR9xPtzLJyF/oPKnirI33dgoC7wwHdWmGFtdweo/6uZmtnMFxu6hxjB/S3gFSdodscO4TY7jdPZG/nuVdxFDmG/kGhNKCywEAzMfeG8KiFh28HU1nS0GkOxDxJP2LWtPpafvgGzEk2Zg63bwTjaNYLiBupzGj4MsG/zsY3ijtmwtR0Iq6ycFlKu5hNup7HCPuQiiyPbBgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Analysis:**\n\nBoth figures come from the same filing (Apple's FY2024 Form 10-K) and represent comparable, consistent fiscal-year and accounting bases \u2014 no divestitures, spinoffs, or segment redefinitions are indicated. Direct comparison is therefore appropriate.\n\n**Calculations:**\n\n- FY2024 R&D % of revenue = $31,370M / $391,035M = **8.02%**\n- FY2023 R&D % of revenue = $29,915M / $383,285M = **7.80%**\n\n[DOC-1 | apple_rd.txt]: \"Research and development expense FY2024: $31,370M (FY2024 revenue $391,035M). Research and development expense FY2023: $29,915M (FY2023 revenue $383,285M).\"\n\n**Change:** 8.02% \u2212 7.80% = **+0.22 percentage points** (an increase)\n\nANSWER: R&D as a percentage of revenue increased from FY2023 to FY2024, by approximately 0.22 percentage points (from ~7.80% to ~8.02%).",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": " $391,035M). Research and development expense FY2023: $29,915M (FY2023 revenue $383,285M).\"\n\n**Change:** 8.02% \u2212 7.80% = **+0.22 percentage points** (an increase)\n\nANSWER: R&D as a percentage of revenue increased from FY2023 to FY2024, by approximately 0.22 percentage points (from ~7.80% to ~8.02%)."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:03:15+00:00"
+  }
+}

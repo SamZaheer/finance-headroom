@@ -1,0 +1,28 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-02",
+  "repeat": 3,
+  "final_answer": "**Calculation \u2014 FY2025 non-GAAP net income (in millions):**\n\n| Item | Amount |\n|---|---|\n| GAAP net income | $1,748 [DOC-1] |\n| Stock-based compensation | +$1,955 [DOC-1] |\n| Amortization of purchased intangibles | +$120 [DOC-1] |\n| Business combination and other related costs | +$109 [DOC-1] |\n| Impairment of assets | +$30 [DOC-1] |\n| Severance costs | +$74 [DOC-1] |\n| Legal settlements | +$0 [DOC-1] |\n| Contract termination costs | +$37 [DOC-1] |\n| Income tax effects and adjustments | \u2212$404 [DOC-1] |\n| **Non-GAAP net income** | **$3,669** |\n\nNote on comparability: both excerpts cover the same entity and the same period (year ended December 31, 2025, from the same 8-K Exhibit 99.1, accession 0001373715-26-000005) [DOC-1][DOC-2]. However, DOC-2 is the reconciliation of **income from operations** (GAAP $1,824) [DOC-2], not net income, and it contains no income tax adjustment line. The two reconciliations are therefore on different bases and should not be combined; only DOC-1 supports the non-GAAP net income figure.\n\nANSWER: $3,669 million",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | servicenow_8k_fy2025_netincome.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP NET INCOME (in millions), Year Ended December 31, 2025:\nGAAP net income: $1,748\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\nIncome tax effects and adjustments: $(404)\n\n[DOC-2 | servicenow_8k_fy2025_opinc.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP INCOME FROM OPERATIONS (in millions), Year Ended December 31, 2025:\nGAAP income from operations: $1,824\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\n</excerpts>\n\nQuestion: What was ServiceNow's non-GAAP net income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAIS3wMKjgEIEhgCKkB0q7uPX3aXZ6XlXhxUyb222zD29CiBxWYsWxVdbxdFta4reoSGJTWdfWknobvxBs6q5ocYNy3jlwAix2Vii+b5Mg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAb3wz9UGEgzA0qHeHettdDUZ/A0aDKbhn/Tz9XjNur0yQSIw//5ptvajggxcu23I9QKcepy5cRQIrky9NucExCLTKHZ0ctnUrcqoLYUPuPIklwlpKv0B8jeX4nFJr7Oafmh3bXNNaPwk3TYmm6YqWb5+Tr5WkKzmw5TTuWZH8KaH28n7OjBenDTld8qmW1hWT4Iq4tLZ69GT+6FT8CjDthlX0A/x+hDgCAm376U6pnPycbwVl+1gc6UnvTvjtQNG8jQ7BmXr9QlM4AqDYo4ndVZY0RyJ/OYhSZ9rsqrgAxxY6hPe8TCEZH1VjXwaDQKSvHrRdcISwsMExuVG/ZG91FYoILoTY1SblYDg+Nq9EZ1ZNLBhl8dRTijDv/c85sLSK0u0Cmywcs4ztbEZZIMwdwWMBP1NOVRMmuM+y7nmZ97szyWpkxwA6iCeXMrjsSmkOsBs3BgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Calculation \u2014 FY2025 non-GAAP net income (in millions):**\n\n| Item | Amount |\n|---|---|\n| GAAP net income | $1,748 [DOC-1] |\n| Stock-based compensation | +$1,955 [DOC-1] |\n| Amortization of purchased intangibles | +$120 [DOC-1] |\n| Business combination and other related costs | +$109 [DOC-1] |\n| Impairment of assets | +$30 [DOC-1] |\n| Severance costs | +$74 [DOC-1] |\n| Legal settlements | +$0 [DOC-1] |\n| Contract termination costs | +$37 [DOC-1] |\n| Income tax effects and adjustments | \u2212$404 [DOC-1] |\n| **Non-GAAP net income** | **$3,669** |\n\nNote on comparability: both excerpts cover the same entity and the same period (year ended December 31, 2025, from the same 8-K Exhibit 99.1, accession 0001373715-26-000005) [DOC-1][DOC-2]. However, DOC-2 is the reconciliation of **income from operations** (GAAP $1,824) [DOC-2], not net income, and it contains no income tax adjustment line. The two reconciliations are therefore on different bases and should not be combined; only DOC-1 supports the non-GAAP net income figure.\n\nANSWER: $3,669 million",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

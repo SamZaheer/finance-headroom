@@ -1,0 +1,179 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "TECH-GAAP-03",
+  "repeat": 3,
+  "bucket": "tech_gaap_adjustment",
+  "final_answer": "Datadog\u2019s fiscal year 2025 figures are presented on a consistent GAAP/non-GAAP basis for the same entity and fiscal year (year ended December 31, 2025), so there is no disclosed change in segments, entity scope, or fiscal year that would affect comparability for this specific measure.  \n\nThe 8-K earnings release reconciliation table for \u201cRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025\u201d shows: GAAP operating loss of $(44,373) thousand, plus add-backs for stock-based compensation expense of $750,671 thousand, amortization of acquired intangibles of $6,373 thousand, employer payroll taxes on employee stock transactions of $53,799 thousand, and M&A transaction costs of $1,574 thousand. [DOC: datadog_8k_fy2025.txt]  \n\nAdding these reconciling items to the GAAP operating loss yields non-GAAP operating income of $768,044 thousand (i.e., $768.0 million) for the year ended December 31, 2025. This follows directly from the reconciliation amounts disclosed. [DOC: datadog_8k_fy2025.txt]  \n\nANSWER: $768.0 million non-GAAP operating income for fiscal year 2025 (year ended December 31, 2025)",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was Datadog's non-GAAP operating income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_bFku3sLv1QYT2kz1qqHjrP2w",
+          "function": {
+            "arguments": "{\"query\":\"Datadog non-GAAP operating income fiscal year 2025 ended December 31 2025\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_bFku3sLv1QYT2kz1qqHjrP2w",
+      "name": "search_corpus",
+      "input": {
+        "query": "Datadog non-GAAP operating income fiscal year 2025 ended December 31 2025"
+      },
+      "output": "[datadog_8k_fy2025.txt] Datadog, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-10, accession 0001628280-26-006645).\nRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025:\nGAAP operating loss: $(44,373)\nStock-based compensation expense: $750,671\nAmortization of acquired intangibles: $6,373\nEmployer payroll taxes on employee stock transactions: $53,799\nM&A transaction costs: $1,574"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_GrrxaadRFy1eR1UJymuNQ5B9",
+          "function": {
+            "arguments": "{\"query\":\"RECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025 non-GAAP operating income\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_GrrxaadRFy1eR1UJymuNQ5B9",
+      "name": "search_corpus",
+      "input": {
+        "query": "RECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025 non-GAAP operating income"
+      },
+      "output": "[datadog_8k_fy2025.txt] Datadog, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-10, accession 0001628280-26-006645).\nRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025:\nGAAP operating loss: $(44,373)\nStock-based compensation expense: $750,671\nAmortization of acquired intangibles: $6,373\nEmployer payroll taxes on employee stock transactions: $53,799\nM&A transaction costs: $1,574"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_TD9c9LotZK8VpGq0nLJMDjgB",
+          "function": {
+            "arguments": "{\"code\":\"-44373+750671+6373+53799+1574\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_TD9c9LotZK8VpGq0nLJMDjgB",
+      "name": "python_eval",
+      "input": {
+        "code": "-44373+750671+6373+53799+1574"
+      },
+      "output": "(no output -- did you print()?)"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_0kadYphfqbnWIAZ5cyPL9Wky",
+          "function": {
+            "arguments": "{\"code\":\"print(-44373+750671+6373+53799+1574)\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_0kadYphfqbnWIAZ5cyPL9Wky",
+      "name": "python_eval",
+      "input": {
+        "code": "print(-44373+750671+6373+53799+1574)"
+      },
+      "output": "768044"
+    },
+    {
+      "content": "Datadog\u2019s fiscal year 2025 figures are presented on a consistent GAAP/non-GAAP basis for the same entity and fiscal year (year ended December 31, 2025), so there is no disclosed change in segments, entity scope, or fiscal year that would affect comparability for this specific measure.  \n\nThe 8-K earnings release reconciliation table for \u201cRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025\u201d shows: GAAP operating loss of $(44,373) thousand, plus add-backs for stock-based compensation expense of $750,671 thousand, amortization of acquired intangibles of $6,373 thousand, employer payroll taxes on employee stock transactions of $53,799 thousand, and M&A transaction costs of $1,574 thousand. [DOC: datadog_8k_fy2025.txt]  \n\nAdding these reconciling items to the GAAP operating loss yields non-GAAP operating income of $768,044 thousand (i.e., $768.0 million) for the year ended December 31, 2025. This follows directly from the reconciliation amounts disclosed. [DOC: datadog_8k_fy2025.txt]  \n\nANSWER: $768.0 million non-GAAP operating income for fiscal year 2025 (year ended December 31, 2025)",
+      "role": "assistant"
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Datadog non-GAAP operating income fiscal year 2025 ended December 31 2025"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "RECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025 non-GAAP operating income"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "-44373+750671+6373+53799+1574"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "print(-44373+750671+6373+53799+1574)"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "AAP operating income of $768,044 thousand (i.e., $768.0 million) for the year ended December 31, 2025. This follows directly from the reconciliation amounts disclosed. [DOC: datadog_8k_fy2025.txt]  \n\nANSWER: $768.0 million non-GAAP operating income for fiscal year 2025 (year ended December 31, 2025)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 4,
+    "terminal_reward": 1.0,
+    "return": 0.96,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:24:40+00:00"
+  }
+}

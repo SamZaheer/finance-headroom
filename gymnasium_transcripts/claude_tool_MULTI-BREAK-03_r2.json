@@ -1,0 +1,161 @@
+{
+  "model": "claude",
+  "tool_condition": "tool",
+  "item_id": "MULTI-BREAK-03",
+  "repeat": 2,
+  "bucket": "multi_sector_comparability_break",
+  "final_answer": "**Note on comparability:** 3M completed the spin-off of its Health Care business (Solventum) on April 1, 2024. As a result, the FY2024 10-K restates FY2023 revenue to exclude Solventum (reported as discontinued operations), producing a comparable FY2023 figure of $24,610 million \u2014 very different from the $32,681 million originally reported in the FY2023 10-K [DOC: mmm_fy2023_10k.txt]. Because of this divestiture/spin-off, the two \"FY2023\" figures are not on the same accounting basis, and only the restated (continuing-operations) comparison in the FY2024 filing is apples-to-apples with FY2024 results.\n\n- FY2024 total revenue: $24,575 million [DOC: mmm_fy2024_income_statement.txt]\n- FY2023 total revenue, restated for comparability (excluding Solventum/Health Care, reported as discontinued operations): $24,610 million [DOC: mmm_fy2024_income_statement.txt]\n- FY2023 total revenue as originally reported (including Health Care/Solventum, before spin-off): $32,681 million [DOC: mmm_fy2023_10k.txt]\n\nUsing the comparable, restated continuing-operations basis (the correct like-for-like comparison given the Solventum spin-off) [DOC: mmm_fy2024_notes.txt]:\n\nRevenue growth = ($24,575M \u2212 $24,610M) / $24,610M \u2248 \u22120.14% (a slight decline, not growth)\n\nIf instead one naively compares FY2024 to the originally reported FY2023 figure (which is NOT a valid comparison because it includes the now-divested Health Care/Solventum business), revenue would appear to fall by about 24.8% \u2014 but this comparison is misleading and not recommended due to the change in reporting basis from the spin-off.\n\nANSWER: On a comparable (continuing-operations) basis, 3M's revenue was essentially flat to slightly down, declining about 0.14% from $24,610M in FY2023 (restated) to $24,575M in FY2024 \u2014 i.e., no real growth. (Note: this is not comparable to the originally reported FY2023 figure of $32,681M, which included the Health Care/Solventum business that was spun off in April 2024.)",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was 3M's revenue growth from fiscal year 2023 to fiscal year 2024?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "ErICCpABCBIYAipAo61ekG5pbiTDkj2IQEKOFrAmFQSuKbqjz1nadf6FAyNeG7u/OeJD4Pt3AV2E5XI3aHYQz57QfV8Dx6GzHhPS3zIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAY+r0NUGEgykQ1msl9thQrApIV0aDIG2a3GeMhH6cFv8RSIwt9vj9msZB68M10eXamYZOuyp83/kD4rDWC++V1DtAAvmmzLQwvrEOIczcZ7nNhe6Kk9lCiLztOlX4mud3ZvoWP5WqON7Cx9fK/Y+U+FkyAJ1ZdN4y/rZqIuuOS5FmOVmsIyPr0k6hYhOHEoCxGtie3Qd/mWZ8O38RRP5brIf0hT8GAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_018iB58iRN5jCRPXDVibEzL3",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "3M total net sales 2024 2023"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01338KztPAneAqo6MVsme22u",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "3M net sales fiscal year 2024 compared to 2023"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "3M total net sales 2024 2023"
+      },
+      "output": "[mmm_fy2024_income_statement.txt] 3M Company Form 10-K, fiscal year 2024 (filed 2025, accession 0000066740-25-000006).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2024: $24,575 million.\nTotal revenue for fiscal year 2023 (as presented for comparative purposes in this filing): $24,610 million.\n\n[mmm_fy2023_10k.txt] 3M Company Form 10-K, fiscal year 2023 (filed 2024-02-07, accession 0000066740-24-000016).\nTotal revenue for fiscal year 2023: $32,681 million.\n\n[mmm_fy2024_notes.txt] 3M Company Form 10-K, fiscal year 2024. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Separation of Solventum: On April 1, 2024, 3M completed the previously announced separation of its Health Care business through a pro rata distribution of 80.1% of the outstanding shares of Solventum Corporation to 3M shareholders, structured as a tax-free spin-off. The historical results of Solventum are reported in 3M's consolidated financial statements as discontinued operations for all periods presented."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "3M net sales fiscal year 2024 compared to 2023"
+      },
+      "output": "[mmm_fy2024_income_statement.txt] 3M Company Form 10-K, fiscal year 2024 (filed 2025, accession 0000066740-25-000006).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2024: $24,575 million.\nTotal revenue for fiscal year 2023 (as presented for comparative purposes in this filing): $24,610 million.\n\n[mmm_fy2023_10k.txt] 3M Company Form 10-K, fiscal year 2023 (filed 2024-02-07, accession 0000066740-24-000016).\nTotal revenue for fiscal year 2023: $32,681 million.\n\n[mmm_fy2024_notes.txt] 3M Company Form 10-K, fiscal year 2024. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Separation of Solventum: On April 1, 2024, 3M completed the previously announced separation of its Health Care business through a pro rata distribution of 80.1% of the outstanding shares of Solventum Corporation to 3M shareholders, structured as a tax-free spin-off. The historical results of Solventum are reported in 3M's consolidated financial statements as discontinued operations for all periods presented."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "Eu0FCpABCBIYAipAnNHVSjbO2zyp07QALK2CSH1nyIXT2ZLY3BeKr6VpUot3ByORLNp3pexnqKqD86cAKJTTK9PJCQZ7wvFqbXeHlDIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAZOr0NUGEgwBI2l/hIdtQcNSi5QaDHqKWXDh187/6LkW9SIw5wLp1rr6q6lAXo3Rj2YaMNXiBk9kyQGgeZZyNwg+Rx0yaddyxQGkAK3fN95qzsnNKokEc5oNQaPALzc+eTb2Rai+11Bvy0BxoYPY5sEO7Qoj7anPo2xExvYIFo1+lkJkIhTqTOeMGSnVFQMr7iR6GfDUjqyiJpUWn3/NltFGYBJesqMDCvr+AKquGDXWgrkbihZ0dOuVA+NYpeHf44Ak1CuE3lgN+rahJzvk+Afazgp89/SnAD2Vu2E13xNY/1QhnJV0yeovxjlrk4h0ZbSbRAkW2mF+RNo//uBNWKdUNtwEh8SR2b3qOeL4i9yG8ZnGi0c1AX0GZ8IW6D4A7raPHEUsw2qjBhu99ED409BRabx6KwE4f8vzElOGLSh7gP1cPFuDL+W3Z3eb5EicWsKjUqXzXQrDDHrhEernRMkRHGRXB3L74W9SXzfFgjdeBe3vTL9mrMtwG5ec702/+7PLli1GB9ep3J0k/wI1fxW8TIDkmz0U47ouwnDctPSKgMlLazln1ndZ4ukpIclimb3oM6lsKcD3qTQz5m373X77LzqdGYPbdk1b6767dAVxdpKJc9WuQWTl7hFPd5Eh6fpdvxUT3OQsNd6+YivRlwHFJG/me564I+uwN1OcLEBUK5YUV0iSuhB9RnRfASUH6rqEEyyjDEfD9IP9mnggfN4UjjMyEp6YQhOKzGH73iPyABU0RelAIchd9lHimMgu4It0xsrBfwdT7InS2bH5q+MTTDtaEWPXi8+26S4GIi0YAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01MLzApTTBSnkGrQ2rB6U58e",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "\ngrowth_restated = (24575-24610)/24610*100\ngrowth_original = (24575-32681)/32681*100\nprint(growth_restated, growth_original)\n"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "\ngrowth_restated = (24575-24610)/24610*100\ngrowth_original = (24575-32681)/32681*100\nprint(growth_restated, growth_original)\n"
+      },
+      "output": "-0.14221861032100772 -24.803402588660077"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "**Note on comparability:** 3M completed the spin-off of its Health Care business (Solventum) on April 1, 2024. As a result, the FY2024 10-K restates FY2023 revenue to exclude Solventum (reported as discontinued operations), producing a comparable FY2023 figure of $24,610 million \u2014 very different from the $32,681 million originally reported in the FY2023 10-K [DOC: mmm_fy2023_10k.txt]. Because of this divestiture/spin-off, the two \"FY2023\" figures are not on the same accounting basis, and only the restated (continuing-operations) comparison in the FY2024 filing is apples-to-apples with FY2024 results.\n\n- FY2024 total revenue: $24,575 million [DOC: mmm_fy2024_income_statement.txt]\n- FY2023 total revenue, restated for comparability (excluding Solventum/Health Care, reported as discontinued operations): $24,610 million [DOC: mmm_fy2024_income_statement.txt]\n- FY2023 total revenue as originally reported (including Health Care/Solventum, before spin-off): $32,681 million [DOC: mmm_fy2023_10k.txt]\n\nUsing the comparable, restated continuing-operations basis (the correct like-for-like comparison given the Solventum spin-off) [DOC: mmm_fy2024_notes.txt]:\n\nRevenue growth = ($24,575M \u2212 $24,610M) / $24,610M \u2248 \u22120.14% (a slight decline, not growth)\n\nIf instead one naively compares FY2024 to the originally reported FY2023 figure (which is NOT a valid comparison because it includes the now-divested Health Care/Solventum business), revenue would appear to fall by about 24.8% \u2014 but this comparison is misleading and not recommended due to the change in reporting basis from the spin-off.\n\nANSWER: On a comparable (continuing-operations) basis, 3M's revenue was essentially flat to slightly down, declining about 0.14% from $24,610M in FY2023 (restated) to $24,575M in FY2024 \u2014 i.e., no real growth. (Note: this is not comparable to the originally reported FY2023 figure of $32,681M, which included the Health Care/Solventum business that was spun off in April 2024.)",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "3M total net sales 2024 2023"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "3M net sales fiscal year 2024 compared to 2023"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "\ngrowth_restated = (24575-24610)/24610*100\ngrowth_original = (24575-32681)/32681*100\nprint(growth_restated, growth_original)\n"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "tially flat to slightly down, declining about 0.14% from $24,610M in FY2023 (restated) to $24,575M in FY2024 \u2014 i.e., no real growth. (Note: this is not comparable to the originally reported FY2023 figure of $32,681M, which included the Health Care/Solventum business that was spun off in April 2024.)"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 3,
+    "terminal_reward": 1.0,
+    "return": 0.97,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T18:07:19+00:00"
+  }
+}

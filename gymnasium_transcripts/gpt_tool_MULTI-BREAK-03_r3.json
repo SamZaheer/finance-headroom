@@ -1,0 +1,82 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "MULTI-BREAK-03",
+  "repeat": 3,
+  "bucket": "multi_sector_comparability_break",
+  "final_answer": "3M\u2019s 2024 Form 10\u2011K restates 2023 revenue to exclude the spun\u2011off Health Care (Solventum) business and present it as discontinued operations. Therefore, the 2023 and 2024 revenue figures cited below are comparable on a continuing-operations basis, even though the 2023 Form 10\u2011K originally showed a higher total that included Health Care.\n\n- The 2024 Form 10\u2011K consolidated income statement reports total revenue for fiscal year 2024 of **$24,575 million**. [DOC: mmm_fy2024_income_statement.txt]\n- The same 2024 filing presents **2023 total revenue (restated for comparability)** as **$24,610 million**. [DOC: mmm_fy2024_income_statement.txt]\n- A note explains that on April 1, 2024, 3M completed the separation of its Health Care business (Solventum) and that the historical results of Solventum are reported as discontinued operations for all periods presented, which is why the 2023 figure in the 2024 10\u2011K differs from the original 2023 10\u2011K total of $32,681 million. [DOC: mmm_fy2024_notes.txt; mmm_fy2023_10k.txt]\n\nUsing the comparable figures from the 2024 Form 10\u2011K:\n\n- 2023 revenue (restated, continuing operations): $24,610 million\n- 2024 revenue (continuing operations): $24,575 million  \n- Dollar change: $24,575m \u2212 $24,610m = **\u2212$35m**  \n- Percentage growth: (\u2212$35m \u00f7 $24,610m) \u00d7 100 \u2248 **\u22120.14%**, i.e., a slight decline.\n\nANSWER: 3M\u2019s revenue decreased by about 0.14% (a decline of $35 million) from fiscal 2023 to fiscal 2024, based on restated, comparable continuing-operations figures.",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was 3M's revenue growth from fiscal year 2023 to fiscal year 2024?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_z8EONgK5sqdU3xRQCt51Jc0J",
+          "function": {
+            "arguments": "{\"query\":\"3M revenue 2023 2024 net sales\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_z8EONgK5sqdU3xRQCt51Jc0J",
+      "name": "search_corpus",
+      "input": {
+        "query": "3M revenue 2023 2024 net sales"
+      },
+      "output": "[mmm_fy2024_income_statement.txt] 3M Company Form 10-K, fiscal year 2024 (filed 2025, accession 0000066740-25-000006).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2024: $24,575 million.\nTotal revenue for fiscal year 2023 (as presented for comparative purposes in this filing): $24,610 million.\n\n[mmm_fy2023_10k.txt] 3M Company Form 10-K, fiscal year 2023 (filed 2024-02-07, accession 0000066740-24-000016).\nTotal revenue for fiscal year 2023: $32,681 million.\n\n[mmm_fy2024_notes.txt] 3M Company Form 10-K, fiscal year 2024. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Separation of Solventum: On April 1, 2024, 3M completed the previously announced separation of its Health Care business through a pro rata distribution of 80.1% of the outstanding shares of Solventum Corporation to 3M shareholders, structured as a tax-free spin-off. The historical results of Solventum are reported in 3M's consolidated financial statements as discontinued operations for all periods presented."
+    },
+    {
+      "content": "3M\u2019s 2024 Form 10\u2011K restates 2023 revenue to exclude the spun\u2011off Health Care (Solventum) business and present it as discontinued operations. Therefore, the 2023 and 2024 revenue figures cited below are comparable on a continuing-operations basis, even though the 2023 Form 10\u2011K originally showed a higher total that included Health Care.\n\n- The 2024 Form 10\u2011K consolidated income statement reports total revenue for fiscal year 2024 of **$24,575 million**. [DOC: mmm_fy2024_income_statement.txt]\n- The same 2024 filing presents **2023 total revenue (restated for comparability)** as **$24,610 million**. [DOC: mmm_fy2024_income_statement.txt]\n- A note explains that on April 1, 2024, 3M completed the separation of its Health Care business (Solventum) and that the historical results of Solventum are reported as discontinued operations for all periods presented, which is why the 2023 figure in the 2024 10\u2011K differs from the original 2023 10\u2011K total of $32,681 million. [DOC: mmm_fy2024_notes.txt; mmm_fy2023_10k.txt]\n\nUsing the comparable figures from the 2024 Form 10\u2011K:\n\n- 2023 revenue (restated, continuing operations): $24,610 million\n- 2024 revenue (continuing operations): $24,575 million  \n- Dollar change: $24,575m \u2212 $24,610m = **\u2212$35m**  \n- Percentage growth: (\u2212$35m \u00f7 $24,610m) \u00d7 100 \u2248 **\u22120.14%**, i.e., a slight decline.\n\nANSWER: 3M\u2019s revenue decreased by about 0.14% (a decline of $35 million) from fiscal 2023 to fiscal 2024, based on restated, comparable continuing-operations figures.",
+      "role": "assistant"
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "3M revenue 2023 2024 net sales"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "Dollar change: $24,575m \u2212 $24,610m = **\u2212$35m**  \n- Percentage growth: (\u2212$35m \u00f7 $24,610m) \u00d7 100 \u2248 **\u22120.14%**, i.e., a slight decline.\n\nANSWER: 3M\u2019s revenue decreased by about 0.14% (a decline of $35 million) from fiscal 2023 to fiscal 2024, based on restated, comparable continuing-operations figures."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 1,
+    "terminal_reward": 1.0,
+    "return": 0.99,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T18:24:20+00:00"
+  }
+}

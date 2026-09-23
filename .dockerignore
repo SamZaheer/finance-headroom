@@ -1,0 +1,13 @@
+venv/
+.venv/
+.env
+**/__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+transcripts/
+gymnasium_transcripts/
+results/
+report/
+docs/

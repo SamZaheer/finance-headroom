@@ -1,0 +1,306 @@
+{
+  "model": "opus",
+  "tool_condition": "tool",
+  "item_id": "AIR-CTRL-03",
+  "repeat": 1,
+  "bucket": "airline_control",
+  "final_answer": "## Important caveats before the numbers\n\n**1. This is not a true unit-cost comparison.** The standard airline cost-efficiency metric is CASM (operating cost per available seat mile), but the source excerpts contain no capacity/ASM data \u2014 a search for available seat miles returned no matching passages. What follows is therefore a **cost-to-revenue** comparison, which blends cost discipline with pricing power (a premium-heavy network can look \"efficient\" on this basis while having high absolute unit costs). On a true CASM basis, Southwest \u2014 the worst performer below \u2014 has historically been among the *lowest* unit-cost carriers of this group because of its short-haul, single-fleet model.\n\n**2. Alaska's FY2024 is not comparable to its own prior periods or cleanly to the others.** Alaska closed the Hawaiian acquisition on September 18, 2024, and \"the results of Hawaiian are included in the consolidated financial statements beginning September 18, 2024... revenue and net loss from Hawaiian recognized in the Company's consolidated results of operations was $869 million and $113 million\" [alaska_10k_note_acquisition.txt]. So Alaska's figures are a stub-period blend of two carriers, including merger-related dis-synergies.\n\n**3. Fiscal alignment is fine:** all five are calendar-year filers, \"Jan 1 \u2013 Dec 31\" [airlines_costs_fy2024.txt].\n\n## The data (FY2024, $M)\n\n| | Revenue | Op. income | Implied opex | Opex/Rev | Op. margin | Labor/Rev | Fuel/Rev |\n|---|---|---|---|---|---|---|---|\n| Delta | 61,643 | 5,995 | 55,648 | **90.3%** | **9.7%** | **26.2%** | **17.1%** |\n| United | 57,063 | 5,096 | 51,967 | 91.1% | 8.9% | 29.2% | 20.6% |\n| American | 54,211 | 2,614 | 51,597 | 95.2% | 4.8% | 29.6% | 21.1% |\n| Alaska | 11,735 | 570 | 11,165 | 95.1% | 4.9% | 30.6% | 21.4% |\n| Southwest | 27,483 | 321 | 27,162 | 98.8% | 1.2% | 44.5% | 21.1% |\n\nSources: Delta rev $61,643M / fuel $10,566M / labor $16,161M / op. income $5,995M; United $57,063M / $11,756M / $16,678M / $5,096M; Southwest $27,483M / $5,812M / $12,240M / $321M [airlines_costs_fy2024.txt]; American $54,211M / $11,418M / $16,021M / $2,614M; Alaska $11,735M / $2,506M / $3,588M / $570M [airlines_costs_fy2024.txt].\n\n## Interpretation\n\nDelta converts the largest share of revenue into operating profit, spending only ~90.3 cents of opex per revenue dollar. Its edge is concentrated in the two largest cost lines: labor at 26.2% of revenue (lowest of the five) and fuel at 17.1% (lowest by ~3.5 points, reflecting the Trainer refinery offset and a longer-stage-length, wide-body-weighted network). Delta and United are clearly ahead of American and Alaska (~95%), while Southwest is the outlier at 98.8% opex/revenue, with labor alone consuming 44.5% of revenue and labor-plus-fuel equal to 66.5% of total operating costs versus 48.0% at Delta.\n\nThe honest reading: Delta wins on cost *leverage* and profitability, but part of that is revenue-side premium mix rather than lower unit costs. Southwest's poor showing here reflects a revenue/capacity problem (and Boeing delivery delays) layered on a cost base that is structurally low per seat-mile \u2014 not evidence that it is the highest-unit-cost carrier.\n\nANSWER: Delta Air Lines \u2014 on the only cost basis computable from these filings (operating expense as a share of revenue), Delta was most efficient at ~90.3% opex/revenue (9.7% operating margin), with the lowest labor (26.2%) and fuel (17.1%) intensity; United ~91.1%, Alaska ~95.1%, American ~95.2%, Southwest ~98.8%. Note this is a cost-to-revenue proxy, not CASM (no ASM data in the filings provided), and Alaska's FY2024 includes Hawaiian only from September 18, 2024.",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: Which of these five airlines had the most efficient cost structure in fiscal year 2024: Delta, United, Southwest, American, and Alaska?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "I'll research the cost structures of these five airlines.",
+          "type": "text"
+        },
+        {
+          "id": "toolu_01QwrhKpcdXk78fGaADzRcrC",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "cost per available seat mile CASM 2024"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_017zZWRj3tPpn8WHknux9D8H",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "CASM excluding fuel and special items year over year change"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "cost per available seat mile CASM 2024"
+      },
+      "output": "[airlines_costs_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2024 $61,643M. Aircraft fuel expense: FY2024 $10,566M. Salaries, wages and benefits: FY2024 $16,161M. Operating income: FY2024 $5,995M.\n\n[airlines_costs_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Aircraft fuel expense: FY2024 $11,756M. Salaries, wages and benefits: FY2024 $16,678M. Operating income: FY2024 $5,096M.\n\n[airlines_costs_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Aircraft fuel expense: FY2024 $5,812M. Salaries, wages and benefits: FY2024 $12,240M. Operating income: FY2024 $321M."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "CASM excluding fuel and special items year over year change"
+      },
+      "output": "[airlines_costs_fy2024.txt] Selected figures from each company's fiscal year 2024 Form 10-K (all calendar-year, Jan 1 - Dec 31; $ in millions; source: SEC XBRL financial data):\n\n[airlines_costs_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2024 $61,643M. Aircraft fuel expense: FY2024 $10,566M. Salaries, wages and benefits: FY2024 $16,161M. Operating income: FY2024 $5,995M.\n\n[airlines_costs_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Aircraft fuel expense: FY2024 $11,756M. Salaries, wages and benefits: FY2024 $16,678M. Operating income: FY2024 $5,096M."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISwwIKjgEIEhgCKkByFXV5xuKrkHx6zxYhPLa0IIeBreIyQl9//pjVd8BIZ1IOqKqid9yYJm97y2t28ufBFv5fo4Nwhc8hyRr3xqNLMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAcuh0NUGEgyiM5gIl3oWhB+bQHcaDFcQD5RTwMztmY7HDyIwss847rMxzt1i9J7oB5D4MIkP+o76T6RwDnKaGAtUHiuYwddQIHgVvPW2jCPpsZphKmKBo96KKuJ6UgwUTn5b6YctBj1jPIi66g7/swUAvqI8COt0N/rnp2WglxicwEbZFmf4Bfe0aSjKXbAPW413x/919KuG8Ur3ZQXjSX+fxF74eKLQKyahVK1mjbqFBmBtLAE1UhgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_019nkQmGz8YQjtJ1ny8ttQX3",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "American Airlines Group FY2024 operating revenue fuel expense operating income"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_016mQB1g72Hs9XMZJ7MQPw3r",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Alaska Air Group FY2024 available seat miles fiscal year"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "American Airlines Group FY2024 operating revenue fuel expense operating income"
+      },
+      "output": "[airlines_costs_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Aircraft fuel expense: FY2024 $11,418M. Salaries, wages and benefits: FY2024 $16,021M. Operating income: FY2024 $2,614M.\n\n[airlines_costs_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Aircraft fuel expense: FY2024 $11,756M. Salaries, wages and benefits: FY2024 $16,678M. Operating income: FY2024 $5,096M.\n\n[airlines_costs_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Aircraft fuel expense: FY2024 $5,812M. Salaries, wages and benefits: FY2024 $12,240M. Operating income: FY2024 $321M."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Alaska Air Group FY2024 available seat miles fiscal year"
+      },
+      "output": "[airlines_costs_fy2024.txt] Alaska Air Group (CIK 766421, 10-K accession 0000766421-25-000009): Total operating revenue: FY2024 $11,735M. Aircraft fuel expense: FY2024 $2,506M. Salaries, wages and benefits: FY2024 $3,588M. Operating income: FY2024 $570M.\n\n[airlines_costs_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Aircraft fuel expense: FY2024 $11,418M. Salaries, wages and benefits: FY2024 $16,021M. Operating income: FY2024 $2,614M.\n\n[airlines_costs_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2024 $61,643M. Aircraft fuel expense: FY2024 $10,566M. Salaries, wages and benefits: FY2024 $16,161M. Operating income: FY2024 $5,995M."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISoQMKjgEIEhgCKkD1k8lCZOs2MB5YBgnP8u5oupAqU/YZnwzgd3eRHc8eFMJa/cZBvygnKJkUR4+i/hLvO7kUKD83xlx5/DGGhzBAMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAc+h0NUGEgwpS4ZfJopZ38/HirYaDMfILNiraQj6/QPmByIwms7EsbzXtg7ylWWTiNVq7opfTBbHBFkbpyfs8k4dYauPJrNt+6+8PNeNXMr8dohSKr8BpFUDdRrn3ebjWdpEuk+Jnuzypaz5Oik01OQcelth+EBBEMaWkyUo+csA4YWMAYgns1cA2DploBfa1lKqwcntE4lnRvkc+cyU1xOwCfJ+0EYEKBBFfuFz8eOJPYTq6SgtOH0joAw73DTd9/Vt6L0mW/TyiRBhnbO6hAyaH70jHpl9nvHt49DFZ0sHGdoVvhVR2XgGbhsZ4FLeo3o41sQQAauPqZsT/4JXg5FTgRSawlBys2zeY+2YvrddNPBohOUYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01DgyVdgRaJXonw9e77ocY4Q",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "available seat miles capacity ASM statistics"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_019JLrALQLXnJRa8DXB42jQ1",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Hawaiian Airlines acquisition comparability note merger"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "available seat miles capacity ASM statistics"
+      },
+      "output": "No matching passages found."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Hawaiian Airlines acquisition comparability note merger"
+      },
+      "output": "[alaska_10k_note_acquisition.txt] On September 18, 2024, Alaska Air Group completed its acquisition of Hawaiian Holdings, Inc., the parent company of Hawaiian Airlines. The results of Hawaiian are included in the consolidated financial statements beginning September 18, 2024. For the period from the acquisition date to December 31, 2024, revenue and net loss from Hawaiian recognized in the Company's consolidated results of operations was $869 million and $113 million, respectively.\n\n[airlines_costs_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Aircraft fuel expense: FY2024 $11,756M. Salaries, wages and benefits: FY2024 $16,678M. Operating income: FY2024 $5,096M.\n\n[airlines_costs_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Aircraft fuel expense: FY2024 $5,812M. Salaries, wages and benefits: FY2024 $12,240M. Operating income: FY2024 $321M."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISpwMKjgEIEhgCKkCjVpQFTxO7pqu8lPEt/NbXvSneEdE81+nAEjTNMQK76A7/TCGA1MZK96ZAZnuceYWNDfr7hCjIf6bUNyZDiagXMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAdKh0NUGEgwGhKB3QFXx7LbNHGMaDNRQaySW/dVJC5urPyIwK5d/6gWbvpCmguPnuKri/z6mBX0rvGRlT/LAJNvT0U+5C2oZWfiuTPvns7al/jZzKsUBXHudK6L4lhPyd7yPvJLNoRD/fydNKgabwBsti2FYeAV9uGEzEYLuRmV3Pw30MPkN/JO+IE0P2tNgSsvBdX0R+FiETn1fTsSWxzu9FaIBdiawGjv1/KMOZucLNU5Gdcqg0Imxoc7/4Ap9513mZyUih4OVp/dajcOxOnkDo7mdd689GAxmiixBsc2zH1fzLcHCXdvKsXE0SzL/O8l+OO5lKkxkNC4dlOjk8eeq2+3dgJbfh6fLmAxbcdEQxu6XQVjpyHvdjagYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_015gKfF4dTBWx9nGGd27gCyQ",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "\nd={'Delta':(61643,10566,16161,5995),'United':(57063,11756,16678,5096),'Southwest':(27483,5812,12240,321),'American':(54211,11418,16021,2614),'Alaska':(11735,2506,3588,570)}\nfor k,(rev,fuel,lab,oi) in d.items():\n    opex=rev-oi\n    print(k, \"opex%.0f\"%opex, \"opex/rev %.1f%%\"%(100*opex/rev), \"opmargin %.1f%%\"%(100*oi/rev),\n          \"labor/rev %.1f%%\"%(100*lab/rev), \"fuel/rev %.1f%%\"%(100*fuel/rev),\n          \"labor+fuel/opex %.1f%%\"%(100*(lab+fuel)/opex))\n"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "\nd={'Delta':(61643,10566,16161,5995),'United':(57063,11756,16678,5096),'Southwest':(27483,5812,12240,321),'American':(54211,11418,16021,2614),'Alaska':(11735,2506,3588,570)}\nfor k,(rev,fuel,lab,oi) in d.items():\n    opex=rev-oi\n    print(k, \"opex%.0f\"%opex, \"opex/rev %.1f%%\"%(100*opex/rev), \"opmargin %.1f%%\"%(100*oi/rev),\n          \"labor/rev %.1f%%\"%(100*lab/rev), \"fuel/rev %.1f%%\"%(100*fuel/rev),\n          \"labor+fuel/opex %.1f%%\"%(100*(lab+fuel)/opex))\n"
+      },
+      "output": "Delta opex55648 opex/rev 90.3% opmargin 9.7% labor/rev 26.2% fuel/rev 17.1% labor+fuel/opex 48.0%\nUnited opex51967 opex/rev 91.1% opmargin 8.9% labor/rev 29.2% fuel/rev 20.6% labor+fuel/opex 54.7%\nSouthwest opex27162 opex/rev 98.8% opmargin 1.2% labor/rev 44.5% fuel/rev 21.1% labor+fuel/opex 66.5%\nAmerican opex51597 opex/rev 95.2% opmargin 4.8% labor/rev 29.6% fuel/rev 21.1% labor+fuel/opex 53.2%\nAlaska opex11165 opex/rev 95.1% opmargin 4.9% labor/rev 30.6% fuel/rev 21.4% labor+fuel/opex 54.6%"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISuAQKjgEIEhgCKkDO6wZsY6mEk6uhkcaIqnbTePEQhh+LWTUhbojQtz/AsrQhPM5JluHwuKurSIkkx5KKWAhCYzJcNDTxR9vsiy6pMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAdeh0NUGEgxRWqgHfQj3aZs4EjMaDJHEaj5OQTHSv/5N6CIwJO575JRL2GdVVwj4b6plMAVaIlwRnGaQrwSyeGxkIPP4SPiklRIFMif8NhGwtWmDKtYCCqjvUR0yFrPwWOyGVAg6xJat6o8bX7bSe7/M86b7NEHUxqEKo+6RRpVYEtraJ8k4Po0tDI0+hlkPbzkS5PKxotncooYQ0FjhT7PLqXhIGeLotCBj+7S3L9/KoUkL05zcoiktr9AC9AEAtq5rqo89jdWVB40qmEXKcbvVN8o5bhIHfu/UzRfCBsRFNixEY53ZAc+HdIOF66I48JmTktCFkQjCp5t46h7Enzwe9ZU3UPlJKY8qWBOsZ5ji6W1Hj1OmYlDr4d4WdzzClKnqWMX3ddN7F+hy+9u3b9BJZAgV9sAF4vfDBimGq9LZNFjE4MUz7yx664EVYjdzI2pjo8fUr9c2Cg4CMuFOefJwDtMv2DWbTFQEawQQn2Va54us2BgufOfW5qqv9RDiueapyl4jcCwWRMxLgTtRpnkP4rq3xVxLdtNq7UURSE9FhDSllIUO4j/BKM7SGAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "## Important caveats before the numbers\n\n**1. This is not a true unit-cost comparison.** The standard airline cost-efficiency metric is CASM (operating cost per available seat mile), but the source excerpts contain no capacity/ASM data \u2014 a search for available seat miles returned no matching passages. What follows is therefore a **cost-to-revenue** comparison, which blends cost discipline with pricing power (a premium-heavy network can look \"efficient\" on this basis while having high absolute unit costs). On a true CASM basis, Southwest \u2014 the worst performer below \u2014 has historically been among the *lowest* unit-cost carriers of this group because of its short-haul, single-fleet model.\n\n**2. Alaska's FY2024 is not comparable to its own prior periods or cleanly to the others.** Alaska closed the Hawaiian acquisition on September 18, 2024, and \"the results of Hawaiian are included in the consolidated financial statements beginning September 18, 2024... revenue and net loss from Hawaiian recognized in the Company's consolidated results of operations was $869 million and $113 million\" [alaska_10k_note_acquisition.txt]. So Alaska's figures are a stub-period blend of two carriers, including merger-related dis-synergies.\n\n**3. Fiscal alignment is fine:** all five are calendar-year filers, \"Jan 1 \u2013 Dec 31\" [airlines_costs_fy2024.txt].\n\n## The data (FY2024, $M)\n\n| | Revenue | Op. income | Implied opex | Opex/Rev | Op. margin | Labor/Rev | Fuel/Rev |\n|---|---|---|---|---|---|---|---|\n| Delta | 61,643 | 5,995 | 55,648 | **90.3%** | **9.7%** | **26.2%** | **17.1%** |\n| United | 57,063 | 5,096 | 51,967 | 91.1% | 8.9% | 29.2% | 20.6% |\n| American | 54,211 | 2,614 | 51,597 | 95.2% | 4.8% | 29.6% | 21.1% |\n| Alaska | 11,735 | 570 | 11,165 | 95.1% | 4.9% | 30.6% | 21.4% |\n| Southwest | 27,483 | 321 | 27,162 | 98.8% | 1.2% | 44.5% | 21.1% |\n\nSources: Delta rev $61,643M / fuel $10,566M / labor $16,161M / op. income $5,995M; United $57,063M / $11,756M / $16,678M / $5,096M; Southwest $27,483M / $5,812M / $12,240M / $321M [airlines_costs_fy2024.txt]; American $54,211M / $11,418M / $16,021M / $2,614M; Alaska $11,735M / $2,506M / $3,588M / $570M [airlines_costs_fy2024.txt].\n\n## Interpretation\n\nDelta converts the largest share of revenue into operating profit, spending only ~90.3 cents of opex per revenue dollar. Its edge is concentrated in the two largest cost lines: labor at 26.2% of revenue (lowest of the five) and fuel at 17.1% (lowest by ~3.5 points, reflecting the Trainer refinery offset and a longer-stage-length, wide-body-weighted network). Delta and United are clearly ahead of American and Alaska (~95%), while Southwest is the outlier at 98.8% opex/revenue, with labor alone consuming 44.5% of revenue and labor-plus-fuel equal to 66.5% of total operating costs versus 48.0% at Delta.\n\nThe honest reading: Delta wins on cost *leverage* and profitability, but part of that is revenue-side premium mix rather than lower unit costs. Southwest's poor showing here reflects a revenue/capacity problem (and Boeing delivery delays) layered on a cost base that is structurally low per seat-mile \u2014 not evidence that it is the highest-unit-cost carrier.\n\nANSWER: Delta Air Lines \u2014 on the only cost basis computable from these filings (operating expense as a share of revenue), Delta was most efficient at ~90.3% opex/revenue (9.7% operating margin), with the lowest labor (26.2%) and fuel (17.1%) intensity; United ~91.1%, Alaska ~95.1%, American ~95.2%, Southwest ~98.8%. Note this is a cost-to-revenue proxy, not CASM (no ASM data in the filings provided), and Alaska's FY2024 includes Hawaiian only from September 18, 2024.",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "cost per available seat mile CASM 2024"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "CASM excluding fuel and special items year over year change"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "American Airlines Group FY2024 operating revenue fuel expense operating income"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Alaska Air Group FY2024 available seat miles fiscal year"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "available seat miles capacity ASM statistics"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Hawaiian Airlines acquisition comparability note merger"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "\nd={'Delta':(61643,10566,16161,5995),'United':(57063,11756,16678,5096),'Southwest':(27483,5812,12240,321),'American':(54211,11418,16021,2614),'Alaska':(11735,2506,3588,570)}\nfor k,(rev,fuel,lab,oi) in d.items():\n    opex=rev-oi\n    print(k, \"opex%.0f\"%opex, \"opex/rev %.1f%%\"%(100*opex/rev), \"opmargin %.1f%%\"%(100*oi/rev),\n          \"labor/rev %.1f%%\"%(100*lab/rev), \"fuel/rev %.1f%%\"%(100*fuel/rev),\n          \"labor+fuel/opex %.1f%%\"%(100*(lab+fuel)/opex))\n"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "9.7% operating margin), with the lowest labor (26.2%) and fuel (17.1%) intensity; United ~91.1%, Alaska ~95.1%, American ~95.2%, Southwest ~98.8%. Note this is a cost-to-revenue proxy, not CASM (no ASM data in the filings provided), and Alaska's FY2024 includes Hawaiian only from September 18, 2024."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 7,
+    "terminal_reward": 1.0,
+    "return": 0.93,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T17:47:18+00:00"
+  }
+}

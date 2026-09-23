@@ -1,0 +1,148 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "MULTI-BREAK-01",
+  "repeat": 2,
+  "bucket": "multi_sector_comparability_break",
+  "final_answer": "IBM\u2019s 2022 Form 10-K income statement shows total revenue of $60,530 million for 2022 and, on a comparable basis reflecting the Kyndryl separation as a discontinued operation, $55,179 million for 2020. [DOC: ibm_fy2022_income_statement.txt] The notes explain that Kyndryl\u2019s historical results are presented as discontinued operations after its spin-off in November 2021, so the 2020 figure in the 2022 10-K is restated and directly comparable to 2022. [DOC: ibm_fy2022_notes.txt] The 2020 Form 10-K shows a higher 2020 revenue of $73,620 million, but that number is not comparable because it includes Kyndryl and predates the discontinued-operations presentation. [DOC: ibm_fy2020_10k.txt]\n\nBecause of this spin-off and reclassification, the directly comparable 2020\u20132022 revenues are:\n- 2020: $55,179 million (from 2022 10-K, restated for discontinued operations) [DOC: ibm_fy2022_income_statement.txt]  \n- 2022: $60,530 million [DOC: ibm_fy2022_income_statement.txt]\n\nRevenue growth from 2020 to 2022 on this comparable basis is:\n- Absolute increase: $60,530m \u2212 $55,179m = $5,351m  \n- Percentage growth: $5,351m \u00f7 $55,179m \u2248 9.7%\n\n[DOC: ibm_fy2022_income_statement.txt] [DOC: ibm_fy2022_notes.txt] [DOC: ibm_fy2020_10k.txt]\n\nANSWER: Approximately 9.7% revenue growth from fiscal 2020 to fiscal 2022 (an increase of about $5.4 billion on a comparable, post-Kyndryl basis).",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was IBM's revenue growth from fiscal year 2020 to fiscal year 2022?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_EmhdbG3yRbrlm8UScOU0pEjy",
+          "function": {
+            "arguments": "{\"query\":\"International Business Machines IBM total revenue 2020 2021 2022\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_EmhdbG3yRbrlm8UScOU0pEjy",
+      "name": "search_corpus",
+      "input": {
+        "query": "International Business Machines IBM total revenue 2020 2021 2022"
+      },
+      "output": "[ibm_fy2022_income_statement.txt] IBM Corporation Form 10-K, fiscal year 2022 (filed 2023-02-28, accession 0001558370-23-002376).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2022: $60,530 million.\nTotal revenue for fiscal year 2020 (as presented for comparative purposes in this filing): $55,179 million.\n\n[ibm_fy2020_10k.txt] IBM Corporation Form 10-K, fiscal year 2020 (filed 2021-02-23, accession 0001558370-21-001489).\nTotal revenue for fiscal year 2020: $73,620 million.\n\n[ibm_fy2022_notes.txt] IBM Corporation Form 10-K, fiscal year 2022. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Divestitures: On November 3, 2021, the company completed the separation of its managed infrastructure services unit into a new public company, Kyndryl Holdings, Inc., with the distribution of 80.1 percent of the outstanding shares of Kyndryl to IBM stockholders on a pro rata basis. The accounting requirements for reporting the separation of Kyndryl as a discontinued operation were met when the separation was completed. Accordingly, the historical results of Kyndryl have been presented as discontinued operations in these consolidated financial statements."
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_CvmoUz0rNwta45cgItQkNyKp",
+          "function": {
+            "arguments": "{\"code\":\"rev_2020=55179\\nrev_2022=60530\\n(rev_2022-rev_2020)/rev_2020\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_CvmoUz0rNwta45cgItQkNyKp",
+      "name": "python_eval",
+      "input": {
+        "code": "rev_2020=55179\nrev_2022=60530\n(rev_2022-rev_2020)/rev_2020"
+      },
+      "output": "(no output -- did you print()?)"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_hDCZgc4YLWK8cQba2RSWkyfR",
+          "function": {
+            "arguments": "{\"code\":\"rev_2020=55179\\nrev_2022=60530\\nprint((rev_2022-rev_2020)/rev_2020)\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_hDCZgc4YLWK8cQba2RSWkyfR",
+      "name": "python_eval",
+      "input": {
+        "code": "rev_2020=55179\nrev_2022=60530\nprint((rev_2022-rev_2020)/rev_2020)"
+      },
+      "output": "0.09697529857373276"
+    },
+    {
+      "content": "IBM\u2019s 2022 Form 10-K income statement shows total revenue of $60,530 million for 2022 and, on a comparable basis reflecting the Kyndryl separation as a discontinued operation, $55,179 million for 2020. [DOC: ibm_fy2022_income_statement.txt] The notes explain that Kyndryl\u2019s historical results are presented as discontinued operations after its spin-off in November 2021, so the 2020 figure in the 2022 10-K is restated and directly comparable to 2022. [DOC: ibm_fy2022_notes.txt] The 2020 Form 10-K shows a higher 2020 revenue of $73,620 million, but that number is not comparable because it includes Kyndryl and predates the discontinued-operations presentation. [DOC: ibm_fy2020_10k.txt]\n\nBecause of this spin-off and reclassification, the directly comparable 2020\u20132022 revenues are:\n- 2020: $55,179 million (from 2022 10-K, restated for discontinued operations) [DOC: ibm_fy2022_income_statement.txt]  \n- 2022: $60,530 million [DOC: ibm_fy2022_income_statement.txt]\n\nRevenue growth from 2020 to 2022 on this comparable basis is:\n- Absolute increase: $60,530m \u2212 $55,179m = $5,351m  \n- Percentage growth: $5,351m \u00f7 $55,179m \u2248 9.7%\n\n[DOC: ibm_fy2022_income_statement.txt] [DOC: ibm_fy2022_notes.txt] [DOC: ibm_fy2020_10k.txt]\n\nANSWER: Approximately 9.7% revenue growth from fiscal 2020 to fiscal 2022 (an increase of about $5.4 billion on a comparable, post-Kyndryl basis).",
+      "role": "assistant"
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "International Business Machines IBM total revenue 2020 2021 2022"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "rev_2020=55179\nrev_2022=60530\n(rev_2022-rev_2020)/rev_2020"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "rev_2020=55179\nrev_2022=60530\nprint((rev_2022-rev_2020)/rev_2020)"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "= $5,351m  \n- Percentage growth: $5,351m \u00f7 $55,179m \u2248 9.7%\n\n[DOC: ibm_fy2022_income_statement.txt] [DOC: ibm_fy2022_notes.txt] [DOC: ibm_fy2020_10k.txt]\n\nANSWER: Approximately 9.7% revenue growth from fiscal 2020 to fiscal 2022 (an increase of about $5.4 billion on a comparable, post-Kyndryl basis)."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 3,
+    "terminal_reward": 1.0,
+    "return": 0.97,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T18:24:10+00:00"
+  }
+}

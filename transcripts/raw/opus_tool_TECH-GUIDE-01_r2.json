@@ -1,0 +1,163 @@
+{
+  "model": "opus",
+  "tool_condition": "tool",
+  "item_id": "TECH-GUIDE-01",
+  "repeat": 2,
+  "final_answer": "## Comparability check\n\nThese two figures are directly comparable: the guidance and the actual results cover the **same entity and the same fiscal period** (Workday's fiscal 2027 first quarter ended April 30, 2026), and both metrics are stated on the **same basis** \u2014 subscription revenues (GAAP line item) and non-GAAP operating margin as a percentage of total revenues. No divestiture, segment redefinition, or fiscal-period mismatch is involved. Note only that guidance was given as a point estimate, not a range, so \"beat/miss\" is measured against a single number.\n\n## Guidance vs. actual\n\n| Metric | Q1 FY27 guidance (issued 2026-02-24) | Q1 FY27 actual (reported 2026-05-21) | Result |\n|---|---|---|---|\n| Subscription revenues | $2.335B, ~13% growth [DOC: workday_guidance.txt] | $2.354B, +14.3% y/y [DOC: workday_actual.txt] | **Beat** by $19M (+0.8%); growth 130 bps above guide |\n| Non-GAAP operating margin | 30.5% [DOC: workday_guidance.txt] | 31.8% of revenues ($809M non-GAAP operating income) [DOC: workday_actual.txt] | **Beat** by 130 bps |\n\n## Interpretation\n\n- **Subscription revenues:** Workday guided to $2.335 billion and delivered $2.354 billion [DOC: workday_guidance.txt; workday_actual.txt] \u2014 a $19 million (~0.8%) beat. The implied growth rate also came in ahead, at 14.3% actual versus the ~13% guided [DOC: workday_guidance.txt; workday_actual.txt].\n- **Non-GAAP operating margin:** Guided to 30.5%, actual was 31.8% [DOC: workday_guidance.txt; workday_actual.txt] \u2014 a 130 basis point beat, the larger of the two surprises in relative terms. With $809 million of non-GAAP operating income at a 31.8% margin [DOC: workday_actual.txt], implied total revenues were roughly $2.54 billion.\n- **Overall:** Workday exceeded both metrics it guided to. The margin outperformance being proportionally larger than the revenue outperformance suggests the beat was driven by expense discipline/operating leverage as much as by incremental subscription revenue.\n- **Caveat on scope:** The source excerpts contain guidance for only these two metrics (subscription revenues and non-GAAP operating margin); no guidance for total revenues, professional services revenues, GAAP margin, or free cash flow appears in the available filings, so no beat/miss can be assessed on those.\n\nANSWER: Workday beat its own Q1 FY2027 guidance on both metrics it guided: subscription revenues came in at $2.354B vs. $2.335B guided (a $19M / ~0.8% beat, 14.3% growth vs. ~13% guided), and non-GAAP operating margin was 31.8% vs. 30.5% guided (a ~130 bps beat). The comparison is on a like-for-like basis (same entity, same quarter ended 4/30/2026, same non-GAAP definition); no other guided metrics were disclosed.",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: Workday issued financial guidance for its fiscal 2027 first quarter (ended April 30, 2026) in its prior earnings release. Compare that guidance to Workday's actual reported results for that same quarter. Did Workday beat, meet, or miss its own guidance, on each metric given?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "I'll search the filings for both the guidance and the actual results.",
+          "type": "text"
+        },
+        {
+          "id": "toolu_01YFPa68CN1zmHHvm2XMrVhN",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "fiscal 2027 first quarter guidance subscription revenue non-GAAP operating margin"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_013MMmbM86aS4ZrssZhhrs7K",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "first quarter fiscal 2027 results total revenues subscription revenues"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "fiscal 2027 first quarter guidance subscription revenue non-GAAP operating margin"
+      },
+      "output": "[workday_actual.txt] Workday, Inc. 8-K Exhibit 99.1 (Q1 FY2027 earnings release, filed 2026-05-21, accession 0001327811-26-000024).\nFiscal first quarter results, period ended April 30, 2026: Subscription revenues were $2.354 billion, an increase of 14.3% year-over-year. Non-GAAP operating income for the first quarter was $809 million, or 31.8% of revenues.\n\n[workday_guidance.txt] Workday, Inc. 8-K Exhibit 99.1 (Q4 FY2026 earnings release, filed 2026-02-24, accession 0001327811-26-000010).\nFinancial Outlook: Workday is providing guidance for the fiscal 2027 first quarter ending April 30, 2026 as follows: Subscription revenues of $2.335 billion, representing growth of 13%. Non-GAAP operating margin of 30.5%."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "first quarter fiscal 2027 results total revenues subscription revenues"
+      },
+      "output": "[workday_actual.txt] Workday, Inc. 8-K Exhibit 99.1 (Q1 FY2027 earnings release, filed 2026-05-21, accession 0001327811-26-000024).\nFiscal first quarter results, period ended April 30, 2026: Subscription revenues were $2.354 billion, an increase of 14.3% year-over-year. Non-GAAP operating income for the first quarter was $809 million, or 31.8% of revenues.\n\n[workday_guidance.txt] Workday, Inc. 8-K Exhibit 99.1 (Q4 FY2026 earnings release, filed 2026-02-24, accession 0001327811-26-000010).\nFinancial Outlook: Workday is providing guidance for the fiscal 2027 first quarter ending April 30, 2026 as follows: Subscription revenues of $2.335 billion, representing growth of 13%. Non-GAAP operating margin of 30.5%."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISugIKjgEIEhgCKkDo9IB1HWGQZMpXWYGZvKBPzDzMF2AijEbRg7Vu0AI7ImBX0xr93PN7fjDd/a4QDWQm1iYu73EGdDKlHDK0EQPJMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAdLyz9UGEgwfLqvnCKr1JyXd+K4aDCKlrZLDF04eOL2ftiIwOcSuvD1tIp3x5sRYQCbcrC2Au+IHkVfz/47i6L2ocpI06LZSNg5V+cHoCEpedCpgKln+MwChjbmm7Hg93w6n58cjmyIEYperMulJkxbb7HSukzxfkbpdHN+62aIjncKUcSBmpntytSOEjelorc/YR1Q2EcgQIX7/uC/plgGWWyqiwRshP6NlXol1wBgB",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "Let me check for any additional guidance metrics and total revenue figures.",
+          "type": "text"
+        },
+        {
+          "id": "toolu_015j3p6UxsQsKWQqGqd1VdbV",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "outlook total revenues professional services revenues guidance"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01Ni4awVwiZo4WX6jCuE4Zqm",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "total revenues Q1 fiscal 2027 GAAP operating income cash flow"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "outlook total revenues professional services revenues guidance"
+      },
+      "output": "[workday_actual.txt] Workday, Inc. 8-K Exhibit 99.1 (Q1 FY2027 earnings release, filed 2026-05-21, accession 0001327811-26-000024).\nFiscal first quarter results, period ended April 30, 2026: Subscription revenues were $2.354 billion, an increase of 14.3% year-over-year. Non-GAAP operating income for the first quarter was $809 million, or 31.8% of revenues.\n\n[workday_guidance.txt] Workday, Inc. 8-K Exhibit 99.1 (Q4 FY2026 earnings release, filed 2026-02-24, accession 0001327811-26-000010).\nFinancial Outlook: Workday is providing guidance for the fiscal 2027 first quarter ending April 30, 2026 as follows: Subscription revenues of $2.335 billion, representing growth of 13%. Non-GAAP operating margin of 30.5%."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "total revenues Q1 fiscal 2027 GAAP operating income cash flow"
+      },
+      "output": "[workday_actual.txt] Workday, Inc. 8-K Exhibit 99.1 (Q1 FY2027 earnings release, filed 2026-05-21, accession 0001327811-26-000024).\nFiscal first quarter results, period ended April 30, 2026: Subscription revenues were $2.354 billion, an increase of 14.3% year-over-year. Non-GAAP operating income for the first quarter was $809 million, or 31.8% of revenues.\n\n[workday_guidance.txt] Workday, Inc. 8-K Exhibit 99.1 (Q4 FY2026 earnings release, filed 2026-02-24, accession 0001327811-26-000010).\nFinancial Outlook: Workday is providing guidance for the fiscal 2027 first quarter ending April 30, 2026 as follows: Subscription revenues of $2.335 billion, representing growth of 13%. Non-GAAP operating margin of 30.5%."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISjAUKjgEIEhgCKkBPDyKM+DFF56AiuZ2lzUM6frxvacdBXkE7jbq243NAZqRPp2bwjfe42r4RvczPLZo84QRvRESwtkhHqFP+rid5Mg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAdjyz9UGEgyEoCNva4fuSBy0vWIaDGcuK8Okofwv7q0OMiIwfMcEdEZyOpUNuTtwwNvDiJUKVagb91aA5wPbyeRnKZIVyBLEr/KE2fK5jzblAAphKqoDYDucfmD7ZltdnWn/vZGudpd/hDTmUvMO6o4y1PzeqU+wpiBwofvTAbBxp8uiGkVdXIJtKql0GSL4AGHYH+ooQat/Znwj/wJT2ngyIwjLWdKIsdGvCTCBG4wendGRGALpeHIDlSJbNt/6AC2r6hBK23dLM3cyhYI8jScNjkzqBSODrVCF0LvwfieWqw/G7BwWnyXD4fBrOfZx/aOvBzrRDZU31l2iRcricWMdeLilPK9w8BStpVCXZFRounDm604Ukx/dAuAO9mYRIfPa6+SQHuxKsBGDqHuwAqR/lZmhnKTXvRkZjZLXVo6CtYZnukQmnVCDmwbmAUJ6DCsGwI2GOID2WJJb+dH2/v3/TT5XNcRWZXIKoFj/+GxJ4DIsNJC3WKLVN9Te3QYs5DNVONnXQLu1Rd155d925EsXkl1BYqeNnGnnuDbH8IR+TCNDLwjEGH1gnpL0O1iBIFpFFufHKvbLwDmRjleyHS2cLGOOt/NSu+6dfjvokWsA2VwPRkN0x7Mg7tmQbDGOY6eoSjuuWFKaPfdClESH8WMwwvSWngNmEkCHgY4n3vgkGAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01TqjnBYi6khJJxFcQFCK4mR",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "\ng=2335; a=2354\nprint(a-g, (a/g-1)*100)\nprint(31.8-30.5)\nprint(809/0.318)\n"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "\ng=2335; a=2354\nprint(a-g, (a/g-1)*100)\nprint(31.8-30.5)\nprint(809/0.318)\n"
+      },
+      "output": "19 0.8137044967880147\n1.3000000000000007\n2544.0251572327043"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISgAIKjgEIEhgCKkD6w1SJGk11zaKs9d6rIQ3ugOvoJkVhOmliwhlFRNvvv+DSFcxPd15k4/Yowx9HQou0CCtd2X3pQMYrJdIE7Q+wMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAdryz9UGEgz7hUp+XJstLHpBp1gaDBCBPqKkyCc6lKFF0iIwnjJzv4N8+u4pTLuZxMaA1VLTdmSV0q6Vt+Un4lKi9zgRI/cSRR65AxxWABFYCsaAKh/RMP7zwmslim5nSbRKVh6fjFJVkMdcxgyMII8LfDbrGAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "## Comparability check\n\nThese two figures are directly comparable: the guidance and the actual results cover the **same entity and the same fiscal period** (Workday's fiscal 2027 first quarter ended April 30, 2026), and both metrics are stated on the **same basis** \u2014 subscription revenues (GAAP line item) and non-GAAP operating margin as a percentage of total revenues. No divestiture, segment redefinition, or fiscal-period mismatch is involved. Note only that guidance was given as a point estimate, not a range, so \"beat/miss\" is measured against a single number.\n\n## Guidance vs. actual\n\n| Metric | Q1 FY27 guidance (issued 2026-02-24) | Q1 FY27 actual (reported 2026-05-21) | Result |\n|---|---|---|---|\n| Subscription revenues | $2.335B, ~13% growth [DOC: workday_guidance.txt] | $2.354B, +14.3% y/y [DOC: workday_actual.txt] | **Beat** by $19M (+0.8%); growth 130 bps above guide |\n| Non-GAAP operating margin | 30.5% [DOC: workday_guidance.txt] | 31.8% of revenues ($809M non-GAAP operating income) [DOC: workday_actual.txt] | **Beat** by 130 bps |\n\n## Interpretation\n\n- **Subscription revenues:** Workday guided to $2.335 billion and delivered $2.354 billion [DOC: workday_guidance.txt; workday_actual.txt] \u2014 a $19 million (~0.8%) beat. The implied growth rate also came in ahead, at 14.3% actual versus the ~13% guided [DOC: workday_guidance.txt; workday_actual.txt].\n- **Non-GAAP operating margin:** Guided to 30.5%, actual was 31.8% [DOC: workday_guidance.txt; workday_actual.txt] \u2014 a 130 basis point beat, the larger of the two surprises in relative terms. With $809 million of non-GAAP operating income at a 31.8% margin [DOC: workday_actual.txt], implied total revenues were roughly $2.54 billion.\n- **Overall:** Workday exceeded both metrics it guided to. The margin outperformance being proportionally larger than the revenue outperformance suggests the beat was driven by expense discipline/operating leverage as much as by incremental subscription revenue.\n- **Caveat on scope:** The source excerpts contain guidance for only these two metrics (subscription revenues and non-GAAP operating margin); no guidance for total revenues, professional services revenues, GAAP margin, or free cash flow appears in the available filings, so no beat/miss can be assessed on those.\n\nANSWER: Workday beat its own Q1 FY2027 guidance on both metrics it guided: subscription revenues came in at $2.354B vs. $2.335B guided (a $19M / ~0.8% beat, 14.3% growth vs. ~13% guided), and non-GAAP operating margin was 31.8% vs. 30.5% guided (a ~130 bps beat). The comparison is on a like-for-like basis (same entity, same quarter ended 4/30/2026, same non-GAAP definition); no other guided metrics were disclosed.",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-CTRL-01",
+  "repeat": 2,
+  "bucket": "tech_control",
+  "final_answer": "**Apple's gross margin for fiscal year 2024 was $180,683 million (~$180.7 billion).**\n\nSupporting detail:\n- Total net sales of $391,035 million less cost of sales of $210,352 million yields gross margin of $180,683 million for the fiscal year ended September 28, 2024 [DOC-1].\n- This equates to a gross margin rate of approximately 46.2% ($180,683 \u00f7 $391,035) [DOC-1].\n\nComparability note: The question asks only for the FY2024 figure, which is stated directly and requires no cross-period adjustment. If comparing to the prior year ($169,148 million on $383,285 million of net sales, a 44.1% rate) [DOC-1], note that the two periods end on different dates (September 28, 2024 vs. September 30, 2023), so the fiscal periods are not of identical length; Apple's fiscal calendar periodically includes a 53-week year, which can affect year-over-year comparisons of absolute dollar amounts.\n\nANSWER: $180,683 million (approximately $180.7 billion), a gross margin rate of ~46.2%",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | apple_10k_fy2024.txt]\nApple Inc. Form 10-K, fiscal year ended September 28, 2024 (accession 0000320193-24-000123).\n\nCONSOLIDATED STATEMENTS OF OPERATIONS (in millions, except per-share amounts)\nFiscal year ended September 28, 2024:\nTotal net sales: $391,035\nCost of sales: $210,352\nGross margin: $180,683\n\nFiscal year ended September 30, 2023 (prior-year comparative):\nTotal net sales: $383,285\nCost of sales: $214,137\nGross margin: $169,148\n</excerpts>\n\nQuestion: What was Apple's gross margin in fiscal year 2024, per Apple's FY2024 10-K?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAIS/wMKjgEIEhgCKkCwVkVij1f5mYA/K/adlu2/GWn5Ldo/nR6T0BpQZ2N7uoUqArkkZ1zCc0u5YVk64gS9MRQNFz7uEGKpwszLEPNTMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAeCs0NUGEgyg1T+KOnPgagPW+fAaDO3V0vWQ0/esl3uzByIwqSLEh5KWQhIubQR6oNsiDVsDS9zQL8Yhu9b/CSXytHNbNJ3tvt9oKW/zTUHlKvHLKp0CTczbFX9ix5kIrmKTvxHL5wLc0nXriuRBfSWrf95b4ah2vG2cQ2rs18zTNQR545AmJbE3LEJ2rVCC7BKlmeHRvhm8GkopErfuk3XPuboxQF7dSzoxE8DUvR0XP4ogxrRUtoj7+MiHyiRxMwmVorlGR9LJMB9NgLmcb3A18AYNAh7F1rUx80KksZ0be2UNXvHJUtl/6JYnl0FiYBDQTmCid4FkcJ3ztvpdBVL+q3OS2aemKCSy15em9U91lxgYwbIh+e4mv4qTGg0cNUhRHna1q3zzjDEd7qYcpsR3lOenXKopsTGHSlRY0dJiTRYM97fok2PzI4lk70WjLF2d36kfcBCoqPtds+naF1CvAG096kt6oolK3xD8dLAMS/eiGAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Apple's gross margin for fiscal year 2024 was $180,683 million (~$180.7 billion).**\n\nSupporting detail:\n- Total net sales of $391,035 million less cost of sales of $210,352 million yields gross margin of $180,683 million for the fiscal year ended September 28, 2024 [DOC-1].\n- This equates to a gross margin rate of approximately 46.2% ($180,683 \u00f7 $391,035) [DOC-1].\n\nComparability note: The question asks only for the FY2024 figure, which is stated directly and requires no cross-period adjustment. If comparing to the prior year ($169,148 million on $383,285 million of net sales, a 44.1% rate) [DOC-1], note that the two periods end on different dates (September 28, 2024 vs. September 30, 2023), so the fiscal periods are not of identical length; Apple's fiscal calendar periodically includes a 53-week year, which can affect year-over-year comparisons of absolute dollar amounts.\n\nANSWER: $180,683 million (approximately $180.7 billion), a gross margin rate of ~46.2%",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "24 vs. September 30, 2023), so the fiscal periods are not of identical length; Apple's fiscal calendar periodically includes a 53-week year, which can affect year-over-year comparisons of absolute dollar amounts.\n\nANSWER: $180,683 million (approximately $180.7 billion), a gross margin rate of ~46.2%"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:10:35+00:00"
+  }
+}

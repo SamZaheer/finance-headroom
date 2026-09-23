@@ -1,0 +1,28 @@
+{
+  "model": "opus",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-03",
+  "repeat": 3,
+  "final_answer": "**Calculation (all figures in thousands, FY2025 ended December 31, 2025):**\n\n| Line item | Amount |\n|---|---|\n| GAAP operating loss [DOC-1] | $(44,373) |\n| + Stock-based compensation expense [DOC-1] | 750,671 |\n| + Amortization of acquired intangibles [DOC-1] | 6,373 |\n| + Employer payroll taxes on employee stock transactions [DOC-1] | 53,799 |\n| + M&A transaction costs [DOC-1] | 1,574 |\n| **= Non-GAAP operating income** | **$768,044** |\n\nSupporting source: \"RECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025: GAAP operating loss: $(44,373); Stock-based compensation expense: $750,671; Amortization of acquired intangibles: $6,373; Employer payroll taxes on employee stock transactions: $53,799; M&A transaction costs: $1,574\" [DOC-1].\n\n**Comparability notes:** This is a single-period figure drawn from one reconciliation covering a full twelve-month fiscal year ending December 31, 2025, so no fiscal-year, entity, or segment mismatch applies. Two caveats on the number itself: (1) the excerpt provides the reconciling items but not Datadog's own stated non-GAAP total, so $768,044 thousand is my sum of the disclosed components and assumes the list of adjustments is complete as presented; (2) non-GAAP operating income is not a GAAP measure and excludes recurring costs \u2014 most notably $750,671 thousand of stock-based compensation, which is roughly 98% of the total adjustment \u2014 so it is not directly comparable to the GAAP operating loss of $(44,373) thousand [DOC-1].\n\nANSWER: Approximately $768.0 million (i.e., $768,044 thousand) of non-GAAP operating income for FY2025",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | datadog_8k_fy2025.txt]\nDatadog, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-10, accession 0001628280-26-006645).\nRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025:\nGAAP operating loss: $(44,373)\nStock-based compensation expense: $750,671\nAmortization of acquired intangibles: $6,373\nEmployer payroll taxes on employee stock transactions: $53,799\nM&A transaction costs: $1,574\n</excerpts>\n\nQuestion: What was Datadog's non-GAAP operating income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAIS5AYKjgEIEhgCKkD4xnn70s2da4P8BXbEQAAteaOR5fT6Esu1R/bRX5JZs9mGlxQjmccK/aCNeWOTbGuBOCA6mGMoY8gTrdAbZGDQMg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAcXwz9UGEgwVt1BGMXsc6zl+CT8aDIOx26uYFK3ISwtjOSIwstdI1Nhii3tDNbEtOrOI1pNn4inp3t+kxhPajBu3RuLgUDgtSXrGrkF+ExZl95YSKoIF1KJbAKF+LUCPH2F5jm9FNfiCFZkrfIISqBvkj2XCpvM2VzOPxUdV1tw/7s89uLpfKaX5ncbIlOgtH1oEy1wcWwS8BfiNtkeKINH/EgFoZMINL6oprjcSgFO8+DJcksnpx1tVX7ybYVdSBbAYsvw75nQlflcsEzaLuMnvveCVh00ilnTf9/j4Tsd8W1z9Z9kGWcyf+WeQJo2Mc3DS9rNVFd9JRXdBhWA3QXeTyzdGo9unaThz7E9RcStgpgNcJ0KWgvmkSP4p7rDI1YleXlJlCaCZyYFeEU/ZUo9wVjdOazzbwO9V1qju6JObkrLVY8zW/yPpPrJnT16ne5lLZdfUIBnC+aNlnn3R14tep0eve9mfdoE/Ve5B3fTFJKS1NdnEmUXj83E9sDclJYSiNSgayERXCyotCRLRpwwDWqTY6kstQKRMXXGVY3VJ6X3WQeNPdHnBJekiEylphz4xlrv/Tznx6gGJHSNL/+p9nN2Nolflzx0SIABkRkjJG63qzYVK6MhWLcKY7Aek073K8qFyy0uBjoIpufsFfGoG9v9oST1x/Y5kETTiTC3NTJfxGf2OdSXBROr4JpRBkQETvdHrzUSoM4lT0EAWsdOE+JpMBSuJlgj1cj+yJEJYZKRaBVL+IiEA+cfE5rgGtCpcL739VvLsr8SPtv/sK/BAtD0wyayIFw1nq9nQ2IJUOxgqOkBdGrZhu+sIdkGuOZPH7idu/lvS3zCXdynuhbs4VraDagtyc7ggJJ17QJib/T5vpI/eYGALPo0AjxxUAA83wKXDjzUT3WEtOaynF1LJTQL3qISZfkWhgXI82eBytEZAY9uqWfbAK5PLmWvDrbPSoAjfDjA1GAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "**Calculation (all figures in thousands, FY2025 ended December 31, 2025):**\n\n| Line item | Amount |\n|---|---|\n| GAAP operating loss [DOC-1] | $(44,373) |\n| + Stock-based compensation expense [DOC-1] | 750,671 |\n| + Amortization of acquired intangibles [DOC-1] | 6,373 |\n| + Employer payroll taxes on employee stock transactions [DOC-1] | 53,799 |\n| + M&A transaction costs [DOC-1] | 1,574 |\n| **= Non-GAAP operating income** | **$768,044** |\n\nSupporting source: \"RECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (LOSS) (in thousands), Year Ended December 31, 2025: GAAP operating loss: $(44,373); Stock-based compensation expense: $750,671; Amortization of acquired intangibles: $6,373; Employer payroll taxes on employee stock transactions: $53,799; M&A transaction costs: $1,574\" [DOC-1].\n\n**Comparability notes:** This is a single-period figure drawn from one reconciliation covering a full twelve-month fiscal year ending December 31, 2025, so no fiscal-year, entity, or segment mismatch applies. Two caveats on the number itself: (1) the excerpt provides the reconciling items but not Datadog's own stated non-GAAP total, so $768,044 thousand is my sum of the disclosed components and assumes the list of adjustments is complete as presented; (2) non-GAAP operating income is not a GAAP measure and excludes recurring costs \u2014 most notably $750,671 thousand of stock-based compensation, which is roughly 98% of the total adjustment \u2014 so it is not directly comparable to the GAAP operating loss of $(44,373) thousand [DOC-1].\n\nANSWER: Approximately $768.0 million (i.e., $768,044 thousand) of non-GAAP operating income for FY2025",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

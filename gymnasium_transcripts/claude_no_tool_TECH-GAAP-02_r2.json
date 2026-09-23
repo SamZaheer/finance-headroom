@@ -1,0 +1,54 @@
+{
+  "model": "claude",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-02",
+  "repeat": 2,
+  "bucket": "tech_gaap_adjustment",
+  "final_answer": "Based on DOC-1, ServiceNow's non-GAAP net income for FY2025 can be calculated by starting with GAAP net income and adding back the specified non-GAAP adjustments:\n\n- GAAP net income: $1,748 million [DOC-1]\n- Add: Stock-based compensation: $1,955 million [DOC-1]\n- Add: Amortization of purchased intangibles: $120 million [DOC-1]\n- Add: Business combination and other related costs: $109 million [DOC-1]\n- Add: Impairment of assets: $30 million [DOC-1]\n- Add: Severance costs: $74 million [DOC-1]\n- Add: Legal settlements: $0 million [DOC-1]\n- Add: Contract termination costs: $37 million [DOC-1]\n- Less: Income tax effects and adjustments: $(404) million [DOC-1]\n\nSum: 1,748 + 1,955 + 120 + 109 + 30 + 74 + 0 + 37 \u2212 404 = $3,669 million\n\nThis figure is derived directly from a single reconciliation table for the same fiscal year (FY2025, ended December 31, 2025) on a consistent GAAP-to-non-GAAP basis, so no comparability adjustments are needed.\n\nANSWER: $3,669 million",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | servicenow_8k_fy2025_netincome.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP NET INCOME (in millions), Year Ended December 31, 2025:\nGAAP net income: $1,748\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\nIncome tax effects and adjustments: $(404)\n\n[DOC-2 | servicenow_8k_fy2025_opinc.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP INCOME FROM OPERATIONS (in millions), Year Ended December 31, 2025:\nGAAP income from operations: $1,824\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\n</excerpts>\n\nQuestion: What was ServiceNow's non-GAAP net income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EsQDCpABCBIYAipAYVbXfOuutMIM6IeUhZy6kC7L1glxcpwRCtBfTJRjnp21sMOApkYTfbg2FCGcDH4VXgYgEXdqeTdHVbW/LDlh5zIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAdWp0NUGEgwy0n18a8ZHlLaSSS4aDK7BVPvO2Jve6P/wPSIw1QMVD1Y8Fg5r4JjGA/wkutB1kUn/dwO54g4GF1aEt+N1kKNE/CacWxVu61g7B49IKuABcNseOYSJSRLP7YRPKsdDx/V69bmyHIdiZNfhAwoeyCkz7OaOHj91DrGqoQksE7AHA7+QCPPyqAGe0gU/WkQd/GwKC+5CNNhsn0axhn8+Spv5P26cHaV8I9iE7BqA2NSKFB1A2yY43ZyUohqAAO+4pNIyt52dmpbiM92Et2FL3MHIaGuSV4MIWc0r2VD6gctaFkX+sGMW+zWBTX3zmwKrWMunnFh/I4Gn0U3ytNk1T79zQEZtcqAWVDvnKMRM/886GypebmQ6e40CBcW/Aag9BX+KapRGoZVPu+4nJDJ/qykYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "Based on DOC-1, ServiceNow's non-GAAP net income for FY2025 can be calculated by starting with GAAP net income and adding back the specified non-GAAP adjustments:\n\n- GAAP net income: $1,748 million [DOC-1]\n- Add: Stock-based compensation: $1,955 million [DOC-1]\n- Add: Amortization of purchased intangibles: $120 million [DOC-1]\n- Add: Business combination and other related costs: $109 million [DOC-1]\n- Add: Impairment of assets: $30 million [DOC-1]\n- Add: Severance costs: $74 million [DOC-1]\n- Add: Legal settlements: $0 million [DOC-1]\n- Add: Contract termination costs: $37 million [DOC-1]\n- Less: Income tax effects and adjustments: $(404) million [DOC-1]\n\nSum: 1,748 + 1,955 + 120 + 109 + 30 + 74 + 0 + 37 \u2212 404 = $3,669 million\n\nThis figure is derived directly from a single reconciliation table for the same fiscal year (FY2025, ended December 31, 2025) on a consistent GAAP-to-non-GAAP basis, so no comparability adjustments are needed.\n\nANSWER: $3,669 million",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "748 + 1,955 + 120 + 109 + 30 + 74 + 0 + 37 \u2212 404 = $3,669 million\n\nThis figure is derived directly from a single reconciliation table for the same fiscal year (FY2025, ended December 31, 2025) on a consistent GAAP-to-non-GAAP basis, so no comparability adjustments are needed.\n\nANSWER: $3,669 million"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T18:03:59+00:00"
+  }
+}

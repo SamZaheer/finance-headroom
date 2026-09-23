@@ -1,0 +1,21 @@
+{
+  "model": "gpt",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-CMP-06",
+  "repeat": 3,
+  "final_answer": "Alphabet FY2022 revenue: $282,836M; FY2024 revenue: $350,018M. [DOC-1]\n\nMeta FY2022 revenue: $116,609M; FY2024 revenue: $164,501M. [DOC-1]\n\nAssuming fiscal years and reporting bases are directly comparable (both standard calendar-year 10-Ks with no noted restatements in the excerpt):\n\n- Alphabet cumulative revenue growth FY2022\u2192FY2024  \n  = (350,018 \u2212 282,836) / 282,836  \n  \u2248 67,182 / 282,836 \u2248 23.8% [DOC-1]\n\n- Meta cumulative revenue growth FY2022\u2192FY2024  \n  = (164,501 \u2212 116,609) / 116,609  \n  \u2248 47,892 / 116,609 \u2248 41.1% [DOC-1]\n\nDifference in cumulative growth \u2248 41.1% \u2212 23.8% \u2248 17 percentage points.\n\nANSWER: Meta, by roughly 17 percentage points",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | alpha_meta_cumulative.txt]\nAlphabet Inc. 10-K FY2024 (accession 0001652044-25-000014): revenue FY2022 $282,836M, FY2024 $350,018M.\nMeta Platforms 10-K FY2024 (accession 0001326801-25-000017): revenue FY2022 $116,609M, FY2024 $164,501M.\n</excerpts>\n\nQuestion: Between Alphabet and Meta, which company had faster cumulative revenue growth from fiscal year 2022 to fiscal year 2024, and by roughly how many percentage points?"
+    },
+    {
+      "content": "Alphabet FY2022 revenue: $282,836M; FY2024 revenue: $350,018M. [DOC-1]\n\nMeta FY2022 revenue: $116,609M; FY2024 revenue: $164,501M. [DOC-1]\n\nAssuming fiscal years and reporting bases are directly comparable (both standard calendar-year 10-Ks with no noted restatements in the excerpt):\n\n- Alphabet cumulative revenue growth FY2022\u2192FY2024  \n  = (350,018 \u2212 282,836) / 282,836  \n  \u2248 67,182 / 282,836 \u2248 23.8% [DOC-1]\n\n- Meta cumulative revenue growth FY2022\u2192FY2024  \n  = (164,501 \u2212 116,609) / 116,609  \n  \u2248 47,892 / 116,609 \u2248 41.1% [DOC-1]\n\nDifference in cumulative growth \u2248 41.1% \u2212 23.8% \u2248 17 percentage points.\n\nANSWER: Meta, by roughly 17 percentage points",
+      "role": "assistant"
+    }
+  ]
+}

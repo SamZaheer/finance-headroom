@@ -1,0 +1,66 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "MULTI-BREAK-01",
+  "final_answer": "The IBM 2022 Form 10-K income statement shows total revenue for fiscal year 2022 of $60,530 million and, on a comparable basis within the same filing, total revenue for fiscal year 2020 of $55,179 million. [DOC: ibm_fy2022_income_statement.txt]  \n\nThe same 2022 Form 10-K notes that IBM\u2019s 2021 separation of Kyndryl was accounted for as a discontinued operation, and the historical results of Kyndryl were presented as discontinued operations in these consolidated financial statements. Therefore, the 2020 revenue figure of $55,179 million in the 2022 Form 10-K is restated to exclude Kyndryl and is directly comparable to the 2022 revenue figure. [DOC: ibm_fy2022_notes.txt]\n\nBy contrast, IBM\u2019s standalone 2020 Form 10-K reports 2020 total revenue of $73,620 million, which includes Kyndryl and is not comparable to the 2022 figure. [DOC: ibm_fy2020_10k.txt] Because of this divestiture and discontinued-operations treatment, the comparable 2020 revenue base must be taken from the 2022 Form 10-K, not the original 2020 filing.\n\nUsing the comparable revenues from the 2022 Form 10-K:\n- 2020 revenue (restated, comparable basis): $55,179 million [DOC: ibm_fy2022_income_statement.txt]  \n- 2022 revenue: $60,530 million [DOC: ibm_fy2022_income_statement.txt]\n\nPercentage revenue growth from 2020 to 2022 on this consistent basis is:\n\n\\[\n\\text{Growth} = \\frac{60{,}530 - 55{,}179}{55{,}179} \\approx 9.7\\%\n\\]\n\nANSWER: IBM\u2019s revenue grew about 9.7% from fiscal year 2020 to fiscal year 2022 on a comparable (post\u2011Kyndryl separation) basis.",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was IBM's revenue growth from fiscal year 2020 to fiscal year 2022?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_stpdku2oenznVMvp4wDivQhG",
+          "function": {
+            "arguments": "{\"query\":\"International Business Machines Corporation revenue 2020 2021 2022\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_stpdku2oenznVMvp4wDivQhG",
+      "name": "search_corpus",
+      "input": {
+        "query": "International Business Machines Corporation revenue 2020 2021 2022"
+      },
+      "output": "[ibm_fy2022_income_statement.txt] IBM Corporation Form 10-K, fiscal year 2022 (filed 2023-02-28, accession 0001558370-23-002376).\nCONSOLIDATED INCOME STATEMENT.\nTotal revenue for fiscal year 2022: $60,530 million.\nTotal revenue for fiscal year 2020 (as presented for comparative purposes in this filing): $55,179 million.\n\n[ibm_fy2020_10k.txt] IBM Corporation Form 10-K, fiscal year 2020 (filed 2021-02-23, accession 0001558370-21-001489).\nTotal revenue for fiscal year 2020: $73,620 million.\n\n[ibm_fy2022_notes.txt] IBM Corporation Form 10-K, fiscal year 2022. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS.\nNote -- Divestitures: On November 3, 2021, the company completed the separation of its managed infrastructure services unit into a new public company, Kyndryl Holdings, Inc., with the distribution of 80.1 percent of the outstanding shares of Kyndryl to IBM stockholders on a pro rata basis. The accounting requirements for reporting the separation of Kyndryl as a discontinued operation were met when the separation was completed. Accordingly, the historical results of Kyndryl have been presented as discontinued operations in these consolidated financial statements."
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_5i8fk3c3pRdqVvspFYIZJ0dQ",
+          "function": {
+            "arguments": "{\"code\":\"rev_2022=60530\\nrev_2020_comparable=55179\\ngrowth=(rev_2022-rev_2020_comparable)/rev_2020_comparable*100\\nprint(growth)\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_5i8fk3c3pRdqVvspFYIZJ0dQ",
+      "name": "python_eval",
+      "input": {
+        "code": "rev_2022=60530\nrev_2020_comparable=55179\ngrowth=(rev_2022-rev_2020_comparable)/rev_2020_comparable*100\nprint(growth)"
+      },
+      "output": "9.697529857373276"
+    },
+    {
+      "content": "The IBM 2022 Form 10-K income statement shows total revenue for fiscal year 2022 of $60,530 million and, on a comparable basis within the same filing, total revenue for fiscal year 2020 of $55,179 million. [DOC: ibm_fy2022_income_statement.txt]  \n\nThe same 2022 Form 10-K notes that IBM\u2019s 2021 separation of Kyndryl was accounted for as a discontinued operation, and the historical results of Kyndryl were presented as discontinued operations in these consolidated financial statements. Therefore, the 2020 revenue figure of $55,179 million in the 2022 Form 10-K is restated to exclude Kyndryl and is directly comparable to the 2022 revenue figure. [DOC: ibm_fy2022_notes.txt]\n\nBy contrast, IBM\u2019s standalone 2020 Form 10-K reports 2020 total revenue of $73,620 million, which includes Kyndryl and is not comparable to the 2022 figure. [DOC: ibm_fy2020_10k.txt] Because of this divestiture and discontinued-operations treatment, the comparable 2020 revenue base must be taken from the 2022 Form 10-K, not the original 2020 filing.\n\nUsing the comparable revenues from the 2022 Form 10-K:\n- 2020 revenue (restated, comparable basis): $55,179 million [DOC: ibm_fy2022_income_statement.txt]  \n- 2022 revenue: $60,530 million [DOC: ibm_fy2022_income_statement.txt]\n\nPercentage revenue growth from 2020 to 2022 on this consistent basis is:\n\n\\[\n\\text{Growth} = \\frac{60{,}530 - 55{,}179}{55{,}179} \\approx 9.7\\%\n\\]\n\nANSWER: IBM\u2019s revenue grew about 9.7% from fiscal year 2020 to fiscal year 2022 on a comparable (post\u2011Kyndryl separation) basis.",
+      "role": "assistant"
+    }
+  ]
+}

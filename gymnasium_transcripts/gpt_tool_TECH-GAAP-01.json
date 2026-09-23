@@ -1,0 +1,80 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "TECH-GAAP-01",
+  "repeat": 1,
+  "bucket": "tech_gaap_adjustment",
+  "final_answer": "Workday\u2019s non-GAAP operating income for the fiscal year ended January 31, 2026, is calculated in its GAAP to non-GAAP reconciliation as:\n\n- GAAP operating income: $721 million  \n- Add-backs (in millions):  \n  - Share-based compensation expense: $1,570  \n  - Employer payroll tax-related items on employee stock transactions: $62  \n  - Amortization of acquisition-related intangible assets: $106  \n  - Acquisition-related costs: $62  \n  - Restructuring costs: $303  \n\nThese items are all listed in the \u201cRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (in millions), Year Ended January 31, 2026\u201d table. [DOC: workday_8k_fy2026.txt]\n\nSumming the add-backs: 1,570 + 62 + 106 + 62 + 303 = 2,103, and 721 + 2,103 = 2,824 million of non-GAAP operating income for fiscal 2026. [DOC: workday_8k_fy2026.txt]\n\nANSWER: $2,824 million",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was Workday's non-GAAP operating income for fiscal year 2026 (ended January 31, 2026)?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_achReQC8U5vxSo0Ze84ZzgPI",
+          "function": {
+            "arguments": "{\"query\":\"Workday non-GAAP operating income fiscal 2026 year ended January 31 2026\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_achReQC8U5vxSo0Ze84ZzgPI",
+      "name": "search_corpus",
+      "input": {
+        "query": "Workday non-GAAP operating income fiscal 2026 year ended January 31 2026"
+      },
+      "output": "[workday_8k_fy2026.txt] Workday, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-24, accession 0001327811-26-000010).\nRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (in millions), Year Ended January 31, 2026:\nGAAP operating income: $721\nShare-based compensation expense: $1,570\nEmployer payroll tax-related items on employee stock transactions: $62\nAmortization of acquisition-related intangible assets: $106\nAcquisition-related costs: $62\nRestructuring costs: $303"
+    },
+    {
+      "content": "Workday\u2019s non-GAAP operating income for the fiscal year ended January 31, 2026, is calculated in its GAAP to non-GAAP reconciliation as:\n\n- GAAP operating income: $721 million  \n- Add-backs (in millions):  \n  - Share-based compensation expense: $1,570  \n  - Employer payroll tax-related items on employee stock transactions: $62  \n  - Amortization of acquisition-related intangible assets: $106  \n  - Acquisition-related costs: $62  \n  - Restructuring costs: $303  \n\nThese items are all listed in the \u201cRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (in millions), Year Ended January 31, 2026\u201d table. [DOC: workday_8k_fy2026.txt]\n\nSumming the add-backs: 1,570 + 62 + 106 + 62 + 303 = 2,103, and 721 + 2,103 = 2,824 million of non-GAAP operating income for fiscal 2026. [DOC: workday_8k_fy2026.txt]\n\nANSWER: $2,824 million",
+      "role": "assistant"
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Workday non-GAAP operating income fiscal 2026 year ended January 31 2026"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "TO NON-GAAP OPERATING INCOME (in millions), Year Ended January 31, 2026\u201d table. [DOC: workday_8k_fy2026.txt]\n\nSumming the add-backs: 1,570 + 62 + 106 + 62 + 303 = 2,103, and 721 + 2,103 = 2,824 million of non-GAAP operating income for fiscal 2026. [DOC: workday_8k_fy2026.txt]\n\nANSWER: $2,824 million"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 1,
+    "terminal_reward": 1.0,
+    "return": 0.99,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T17:48:51+00:00"
+  }
+}

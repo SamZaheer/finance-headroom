@@ -1,0 +1,194 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "AIR-CTRL-01",
+  "repeat": 1,
+  "bucket": "airline_control",
+  "final_answer": "All five companies report on a comparable U.S. GAAP basis for fiscal year 2024 (calendar year), but Alaska\u2019s 2024 net income includes the partial-year consolidation of Hawaiian Airlines following a late\u20112024 acquisition, so its figure is influenced by M&A and is not a pure organic comparison. [DOC]\n\nFrom the FY2024 10\u2011Ks:\n\n- Delta Air Lines: Net income FY2024: $3,457 million. [DOC: airlines_fy2024.txt \u2013 \u201cDelta Air Lines\u2026 Net income: FY2024 $3,457M.\u201d]  \n- United Airlines Holdings: Net income FY2024: $3,149 million. [DOC: airlines_fy2024.txt \u2013 \u201cUnited Airlines Holdings\u2026 Net income: FY2024 $3,149M.\u201d]  \n- Southwest Airlines: Net income FY2024: $465 million. [DOC: airlines_fy2024.txt \u2013 \u201cSouthwest Airlines\u2026 Net income: FY2024 $465M.\u201d]  \n- American Airlines Group: Net income FY2024: $846 million. [DOC: airlines_fy2024.txt \u2013 \u201cAmerican Airlines Group\u2026 Net income: FY2024 $846M.\u201d]  \n- Alaska Air Group: Net income FY2024: $395 million. [DOC: airlines_fy2024.txt \u2013 \u201cAlaska Air Group\u2026 Net income: FY2024 $395M.\u201d]  \n\nAlaska\u2019s FY2024 includes Hawaiian Airlines from September 18, 2024 onward, with Hawaiian contributing $869 million of revenue and a $113 million net loss in that partial period. [DOC: alaska_10k_note_acquisition.txt \u2013 \u201cFor the period from the acquisition date to December 31, 2024, revenue and net loss from Hawaiian\u2026 was $869 million and $113 million, respectively.\u201d]\n\nComparing the FY2024 net income figures above, Delta\u2019s $3,457 million is the highest of the five.\n\nANSWER: Delta Air Lines was the most profitable in fiscal year 2024.",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: Which of these five airlines was the most profitable in fiscal year 2024: Delta, United, Southwest, American, and Alaska?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_QiTys2gYzrLNYUlY78ErbOvi",
+          "function": {
+            "arguments": "{\"query\":\"Delta Air Lines fiscal year 2024 net income\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        },
+        {
+          "id": "call_DUthQGGJU9gZmhSwsMMROHEO",
+          "function": {
+            "arguments": "{\"query\":\"United Airlines Holdings fiscal year 2024 net income\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 1
+        },
+        {
+          "id": "call_f8QEDtwCQz0dzjak0KLsn04i",
+          "function": {
+            "arguments": "{\"query\":\"Southwest Airlines Co. fiscal year 2024 net income\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 2
+        },
+        {
+          "id": "call_1YjwhMt930PxJAQqubXvr4EJ",
+          "function": {
+            "arguments": "{\"query\":\"American Airlines Group Inc. fiscal year 2024 net income\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 3
+        },
+        {
+          "id": "call_34adzO11ZeraUF3XQhJxyhdk",
+          "function": {
+            "arguments": "{\"query\":\"Alaska Air Group Inc. fiscal year 2024 net income\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_QiTys2gYzrLNYUlY78ErbOvi",
+      "name": "search_corpus",
+      "input": {
+        "query": "Delta Air Lines fiscal year 2024 net income"
+      },
+      "output": "[airlines_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2024 $61,643M. Operating income: FY2024 $5,995M. Net income: FY2024 $3,457M.\n\n[airlines_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Operating income: FY2024 $5,096M. Net income: FY2024 $3,149M.\n\n[airlines_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Operating income: FY2024 $321M. Net income: FY2024 $465M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_DUthQGGJU9gZmhSwsMMROHEO",
+      "name": "search_corpus",
+      "input": {
+        "query": "United Airlines Holdings fiscal year 2024 net income"
+      },
+      "output": "[airlines_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Operating income: FY2024 $5,096M. Net income: FY2024 $3,149M.\n\n[airlines_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Operating income: FY2024 $321M. Net income: FY2024 $465M.\n\n[airlines_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Operating income: FY2024 $2,614M. Net income: FY2024 $846M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_f8QEDtwCQz0dzjak0KLsn04i",
+      "name": "search_corpus",
+      "input": {
+        "query": "Southwest Airlines Co. fiscal year 2024 net income"
+      },
+      "output": "[airlines_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Operating income: FY2024 $321M. Net income: FY2024 $465M.\n\n[airlines_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Operating income: FY2024 $5,096M. Net income: FY2024 $3,149M.\n\n[airlines_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Operating income: FY2024 $2,614M. Net income: FY2024 $846M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_1YjwhMt930PxJAQqubXvr4EJ",
+      "name": "search_corpus",
+      "input": {
+        "query": "American Airlines Group Inc. fiscal year 2024 net income"
+      },
+      "output": "[airlines_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Operating income: FY2024 $2,614M. Net income: FY2024 $846M.\n\n[airlines_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Operating income: FY2024 $5,096M. Net income: FY2024 $3,149M.\n\n[airlines_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Operating income: FY2024 $321M. Net income: FY2024 $465M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_34adzO11ZeraUF3XQhJxyhdk",
+      "name": "search_corpus",
+      "input": {
+        "query": "Alaska Air Group Inc. fiscal year 2024 net income"
+      },
+      "output": "[airlines_fy2024.txt] Alaska Air Group (CIK 766421, 10-K accession 0000766421-25-000009): Total operating revenue: FY2024 $11,735M. Operating income: FY2024 $570M. Net income: FY2024 $395M.\n\n[airlines_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Operating income: FY2024 $2,614M. Net income: FY2024 $846M.\n\n[alaska_10k_note_acquisition.txt] On September 18, 2024, Alaska Air Group completed its acquisition of Hawaiian Holdings, Inc., the parent company of Hawaiian Airlines. The results of Hawaiian are included in the consolidated financial statements beginning September 18, 2024. For the period from the acquisition date to December 31, 2024, revenue and net loss from Hawaiian recognized in the Company's consolidated results of operations was $869 million and $113 million, respectively."
+    },
+    {
+      "content": "All five companies report on a comparable U.S. GAAP basis for fiscal year 2024 (calendar year), but Alaska\u2019s 2024 net income includes the partial-year consolidation of Hawaiian Airlines following a late\u20112024 acquisition, so its figure is influenced by M&A and is not a pure organic comparison. [DOC]\n\nFrom the FY2024 10\u2011Ks:\n\n- Delta Air Lines: Net income FY2024: $3,457 million. [DOC: airlines_fy2024.txt \u2013 \u201cDelta Air Lines\u2026 Net income: FY2024 $3,457M.\u201d]  \n- United Airlines Holdings: Net income FY2024: $3,149 million. [DOC: airlines_fy2024.txt \u2013 \u201cUnited Airlines Holdings\u2026 Net income: FY2024 $3,149M.\u201d]  \n- Southwest Airlines: Net income FY2024: $465 million. [DOC: airlines_fy2024.txt \u2013 \u201cSouthwest Airlines\u2026 Net income: FY2024 $465M.\u201d]  \n- American Airlines Group: Net income FY2024: $846 million. [DOC: airlines_fy2024.txt \u2013 \u201cAmerican Airlines Group\u2026 Net income: FY2024 $846M.\u201d]  \n- Alaska Air Group: Net income FY2024: $395 million. [DOC: airlines_fy2024.txt \u2013 \u201cAlaska Air Group\u2026 Net income: FY2024 $395M.\u201d]  \n\nAlaska\u2019s FY2024 includes Hawaiian Airlines from September 18, 2024 onward, with Hawaiian contributing $869 million of revenue and a $113 million net loss in that partial period. [DOC: alaska_10k_note_acquisition.txt \u2013 \u201cFor the period from the acquisition date to December 31, 2024, revenue and net loss from Hawaiian\u2026 was $869 million and $113 million, respectively.\u201d]\n\nComparing the FY2024 net income figures above, Delta\u2019s $3,457 million is the highest of the five.\n\nANSWER: Delta Air Lines was the most profitable in fiscal year 2024.",
+      "role": "assistant"
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Delta Air Lines fiscal year 2024 net income"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "United Airlines Holdings fiscal year 2024 net income"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Southwest Airlines Co. fiscal year 2024 net income"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "American Airlines Group Inc. fiscal year 2024 net income"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Alaska Air Group Inc. fiscal year 2024 net income"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "m the acquisition date to December 31, 2024, revenue and net loss from Hawaiian\u2026 was $869 million and $113 million, respectively.\u201d]\n\nComparing the FY2024 net income figures above, Delta\u2019s $3,457 million is the highest of the five.\n\nANSWER: Delta Air Lines was the most profitable in fiscal year 2024."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 5,
+    "terminal_reward": 1.0,
+    "return": 0.95,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T17:49:37+00:00"
+  }
+}

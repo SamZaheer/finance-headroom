@@ -1,0 +1,10 @@
+ServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).
+RECONCILIATION OF GAAP TO NON-GAAP INCOME FROM OPERATIONS (in millions), Year Ended December 31, 2025:
+GAAP income from operations: $1,824
+Stock-based compensation: $1,955
+Amortization of purchased intangibles: $120
+Business combination and other related costs: $109
+Impairment of assets: $30
+Severance costs: $74
+Legal settlements: $0
+Contract termination costs: $37

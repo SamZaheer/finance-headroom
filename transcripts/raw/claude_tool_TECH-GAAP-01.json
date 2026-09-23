@@ -1,0 +1,102 @@
+{
+  "model": "claude",
+  "tool_condition": "tool",
+  "item_id": "TECH-GAAP-01",
+  "final_answer": "Workday's actual reported results for fiscal year 2026 (ended January 31, 2026) show GAAP operating income of $721 million, which reconciles to non\u2011GAAP operating income by adding back share\u2011based compensation expense ($1,570 million), employer payroll tax\u2011related items on employee stock transactions ($62 million), amortization of acquisition\u2011related intangible assets ($106 million), acquisition\u2011related costs ($62 million), and restructuring costs ($303 million) [DOC: workday_8k_fy2026.txt \u2013 \"RECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (in millions), Year Ended January 31, 2026: GAAP operating income: $721; Share-based compensation expense: $1,570; Employer payroll tax-related items on employee stock transactions: $62; Amortization of acquisition-related intangible assets: $106; Acquisition-related costs: $62; Restructuring costs: $303\"].\n\nAdding these components gives non\u2011GAAP operating income of $2,824 million for FY2026.\n\nANSWER: Approximately $2,824 million (~$2.82 billion) in non-GAAP operating income for fiscal year 2026 (ended January 31, 2026), per Workday's 8\u2011K earnings release reconciliation (GAAP operating income of $721 million plus $1,570M share-based compensation, $62M payroll tax items, $106M intangible amortization, $62M acquisition costs, and $303M restructuring costs).",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: What was Workday's non-GAAP operating income for fiscal year 2026 (ended January 31, 2026)?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EuUDCpABCBIYAipATNw7gIuMHNY30Rz12O6fLj1Wg0UuUPG2QeLivbwEELdcAwlWez8OJqmY5qsI5GOR3qi8ZANXmHva3yRATsHezTIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAa2cz9UGEgwbWMXsqMOrutoGa5QaDM4/9pMgpq97G2rS3SIwL12TDkNyOgMiDMkX5KnTrr5XaH9xunlk7/PPxtRF7F1paaD1sFqvKecUQxe2CfDVKoECuBN/I1pybi72XJbuJq6ks2+E3yNwysZ7SLaeHyiwGkJuP9QEqsMuD+a57gNgwEgJvngd0ljEi4KC8LW+J6kScvX69H53Vps0riaTRm4/ajWFFfM8oKN+/BqtIZM9nD1GrCEETbck5VtR48WeYllPVs1Pvwj3Dloz9ypo44/zzn6/k8hyntd8IgPsqIEQ2ZWDyW1E5RS8tG08hoGOBhHvmj9qZm7u155zJsIrGblLcPcODYoxSzin5RyI8kE+pj1LZgs8L+r0u/JCta14O2NrUR9/jrs2el67ZLNH8xsptgjXWkioTP+j5w3JLxbuvTJIm+jUi0sYKyJK0Xxydg0tqIEYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_01BSYZMFtAhNw1kdCMvjH4wU",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Workday fiscal year 2026 non-GAAP operating income"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01DW3YxiprYF6V5Xac9Bsm1D",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Workday non-GAAP operating margin guidance fiscal 2026"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Workday fiscal year 2026 non-GAAP operating income"
+      },
+      "output": "[workday_8k_fy2026.txt] Workday, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-24, accession 0001327811-26-000010).\nRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (in millions), Year Ended January 31, 2026:\nGAAP operating income: $721\nShare-based compensation expense: $1,570\nEmployer payroll tax-related items on employee stock transactions: $62\nAmortization of acquisition-related intangible assets: $106\nAcquisition-related costs: $62\nRestructuring costs: $303"
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Workday non-GAAP operating margin guidance fiscal 2026"
+      },
+      "output": "[workday_8k_fy2026.txt] Workday, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-02-24, accession 0001327811-26-000010).\nRECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (in millions), Year Ended January 31, 2026:\nGAAP operating income: $721\nShare-based compensation expense: $1,570\nEmployer payroll tax-related items on employee stock transactions: $62\nAmortization of acquisition-related intangible assets: $106\nAcquisition-related costs: $62\nRestructuring costs: $303"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "Ep8CCpABCBIYAipAPQOdz/SWX641cbrhzEfIGRT8L1ltj6v8njOGfG76cg7+UqtYooelxswP7huJ4DqBP841DSqq1ThbH/h4/MKM1DIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAbCcz9UGEgyA5GPnnV4FG3ESQWkaDIfdRXxV/EkkrByxsiIwirTEIx21acQoexBB2AThmE9nkCiusN3gFPfdNnrBqvaDzGPCs/9NYst/978K8vNhKjxt95V0Uvh545h1av+2R9zUhDUdaHRNWAt0B5TubqpctyO+R3kwwkfWR19m8VSAnger2pzwK31QZ1PqpCEYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "id": "toolu_015JyKMXT5YsnYF5JzEqix9J",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "print(721+1570+62+106+62+303)"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "print(721+1570+62+106+62+303)"
+      },
+      "output": "2824"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "Workday's actual reported results for fiscal year 2026 (ended January 31, 2026) show GAAP operating income of $721 million, which reconciles to non\u2011GAAP operating income by adding back share\u2011based compensation expense ($1,570 million), employer payroll tax\u2011related items on employee stock transactions ($62 million), amortization of acquisition\u2011related intangible assets ($106 million), acquisition\u2011related costs ($62 million), and restructuring costs ($303 million) [DOC: workday_8k_fy2026.txt \u2013 \"RECONCILIATION OF GAAP TO NON-GAAP OPERATING INCOME (in millions), Year Ended January 31, 2026: GAAP operating income: $721; Share-based compensation expense: $1,570; Employer payroll tax-related items on employee stock transactions: $62; Amortization of acquisition-related intangible assets: $106; Acquisition-related costs: $62; Restructuring costs: $303\"].\n\nAdding these components gives non\u2011GAAP operating income of $2,824 million for FY2026.\n\nANSWER: Approximately $2,824 million (~$2.82 billion) in non-GAAP operating income for fiscal year 2026 (ended January 31, 2026), per Workday's 8\u2011K earnings release reconciliation (GAAP operating income of $721 million plus $1,570M share-based compensation, $62M payroll tax items, $106M intangible amortization, $62M acquisition costs, and $303M restructuring costs).",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

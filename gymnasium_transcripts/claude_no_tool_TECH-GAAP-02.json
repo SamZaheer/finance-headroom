@@ -1,0 +1,54 @@
+{
+  "model": "claude",
+  "tool_condition": "no_tool",
+  "item_id": "TECH-GAAP-02",
+  "repeat": 1,
+  "bucket": "tech_gaap_adjustment",
+  "final_answer": "Based on DOC-1, ServiceNow's reconciliation of GAAP to non-GAAP net income for fiscal year 2025 provides the following components: GAAP net income of $1,748 million, plus stock-based compensation of $1,955 million, amortization of purchased intangibles of $120 million, business combination and other related costs of $109 million, impairment of assets of $30 million, severance costs of $74 million, legal settlements of $0, and contract termination costs of $37 million, less income tax effects and adjustments of $(404) million [DOC-1].\n\nSumming these components:\n$1,748 + $1,955 + $120 + $109 + $30 + $74 + $0 + $37 \u2212 $404 = $3,669 million\n\nThis figure is internally consistent with the non-GAAP operating income reconciliation in DOC-2, which uses the same adjustment line items (excluding the tax effect, since that reconciliation ends at operating income rather than net income) [DOC-2].\n\nANSWER: $3,669 million",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "<excerpts>\n[DOC-1 | servicenow_8k_fy2025_netincome.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP NET INCOME (in millions), Year Ended December 31, 2025:\nGAAP net income: $1,748\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\nIncome tax effects and adjustments: $(404)\n\n[DOC-2 | servicenow_8k_fy2025_opinc.txt]\nServiceNow, Inc. 8-K, Exhibit 99.1 earnings release (filed 2026-01-28, accession 0001373715-26-000005).\nRECONCILIATION OF GAAP TO NON-GAAP INCOME FROM OPERATIONS (in millions), Year Ended December 31, 2025:\nGAAP income from operations: $1,824\nStock-based compensation: $1,955\nAmortization of purchased intangibles: $120\nBusiness combination and other related costs: $109\nImpairment of assets: $30\nSeverance costs: $74\nLegal settlements: $0\nContract termination costs: $37\n</excerpts>\n\nQuestion: What was ServiceNow's non-GAAP net income for fiscal year 2025 (ended December 31, 2025)?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "EowECpABCBIYAipA542+3PZqgkQRY+QUUjmuZoO1LcclkIOJuIARo0oxqzvHlFGs14jCAjtaWpq8Krnz2YRYVplNRjv15uz/qgTGAzIPY2xhdWRlLXNvbm5ldC01OABCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAfSd0NUGEgzqCkKLtEQtamLdAdAaDO5JOaapxgnA8yvZhiIw7rPvQ67gOLlRc7Lc7aTtl9b6clV6HNKk6nZPD6npRiaNOffQSUWQYbZ1AKqneDeZKqgCpjF9PpBFNZ5uAOh1CImmEfFBOJ8WwV1tmS6fdypmcF2Wnmuk9U7rBMZEXN5NwUExKaRBG3RXdeHiSxk43T0C4ch0FBGGBVXytgVsC2MqwtjJAP982yZ0CtKwvxEHMQhHULsUOr+5Y/gbSjJ40pe44XizsV4DKRsTVU8CqruAismVkvokPYJqJx8q871rupQN1cJDRI+BUjZaoZTjA0I0XD2GspwjP3jbsQQVoCZmtEmCtl5p4OnXVpDUdcBdNHe57LQUJlfZIGWNzLVgyIdbgoryesv8jgIpmBlEdNK3m83skh6v91tEL7Z+9g7X18pOUTtiic4YIYn5JG2KukQUQ4hV9dsMfnBSCr7SeZniJXAtJH9Yvm8g8EOqu1LuriK8+aBEHjC8AjAYAQ==",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "Based on DOC-1, ServiceNow's reconciliation of GAAP to non-GAAP net income for fiscal year 2025 provides the following components: GAAP net income of $1,748 million, plus stock-based compensation of $1,955 million, amortization of purchased intangibles of $120 million, business combination and other related costs of $109 million, impairment of assets of $30 million, severance costs of $74 million, legal settlements of $0, and contract termination costs of $37 million, less income tax effects and adjustments of $(404) million [DOC-1].\n\nSumming these components:\n$1,748 + $1,955 + $120 + $109 + $30 + $74 + $0 + $37 \u2212 $404 = $3,669 million\n\nThis figure is internally consistent with the non-GAAP operating income reconciliation in DOC-2, which uses the same adjustment line items (excluding the tax effect, since that reconciliation ends at operating income rather than net income) [DOC-2].\n\nANSWER: $3,669 million",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "answer": "7 \u2212 $404 = $3,669 million\n\nThis figure is internally consistent with the non-GAAP operating income reconciliation in DOC-2, which uses the same adjustment line items (excluding the tax effect, since that reconciliation ends at operating income rather than net income) [DOC-2].\n\nANSWER: $3,669 million"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "numeric",
+          "correct": true
+        }
+      }
+    ],
+    "tool_steps": 0,
+    "terminal_reward": 1.0,
+    "return": 1.0,
+    "solved": true,
+    "scoring": {
+      "scoring": "numeric",
+      "correct": true
+    },
+    "finished_at": "2026-09-23T17:38:52+00:00"
+  }
+}

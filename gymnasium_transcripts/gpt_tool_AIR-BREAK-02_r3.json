@@ -1,0 +1,227 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "AIR-BREAK-02",
+  "repeat": 3,
+  "bucket": "airline_comparability_break",
+  "final_answer": "All five airlines report on a comparable fiscal year (year ended December 31). Alaska\u2019s 2024 revenue includes the acquired Hawaiian business from September 18, 2024 onward, so I adjust Alaska\u2019s 2024 revenue to exclude Hawaiian, per your instruction. No other airline shows an acquired business affecting revenue comparability in these excerpts.\n\n**Source revenues (reported)**  \n- **Delta Air Lines \u2013 total operating revenue**:  \n  2022: $50,582M; 2023: $58,048M; 2024: $61,643M. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **United Airlines Holdings \u2013 total operating revenue**:  \n  2022: $44,955M; 2023: $53,717M; 2024: $57,063M. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Southwest Airlines \u2013 total operating revenue**:  \n  2022: $23,814M; 2023: $26,091M; 2024: $27,483M. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **American Airlines Group \u2013 total operating revenue**:  \n  2022: $48,971M; 2023: $52,788M; 2024: $54,211M. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Alaska Air Group \u2013 total operating revenue and Hawaiian contribution**:  \n  2022: $9,646M; 2023: $10,426M; 2024: $11,735M. [DOC: airlines_fy2022_fy2024.txt]  \n  Hawaiian acquisition: closed September 18, 2024; Hawaiian revenue included from that date; Hawaiian revenue from acquisition date to Dec. 31, 2024 was **$869M**. [DOC: alaska_10k_note_acquisition.txt]  \n\n**Adjustment for Alaska (exclude acquired Hawaiian business)**  \n- Reported 2024 Alaska revenue: $11,735M. [DOC: airlines_fy2022_fy2024.txt]  \n- Less Hawaiian 2024 revenue: $869M. [DOC: alaska_10k_note_acquisition.txt]  \n- **Alaska 2024 revenue excluding Hawaiian = $11,735M \u2013 $869M = $10,866M** (computed).\n\nThus the adjusted revenue set used for growth calculations is:\n- Delta: 2022 $50,582M; 2023 $58,048M; 2024 $61,643M. [DOC: airlines_fy2022_fy2024.txt]  \n- United: 2022 $44,955M; 2023 $53,717M; 2024 $57,063M. [DOC: airlines_fy2022_fy2024.txt]  \n- Southwest: 2022 $23,814M; 2023 $26,091M; 2024 $27,483M. [DOC: airlines_fy2022_fy2024.txt]  \n- American: 2022 $48,971M; 2023 $52,788M; 2024 $54,211M. [DOC: airlines_fy2022_fy2024.txt]  \n- Alaska (ex-Hawaiian): 2022 $9,646M; 2023 $10,426M; 2024 $10,866M (2022\u20132023 reported; 2024 adjusted as above). [DOC: airlines_fy2022_fy2024.txt] [DOC: alaska_10k_note_acquisition.txt]  \n\n---\n\n### 1) Revenue growth from FY 2023 to FY 2024 (using adjusted Alaska)\n\nGrowth rate = (2024 revenue \u2013 2023 revenue) / 2023 revenue.\n\n- **United**:  \n  (57,063 \u2013 53,717) / 53,717 \u2248 **6.23%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Delta**:  \n  (61,643 \u2013 58,048) / 58,048 \u2248 **6.19%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Southwest**:  \n  (27,483 \u2013 26,091) / 26,091 \u2248 **5.34%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Alaska (ex-Hawaiian)**:  \n  (10,866 \u2013 10,426) / 10,426 \u2248 **4.22%** (2024 adjusted to exclude $869M Hawaiian).  \n  [DOC: airlines_fy2022_fy2024.txt] [DOC: alaska_10k_note_acquisition.txt]  \n\n- **American**:  \n  (54,211 \u2013 52,788) / 52,788 \u2248 **2.70%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n**Ranking by 2023\u20132024 revenue growth (highest to lowest)**  \n1. **United** \u2013 ~6.23%  \n2. **Delta** \u2013 ~6.19%  \n3. **Southwest** \u2013 ~5.34%  \n4. **Alaska (ex-Hawaiian)** \u2013 ~4.22%  \n5. **American** \u2013 ~2.70%  \n\n---\n\n### 2) Revenue growth from FY 2022 to FY 2024 (using adjusted Alaska)\n\nGrowth rate = (2024 revenue \u2013 2022 revenue) / 2022 revenue.\n\n- **United**:  \n  (57,063 \u2013 44,955) / 44,955 \u2248 **26.93%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Delta**:  \n  (61,643 \u2013 50,582) / 50,582 \u2248 **21.87%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Southwest**:  \n  (27,483 \u2013 23,814) / 23,814 \u2248 **15.41%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Alaska (ex-Hawaiian)**:  \n  (10,866 \u2013 9,646) / 9,646 \u2248 **12.65%** (2024 adjusted to exclude Hawaiian).  \n  [DOC: airlines_fy2022_fy2024.txt] [DOC: alaska_10k_note_acquisition.txt]  \n\n- **American**:  \n  (54,211 \u2013 48,971) / 48,971 \u2248 **10.70%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n**Ranking by 2022\u20132024 revenue growth (highest to lowest)**  \n1. **United** \u2013 ~26.93%  \n2. **Delta** \u2013 ~21.87%  \n3. **Southwest** \u2013 ~15.41%  \n4. **Alaska (ex-Hawaiian)** \u2013 ~12.65%  \n5. **American** \u2013 ~10.70%  \n\n---\n\n### 3) Is the top-ranked airline the same in both rankings?\n\nYes. **United Airlines** has the highest revenue growth in both:\n- 2023\u20132024 period (~6.23%), and  \n- 2022\u20132024 period (~26.93%),  \nbased on total operating revenues and with Alaska\u2019s 2024 revenue adjusted to exclude Hawaiian\u2019s contribution. [DOC: airlines_fy2022_fy2024.txt] [DOC: alaska_10k_note_acquisition.txt]  \n\nANSWER: United is top-ranked for revenue growth in both 2023\u20132024 and 2022\u20132024; the rankings are:  \n\u2022 2023\u20132024 growth (highest to lowest): United, Delta, Southwest, Alaska (ex-Hawaiian), American  \n\u2022 2022\u20132024 growth (highest to lowest): United, Delta, Southwest, Alaska (ex-Hawaiian), American",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: For Delta, United, Southwest, American, and Alaska: rank the five airlines by revenue growth from fiscal year 2023 to fiscal year 2024, and separately by revenue growth from fiscal year 2022 to fiscal year 2024. For any airline whose revenue includes a business it acquired during the period, use growth excluding the acquired business. Is the top-ranked airline the same in both rankings?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_CoKu9sWCPeRyOtFAgkPEP0GA",
+          "function": {
+            "arguments": "{\"query\":\"Delta Air Lines 2023 2024 total operating revenue year ended December 31 2024 2023 2022\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        },
+        {
+          "id": "call_p64ZPGgTMZuHtUjrHXWbrct6",
+          "function": {
+            "arguments": "{\"query\":\"United Airlines Holdings Inc 2024 2023 2022 total operating revenue year ended December 31\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 1
+        },
+        {
+          "id": "call_jDVyikWPm4vsDcIWnqqyYDbW",
+          "function": {
+            "arguments": "{\"query\":\"Southwest Airlines Co 2024 2023 2022 total operating revenues year ended December 31\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 2
+        },
+        {
+          "id": "call_tX0JzPRHbivj06Snn3MZu3v5",
+          "function": {
+            "arguments": "{\"query\":\"American Airlines Group Inc 2024 2023 2022 total operating revenues year ended December 31\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 3
+        },
+        {
+          "id": "call_vxgRVsuBbbPT038khYp4KyzJ",
+          "function": {
+            "arguments": "{\"query\":\"Alaska Air Group Inc 2024 2023 2022 total operating revenues year ended December 31 acquisition \\\"excluding\\\" Hawaiian or other business\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_CoKu9sWCPeRyOtFAgkPEP0GA",
+      "name": "search_corpus",
+      "input": {
+        "query": "Delta Air Lines 2023 2024 total operating revenue year ended December 31 2024 2023 2022"
+      },
+      "output": "[airlines_fy2022_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2022 $50,582M, FY2023 $58,048M, FY2024 $61,643M.\n\n[alaska_10k_note_acquisition.txt] On September 18, 2024, Alaska Air Group completed its acquisition of Hawaiian Holdings, Inc., the parent company of Hawaiian Airlines. The results of Hawaiian are included in the consolidated financial statements beginning September 18, 2024. For the period from the acquisition date to December 31, 2024, revenue and net loss from Hawaiian recognized in the Company's consolidated results of operations was $869 million and $113 million, respectively.\n\n[airlines_fy2022_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2022 $44,955M, FY2023 $53,717M, FY2024 $57,063M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_p64ZPGgTMZuHtUjrHXWbrct6",
+      "name": "search_corpus",
+      "input": {
+        "query": "United Airlines Holdings Inc 2024 2023 2022 total operating revenue year ended December 31"
+      },
+      "output": "[airlines_fy2022_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2022 $44,955M, FY2023 $53,717M, FY2024 $57,063M.\n\n[alaska_10k_note_acquisition.txt] On September 18, 2024, Alaska Air Group completed its acquisition of Hawaiian Holdings, Inc., the parent company of Hawaiian Airlines. The results of Hawaiian are included in the consolidated financial statements beginning September 18, 2024. For the period from the acquisition date to December 31, 2024, revenue and net loss from Hawaiian recognized in the Company's consolidated results of operations was $869 million and $113 million, respectively.\n\n[airlines_fy2022_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2022 $23,814M, FY2023 $26,091M, FY2024 $27,483M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_jDVyikWPm4vsDcIWnqqyYDbW",
+      "name": "search_corpus",
+      "input": {
+        "query": "Southwest Airlines Co 2024 2023 2022 total operating revenues year ended December 31"
+      },
+      "output": "[airlines_fy2022_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2022 $23,814M, FY2023 $26,091M, FY2024 $27,483M.\n\n[airlines_fy2022_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2022 $44,955M, FY2023 $53,717M, FY2024 $57,063M.\n\n[airlines_fy2022_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2022 $48,971M, FY2023 $52,788M, FY2024 $54,211M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_tX0JzPRHbivj06Snn3MZu3v5",
+      "name": "search_corpus",
+      "input": {
+        "query": "American Airlines Group Inc 2024 2023 2022 total operating revenues year ended December 31"
+      },
+      "output": "[airlines_fy2022_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2022 $48,971M, FY2023 $52,788M, FY2024 $54,211M.\n\n[alaska_10k_note_acquisition.txt] On September 18, 2024, Alaska Air Group completed its acquisition of Hawaiian Holdings, Inc., the parent company of Hawaiian Airlines. The results of Hawaiian are included in the consolidated financial statements beginning September 18, 2024. For the period from the acquisition date to December 31, 2024, revenue and net loss from Hawaiian recognized in the Company's consolidated results of operations was $869 million and $113 million, respectively.\n\n[airlines_fy2022_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2022 $44,955M, FY2023 $53,717M, FY2024 $57,063M."
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_vxgRVsuBbbPT038khYp4KyzJ",
+      "name": "search_corpus",
+      "input": {
+        "query": "Alaska Air Group Inc 2024 2023 2022 total operating revenues year ended December 31 acquisition \"excluding\" Hawaiian or other business"
+      },
+      "output": "[alaska_10k_note_acquisition.txt] On September 18, 2024, Alaska Air Group completed its acquisition of Hawaiian Holdings, Inc., the parent company of Hawaiian Airlines. The results of Hawaiian are included in the consolidated financial statements beginning September 18, 2024. For the period from the acquisition date to December 31, 2024, revenue and net loss from Hawaiian recognized in the Company's consolidated results of operations was $869 million and $113 million, respectively.\n\n[airlines_fy2022_fy2024.txt] Alaska Air Group (CIK 766421, 10-K accession 0000766421-25-000009): Total operating revenue: FY2022 $9,646M, FY2023 $10,426M, FY2024 $11,735M.\n\n[airlines_fy2022_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2022 $48,971M, FY2023 $52,788M, FY2024 $54,211M."
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_Yixks6snJqTYGso6OB8Jsm8c",
+          "function": {
+            "arguments": "{\"code\":\"import math\\nairlines = {\\n 'Delta': {2022:50582,2023:58048,2024:61643},\\n 'United': {2022:44955,2023:53717,2024:57063},\\n 'Southwest': {2022:23814,2023:26091,2024:27483},\\n 'American': {2022:48971,2023:52788,2024:54211},\\n 'Alaska_reported': {2022:9646,2023:10426,2024:11735},\\n}\\n\\n# Adjust Alaska to exclude Hawaiian revenue in 2024\\nalaska_2024_ex_hawaiian = airlines['Alaska_reported'][2024] - 869\\n\\nresults = {}\\nfor name,data in airlines.items():\\n    if name=='Alaska_reported':\\n        continue\\n    rev23, rev24 = data[2023], data[2024]\\n    if name=='Alaska':\\n        rev24 = alaska_2024_ex_hawaiian\\n\\nprint('Alaska 2024 ex-Hawaiian:', alaska_2024_ex_hawaiian)\\n\\n# Build clean dict including Alaska adjusted\\nclean = {\\n 'Delta': airlines['Delta'],\\n 'United': airlines['United'],\\n 'Southwest': airlines['Southwest'],\\n 'American': airlines['American'],\\n 'Alaska': {2022:airlines['Alaska_reported'][2022],2023:airlines['Alaska_reported'][2023],2024:alaska_2024_ex_hawaiian}\\n}\\n\\nrg_23_24 = {k:(v[2024]-v[2023])/v[2023] for k,v in clean.items()}\\nrg_22_24 = {k:(v[2024]-v[2022])/v[2022] for k,v in clean.items()}\\n\\nprint('23-24 growth:', rg_23_24)\\nprint('22-24 growth:', rg_22_24)\\n\\nprint('Ranking 23-24:', sorted(rg_23_24.items(), key=lambda x:-x[1]))\\nprint('Ranking 22-24:', sorted(rg_22_24.items(), key=lambda x:-x[1]))\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_Yixks6snJqTYGso6OB8Jsm8c",
+      "name": "python_eval",
+      "input": {
+        "code": "import math\nairlines = {\n 'Delta': {2022:50582,2023:58048,2024:61643},\n 'United': {2022:44955,2023:53717,2024:57063},\n 'Southwest': {2022:23814,2023:26091,2024:27483},\n 'American': {2022:48971,2023:52788,2024:54211},\n 'Alaska_reported': {2022:9646,2023:10426,2024:11735},\n}\n\n# Adjust Alaska to exclude Hawaiian revenue in 2024\nalaska_2024_ex_hawaiian = airlines['Alaska_reported'][2024] - 869\n\nresults = {}\nfor name,data in airlines.items():\n    if name=='Alaska_reported':\n        continue\n    rev23, rev24 = data[2023], data[2024]\n    if name=='Alaska':\n        rev24 = alaska_2024_ex_hawaiian\n\nprint('Alaska 2024 ex-Hawaiian:', alaska_2024_ex_hawaiian)\n\n# Build clean dict including Alaska adjusted\nclean = {\n 'Delta': airlines['Delta'],\n 'United': airlines['United'],\n 'Southwest': airlines['Southwest'],\n 'American': airlines['American'],\n 'Alaska': {2022:airlines['Alaska_reported'][2022],2023:airlines['Alaska_reported'][2023],2024:alaska_2024_ex_hawaiian}\n}\n\nrg_23_24 = {k:(v[2024]-v[2023])/v[2023] for k,v in clean.items()}\nrg_22_24 = {k:(v[2024]-v[2022])/v[2022] for k,v in clean.items()}\n\nprint('23-24 growth:', rg_23_24)\nprint('22-24 growth:', rg_22_24)\n\nprint('Ranking 23-24:', sorted(rg_23_24.items(), key=lambda x:-x[1]))\nprint('Ranking 22-24:', sorted(rg_22_24.items(), key=lambda x:-x[1]))"
+      },
+      "output": "Alaska 2024 ex-Hawaiian: 10866\n23-24 growth: {'Delta': 0.06193150496141125, 'United': 0.06228940558854739, 'Southwest': 0.05335173048177533, 'American': 0.026956884140334925, 'Alaska': 0.04220218684059083}\n22-24 growth: {'Delta': 0.21867462733778814, 'United': 0.269336002669336, 'Southwest': 0.15406903502141597, 'American': 0.10700210328561802, 'Alaska': 0.12647729628861704}\nRanking 23-24: [('United', 0.06228940558854739), ('Delta', 0.06193150496141125), ('Southwest', 0.05335173048177533), ('Alaska', 0.04220218684059083), ('American', 0.026956884140334925)]\nRanking 22-24: [('United', 0.269336002669336), ('Delta', 0.21867462733778814), ('Southwest', 0.15406903502141597), ('Alaska', 0.12647729628861704), ('American', 0.10700210328561802)]"
+    },
+    {
+      "content": "All five airlines report on a comparable fiscal year (year ended December 31). Alaska\u2019s 2024 revenue includes the acquired Hawaiian business from September 18, 2024 onward, so I adjust Alaska\u2019s 2024 revenue to exclude Hawaiian, per your instruction. No other airline shows an acquired business affecting revenue comparability in these excerpts.\n\n**Source revenues (reported)**  \n- **Delta Air Lines \u2013 total operating revenue**:  \n  2022: $50,582M; 2023: $58,048M; 2024: $61,643M. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **United Airlines Holdings \u2013 total operating revenue**:  \n  2022: $44,955M; 2023: $53,717M; 2024: $57,063M. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Southwest Airlines \u2013 total operating revenue**:  \n  2022: $23,814M; 2023: $26,091M; 2024: $27,483M. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **American Airlines Group \u2013 total operating revenue**:  \n  2022: $48,971M; 2023: $52,788M; 2024: $54,211M. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Alaska Air Group \u2013 total operating revenue and Hawaiian contribution**:  \n  2022: $9,646M; 2023: $10,426M; 2024: $11,735M. [DOC: airlines_fy2022_fy2024.txt]  \n  Hawaiian acquisition: closed September 18, 2024; Hawaiian revenue included from that date; Hawaiian revenue from acquisition date to Dec. 31, 2024 was **$869M**. [DOC: alaska_10k_note_acquisition.txt]  \n\n**Adjustment for Alaska (exclude acquired Hawaiian business)**  \n- Reported 2024 Alaska revenue: $11,735M. [DOC: airlines_fy2022_fy2024.txt]  \n- Less Hawaiian 2024 revenue: $869M. [DOC: alaska_10k_note_acquisition.txt]  \n- **Alaska 2024 revenue excluding Hawaiian = $11,735M \u2013 $869M = $10,866M** (computed).\n\nThus the adjusted revenue set used for growth calculations is:\n- Delta: 2022 $50,582M; 2023 $58,048M; 2024 $61,643M. [DOC: airlines_fy2022_fy2024.txt]  \n- United: 2022 $44,955M; 2023 $53,717M; 2024 $57,063M. [DOC: airlines_fy2022_fy2024.txt]  \n- Southwest: 2022 $23,814M; 2023 $26,091M; 2024 $27,483M. [DOC: airlines_fy2022_fy2024.txt]  \n- American: 2022 $48,971M; 2023 $52,788M; 2024 $54,211M. [DOC: airlines_fy2022_fy2024.txt]  \n- Alaska (ex-Hawaiian): 2022 $9,646M; 2023 $10,426M; 2024 $10,866M (2022\u20132023 reported; 2024 adjusted as above). [DOC: airlines_fy2022_fy2024.txt] [DOC: alaska_10k_note_acquisition.txt]  \n\n---\n\n### 1) Revenue growth from FY 2023 to FY 2024 (using adjusted Alaska)\n\nGrowth rate = (2024 revenue \u2013 2023 revenue) / 2023 revenue.\n\n- **United**:  \n  (57,063 \u2013 53,717) / 53,717 \u2248 **6.23%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Delta**:  \n  (61,643 \u2013 58,048) / 58,048 \u2248 **6.19%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Southwest**:  \n  (27,483 \u2013 26,091) / 26,091 \u2248 **5.34%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Alaska (ex-Hawaiian)**:  \n  (10,866 \u2013 10,426) / 10,426 \u2248 **4.22%** (2024 adjusted to exclude $869M Hawaiian).  \n  [DOC: airlines_fy2022_fy2024.txt] [DOC: alaska_10k_note_acquisition.txt]  \n\n- **American**:  \n  (54,211 \u2013 52,788) / 52,788 \u2248 **2.70%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n**Ranking by 2023\u20132024 revenue growth (highest to lowest)**  \n1. **United** \u2013 ~6.23%  \n2. **Delta** \u2013 ~6.19%  \n3. **Southwest** \u2013 ~5.34%  \n4. **Alaska (ex-Hawaiian)** \u2013 ~4.22%  \n5. **American** \u2013 ~2.70%  \n\n---\n\n### 2) Revenue growth from FY 2022 to FY 2024 (using adjusted Alaska)\n\nGrowth rate = (2024 revenue \u2013 2022 revenue) / 2022 revenue.\n\n- **United**:  \n  (57,063 \u2013 44,955) / 44,955 \u2248 **26.93%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Delta**:  \n  (61,643 \u2013 50,582) / 50,582 \u2248 **21.87%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Southwest**:  \n  (27,483 \u2013 23,814) / 23,814 \u2248 **15.41%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n- **Alaska (ex-Hawaiian)**:  \n  (10,866 \u2013 9,646) / 9,646 \u2248 **12.65%** (2024 adjusted to exclude Hawaiian).  \n  [DOC: airlines_fy2022_fy2024.txt] [DOC: alaska_10k_note_acquisition.txt]  \n\n- **American**:  \n  (54,211 \u2013 48,971) / 48,971 \u2248 **10.70%**. [DOC: airlines_fy2022_fy2024.txt]  \n\n**Ranking by 2022\u20132024 revenue growth (highest to lowest)**  \n1. **United** \u2013 ~26.93%  \n2. **Delta** \u2013 ~21.87%  \n3. **Southwest** \u2013 ~15.41%  \n4. **Alaska (ex-Hawaiian)** \u2013 ~12.65%  \n5. **American** \u2013 ~10.70%  \n\n---\n\n### 3) Is the top-ranked airline the same in both rankings?\n\nYes. **United Airlines** has the highest revenue growth in both:\n- 2023\u20132024 period (~6.23%), and  \n- 2022\u20132024 period (~26.93%),  \nbased on total operating revenues and with Alaska\u2019s 2024 revenue adjusted to exclude Hawaiian\u2019s contribution. [DOC: airlines_fy2022_fy2024.txt] [DOC: alaska_10k_note_acquisition.txt]  \n\nANSWER: United is top-ranked for revenue growth in both 2023\u20132024 and 2022\u20132024; the rankings are:  \n\u2022 2023\u20132024 growth (highest to lowest): United, Delta, Southwest, Alaska (ex-Hawaiian), American  \n\u2022 2022\u20132024 growth (highest to lowest): United, Delta, Southwest, Alaska (ex-Hawaiian), American",
+      "role": "assistant"
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Delta Air Lines 2023 2024 total operating revenue year ended December 31 2024 2023 2022"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "United Airlines Holdings Inc 2024 2023 2022 total operating revenue year ended December 31"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Southwest Airlines Co 2024 2023 2022 total operating revenues year ended December 31"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "American Airlines Group Inc 2024 2023 2022 total operating revenues year ended December 31"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Alaska Air Group Inc 2024 2023 2022 total operating revenues year ended December 31 acquisition \"excluding\" Hawaiian or other business"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "import math\nairlines = {\n 'Delta': {2022:50582,2023:58048,2024:61643},\n 'United': {2022:44955,2023:53717,2024:57063},\n 'Southwest': {2022:23814,2023:26091,2024:27483},\n 'American': {2022:48971,2023:52788,2024:54211},\n 'Alaska_reported': {2022:9646,2023:10426,2024:11735},\n}\n\n# Adjust Alaska to exclude Hawaiian revenue in 2024\nalaska_2024_ex_hawaiian = airlines['Alaska_reported'][2024] - 869\n\nresults = {}\nfor name,data in airlines.items():\n    if name=='Alaska_reported':\n        continue\n    rev23, rev24 = data[2023], data[2024]\n    if name=='Alaska':\n        rev24 = alaska_2024_ex_hawaiian\n\nprint('Alaska 2024 ex-Hawaiian:', alaska_2024_ex_hawaiian)\n\n# Build clean dict including Alaska adjusted\nclean = {\n 'Delta': airlines['Delta'],\n 'United': airlines['United'],\n 'Southwest': airlines['Southwest'],\n 'American': airlines['American'],\n 'Alaska': {2022:airlines['Alaska_reported'][2022],2023:airlines['Alaska_reported'][2023],2024:alaska_2024_ex_hawaiian}\n}\n\nrg_23_24 = {k:(v[2024]-v[2023])/v[2023] for k,v in clean.items()}\nrg_22_24 = {k:(v[2024]-v[2022])/v[2022] for k,v in clean.items()}\n\nprint('23-24 growth:', rg_23_24)\nprint('22-24 growth:', rg_22_24)\n\nprint('Ranking 23-24:', sorted(rg_23_24.items(), key=lambda x:-x[1]))\nprint('Ranking 22-24:', sorted(rg_22_24.items(), key=lambda x:-x[1]))"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": "  \n\nANSWER: United is top-ranked for revenue growth in both 2023\u20132024 and 2022\u20132024; the rankings are:  \n\u2022 2023\u20132024 growth (highest to lowest): United, Delta, Southwest, Alaska (ex-Hawaiian), American  \n\u2022 2022\u20132024 growth (highest to lowest): United, Delta, Southwest, Alaska (ex-Hawaiian), American"
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "low"
+        }
+      }
+    ],
+    "tool_steps": 6,
+    "terminal_reward": 1.0,
+    "return": 0.94,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "low"
+    },
+    "finished_at": "2026-09-23T18:25:50+00:00"
+  }
+}

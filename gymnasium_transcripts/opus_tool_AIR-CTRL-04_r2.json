@@ -1,0 +1,226 @@
+{
+  "model": "opus",
+  "tool_condition": "tool",
+  "item_id": "AIR-CTRL-04",
+  "repeat": 2,
+  "bucket": "airline_control",
+  "final_answer": "## Comparability caveats\n\n- **Alaska Air Group's FY2024 is not organically comparable** to the others: it completed the Hawaiian Holdings acquisition on September 18, 2024, and Hawaiian's results are consolidated only from that date, contributing $869M of revenue (a partial-year stub) [alaska_10k_note_acquisition.txt]. Its full-year ratios blend ~8.5 months of standalone Alaska with ~3.5 months of the combined carrier.\n- Delta's total operating revenue includes non-ticket (refinery/other) revenue, and its fuel line is net of refinery effects, which structurally depresses both ratios relative to pure-play carriers. The ratios below are as-reported GAAP line items, not adjusted for these differences.\n\n## Aircraft fuel as % of revenue, FY2024 (lowest first)\n\n| Rank | Airline | Fuel / Revenue |\n|---|---|---|\n| 1 | Delta | 17.1% ($10,566M / $61,643M) [airlines_costs_fy2024.txt] |\n| 2 | United | 20.6% ($11,756M / $57,063M) [airlines_costs_fy2024.txt] |\n| 3 | American | 21.1% ($11,418M / $54,211M) [airlines_costs_fy2024.txt] |\n| 4 | Southwest | 21.1% ($5,812M / $27,483M) [airlines_costs_fy2024.txt] |\n| 5 | Alaska | 21.4% ($2,506M / $11,735M) [airlines_costs_fy2024.txt] |\n\nAmerican (21.06%) and Southwest (21.15%) are effectively tied \u2014 within ~0.1pp, so that ordering is not meaningful.\n\n## Salaries, wages and benefits as % of revenue, FY2024 (lowest first)\n\n| Rank | Airline | Labor / Revenue |\n|---|---|---|\n| 1 | Delta | 26.2% ($16,161M / $61,643M) [airlines_costs_fy2024.txt] |\n| 2 | United | 29.2% ($16,678M / $57,063M) [airlines_costs_fy2024.txt] |\n| 3 | American | 29.6% ($16,021M / $54,211M) [airlines_costs_fy2024.txt] |\n| 4 | Alaska | 30.6% ($3,588M / $11,735M) [airlines_costs_fy2024.txt] |\n| 5 | Southwest | 44.5% ($12,240M / $27,483M) [airlines_costs_fy2024.txt] |\n\n## Answer\n\nYes \u2014 **Delta ranks lowest (best) on both metrics**, at 17.1% fuel-to-revenue and 26.2% labor-to-revenue. United is second on both. The most notable divergence is Southwest, which sits mid-pack on fuel intensity (21.1%) but is a distant outlier on labor intensity (44.5%), consistent with its short-haul, high-frequency model and its weak FY2024 operating income of just $321M on $27,483M of revenue [airlines_costs_fy2024.txt].\n\nANSWER: Fuel/revenue (lowest first): Delta 17.1%, United 20.6%, American 21.1%, Southwest 21.1%, Alaska 21.4%. Salaries/revenue (lowest first): Delta 26.2%, United 29.2%, American 29.6%, Alaska 30.6%, Southwest 44.5%. Yes \u2014 Delta is top-ranked (lowest) in both.",
+  "transcript": [
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: For Delta, United, Southwest, American, and Alaska: rank the five airlines by aircraft fuel expense as a percentage of revenue in fiscal year 2024 (lowest first), and separately by salaries, wages and benefits as a percentage of revenue in fiscal year 2024 (lowest first). Is the top-ranked airline the same in both rankings?"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "citations": null,
+          "text": "I'll research each airline's fuel and labor expenses relative to revenue for FY2024.",
+          "type": "text"
+        },
+        {
+          "id": "toolu_01UXzxq1UzePKMx4g2TjRPhP",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Delta aircraft fuel expense 2024 total operating revenue"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_01VSxSGPSBPbJbqiUgvM6sGL",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "United Airlines 2024 operating expenses aircraft fuel salaries and related costs"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Delta aircraft fuel expense 2024 total operating revenue"
+      },
+      "output": "[airlines_costs_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2024 $61,643M. Aircraft fuel expense: FY2024 $10,566M. Salaries, wages and benefits: FY2024 $16,161M. Operating income: FY2024 $5,995M.\n\n[airlines_costs_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Aircraft fuel expense: FY2024 $11,756M. Salaries, wages and benefits: FY2024 $16,678M. Operating income: FY2024 $5,096M.\n\n[airlines_costs_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Aircraft fuel expense: FY2024 $5,812M. Salaries, wages and benefits: FY2024 $12,240M. Operating income: FY2024 $321M."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "United Airlines 2024 operating expenses aircraft fuel salaries and related costs"
+      },
+      "output": "[airlines_costs_fy2024.txt] United Airlines Holdings (CIK 100517, 10-K accession 0000100517-25-000046): Total operating revenue: FY2024 $57,063M. Aircraft fuel expense: FY2024 $11,756M. Salaries, wages and benefits: FY2024 $16,678M. Operating income: FY2024 $5,096M.\n\n[airlines_costs_fy2024.txt] Southwest Airlines (CIK 92380, 10-K accession 0000092380-25-000024): Total operating revenue: FY2024 $27,483M. Aircraft fuel expense: FY2024 $5,812M. Salaries, wages and benefits: FY2024 $12,240M. Operating income: FY2024 $321M.\n\n[airlines_costs_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Aircraft fuel expense: FY2024 $11,418M. Salaries, wages and benefits: FY2024 $16,021M. Operating income: FY2024 $2,614M."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "id": "toolu_01BVF6bZWaGDHXMYwTo7r4RM",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Alaska Air Group fiscal 2024 aircraft fuel salaries wages benefits revenue"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        },
+        {
+          "id": "toolu_011P1wzoxMX23gLkdMuyotj4",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "query": "Alaska Hawaiian acquisition 2024 comparability note fuel expense definition"
+          },
+          "name": "search_corpus",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Alaska Air Group fiscal 2024 aircraft fuel salaries wages benefits revenue"
+      },
+      "output": "[airlines_costs_fy2024.txt] Alaska Air Group (CIK 766421, 10-K accession 0000766421-25-000009): Total operating revenue: FY2024 $11,735M. Aircraft fuel expense: FY2024 $2,506M. Salaries, wages and benefits: FY2024 $3,588M. Operating income: FY2024 $570M.\n\n[airlines_costs_fy2024.txt] American Airlines Group (CIK 6201, 10-K accession 0000006201-25-000010): Total operating revenue: FY2024 $54,211M. Aircraft fuel expense: FY2024 $11,418M. Salaries, wages and benefits: FY2024 $16,021M. Operating income: FY2024 $2,614M.\n\n[airlines_costs_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2024 $61,643M. Aircraft fuel expense: FY2024 $10,566M. Salaries, wages and benefits: FY2024 $16,161M. Operating income: FY2024 $5,995M."
+    },
+    {
+      "role": "tool_result",
+      "tool": "search_corpus",
+      "input": {
+        "query": "Alaska Hawaiian acquisition 2024 comparability note fuel expense definition"
+      },
+      "output": "[alaska_10k_note_acquisition.txt] On September 18, 2024, Alaska Air Group completed its acquisition of Hawaiian Holdings, Inc., the parent company of Hawaiian Airlines. The results of Hawaiian are included in the consolidated financial statements beginning September 18, 2024. For the period from the acquisition date to December 31, 2024, revenue and net loss from Hawaiian recognized in the Company's consolidated results of operations was $869 million and $113 million, respectively.\n\n[airlines_costs_fy2024.txt] Alaska Air Group (CIK 766421, 10-K accession 0000766421-25-000009): Total operating revenue: FY2024 $11,735M. Aircraft fuel expense: FY2024 $2,506M. Salaries, wages and benefits: FY2024 $3,588M. Operating income: FY2024 $570M.\n\n[airlines_costs_fy2024.txt] Delta Air Lines (CIK 27904, 10-K accession 0000027904-25-000004): Total operating revenue: FY2024 $61,643M. Aircraft fuel expense: FY2024 $10,566M. Salaries, wages and benefits: FY2024 $16,161M. Operating income: FY2024 $5,995M."
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "id": "toolu_013KR6bcxS4UyQpChX2Jede7",
+          "caller": {
+            "type": "direct"
+          },
+          "input": {
+            "code": "\nd={'Delta':(61643,10566,16161),'United':(57063,11756,16678),'Southwest':(27483,5812,12240),'American':(54211,11418,16021),'Alaska':(11735,2506,3588)}\nf=sorted(((v[1]/v[0]*100,k) for k,v in d.items()))\nl=sorted(((v[2]/v[0]*100,k) for k,v in d.items()))\nfor x in f: print(f\"{x[1]}: {x[0]:.2f}%\")\nprint()\nfor x in l: print(f\"{x[1]}: {x[0]:.2f}%\")\n"
+          },
+          "name": "python_eval",
+          "type": "tool_use",
+          "toolset_name": null
+        }
+      ]
+    },
+    {
+      "role": "tool_result",
+      "tool": "python_eval",
+      "input": {
+        "code": "\nd={'Delta':(61643,10566,16161),'United':(57063,11756,16678),'Southwest':(27483,5812,12240),'American':(54211,11418,16021),'Alaska':(11735,2506,3588)}\nf=sorted(((v[1]/v[0]*100,k) for k,v in d.items()))\nl=sorted(((v[2]/v[0]*100,k) for k,v in d.items()))\nfor x in f: print(f\"{x[1]}: {x[0]:.2f}%\")\nprint()\nfor x in l: print(f\"{x[1]}: {x[0]:.2f}%\")\n"
+      },
+      "output": "Delta: 17.14%\nUnited: 20.60%\nAmerican: 21.06%\nSouthwest: 21.15%\nAlaska: 21.35%\n\nDelta: 26.22%\nUnited: 29.23%\nAmerican: 29.55%\nAlaska: 30.58%\nSouthwest: 44.54%"
+    },
+    {
+      "role": "assistant",
+      "content": [
+        {
+          "signature": "CAISjAUKjgEIEhgCKkCf8ubMYMH1M4ipfjmcdLOVxykWwZWInUcNYFW/LERZFqZanGunXAcogWGmlNCtFhQCjfXxGJUqahjpsIgieSq0Mg1jbGF1ZGUtb3B1cy01OAFCCHRoaW5raW5nWiQ3ZThiMTY5My1hMzI1LTQ2ODUtYTgzOS05NDVkMmQyY2E0YTCoAaix0NUGEgwK1/H72aVBjOnDABMaDB/98A1qdawu6DR/UyIw0yQUbZoG8lPeOLI/TsDztNZD2TXtntAIQz3kYAQnrd8HUsiq2dsGL5g2j6jCG0wjKqoDQFJEOAkS61hJjvmrk+PQL1PnkiSX9SmIs3tYFV10e9bDneb9swE2FVxHI13fi8a4jRD+1xhUI6WmlkOW/Z5wMt8MubiFs8qnKVRlCm5i9eLgo6EClqZg/B4Rzj6F2A9L0i+VV2YaLgi6SxON4qZUBcw9O2bMmI3WW5ypUjuk8GmjCg3et56wTQ5Pdz2FDrtzuNHMQzeApTd5u0FkN1c+UVw3H+eGcnV0dZT61SMPp4UoAbKbgL52auXebaFoqtGKiqjEsTwbloRuoPEg4WYT0OPKEIy/FwKV+G7MX9itL90yhSlWBnrxbG2UH4iwxdqkJpSG89vKHCNvY8UzsFrgaWl4U7ufn52m0GdIbVJvOY/Ka6Elw53H0yrFtbNrNP8OEvUa57O4kVYD86ybZK23DACggRuhCP3V6qWdMd/rjeWo3vrs9vx3+5yUnkiZEp96MNNVNnHjiIkMDcb8RiSov0AI+3DxH9iVplGgMuoBTa3N6cxIQ4rx3UbYg4gZgGfdJ+vt+1B8yrcTuAARz7rpg9ddWHNKK609WOkqwjGe/Q3kv3hkfctMiUuFGAE=",
+          "thinking": "",
+          "type": "thinking"
+        },
+        {
+          "citations": null,
+          "text": "## Comparability caveats\n\n- **Alaska Air Group's FY2024 is not organically comparable** to the others: it completed the Hawaiian Holdings acquisition on September 18, 2024, and Hawaiian's results are consolidated only from that date, contributing $869M of revenue (a partial-year stub) [alaska_10k_note_acquisition.txt]. Its full-year ratios blend ~8.5 months of standalone Alaska with ~3.5 months of the combined carrier.\n- Delta's total operating revenue includes non-ticket (refinery/other) revenue, and its fuel line is net of refinery effects, which structurally depresses both ratios relative to pure-play carriers. The ratios below are as-reported GAAP line items, not adjusted for these differences.\n\n## Aircraft fuel as % of revenue, FY2024 (lowest first)\n\n| Rank | Airline | Fuel / Revenue |\n|---|---|---|\n| 1 | Delta | 17.1% ($10,566M / $61,643M) [airlines_costs_fy2024.txt] |\n| 2 | United | 20.6% ($11,756M / $57,063M) [airlines_costs_fy2024.txt] |\n| 3 | American | 21.1% ($11,418M / $54,211M) [airlines_costs_fy2024.txt] |\n| 4 | Southwest | 21.1% ($5,812M / $27,483M) [airlines_costs_fy2024.txt] |\n| 5 | Alaska | 21.4% ($2,506M / $11,735M) [airlines_costs_fy2024.txt] |\n\nAmerican (21.06%) and Southwest (21.15%) are effectively tied \u2014 within ~0.1pp, so that ordering is not meaningful.\n\n## Salaries, wages and benefits as % of revenue, FY2024 (lowest first)\n\n| Rank | Airline | Labor / Revenue |\n|---|---|---|\n| 1 | Delta | 26.2% ($16,161M / $61,643M) [airlines_costs_fy2024.txt] |\n| 2 | United | 29.2% ($16,678M / $57,063M) [airlines_costs_fy2024.txt] |\n| 3 | American | 29.6% ($16,021M / $54,211M) [airlines_costs_fy2024.txt] |\n| 4 | Alaska | 30.6% ($3,588M / $11,735M) [airlines_costs_fy2024.txt] |\n| 5 | Southwest | 44.5% ($12,240M / $27,483M) [airlines_costs_fy2024.txt] |\n\n## Answer\n\nYes \u2014 **Delta ranks lowest (best) on both metrics**, at 17.1% fuel-to-revenue and 26.2% labor-to-revenue. United is second on both. The most notable divergence is Southwest, which sits mid-pack on fuel intensity (21.1%) but is a distant outlier on labor intensity (44.5%), consistent with its short-haul, high-frequency model and its weak FY2024 operating income of just $321M on $27,483M of revenue [airlines_costs_fy2024.txt].\n\nANSWER: Fuel/revenue (lowest first): Delta 17.1%, United 20.6%, American 21.1%, Southwest 21.1%, Alaska 21.4%. Salaries/revenue (lowest first): Delta 26.2%, United 29.2%, American 29.6%, Alaska 30.6%, Southwest 44.5%. Yes \u2014 Delta is top-ranked (lowest) in both.",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "episode": {
+    "verifier": "judge",
+    "judge_model": "google/gemini-3.8-flash",
+    "steps": [
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Delta aircraft fuel expense 2024 total operating revenue"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "United Airlines 2024 operating expenses aircraft fuel salaries and related costs"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Alaska Air Group fiscal 2024 aircraft fuel salaries wages benefits revenue"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "search_corpus",
+          "args": {
+            "query": "Alaska Hawaiian acquisition 2024 comparability note fuel expense definition"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "tool": "python_eval",
+          "args": {
+            "code": "\nd={'Delta':(61643,10566,16161),'United':(57063,11756,16678),'Southwest':(27483,5812,12240),'American':(54211,11418,16021),'Alaska':(11735,2506,3588)}\nf=sorted(((v[1]/v[0]*100,k) for k,v in d.items()))\nl=sorted(((v[2]/v[0]*100,k) for k,v in d.items()))\nfor x in f: print(f\"{x[1]}: {x[0]:.2f}%\")\nprint()\nfor x in l: print(f\"{x[1]}: {x[0]:.2f}%\")\n"
+          }
+        },
+        "reward": -0.01,
+        "truncated": false
+      },
+      {
+        "action": {
+          "answer": " revenue [airlines_costs_fy2024.txt].\n\nANSWER: Fuel/revenue (lowest first): Delta 17.1%, United 20.6%, American 21.1%, Southwest 21.1%, Alaska 21.4%. Salaries/revenue (lowest first): Delta 26.2%, United 29.2%, American 29.6%, Alaska 30.6%, Southwest 44.5%. Yes \u2014 Delta is top-ranked (lowest) in both."
+        },
+        "reward": 1.0,
+        "info": {
+          "scoring": "judge",
+          "flag": "correct",
+          "confidence": "high"
+        }
+      }
+    ],
+    "tool_steps": 5,
+    "terminal_reward": 1.0,
+    "return": 0.95,
+    "solved": true,
+    "scoring": {
+      "scoring": "judge",
+      "flag": "correct",
+      "confidence": "high"
+    },
+    "finished_at": "2026-09-23T18:20:30+00:00"
+  }
+}

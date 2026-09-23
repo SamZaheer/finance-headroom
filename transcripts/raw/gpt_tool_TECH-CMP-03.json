@@ -1,0 +1,66 @@
+{
+  "model": "gpt",
+  "tool_condition": "tool",
+  "item_id": "TECH-CMP-03",
+  "final_answer": "Apple\u2019s fiscal years are directly comparable here (same company, consolidated operations, same fiscal-year basis), and both R&D and revenue figures are taken from the same Form 10-K and measured under the same accounting framework. No known divestitures, spinoffs, or segment redefinitions affect the basic company-wide R&D-as-a-%-of-revenue comparison.\n\nFrom Apple\u2019s FY2024 Form 10-K:  \n- FY2024 research and development (R&D) expense: $31,370 million; FY2024 revenue: $391,035 million [DOC: apple_rd.txt]  \n- FY2023 research and development (R&D) expense: $29,915 million; FY2023 revenue: $383,285 million [DOC: apple_rd.txt]\n\nCompute R&D as a percentage of revenue:  \n- 2024: 31,370 / 391,035 \u2248 8.02% [DOC: apple_rd.txt]  \n- 2023: 29,915 / 383,285 \u2248 7.80% [DOC: apple_rd.txt]\n\nChange from 2023 to 2024:  \n- 8.02% \u2212 7.80% \u2248 0.22 percentage points increase.\n\nANSWER: Apple\u2019s R&D spending as a percentage of revenue increased by approximately 0.22 percentage points from fiscal 2023 to fiscal 2024.",
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a financial analyst. Cite the specific source excerpt that supports each factual claim in your answer, using [DOC] tags. If the periods, entities, or accounting bases being compared are not directly comparable (e.g. a divestiture, spinoff, segment redefinition, or fiscal-year mismatch), say so explicitly before giving a final numeric answer. Give your final answer on its own line as: ANSWER: <value or text>"
+    },
+    {
+      "role": "user",
+      "content": "You have access to search_corpus (searches only this question's source\nfilings) and python_eval (a calculator). You may make up to 10 tool calls.\n\nQuestion: Did Apple's R&D spending as a percentage of revenue increase or decrease from fiscal year 2023 to fiscal year 2024, and by how many percentage points?"
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_dZfcDZpAUrv3ZfGUJwisdW4Y",
+          "function": {
+            "arguments": "{\"query\":\"Apple Form 10-K 2024 research and development as a percentage of net sales 2023 2024\"}",
+            "name": "search_corpus"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_dZfcDZpAUrv3ZfGUJwisdW4Y",
+      "name": "search_corpus",
+      "input": {
+        "query": "Apple Form 10-K 2024 research and development as a percentage of net sales 2023 2024"
+      },
+      "output": "[apple_rd.txt] Apple Inc. Form 10-K FY2024 (accession 0000320193-24-000123): Research and development expense FY2024: $31,370M (FY2024 revenue $391,035M). Research and development expense FY2023: $29,915M (FY2023 revenue $383,285M)."
+    },
+    {
+      "role": "assistant",
+      "tool_calls": [
+        {
+          "id": "call_g80ECFOLkF3HWu26aCYyVelh",
+          "function": {
+            "arguments": "{\"code\":\"rd_2024 = 31370/391035*100\\nrd_2023 = 29915/383285*100\\nprint(rd_2024, rd_2023, rd_2024-rd_2023)\"}",
+            "name": "python_eval"
+          },
+          "type": "function",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_g80ECFOLkF3HWu26aCYyVelh",
+      "name": "python_eval",
+      "input": {
+        "code": "rd_2024 = 31370/391035*100\nrd_2023 = 29915/383285*100\nprint(rd_2024, rd_2023, rd_2024-rd_2023)"
+      },
+      "output": "8.022299794136075 7.804897139204509 0.21740265493156574"
+    },
+    {
+      "content": "Apple\u2019s fiscal years are directly comparable here (same company, consolidated operations, same fiscal-year basis), and both R&D and revenue figures are taken from the same Form 10-K and measured under the same accounting framework. No known divestitures, spinoffs, or segment redefinitions affect the basic company-wide R&D-as-a-%-of-revenue comparison.\n\nFrom Apple\u2019s FY2024 Form 10-K:  \n- FY2024 research and development (R&D) expense: $31,370 million; FY2024 revenue: $391,035 million [DOC: apple_rd.txt]  \n- FY2023 research and development (R&D) expense: $29,915 million; FY2023 revenue: $383,285 million [DOC: apple_rd.txt]\n\nCompute R&D as a percentage of revenue:  \n- 2024: 31,370 / 391,035 \u2248 8.02% [DOC: apple_rd.txt]  \n- 2023: 29,915 / 383,285 \u2248 7.80% [DOC: apple_rd.txt]\n\nChange from 2023 to 2024:  \n- 8.02% \u2212 7.80% \u2248 0.22 percentage points increase.\n\nANSWER: Apple\u2019s R&D spending as a percentage of revenue increased by approximately 0.22 percentage points from fiscal 2023 to fiscal 2024.",
+      "role": "assistant"
+    }
+  ]
+}
