@@ -11,7 +11,8 @@ __pycache__/
 .ruff_cache/
 .DS_Store
 
-# regenerable local output: `make docker-run` scratch, fh-replay diagnostics
-results/agent_run/
-results/env_scored*.csv
-results/figures/env_reward_heatmap*.png
+# regenerable local output: every clone regenerates its own runs/results instead of
+# shipping them in git (see README for `--repeats`/`--workers` and expected run time)
+transcripts/
+gymnasium_transcripts/
+results/

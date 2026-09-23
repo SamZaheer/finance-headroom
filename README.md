@@ -9,7 +9,9 @@ Measures whether frontier LLMs (Claude Sonnet 5, Claude Opus 5, GPT-5.1) correct
 
 ## Run with Docker
 
-Requires Docker and `make`. Nothing from `data/` or `.env` is baked into the image: data is mounted per command, and API keys are read from `.env` at run time.
+- Requires Docker and `make`. Nothing from `data/` or `.env` is baked into the image: data is mounted per command, and API keys are read from `.env` at run time. 
+- `--repeats N` samples each (model, condition, item) N times; `--workers N` caps concurrent API calls per provider.
+- **Timing.** One pass over the full matrix (`--repeats 1`, 180 runs across 3 models) takes roughly 15-20 minutes at the default concurrency — this project's own timed run (353 runs, mostly resumed/pending jobs) finished in 18 minutes with 0 failures. Three repeats (540 runs) takes roughly 3x that, ~45-60 minutes; it's not exactly linear since it depends on `--workers` and which models are in the mix (reasoning models like Opus and o3 run slower per call). **`--repeats 1` is enough for a quick, directional check; `--repeats 3` is what this project's own results use**, since repeating each run is what lets `fh-analyze`'s consistency check tell a stable finding apart from one-off sampling noise.
 
 **1. Build the image**
 
@@ -18,36 +20,36 @@ git clone https://github.com/SamZaheer/finance-headroom.git && cd finance-headro
 make docker-build             # docker build -t finance-headroom .
 ```
 
-**2. Test** (no API keys needed)
+**2. Add API keys** (needed only for new model runs)
+
+```bash
+cp .env.example .env          # set ANTHROPIC_API_KEY and OPENAI_API_KEY (an OpenRouter key works for GPT-5.1 and the judge)
+```
+
+**3. Stage 1 — local evaluation harness**
+
+```bash
+make docker-run ARGS="--repeats 1 --workers 8"   # generate answers -> transcripts/raw/
+make docker-score                                # numeric scoring + calibrated judge + analysis -> results/scored.csv
+```
+
+`docker-run` is the isolated agent container. It mounts only the questions and the corpus, both read-only, so the answer key and all graded outputs are absent from it. Grading runs afterwards in a separate container, `docker-score`.
+
+**4. Stage 2 — Gymnasium environment**
+
+```bash
+make docker-gym ARGS="--repeats 1 --workers 8"   # live episodes -> gymnasium_transcripts/, results/gym_scored.csv
+```
+
+Each episode runs through `env.reset()` and `env.step()`, and the env's verifier assigns the reward inside the episode. The container therefore mounts the full `data/` directory, answer key included. See [Isolation and reward hacking](docs/architecture.md#isolation-and-reward-hacking) for this trade-off.
+
+**5. Test** (no API keys needed)
 
 ```bash
 make docker-test              # run the 23-test suite inside the image
 make docker-verify            # confirm the agent container cannot see any answer key or grade
 make docker-report            # rebuild every Stage 1 and Stage 2 table and figure from the committed transcripts
 ```
-
-**3. Add API keys** (needed only for new model runs)
-
-```bash
-cp .env.example .env          # set ANTHROPIC_API_KEY and OPENAI_API_KEY (an OpenRouter key works for GPT-5.1 and the judge)
-```
-
-**4. Stage 1 — local evaluation harness**
-
-```bash
-make docker-run ARGS="--repeats 3 --workers 8"   # generate answers -> transcripts/raw/
-make docker-score                                # numeric scoring + calibrated judge + analysis -> results/scored.csv
-```
-
-`docker-run` is the isolated agent container. It mounts only the questions and the corpus, both read-only, so the answer key and all graded outputs are absent from it. Grading runs afterwards in a separate container, `docker-score`.
-
-**5. Stage 2 — Gymnasium environment**
-
-```bash
-make docker-gym ARGS="--repeats 3 --workers 8"   # live episodes -> gymnasium_transcripts/, results/gym_scored.csv
-```
-
-Each episode runs through `env.reset()` and `env.step()`, and the env's verifier assigns the reward inside the episode. The container therefore mounts the full `data/` directory, answer key included. See [Isolation and reward hacking](docs/architecture.md#isolation-and-reward-hacking) for this trade-off.
 
 **Narrowing a run.** Any of these flags can go in `ARGS` for `docker-run` and `docker-gym`. Runs are resume-safe: existing transcripts are skipped.
 
