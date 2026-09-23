@@ -38,20 +38,12 @@ make docker-score                                # numeric scoring + calibrated 
 **4. Stage 2 — Gymnasium environment**
 
 ```bash
-make docker-gym ARGS="--repeats 1 --workers 8"   # no gym gold yet -> runs, rewards labelled "judge (uncalibrated)"
-make gym-draft-gold          # judgment episodes + judge verdicts -> results/gym/grading_draft.csv
-#   open it: fix human_flag where you disagree, set approved=yes
-make gym-gold                # approved rows -> data/calibration/gym_gold.jsonl (once)
-make docker-gym ARGS="..."   # from now on: auto-calibrates against gym gold (>= 90%), rewards "judge"
+make docker-gym ARGS="--repeats 1 --workers 8"   # builds the judge's gold set -> calibrates -> runs episodes
+make docker-gym ARGS="--rebuild-gold"            # regenerate the synthetic gold set
 ```
 
 - **The gold set is dataset-level.** It lives in `data/`, so it survives any reset of
   `transcripts/`, `gymnasium_transcripts/` or `results/`.
-- **Stale or missing calibration** (e.g. a new judge model or prompt) is redone automatically
-  against the gold set.
-- **A failed calibration stops the run.** Use `--reward keyword` to run without the judge.
-- The judge runs through OpenRouter, so it needs credit there.
-
 
 ```bash
 make docker-gym ARGS="--repeats 1 --workers 8"   # live episodes -> gymnasium_transcripts/
